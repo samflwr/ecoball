@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoBall</title>
+
+    <!-- stili -->
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Slackey&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rancho&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarala&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sulphur+Point:wght@300;400;700&display=swap" rel="stylesheet">
+
+    
+</head>
+
+<body>
+
+    <header id="header">
+        <img src="images/logosphere.png" id="logo" style="width:100px; height:100px;">
+        <div class="menu"></div>
+        <nav>
+            <ul class="menulist">
+                <li><a href="index.html" >HOME</a></li>
+                <li><a href="map.html">MAPPA</a></li>
+                <li><a href="#">PROGETTO</a></li>
+                <li><a href="contact.html" class="active">CONTATTACI</a></li>
+            </ul>
+        </nav> 
+    </header>
+
+    <section>
+        
+        <img src="./images/nube1.png" alt="nube1" id="nube1">
+        <img src="./images/fondo_transparente.png" alt="" id="transparente">
+        <img src="./images/nube2.png" alt="nube2" id="nube2">
+        <h2 id="slogan">ECOBALL</h2>
+        <h2 id="subslogan">OUR FUTURE IN A SPHERE</h2>
+        <a href="#" id="btn">Contattaci</a>
+        
+        <img src="./images/fondo.png" alt="fondo" id="fondo">
+        <img src="./images/viento.png" alt="viento" id="viento">
+    </section>
+    <div class="container">
+        <form action="action_page.php">
+      
+          <label for="fname">First Name</label>
+          <input type="text" id="fname" name="firstname" placeholder="Your name..">
+      
+          <label for="lname">Last Name</label>
+          <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+      
+          <label for="country">Country</label>
+          <select id="country" name="country">
+            <option value="australia">Australia</option>
+            <option value="canada">Canada</option>
+            <option value="usa">USA</option>
+          </select>
+      
+          <label for="subject">Subject</label>
+          <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+      
+          <input type="submit" value="Submit">
+      
+        </form>
+      </div>
+
+    <!-- SCRIPT -->
+    <script src="./js/script.js"></script>
+</body>
+
+</html>

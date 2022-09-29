@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>ecoBall</title> <!--Titolo della pagina. -->
+
+
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Slackey&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rancho&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarala&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sulphur+Point:wght@300;400;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    
+    <div>
+        <header id="header">
+            <img src="images/logo.png" alt="logo" id="logo">
+            <div class="menu"></div>
+            <nav>
+                <ul class="menulist">
+                    <li><a href="index.html" class="colorbackground">HOME</a></li>
+                    <li><a href="map.html" class="active">MAPPA</a></li>
+                    <li><a href="#" class="colorbackground">PROGETTO</a></li>
+                    <li><a href="contact.html" class="colorbackground">CONTATTACI</a></li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+    <div>
+        <div id="googleMap"></div>  <!--Visualizza la mappa nello schermo. -->
+    </div>
+    
+</body>
+</html>
+
+<!-- Liberie per visualizzare la mappa di googleMaps in schermo. -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.11&sensor=false" type="text/javascript"></script>
+
+<!--Script della mappa di googleMaps e Firebase. -->
+<script type="module">
+    
+    // Parte Firebase.
+
+    // Importazione delle liberie per utilizzare Firebase.
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js";
+    import { getDatabase, set, ref, push, child, onValue, get } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-database.js";
+
+    // Configurazione Firebase.
+    const firebaseConfig = {
+        apiKey: "AIzaSyA_0f0OS1AYgrCiZHQ9kAWzdn8TwzAuZ5A",
+        authDomain: "ecoball-database.firebaseapp.com",
+        databaseURL: "https://ecoball-database-default-rtdb.firebaseio.com",
+        projectId: "ecoball-database",
+        storageBucket: "ecoball-database.appspot.com",
+        messagingSenderId: "124474531451",
+        appId: "1:124474531451:web:f1eb1ac9540e0b7e404cde"
+    };
+
+    // Inizializzazione variabile del database.
+    const Database = getDatabase(initializeApp(firebaseConfig));
+
+    // Parte googleMaps.
+
+    // Opzioni mappa.
+    var optionsMap = {
+        zoom: 5,
+        center: new google.maps.LatLng(43.094056784340914, 12.505439322730146), // Coordinate iniziali : Italia.
+        mapTypeId: google.maps.MapTypeId.TERRAIN,
+        mapTypeControl: false
+    };
+
+    // Inizializzazione mappa.
+    var googleMap = new google.maps.Map(document.getElementById('googleMap'), optionsMap);
+
+    const dbRef = ref(Database, 'ecoBall/');
+    onValue(dbRef, (snapshot) => {
+        var counter = snapshot.val();
+        var nPoint = 0;
+
+        for (let i in counter) {
+            getParams(i);
+        }
+    });
+
+    async function getParams(nPoint) {
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        const snapshots = await get(ref(db, '/ecoBall/' + nPoint));
+        var Latitudine = snapshots.val().Latitudine;
+        var Longitudine = snapshots.val().Longitudine;
+        var Orario = snapshots.val().Orario;
+        var Periodo = snapshots.val().Data;
+        var TDS = snapshots.val().TDS;
+        var Torbidità = snapshots.val().torb;
+        var mapPoint = new google.maps.Marker({
+            position: new google.maps.LatLng(Latitudine, Longitudine), // Posizione.
+            map: googleMap, // Mappa.
+            title: 'Cliccami'// Quando si passa il cursore sopra il punto.
+        });
+
+        // Gestione delle informazioni sul punto.
+        (function (mapPoint, nPoint) {
+            google.maps.event.addListener(mapPoint, 'click', function () { // Quando si clicca il punto.
+                var infowindow = new google.maps.InfoWindow({
+                    content: ("Latitudine: " + Latitudine + "<br />" +
+                              "Longitudine: " + Longitudine + "<br />" +
+                              "Orario: " + Orario + "<br />" +
+                              "Periodo: " + Periodo + "<br />" +
+                              "TDS: " + TDS + "<br />" +
+                              "Torbidità: " + Torbidità + "<br />")
+                });
+                infowindow.open(googleMap, mapPoint);
+            });
+        })(mapPoint, nPoint);
+    };
+
+</script>
+
+
