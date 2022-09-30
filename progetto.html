@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoBall</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- stili -->
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Slackey&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rancho&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarala&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sulphur+Point:wght@300;400;700&display=swap" rel="stylesheet">
+
+    
+</head>
+
+<body>
+
+    <header id="header">
+        <img src="images/logo.png" alt="logo" id="logo" style="width:200px;">
+        <div class="menu"></div>
+        <nav>
+            <ul class="menulist">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="map.html">MAPPA</a></li>
+                <li><a href="progetto.html" class="active">CLASSIFICA</a></li>
+                <li><a href="contact.html">CONTATTACI</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        
+        <img src="./images/nube1.png" alt="nube1" id="nube1">
+        <img src="./images/fondo_transparente.png" alt="" id="transparente" style="width: 100%;">
+        <img src="./images/nube2.png" alt="nube2" id="nube2" class="nube2" style="opacity: 50%;">
+        <h2 id="slogan" style="margin-top:70px;">CLASSIFICA</h2>
+        <img src="./images/fondo.png" alt="fondo" id="fondo">
+        <img src="./images/viento.png" alt="viento" id="viento">
+        
+    </section>
+
+
+
+    <!--  classifica  -->
+    <div class="classifica">
+        <div id="second">
+            <!-- SECONDO-->
+            <img src="./images/2nd.png" alt="2nd" id="2nd" style=" margin-left: -21px; width: 150px;">
+            <h1 id="secondo" style="font-size: 4.2em;">0</h1>
+            <h2 id="idsecondo"  style="margin-left: -150px; position:200px; width: 400px; text-align: center; white-space: nowrap; color:rgba(255, 255, 255, 0.54);">####-####-####</h2>
+          </div>
+        
+          <div id="first">
+            <!-- PRIMO-->
+            <img src="./images/1st.png" alt="1st" id="1st" style="margin-left: -21px; width: 150px;">
+            <h1 id="primo" style="font-size: 4.2em;">0</h1>
+            <h2 id="idprimo"  style="margin-left: -148px; position:200px; width: 400px; text-align: center; white-space: nowrap; color:rgba(255, 255, 255, 0.54);">####-####-####</h2>
+          </div>
+          <div id="third">
+            <!-- TERZO-->
+            <img src="./images/3th.png" alt="3th" id="3th" style=" margin-left: -21px; width: 150px;">
+            <h1 id="terzo" style="font-size: 4.2em;">0</h1>
+            <h2 id="idterzo"  style="margin-left: -150px; position:200px; width: 400px; text-align: center; white-space: nowrap; color:rgba(255, 255, 255, 0.54);">####-####-####</h2>
+          </div>
+    </div>
+
+
+
+
+
+
+
+    <!-- SCRIPT -->
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
+
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js";
+    import { getDatabase, set, ref, push, child, onValue, get } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-database.js";
+
+    // Configurazione Firebase.
+    const firebaseConfig = {
+        apiKey: "AIzaSyA_0f0OS1AYgrCiZHQ9kAWzdn8TwzAuZ5A",
+        authDomain: "ecoball-database.firebaseapp.com",
+        databaseURL: "https://ecoball-database-default-rtdb.firebaseio.com",
+        projectId: "ecoball-database",
+        storageBucket: "ecoball-database.appspot.com",
+        messagingSenderId: "124474531451",
+        appId: "1:124474531451:web:f1eb1ac9540e0b7e404cde"
+    };
+
+    const Database = getDatabase(initializeApp(firebaseConfig));
+
+    const dbRef = ref(Database, 'Classifica/');
+    onValue(dbRef, (snapshot) => {
+        getParams();
+    });
+
+    async function getParams() {
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        const snapshots = await get(ref(db, '/Classifica/'));
+
+        var punti = [];
+        var ID = [];
+
+        snapshots.forEach(childSnapshot => {
+            punti.push(childSnapshot.val().Punteggio); // punti
+            ID.push(childSnapshot.key); // id
+        })
+
+
+        var contatore = 0;
+
+        var confrontopunti = 0;
+        var confrontoid = "";
+
+
+        for (let x = 1; x < punti.length; x++) {
+            confrontopunti = punti[x];
+            confrontoid = ID[x];
+            contatore = x - 1;
+            for (; punti[contatore] < confrontopunti; contatore--) {
+                punti[contatore + 1] = punti[contatore];
+                ID[contatore + 1] = ID[contatore];
+            }
+            punti[contatore + 1] = confrontopunti;
+            ID[contatore + 1] = confrontoid;
+        }
+
+        document.getElementById("primo").innerHTML = punti[0];
+        document.getElementById("secondo").innerHTML = punti[1];
+        document.getElementById("terzo").innerHTML = punti[2];
+
+        var primo=[];
+        var secondo=[];
+        var terzo=[];
+        primo=ID[0];
+        secondo=ID[1];
+        terzo=ID[2];
+        var idprimo="";
+        var idsecondo="";
+        var idterzo="";
+
+
+        for(let i=0; i<14; i++){
+            if((i+1)%5==0){
+                idprimo=idprimo+primo[i];
+                idsecondo+=secondo[i];
+                idterzo+=terzo[i];
+            }
+            else if(i==0 || (i%5==0)){
+                idprimo=idprimo+primo[i];
+                idsecondo+=secondo[i];
+                idterzo+=terzo[i];
+            }
+            else{
+                idprimo+="#";
+                idsecondo+="#";
+                idterzo+="#";
+            }
+            
+        }
+
+        $("#idprimo").hover(function(){
+            document.getElementById("idprimo").innerHTML = ID[0];
+            document.getElementById("idprimo").style.color = "orange";
+            }, function(){
+                document.getElementById("idprimo").innerHTML = idprimo;
+                document.getElementById("idprimo").style.color = "rgba(255, 255, 255, 0.54)";
+      });
+    
+      $("#idsecondo").hover(function(){
+        document.getElementById("idsecondo").innerHTML = ID[1];
+        document.getElementById("idsecondo").style.color = "orange";
+        }, function(){
+            document.getElementById("idsecondo").innerHTML = idsecondo;
+            document.getElementById("idsecondo").style.color = "rgba(255, 255, 255, 0.54)";
+    });
+    
+        $("#idterzo").hover(function(){
+            document.getElementById("idterzo").innerHTML = ID[2];
+            document.getElementById("idterzo").style.color = "orange";
+            }, function(){
+                document.getElementById("idterzo").innerHTML = idterzo;
+                document.getElementById("idterzo").style.color = "rgba(255, 255, 255, 0.54)";
+        });
+    }
+
+    
+
+</script>
