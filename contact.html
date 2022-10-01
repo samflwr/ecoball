@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="xvmir, samir buzatu, andrea lombardo, ecoball, eco ball, itet rapisardi da vinci, rapisardi da vinci, itet rapisardi, caltanissetta"/>
+    <meta name="description" content="EcoBall è il futuro delle generazioni a venire, EcoBall è vita.">
+    <meta name="author" content="Samir Buzatu">
+    <link rel = "icon" href = "icon.PNG" type = "image/x-icon">
     <title>EcoBall</title>
 
     <!-- stili -->
@@ -27,27 +31,26 @@
         <div class="menu"></div>
         <nav>
             <ul class="menulist">
-                <li><a href="/" >HOME</a></li>
-                <li><a href="map">MAPPA</a></li>
-                <li><a href="progetto">CLASSIFICA</a></li>
-                <li><a href="contact" class="active">CONTATTACI</a></li>
+                <li><a href="index.html" >HOME</a></li>
+                <li><a href="map.html">MAPPA</a></li>
+                <li><a href="contact.html" class="active">CONTATTACI</a></li>
             </ul>
         </nav> 
     </header>
 
     <section>
-       <img src="./images/nube1.png" alt="nube1" id="nube1">
+        
+        <img src="./images/nube1.png" alt="nube1" id="nube1">
         <img src="./images/fondo_transparente.png" alt="" id="transparente">
-        <img src="./images/nube2.png" alt="nube2" id="nube2" style="opacity: 50%;">
+        <img src="./images/nube2.png" alt="nube2" id="nube2" class="nube2" style="opacity: 50%; width:fit-content">
         <h2 id="slogan">ECOBALL</h2>
         <h2 id="subslogan">OUR FUTURE IN A SPHERE</h2>
-        <a href="#" id="btn">Contattaci</a>
-        
+        <a href="#container" id="btn">Contattaci</a>
         <img src="./images/fondo.png" alt="fondo" id="fondo">
         <img src="./images/viento.png" alt="viento" id="viento">
     </section>
-    <div class="container">
-        <form action="action_page.php">
+    <div class="container" id="container">
+        <form action="index.html">
       
           <label for="fname">First Name</label>
           <input type="text" id="fname" name="firstname" placeholder="Your name..">
@@ -57,15 +60,18 @@
       
           <label for="country">Country</label>
           <select id="country" name="country">
+            <option value="africa">Africa</option>
+            <option value="asia">Asia</option>
             <option value="australia">Australia</option>
-            <option value="canada">Canada</option>
-            <option value="usa">USA</option>
+            <option value="europe">Europe</option>
+            <option value="north-america">North-America</option>
+            <option value="south-america">South-America</option>
           </select>
       
           <label for="subject">Subject</label>
           <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
       
-          <input type="submit" value="Submit">
+          <input href="/" type="submit" value="Submit">
       
         </form>
       </div>
