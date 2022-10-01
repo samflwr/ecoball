@@ -1,3 +1,7 @@
+/* PROPIEDADES GENERALES */
+*{
+    font-family: 'Poppins', sans-serif;
+}
 body { /* Schermata. */
     height: 100%;
     line-height: 1.5;
