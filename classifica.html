@@ -29,47 +29,52 @@
         <div class="menu"></div>
         <nav>
             <ul class="menulist">
-                <li><a href="/">HOME</a></li>
+                <li><a href="index.html">HOME</a></li>
                 <li><a href="map.html">MAPPA</a></li>
-                <li><a href="progetto.html" class="active">CLASSIFICA</a></li>
                 <li><a href="contact.html">CONTATTACI</a></li>
             </ul>
         </nav>
     </header>
 
     <section>
+        
         <img src="./images/nube1.png" alt="nube1" id="nube1">
         <img src="./images/fondo_transparente.png" alt="" id="transparente" style="width: 100%;">
-        <img src="./images/nube2.png" alt="nube2" id="nube2" class="nube2" style="opacity: 50%;">
-        <h2 id="slogan" style="margin-top:70px;">CLASSIFICA</h2>
+        <img src="./images/nube2.png" alt="nube2" id="nube2" class="nube2" style="opacity: 50%; width:fit-content">
+        <h2 id="slogan" style="margin-top:0px;">CLASSIFICA</h2>
+        <a href="#classifica" id="btn" style="background-color:rgba(255, 255, 255, 0); opacity:0;">↓</a>
         <img src="./images/fondo.png" alt="fondo" id="fondo">
         <img src="./images/viento.png" alt="viento" id="viento">
         
     </section>
 
 
-
+    
     <!--  classifica  -->
-    <div class="classifica">
+    <div class="classifica" id="classifica">
+        
         <div id="second">
             <!-- SECONDO-->
             <img src="./images/2nd.png" alt="2nd" id="2nd" style=" margin-left: -21px; width: 150px;">
             <h1 id="secondo" style="font-size: 4.2em;">0</h1>
             <h2 id="idsecondo"  style="margin-left: -150px; position:200px; width: 400px; text-align: center; white-space: nowrap; color:rgba(255, 255, 255, 0.54);">####-####-####</h2>
-          </div>
+            <h1 id="secName" style="font-size: 1.2em; opacity:0;">nome</h1>
+        </div>
         
           <div id="first">
             <!-- PRIMO-->
             <img src="./images/1st.png" alt="1st" id="1st" style="margin-left: -21px; width: 150px;">
             <h1 id="primo" style="font-size: 4.2em;">0</h1>
             <h2 id="idprimo"  style="margin-left: -148px; position:200px; width: 400px; text-align: center; white-space: nowrap; color:rgba(255, 255, 255, 0.54);">####-####-####</h2>
-          </div>
+            <h1 id="firName" style="font-size: 1.2em; opacity:0;">nome</h1>
+        </div>
           <div id="third">
             <!-- TERZO-->
             <img src="./images/3th.png" alt="3th" id="3th" style=" margin-left: -21px; width: 150px;">
             <h1 id="terzo" style="font-size: 4.2em;">0</h1>
             <h2 id="idterzo"  style="margin-left: -150px; position:200px; width: 400px; text-align: center; white-space: nowrap; color:rgba(255, 255, 255, 0.54);">####-####-####</h2>
-          </div>
+            <h1 id="thiName" style="font-size: 1.2em; opacity:0;">nome</h1>
+        </div>
     </div>
 
 
@@ -170,8 +175,33 @@
                 idsecondo+="#";
                 idterzo+="#";
             }
-            
         }
+
+        var firName = "";
+        var secName = "";
+        var thiName = "";
+
+
+        document.addEventListener('keypress', (event) => {
+            var key = name+event.key;
+            var code = event.code;
+            // Alert the key name and key code on keydown
+            if(key=="h"){
+                document.getElementById("firName").style.opacity="0";
+                document.getElementById("secName").style.opacity="0";
+                document.getElementById("thiName").style.opacity="0";
+            }
+            if(key=="s"){
+                document.getElementById("firName").style.opacity="100";
+                document.getElementById("secName").style.opacity="100";
+                document.getElementById("thiName").style.opacity="100";
+            }
+            
+          }, false);
+
+
+
+
 
         $("#idprimo").hover(function(){
             document.getElementById("idprimo").innerHTML = ID[0];
