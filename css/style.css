@@ -221,9 +221,10 @@ div.classifica div#second,div.classifica div#first, div.classifica div#third{
         height: 24%;
         align-items: center;
     }
-    .card{
-    width: 17%;
-    height: 150px;
+   .card{
+    background-color: #000000;
+    width: 19%;
+    height: 180px;
     display:inline-block ;
     border-radius: 15px;
     padding: 15px 25px;
@@ -271,14 +272,11 @@ div.classifica div#second,div.classifica div#first, div.classifica div#third{
 
 /* menù interattivo mobile */
 @media (max-width: 991px){
-    
     .card{
         opacity:0;
-        width: 17%;
-        height: 150px;
+        width: 0%;
+        height: 0px;
         display:inline-block ;
-        border-radius: 15px;
-        padding: 15px 25px;
         box-sizing: border-box;
         background-size:cover ;
         transition: transform 0.5s;
@@ -297,12 +295,14 @@ div.classifica div#second,div.classifica div#first, div.classifica div#third{
        }
        .card a{
         opacity:0;
+        font-size: 0px;
         text-shadow: 0px 0px 5px #000000;
         text-decoration: none;
         color:#fff;
        }
-    
-    
+
+
+
     .sec{
         padding: 60px;
     }
