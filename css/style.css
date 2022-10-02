@@ -222,7 +222,7 @@ div.classifica div#second,div.classifica div#first, div.classifica div#third{
         align-items: center;
     }
    .card{
-    width: 230px;
+    width: 17%;
     height: 150px;
     display:inline-block ;
     border-radius: 15px;
