@@ -221,14 +221,13 @@ div.classifica div#second,div.classifica div#first, div.classifica div#third{
         height: 24%;
         align-items: center;
     }
-   .card{
+    .card{
     width: 17%;
     height: 150px;
     display:inline-block ;
     border-radius: 15px;
     padding: 15px 25px;
     box-sizing: border-box;
-    margin: 10px 15px;
     background-size:cover ;
     transition: transform 0.5s;
    }
