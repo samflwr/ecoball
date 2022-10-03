@@ -122,9 +122,11 @@
 
         var punti = [];
         var ID = [];
+        var nomi = [];
 
         snapshots.forEach(childSnapshot => {
             punti.push(childSnapshot.val().Punteggio); // punti
+            nomi.push(childSnapshot.val().Nome); // nomi
             ID.push(childSnapshot.key); // id
         })
 
@@ -133,18 +135,22 @@
 
         var confrontopunti = 0;
         var confrontoid = "";
+        var confrontonomi;
 
 
         for (let x = 1; x < punti.length; x++) {
             confrontopunti = punti[x];
             confrontoid = ID[x];
+            confrontonomi = nomi[x];
             contatore = x - 1;
             for (; punti[contatore] < confrontopunti; contatore--) {
                 punti[contatore + 1] = punti[contatore];
                 ID[contatore + 1] = ID[contatore];
+                nomi[contatore +1] = nomi[contatore];
             }
             punti[contatore + 1] = confrontopunti;
             ID[contatore + 1] = confrontoid;
+            nomi[contatore+1] = confrontonomi;
         }
 
         document.getElementById("primo").innerHTML = punti[0];
@@ -183,26 +189,10 @@
         var firName = "";
         var secName = "";
         var thiName = "";
-
-
-        document.addEventListener('keypress', (event) => {
-            var key = name+event.key;
-            var code = event.code;
-            // Alert the key name and key code on keydown
-            if(key=="h"){
-                document.getElementById("firName").style.opacity="0";
-                document.getElementById("secName").style.opacity="0";
-                document.getElementById("thiName").style.opacity="0";
-            }
-            if(key=="s"){
-                document.getElementById("firName").style.opacity="100";
-                document.getElementById("secName").style.opacity="100";
-                document.getElementById("thiName").style.opacity="100";
-            }
-            
-          }, false);
-
-
+        
+        document.getElementById("firName").innerHTML = nomi[0];
+        document.getElementById("secName").innerHTML = nomi[1];
+        document.getElementById("thiName").innerHTML = nomi[2];
 
 
 
