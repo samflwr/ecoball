@@ -506,3 +506,864 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
+
+
+
+
+
+
+
+
+
+
+
+// Contact Form Interactions
+document.addEventListener('DOMContentLoaded', function() {
+  // Toggle between whole team and specific member
+  const toggleBtns = document.querySelectorAll('.toggle-btn');
+  const contactOptions = document.querySelectorAll('.contact-option');
+  
+  toggleBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const target = this.dataset.target;
+      
+      // Update active toggle button
+      toggleBtns.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      
+      // Show corresponding contact option
+      contactOptions.forEach(option => {
+        option.classList.remove('active');
+        if (option.id === target) {
+          option.classList.add('active');
+        }
+      });
+      
+      // Update recipient display
+      if (target === 'whole-team') {
+        updateRecipientDisplay('team@ecoball.it', 'Team');
+      }
+    });
+  });
+  
+  // Member selection
+  const memberCards = document.querySelectorAll('.member-contact-card');
+  memberCards.forEach(card => {
+    card.addEventListener('click', function() {
+      const email = this.dataset.email;
+      const name = this.querySelector('h5').textContent;
+      
+      // Update selected state
+      memberCards.forEach(c => c.classList.remove('selected'));
+      this.classList.add('selected');
+      
+      // Update recipient display
+      updateRecipientDisplay(email, name);
+    });
+  });
+  
+  function updateRecipientDisplay(email, name) {
+    const display = document.getElementById('recipient-display');
+    const type = document.querySelector('.recipient-type');
+    
+    display.textContent = email;
+    type.textContent = name === 'Team' ? 'Team' : 'Individual';
+  }
+  
+  // Form submission
+  const contactForm = document.getElementById('contactForm');
+  const submitBtn = contactForm.querySelector('.submit-btn');
+  
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Show loading state
+    submitBtn.classList.add('loading');
+    
+    // Simulate form submission
+    setTimeout(() => {
+      submitBtn.classList.remove('loading');
+      submitBtn.classList.add('success');
+      
+      // Reset form after success
+      setTimeout(() => {
+        contactForm.reset();
+        submitBtn.classList.remove('success');
+        
+        // Show success message (you can replace this with a proper notification)
+        alert('Message sent successfully! We\'ll get back to you soon.');
+      }, 2000);
+    }, 2000);
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Hardware Components Interactive Script
+document.addEventListener('DOMContentLoaded', function() {
+  const legendItems = document.querySelectorAll('.legend-item');
+  const hardwareCategories = document.querySelectorAll('.hardware-category');
+  const componentDots = document.querySelectorAll('.component-dot');
+  
+  // Legend item click handler
+  legendItems.forEach(item => {
+    item.addEventListener('click', function() {
+      const component = this.dataset.component;
+      
+      // Update active state
+      legendItems.forEach(i => i.classList.remove('active'));
+      this.classList.add('active');
+      
+      // Show corresponding category
+      hardwareCategories.forEach(category => {
+        if (component === 'all' || category.dataset.category === component) {
+          category.classList.add('active');
+        } else {
+          category.classList.remove('active');
+        }
+      });
+      
+      // Highlight corresponding dots
+      componentDots.forEach(dot => {
+        if (component === 'all' || dot.dataset.component === component) {
+          dot.style.opacity = '1';
+          dot.style.transform = dot.style.transform.replace(/scale\([^)]*\)/, 'scale(1)');
+        } else {
+          dot.style.opacity = '0.3';
+          dot.style.transform = dot.style.transform.replace(/scale\([^)]*\)/, 'scale(0.8)');
+        }
+      });
+    });
+  });
+  
+  // Component dot click handler
+  componentDots.forEach(dot => {
+    dot.addEventListener('click', function() {
+      const component = this.dataset.component;
+      const correspondingLegend = document.querySelector(`.legend-item[data-component="${component}"]`);
+      
+      if (correspondingLegend) {
+        correspondingLegend.click();
+      }
+    });
+  });
+  
+  // Magnetic effect for component cards
+  const magneticCards = document.querySelectorAll('.component-card.magnetic');
+  
+  magneticCards.forEach(card => {
+    card.addEventListener('mousemove', function(e) {
+      const rect = this.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      const angleX = (y - centerY) / 10;
+      const angleY = (centerX - x) / 10;
+      
+      this.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateZ(10px)`;
+    });
+    
+    card.addEventListener('mouseleave', function() {
+      this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+    });
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Intersection Observer for reveal animations
+document.addEventListener('DOMContentLoaded', function() {
+  const teamCategories = document.querySelectorAll('.team-category');
+  const teamMembers = document.querySelectorAll('.team-member');
+  
+  const observerOptions = {
+    threshold: 0.15,
+    rootMargin: '0px 0px -50px 0px'
+  };
+  
+  const revealObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('reveal');
+      }
+    });
+  }, observerOptions);
+  
+  // Observe categories
+  teamCategories.forEach(category => {
+    revealObserver.observe(category);
+  });
+  
+  // Observe team members with staggered delay
+  teamMembers.forEach((member, index) => {
+    revealObserver.observe(member);
+  });
+  
+  // Magnetic hover effect for team categories
+  teamCategories.forEach(category => {
+    category.addEventListener('mousemove', function(e) {
+      const rect = this.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      const angleX = (y - centerY) / 25;
+      const angleY = (centerX - x) / 25;
+      
+      this.style.transform = `translateY(-6px) perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg)`;
+    });
+    
+    category.addEventListener('mouseleave', function() {
+      this.style.transform = 'translateY(-6px) perspective(1000px) rotateX(0) rotateY(0)';
+    });
+  });
+  
+  // Ripple effect for member avatars
+  teamMembers.forEach(member => {
+    const avatar = member.querySelector('.member-avatar');
+    
+    member.addEventListener('mouseenter', function() {
+      avatar.style.transform = 'scale(1.1) rotate(5deg)';
+    });
+    
+    member.addEventListener('mouseleave', function() {
+      avatar.style.transform = 'scale(1) rotate(0)';
+    });
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Workflow Section JavaScript
+class WorkflowManager {
+    constructor() {
+        this.currentStep = 1;
+        this.totalSteps = 7;
+        this.isAnimating = false;
+        this.animationDuration = 800;
+        
+        this.init();
+    }
+
+    init() {
+        this.bindEvents();
+        this.updateDisplay();
+        this.startDataFlowAnimation();
+    }
+
+    bindEvents() {
+        // Step click events
+        document.querySelectorAll('.step').forEach(step => {
+            step.addEventListener('click', (e) => {
+                if (this.isAnimating) return;
+                
+                const stepNumber = parseInt(step.dataset.step);
+                if (stepNumber !== this.currentStep) {
+                    this.goToStep(stepNumber);
+                }
+            });
+        });
+
+        // Step indicator click events
+        document.querySelectorAll('.step-indicator').forEach(indicator => {
+            indicator.addEventListener('click', (e) => {
+                if (this.isAnimating) return;
+                
+                const stepNumber = parseInt(indicator.dataset.step);
+                if (stepNumber !== this.currentStep) {
+                    this.goToStep(stepNumber);
+                }
+            });
+        });
+
+        // Navigation buttons
+        document.querySelector('.prev-btn').addEventListener('click', () => {
+            if (!this.isAnimating && this.currentStep > 1) {
+                this.previousStep();
+            }
+        });
+
+        document.querySelector('.next-btn').addEventListener('click', () => {
+            if (!this.isAnimating && this.currentStep < this.totalSteps) {
+                this.nextStep();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (this.isAnimating) return;
+
+            switch(e.key) {
+                case 'ArrowLeft':
+                    if (this.currentStep > 1) {
+                        this.previousStep();
+                        e.preventDefault();
+                    }
+                    break;
+                case 'ArrowRight':
+                    if (this.currentStep < this.totalSteps) {
+                        this.nextStep();
+                        e.preventDefault();
+                    }
+                    break;
+                case 'Home':
+                    this.goToStep(1);
+                    e.preventDefault();
+                    break;
+                case 'End':
+                    this.goToStep(this.totalSteps);
+                    e.preventDefault();
+                    break;
+            }
+        });
+
+        // Touch/swipe support for mobile
+        this.setupTouchEvents();
+    }
+
+    setupTouchEvents() {
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        const workflowContainer = document.querySelector('.workflow-container');
+
+        workflowContainer.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        workflowContainer.addEventListener('touchend', (e) => {
+            if (this.isAnimating) return;
+
+            touchEndX = e.changedTouches[0].screenX;
+            const swipeThreshold = 50;
+
+            if (touchStartX - touchEndX > swipeThreshold) {
+                // Swipe left - next step
+                if (this.currentStep < this.totalSteps) {
+                    this.nextStep();
+                }
+            } else if (touchEndX - touchStartX > swipeThreshold) {
+                // Swipe right - previous step
+                if (this.currentStep > 1) {
+                    this.previousStep();
+                }
+            }
+        }, { passive: true });
+    }
+
+    goToStep(stepNumber) {
+        if (this.isAnimating || stepNumber < 1 || stepNumber > this.totalSteps) {
+            return;
+        }
+
+        this.isAnimating = true;
+        const direction = stepNumber > this.currentStep ? 'next' : 'prev';
+
+        // Update current step
+        this.currentStep = stepNumber;
+
+        // Animate transition
+        this.animateStepTransition(direction).then(() => {
+            this.updateDisplay();
+            this.isAnimating = false;
+        });
+    }
+
+    nextStep() {
+        this.goToStep(this.currentStep + 1);
+    }
+
+    previousStep() {
+        this.goToStep(this.currentStep - 1);
+    }
+
+    async animateStepTransition(direction) {
+        return new Promise((resolve) => {
+            const timeline = document.querySelector('.timeline-progress');
+            const glow = document.querySelector('.timeline-glow');
+            const progressPercentage = ((this.currentStep - 1) / (this.totalSteps - 1)) * 100;
+
+            // Animate timeline progress
+            timeline.style.transition = `height ${this.animationDuration}ms cubic-bezier(0.25, 0.46, 0.45, 0.94)`;
+            glow.style.transition = `height ${this.animationDuration}ms cubic-bezier(0.25, 0.46, 0.45, 0.94)`;
+            
+            timeline.style.height = `${progressPercentage}%`;
+            glow.style.height = `${progressPercentage}%`;
+
+            // Add step transition animations
+            this.animateStepElements(direction);
+
+            setTimeout(resolve, this.animationDuration);
+        });
+    }
+
+    animateStepElements(direction) {
+        const steps = document.querySelectorAll('.step');
+        const currentStepElement = document.querySelector(`.step[data-step="${this.currentStep}"]`);
+        
+        // Reset all steps
+        steps.forEach(step => {
+            step.classList.remove('active');
+            step.style.opacity = '0.4';
+            step.style.transform = 'translateX(0)';
+        });
+
+        // Animate current step
+        if (currentStepElement) {
+            currentStepElement.classList.add('active');
+            currentStepElement.style.opacity = '1';
+            
+            // Add entrance animation based on direction
+            if (direction === 'next') {
+                currentStepElement.style.transform = 'translateX(8px)';
+                setTimeout(() => {
+                    currentStepElement.style.transition = 'transform 0.4s var(--ease)';
+                    currentStepElement.style.transform = 'translateX(0)';
+                }, 50);
+            } else if (direction === 'prev') {
+                currentStepElement.style.transform = 'translateX(-8px)';
+                setTimeout(() => {
+                    currentStepElement.style.transition = 'transform 0.4s var(--ease)';
+                    currentStepElement.style.transform = 'translateX(0)';
+                }, 50);
+            }
+        }
+
+        // Animate adjacent steps
+        const prevStep = document.querySelector(`.step[data-step="${this.currentStep - 1}"]`);
+        const nextStep = document.querySelector(`.step[data-step="${this.currentStep + 1}"]`);
+
+        if (prevStep) {
+            prevStep.style.opacity = '0.7';
+        }
+        if (nextStep) {
+            nextStep.style.opacity = '0.7';
+        }
+    }
+
+    updateDisplay() {
+        // Update step details content based on current step
+        this.updateStepDetails();
+        
+        // Update navigation buttons
+        this.updateNavigation();
+        
+        // Update step indicators
+        this.updateStepIndicators();
+        
+        // Update progress bar
+        this.updateProgressBar();
+    }
+
+    updateStepDetails() {
+        const stepDetails = {
+            1: {
+                title: "Device Activation",
+                details: [
+                    {
+                        icon: '<path d="M12 6V12L15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
+                        label: "Energy Management",
+                        value: "Smart power scheduling based on battery levels"
+                    },
+                    {
+                        icon: '<path d="M12 8V12L16 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
+                        label: "Mission Parameters",
+                        value: "Configurable sampling intervals and priorities"
+                    },
+                    {
+                        icon: '<path d="M8 12H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
+                        label: "System Check",
+                        value: "Comprehensive hardware diagnostics"
+                    }
+                ],
+                progress: 14,
+                time: "~45 seconds"
+            },
+            2: {
+                title: "Position & Sensor Acquisition",
+                details: [
+                    {
+                        icon: '<path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="1.5"/>',
+                        label: "GPS Positioning",
+                        value: "High-accuracy location tracking with multi-constellation support"
+                    },
+                    {
+                        icon: '<path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="1.5"/>',
+                        label: "Sensor Calibration",
+                        value: "Automatic calibration and temperature compensation"
+                    },
+                    {
+                        icon: '<path d="M8 12H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
+                        label: "Data Collection",
+                        value: "Multi-parameter water quality sampling"
+                    }
+                ],
+                progress: 28,
+                time: "~30 seconds"
+            },
+            3: {
+                title: "Data Processing",
+                details: [
+                    {
+                        icon: '<rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/>',
+                        label: "Signal Processing",
+                        value: "Real-time filtering and noise reduction"
+                    },
+                    {
+                        icon: '<path d="M8 8H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
+                        label: "Data Compression",
+                        value: "Efficient compression algorithms for transmission"
+                    },
+                    {
+                        icon: '<path d="M8 12H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
+                        label: "Quality Validation",
+                        value: "Automatic data integrity checks"
+                    }
+                ],
+                progress: 42,
+                time: "~20 seconds"
+            },
+            4: {
+                title: "Secure Transmission",
+                details: [
+                    {
+                        icon: '<path d="M8 12H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
+                        label: "Network Selection",
+                        value: "Automatic NB-IoT/LTE-M network optimization"
+                    },
+                    {
+                        icon: '<path d="M12 16V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
+                        label: "Data Encryption",
+                        value: "End-to-end encryption for secure transmission"
+                    },
+                    {
+                        icon: '<circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>',
+                        label: "Transmission Protocol",
+                        value: "Optimized for low-power, high-reliability transfer"
+                    }
+                ],
+                progress: 56,
+                time: "~15 seconds"
+            },
+            5: {
+                title: "Cloud Integration",
+                details: [
+                    {
+                        icon: '<path d="M19 9L20.25 6.25L23 5L20.25 3.75L19 1L17.75 3.75L15 5L17.75 6.25L19 9Z" stroke="currentColor" stroke-width="1.5"/>',
+                        label: "Data Ingestion",
+                        value: "Real-time data pipeline processing"
+                    },
+                    {
+                        icon: '<path d="M19 15L17.75 17.75L15 19L17.75 20.25L19 23L20.25 20.25L23 19L20.25 17.75L19 15Z" stroke="currentColor" stroke-width="1.5"/>',
+                        label: "Heatmap Generation",
+                        value: "Dynamic environmental visualization"
+                    },
+                    {
+                        icon: '<path d="M11 12C11 9.23858 13.2386 7 16 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
+                        label: "Quality Computation",
+                        value: "Real-time water quality index calculation"
+                    }
+                ],
+                progress: 70,
+                time: "~5 seconds"
+            },
+            6: {
+                title: "Analytics & Insights",
+                details: [
+                    {
+                        icon: '<path d="M12 8V12L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
+                        label: "Trend Analysis",
+                        value: "Pattern recognition and anomaly detection"
+                    },
+                    {
+                        icon: '<circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>',
+                        label: "Hotspot Detection",
+                        value: "Automatic pollution source identification"
+                    },
+                    {
+                        icon: '<path d="M8 12H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
+                        label: "Alert System",
+                        value: "Real-time notifications for critical events"
+                    }
+                ],
+                progress: 84,
+                time: "~2 seconds"
+            },
+            7: {
+                title: "Human Oversight",
+                details: [
+                    {
+                        icon: '<circle cx="12" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/>',
+                        label: "Maintenance Coordination",
+                        value: "Automated scheduling and resource allocation"
+                    },
+                    {
+                        icon: '<path d="M6 18C6 15.7909 7.79086 14 10 14H14C16.2091 14 18 15.7909 18 18V20H6V18Z" stroke="currentColor" stroke-width="1.5"/>',
+                        label: "Mission Optimization",
+                        value: "AI-driven deployment strategy refinement"
+                    },
+                    {
+                        icon: '<path d="M12 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
+                        label: "Performance Review",
+                        value: "Continuous improvement and system tuning"
+                    }
+                ],
+                progress: 100,
+                time: "Continuous"
+            }
+        };
+
+        const currentStepData = stepDetails[this.currentStep];
+        if (!currentStepData) return;
+
+        // Update step counter
+        document.querySelector('.current-step').textContent = this.currentStep;
+        document.querySelector('.step-title').textContent = currentStepData.title;
+
+        // Update details content
+        const detailsContent = document.querySelector('.details-content');
+        detailsContent.innerHTML = currentStepData.details.map(detail => `
+            <div class="detail-item">
+                <div class="detail-icon">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        ${detail.icon}
+                    </svg>
+                </div>
+                <div class="detail-text">
+                    <span class="detail-label">${detail.label}</span>
+                    <span class="detail-value">${detail.value}</span>
+                </div>
+            </div>
+        `).join('');
+
+        // Update progress
+        document.querySelector('.progress-fill').style.width = `${currentStepData.progress}%`;
+        document.querySelector('.progress-time').textContent = currentStepData.time;
+    }
+
+    updateNavigation() {
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+
+        // Update previous button
+        if (this.currentStep === 1) {
+            prevBtn.disabled = true;
+            prevBtn.classList.remove('pulse');
+        } else {
+            prevBtn.disabled = false;
+            if (this.currentStep === 2) {
+                prevBtn.classList.add('pulse');
+            } else {
+                prevBtn.classList.remove('pulse');
+            }
+        }
+
+        // Update next button
+        if (this.currentStep === this.totalSteps) {
+            nextBtn.disabled = true;
+            nextBtn.classList.remove('pulse');
+        } else {
+            nextBtn.disabled = false;
+            if (this.currentStep === this.totalSteps - 1) {
+                nextBtn.classList.add('pulse');
+            } else {
+                nextBtn.classList.remove('pulse');
+            }
+        }
+
+        // Update button text for last step
+        if (this.currentStep === this.totalSteps) {
+            nextBtn.innerHTML = `Complete <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+        } else {
+            nextBtn.innerHTML = `Next <svg viewBox="0 0 24 24" fill="none"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+        }
+    }
+
+    updateStepIndicators() {
+        const indicators = document.querySelectorAll('.step-indicator');
+        
+        indicators.forEach(indicator => {
+            const stepNumber = parseInt(indicator.dataset.step);
+            
+            if (stepNumber === this.currentStep) {
+                indicator.classList.add('active');
+            } else {
+                indicator.classList.remove('active');
+            }
+            
+            // Add visual feedback for completed steps
+            if (stepNumber < this.currentStep) {
+                indicator.style.background = 'var(--brand)';
+                indicator.style.opacity = '0.7';
+            } else if (stepNumber === this.currentStep) {
+                indicator.style.background = 'var(--brand)';
+                indicator.style.opacity = '1';
+            } else {
+                indicator.style.background = 'color-mix(in srgb, var(--stroke) 40%, transparent)';
+                indicator.style.opacity = '1';
+            }
+        });
+    }
+
+    updateProgressBar() {
+        // Progress bar is updated in animateStepTransition
+        // This method is kept for future enhancements
+    }
+
+    startDataFlowAnimation() {
+        // Data flow animation is handled by CSS
+        // This method is kept for future JavaScript-controlled animations
+    }
+
+    // Utility method for auto-advancing (optional feature)
+    startAutoAdvance(interval = 5000) {
+        this.autoAdvanceInterval = setInterval(() => {
+            if (this.currentStep < this.totalSteps) {
+                this.nextStep();
+            } else {
+                this.stopAutoAdvance();
+            }
+        }, interval);
+    }
+
+    stopAutoAdvance() {
+        if (this.autoAdvanceInterval) {
+            clearInterval(this.autoAdvanceInterval);
+            this.autoAdvanceInterval = null;
+        }
+    }
+
+    // Method to handle responsive behavior
+    handleResize() {
+        // Add any responsive behavior adjustments here
+        if (window.innerWidth < 768) {
+            // Mobile-specific adjustments
+            document.querySelector('.workflow-container').style.gap = 'var(--space-5)';
+        } else {
+            // Desktop adjustments
+            document.querySelector('.workflow-container').style.gap = 'var(--space-7)';
+        }
+    }
+}
+
+// Initialize the workflow when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    const workflowManager = new WorkflowManager();
+
+    // Add resize handler
+    window.addEventListener('resize', () => {
+        workflowManager.handleResize();
+    });
+
+    // Optional: Auto-advance feature (comment out if not needed)
+    // workflowManager.startAutoAdvance(4000);
+
+    // Expose workflow manager to global scope for debugging
+    window.workflowManager = workflowManager;
+});
+
+// Additional utility functions for enhanced interactions
+function enhanceWorkflowInteractions() {
+    // Add hover effects for steps
+    const steps = document.querySelectorAll('.step');
+    
+    steps.forEach(step => {
+        step.addEventListener('mouseenter', function() {
+            if (!this.classList.contains('active') && !workflowManager.isAnimating) {
+                this.style.transform = 'translateX(4px)';
+                this.style.transition = 'transform 0.3s var(--ease)';
+            }
+        });
+        
+        step.addEventListener('mouseleave', function() {
+            if (!this.classList.contains('active') && !workflowManager.isAnimating) {
+                this.style.transform = 'translateX(0)';
+            }
+        });
+    });
+
+    // Add magnetic effect to navigation buttons
+    const navButtons = document.querySelectorAll('.nav-btn');
+    
+    navButtons.forEach(btn => {
+        if (!btn.disabled) {
+            btn.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                this.style.setProperty('--mouse-x', `${x}px`);
+                this.style.setProperty('--mouse-y', `${y}px`);
+            });
+        }
+    });
+}
+
+// Initialize enhanced interactions
+document.addEventListener('DOMContentLoaded', enhanceWorkflowInteractions);
