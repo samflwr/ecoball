@@ -62,7 +62,7 @@
   width: clamp(200px, 32vw, 280px);
   height: clamp(200px, 32vw, 280px);
   object-fit: contain;
-  animation: float 15s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+  animation: float 10s cubic-bezier(0.37, 0, 0.63, 1) infinite;
   position: relative;
   z-index: 3;
   filter: 
@@ -73,20 +73,20 @@
 
 .sphere-glow {
   position: absolute;
-  width: 180%;
-  height: 180%;
+  width: 280%;
+  height: 280%;
   background: radial-gradient(
     ellipse at center, 
     rgba(0, 0, 0, 0.4) 0%, 
-    rgba(0, 0, 0, 0.2) 30%,
+    rgba(0, 0, 0, 0.2) 80%,
     transparent 70%
   );
   opacity: 0.25;
-  filter: blur(40px);
+  filter: blur(50px);
   z-index: 1;
   animation: 
-    pulse 8s ease-in-out infinite alternate,
-    drift 25s ease-in-out infinite;
+    pulse 3s ease-in-out infinite alternate,
+    drift 2s ease-in-out infinite;
   mix-blend-mode: multiply;
 }
 

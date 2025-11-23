@@ -1,48 +1,282 @@
-/* Hardware Components Section */
-.hardware-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--space-5);
-  margin-top: var(--space-5);
-}
-
-.hardware-category {
-  background: linear-gradient(145deg, 
-    color-mix(in srgb, var(--elev-2) 80%, transparent),
-    color-mix(in srgb, var(--elev-1) 95%, transparent));
-  border: 1px solid color-mix(in srgb, var(--stroke) 30%, transparent);
-  border-radius: var(--radius-xl);
-  padding: var(--space-5);
-  backdrop-filter: blur(20px) saturate(180%);
-  box-shadow: var(--shadow-subtle);
-  transition: all var(--dur-2) var(--ease);
+/* Hardware Components Section Styles */
+.hardware-components-section {
+  padding: var(--space-7) 0;
   position: relative;
   overflow: hidden;
 }
 
-.hardware-category::before {
+.hardware-visualization {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-5);
+  align-items: center;
+  margin-bottom: var(--space-6);
+}
+
+.hardware-sphere {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
+}
+
+.sphere-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--brand) 20%, var(--elev-2)), var(--elev-1));
+  border: 1px solid color-mix(in srgb, var(--brand) 30%, var(--stroke));
+  box-shadow: 
+    0 0 0 1px color-mix(in srgb, var(--brand) 10%, transparent),
+    inset 0 1px 0 rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.core-glow {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--brand) 40%, transparent) 0%, transparent 70%);
+  animation: pulse 4s ease-in-out infinite;
+}
+
+.core-pulse {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--brand) 20%, transparent);
+  animation: ripple 3s ease-out infinite;
+}
+
+.component-orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orbit-path {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px dashed color-mix(in srgb, var(--brand) 15%, var(--stroke));
+  opacity: 0.3;
+}
+
+.orbit-1 {
+  width: 200px;
+  height: 200px;
+}
+
+.orbit-1 .orbit-path {
+  width: 100%;
+  height: 100%;
+}
+
+.orbit-2 {
+  width: 280px;
+  height: 280px;
+  animation: rotate 40s linear infinite;
+}
+
+.orbit-2 .orbit-path {
+  width: 100%;
+  height: 100%;
+}
+
+.orbit-3 {
+  width: 360px;
+  height: 360px;
+  animation: rotate 60s linear infinite reverse;
+}
+
+.orbit-3 .orbit-path {
+  width: 100%;
+  height: 100%;
+}
+
+.component-dot {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--brand);
+  border: 2px solid var(--elev-1);
+  cursor: pointer;
+  transition: all var(--dur-2) var(--ease);
+  transform-origin: center;
+}
+
+.component-dot:hover {
+  transform: scale(1.4);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--brand) 30%, transparent);
+}
+
+.component-dot::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, 
-    transparent, 
-    color-mix(in srgb, var(--brand) 40%, transparent), 
-    transparent);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--elev-1);
+}
+
+.dot-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  background: var(--elev-3);
+  border: 1px solid var(--stroke);
+  padding: 8px 12px;
+  border-radius: var(--radius-m);
+  font-size: var(--size-1);
+  white-space: nowrap;
   opacity: 0;
-  transition: opacity var(--dur-2) var(--ease);
+  pointer-events: none;
+  transition: all var(--dur-2) var(--ease);
+  box-shadow: var(--shadow-subtle);
 }
 
-.hardware-category:hover {
-  transform: translateY(-4px);
-  border-color: color-mix(in srgb, var(--brand) 40%, var(--stroke));
-  box-shadow: var(--shadow-soft);
-}
-
-.hardware-category:hover::before {
+.component-dot:hover .dot-tooltip {
   opacity: 1;
+  transform: translateX(-50%) translateY(-12px);
+}
+
+.sensor-dot {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--ok);
+}
+
+.comms-dot {
+  top: 20%;
+  right: 0;
+  background: var(--warn);
+}
+
+.gps-dot {
+  bottom: 20%;
+  left: 0;
+  background: #7bb7ff;
+}
+
+.power-dot {
+  top: 10%;
+  left: 20%;
+  background: #ffa85c;
+}
+
+.mcu-dot {
+  bottom: 10%;
+  right: 20%;
+  background: #b78cff;
+}
+
+.structure-dot {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--text-muted);
+}
+
+.hardware-legend {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  background: var(--elev-1);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-l);
+  padding: var(--space-3);
+  box-shadow: var(--shadow-subtle);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 10px 12px;
+  border-radius: var(--radius-m);
+  cursor: pointer;
+  transition: all var(--dur-2) var(--ease);
+  font-size: var(--size-2);
+}
+
+.legend-item:hover,
+.legend-item.active {
+  background: color-mix(in srgb, var(--brand) 8%, transparent);
+  border-color: color-mix(in srgb, var(--brand) 30%, var(--stroke));
+}
+
+.legend-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--elev-2);
+  border: 1px solid var(--stroke);
+  transition: all var(--dur-2) var(--ease);
+}
+
+.legend-item.active .legend-icon {
+  background: color-mix(in srgb, var(--brand) 15%, var(--elev-2));
+  border-color: color-mix(in srgb, var(--brand) 40%, var(--stroke));
+}
+
+.icon-core {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--brand);
+}
+
+.legend-icon.structure svg {
+  color: var(--text-muted);
+}
+
+.legend-icon.mcu svg {
+  color: #b78cff;
+}
+
+.legend-icon.sensors svg {
+  color: var(--ok);
+}
+
+.legend-icon.comms svg {
+  color: var(--warn);
+}
+
+.legend-icon.power svg {
+  color: #ffa85c;
+}
+
+.hardware-details {
+  margin-bottom: var(--space-6);
+}
+
+.hardware-category {
+  display: none;
+  animation: fadeInUp var(--dur-3) var(--ease-out);
+}
+
+.hardware-category.active {
+  display: block;
 }
 
 .category-header {
@@ -50,164 +284,260 @@
   align-items: center;
   gap: var(--space-3);
   margin-bottom: var(--space-4);
-  padding-bottom: var(--space-3);
-  border-bottom: 1px solid color-mix(in srgb, var(--stroke) 20%, transparent);
+  padding: var(--space-3);
+  background: var(--elev-1);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-l);
+  box-shadow: var(--shadow-subtle);
 }
 
-.category-icon {
+.category-header .category-icon {
   width: 48px;
   height: 48px;
+  border-radius: var(--radius-m);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: color-mix(in srgb, var(--brand) 10%, transparent);
-  border-radius: var(--radius-m);
-  color: var(--brand);
-  flex-shrink: 0;
-  transition: all var(--dur-2) var(--ease);
-}
-
-.hardware-category:hover .category-icon {
-  background: color-mix(in srgb, var(--brand) 20%, transparent);
-  transform: scale(1.05);
+  background: color-mix(in srgb, var(--brand) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--brand) 20%, var(--stroke));
 }
 
 .category-header h3 {
   margin: 0;
+  flex: 1;
   font-size: var(--size-4);
-  font-weight: 700;
-  color: var(--text);
-  line-height: 1.2;
 }
 
-.component-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
+.category-badge {
+  padding: 6px 12px;
+  background: color-mix(in srgb, var(--brand) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--brand) 30%, var(--stroke));
+  border-radius: var(--radius-m);
+  font-size: var(--size-1);
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
-.component-item {
+.components-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-3);
+}
+
+.component-card {
   display: flex;
   align-items: flex-start;
   gap: var(--space-3);
   padding: var(--space-3);
-  border-radius: var(--radius-m);
-  transition: all var(--dur-1) var(--ease);
+  background: var(--elev-1);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-l);
+  transition: all var(--dur-2) var(--ease);
   position: relative;
+  overflow: hidden;
 }
 
-.component-item::before {
+.component-card::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background: color-mix(in srgb, var(--brand) 5%, transparent);
-  border-radius: var(--radius-m);
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--brand) 30%, transparent), transparent);
   opacity: 0;
-  transition: opacity var(--dur-1) var(--ease);
+  transition: opacity var(--dur-2) var(--ease);
 }
 
-.component-item:hover::before {
+.component-card:hover::before {
   opacity: 1;
 }
 
-.component-item:hover {
-  transform: translateX(4px);
+.component-card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--brand) 30%, var(--stroke));
+  box-shadow: var(--shadow-soft);
 }
 
-.component-marker {
-  width: 8px;
-  height: 8px;
-  background: var(--brand);
-  border-radius: 50%;
-  margin-top: 8px;
-  flex-shrink: 0;
-  position: relative;
-  z-index: 1;
-  transition: all var(--dur-1) var(--ease);
-}
-
-.component-item:hover .component-marker {
-  background: var(--brand-2);
-  transform: scale(1.3);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--brand) 20%, transparent);
-}
-
-.component-content {
+.component-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-m);
   display: flex;
-  flex-direction: column;
-  gap: 2px;
-  position: relative;
-  z-index: 1;
+  align-items: center;
+  justify-content: center;
+  background: var(--elev-2);
+  border: 1px solid var(--stroke);
+  flex-shrink: 0;
+  transition: all var(--dur-2) var(--ease);
+}
+
+.component-card:hover .component-icon {
+  background: color-mix(in srgb, var(--brand) 10%, var(--elev-2));
+  border-color: color-mix(in srgb, var(--brand) 30%, var(--stroke));
+}
+
+.component-info {
   flex: 1;
 }
 
-.component-name {
-  font-weight: 600;
-  color: var(--text);
+.component-info h4 {
+  margin: 0 0 4px;
   font-size: var(--size-2);
-  line-height: 1.3;
-  transition: color var(--dur-1) var(--ease);
+  font-weight: 600;
 }
 
-.component-item:hover .component-name {
-  color: var(--text-dim);
-}
-
-.component-desc {
+.component-info p {
+  margin: 0;
   color: var(--text-muted);
   font-size: var(--size-1);
   line-height: 1.4;
-  transition: color var(--dur-1) var(--ease);
 }
 
-.component-item:hover .component-desc {
+.component-badge {
+  padding: 4px 8px;
+  background: color-mix(in srgb, var(--ok) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ok) 30%, var(--stroke));
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.component-badge.highlight {
+  background: color-mix(in srgb, var(--brand) 15%, transparent);
+  border-color: color-mix(in srgb, var(--brand) 30%, var(--stroke));
+}
+
+.component-badge.eco {
+  background: color-mix(in srgb, var(--ok) 15%, transparent);
+  border-color: color-mix(in srgb, var(--ok) 30%, var(--stroke));
+}
+
+.technical-specs-panel {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--elev-2) 65%, transparent), var(--elev-1));
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-subtle);
+  padding: var(--space-5);
+  backdrop-filter: blur(6px) saturate(110%);
+}
+
+.specs-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--stroke);
+}
+
+.specs-header h3 {
+  margin: 0;
+  font-size: var(--size-4);
+}
+
+.specs-badge {
+  padding: 6px 12px;
+  background: color-mix(in srgb, var(--ok) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ok) 30%, var(--stroke));
+  border-radius: var(--radius-m);
+  font-size: var(--size-1);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.specs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-4);
+}
+
+.specs-column h4 {
+  margin: 0 0 var(--space-3);
+  font-size: var(--size-2);
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+.spec-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--stroke) 50%, transparent);
+}
+
+.spec-item:last-child {
+  border-bottom: none;
+}
+
+.spec-label {
   color: var(--text-muted);
+  font-size: var(--size-1);
 }
 
-/* Mobile Optimizations */
-@media (max-width: 768px) {
-  .hardware-grid {
+.spec-value {
+  font-weight: 600;
+  font-size: var(--size-1);
+  color: var(--text-dim);
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+@keyframes ripple {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+@keyframes rotate {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .hardware-visualization {
     grid-template-columns: 1fr;
     gap: var(--space-4);
-    margin-top: var(--space-4);
   }
   
-  .hardware-category {
-    padding: var(--space-4);
+  .hardware-sphere {
+    width: 320px;
+    height: 320px;
   }
   
-  .category-header {
-    gap: var(--space-2);
-    margin-bottom: var(--space-3);
+  .orbit-1 { width: 160px; height: 160px; }
+  .orbit-2 { width: 224px; height: 224px; }
+  .orbit-3 { width: 288px; height: 288px; }
+  
+  .components-grid {
+    grid-template-columns: 1fr;
   }
   
-  .category-icon {
-    width: 40px;
-    height: 40px;
-  }
-  
-  .category-header h3 {
-    font-size: var(--size-3);
-  }
-  
-  .component-item {
-    padding: var(--space-2);
-    gap: var(--space-2);
-  }
-  
-  .component-name {
-    font-size: var(--size-1);
-  }
-  
-  .component-desc {
-    font-size: 0.9rem;
+  .specs-grid {
+    grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 480px) {
-  .hardware-category {
-    padding: var(--space-3);
+@media (max-width: 640px) {
+  .hardware-sphere {
+    width: 280px;
+    height: 280px;
   }
+  
+  .orbit-1 { width: 140px; height: 140px; }
+  .orbit-2 { width: 196px; height: 196px; }
+  .orbit-3 { width: 252px; height: 252px; }
   
   .category-header {
     flex-direction: column;
@@ -215,27 +545,24 @@
     gap: var(--space-2);
   }
   
-  .component-item {
+  .specs-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--space-1);
-  }
-  
-  .component-marker {
-    margin-top: 6px;
+    gap: var(--space-2);
   }
 }
 
-/* Reduced motion support */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .hardware-category,
-  .component-item,
-  .component-marker,
-  .category-icon {
-    transition: none;
+  .component-orbit,
+  .core-glow,
+  .core-pulse {
+    animation: none;
   }
   
-  .hardware-category:hover {
-    transform: none;
+  .component-card,
+  .legend-item,
+  .component-dot {
+    transition: none;
   }
 }
