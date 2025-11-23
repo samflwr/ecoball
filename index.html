@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <title>EcoBall — Autonomous, Green-Powered Water Intelligence</title>
+  <meta name="description" content="EcoBall: autonomous, intelligent, green-powered spherical device for real-time water quality monitoring. Dynamic risk maps, pollutant intelligence, and zero-impact operation." />
+  <link rel="stylesheet" href="css/topbar.css" />
+  <link rel="stylesheet" href="css/stat.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/topbar.css" />
+  <link rel="stylesheet" href="css/spec.css" />
+  <link rel="stylesheet" href="css/tile.css" />
+  <link rel="stylesheet" href="css/impact.css" />
+  <link rel="stylesheet" href="css/timeline.css" />
+  <link rel="stylesheet" href="css/architecture.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+
+
+
+  <link rel="stylesheet" href="chip.css" />
+  <link rel="stylesheet" href="scroll-line.css" />
+  <link rel="stylesheet" href="teams.css" />
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+</head>
+<body>
+  <!-- Top Bar Navigation -->
+<nav class="top-bar" id="topBar">
+  <div class="top-bar__content">
+    <!-- Logo Minimal -->
+    <div class="top-bar__brand">
+      <div class="logo">
+        <!-- <div class="logo__dot"></div> -->
+        <span class="logo__text">eb</span>
+      </div>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <div class="top-bar__nav">
+      <a href="#mission" class="nav-link">Mission</a>
+      <a href="#hardware" class="nav-link">Hardware</a>
+      <a href="#software" class="nav-link">Software</a>
+      <a href="#team" class="nav-link">Team</a>
+    </div>
+
+    <!-- CTA Minimal -->
+    <div class="top-bar__actions">
+      <a href="#deployment" class="cta-btn">
+        <span>Start</span>
+      </a>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu__content">
+      <a href="#mission" class="mobile-link">Mission</a>
+      <a href="#hardware" class="mobile-link">Hardware</a>
+      <a href="#software" class="mobile-link">Software</a>
+      <a href="#team" class="mobile-link">Team</a>
+      <a href="#deployment" class="mobile-cta">Get Started</a>
+    </div>
+  </div>
+
+  <!-- Progress Line -->
+  <div class="top-bar__progress"></div>
+</nav>
+
+  <header class="hero">
+    <div class="orbital" aria-hidden="true"></div>
+    <div class="wrap hero-grid">
+      <div class="reveal">
+        <span class="chip magnetic"><span class="dot"></span> EcoBall — Autonomous Water Intelligence</span>
+        <h1 class="title">Real‑time water quality, powered by the sun.</h1>
+        <p class="subtitle">EcoBall is an intelligent, green‑powered spherical device that autonomously samples rivers, lakes, coasts, and oceans — generating dynamic risk maps and live pollutant insights for preventive action.</p>
+        <div class="actions">
+          <a href="#mission" class="btn primary magnetic" data-ripple="true">Explore the Mission</a>
+          
+          <a href="#software" class="btn magnetic" data-ripple="true">See the Architecture</a>
+        </div>
+        <div class="stat-row reveal" >
+          <div class="stat">
+            <div class="k" data-count="24">24/7</div>
+            <div class="label">Autonomous operation</div>
+          </div>
+          <div class="stat">
+            <div class="k">Zero</div>
+            <div class="label">Carbon emissions</div>
+          </div>
+          <div class="stat">
+            <div class="k">±0.1</div>
+            <div class="label">Sensor accuracy</div>
+          </div>
+          <div class="stat">
+            <div class="k">NB‑IoT</div>
+            <div class="label">Live transmission</div>
+          </div>
+        </div>
+      </div>
+      <div class="panel exploded reveal" aria-label="EcoBall visual">
+        <div class="canvas">
+          <img src="ecoball-def.png" alt="" class="sphere" aria-hidden="true">
+          <div class="legend">
+            <div>Green energy autonomy</div>
+            <div>Mobile sampling</div>
+            <div>Real‑time intelligence</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </header>
+<div class="scroll-indicator">
+      <div class="scroll-label">Explore</div>
+      <div class="scroll-line"></div>
+      <svg class="scroll-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path d="M7 13l5 5 5-5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  <main>
+    <!-- Section 1 — Core Mission -->
+    <section id="mission">
+      <div class="wrap">
+        <div class="headline reveal">
+          <h2 style="font-size: var(--size-6);">Core Mission</h2>
+          <p>Autonomous, intelligent, green‑powered monitoring across inland and marine waters, transforming raw sensor data into actionable, real‑time environmental intelligence.</p>
+        </div>
+        <div class="panel reveal">
+          <div class="grid-2">
+            <div class="stack">
+              <div class="card">
+                <h4>Dynamic risk maps</h4>
+                <p class="text-muted">Continuously updated environmental risk visualizations based on live sensor streams.</p>
+              </div>
+              <div class="card">
+                <h4>Live pollutant insights</h4>
+                <p>Immediate visualization of contaminants to enable preventive interventions.</p>
+              </div>
+              <div class="card">
+                <h4>Wide‑area mobility</h4>
+                <p>Goes beyond fixed stations — sampling across large areas while in motion.</p>
+              </div>
+              <div class="card">
+                <h4>Zero‑impact operation</h4>
+                <p>Solar‑powered, self‑managing energy for sustainable deployments.</p>
+              </div>
+            </div>
+            <div class="stack">
+              <div class="card">
+                <h4>Core features</h4>
+                <ul>
+                  <li>Mobile sampling</li>
+                  <li>Real‑time pollutant intelligence</li>
+                  <li>Green energy autonomy</li>
+                </ul>
+              </div>
+              <div class="card">
+                <h4>Story in brief</h4>
+                <p>EcoBall pairs advanced sensors with a robust, eco‑conscious platform that learns from the environment and shares insights instantly — enabling researchers, agencies, and communities to act early.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pillars">
+          <div class="pillar reveal">
+            <h4>Clarity</h4>
+            <p>Clean visualizations, precise metrics, and decision‑ready summaries.</p>
+          </div>
+          <div class="pillar reveal">
+            <h4>Coverage</h4>
+            <p>From fixed points to roaming fleets, EcoBall scales with your mission.</p>
+          </div>
+          <div class="pillar reveal">
+            <h4>Conscience</h4>
+            <p>Zero‑emission, low‑impact monitoring with recyclable materials.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2 — Functional Requirements -->
+    <section id="functional">
+      <div class="wrap">
+        <div class="headline reveal">
+          <h2 style="font-size: var(--size-6);">Functional Requirements</h2>
+          <p>Structured capabilities designed for reliability, accuracy, and scale.</p>
+        </div>
+        <div class="grid-2">
+          <div class="stack">
+            <div class="card reveal">
+              <h4>Environmental Sensing</h4>
+              <ul>
+                <li>Temperature, pH, Electrical conductivity (EC)</li>
+                <li>Dissolved oxygen (DO), Turbidity</li>
+                <li>Optional: nitrates, phosphates, ammonium, oils/hydrocarbons</li>
+              </ul>
+            </div>
+            <div class="card reveal">
+              <h4>Automated Sampling</h4>
+              <ul>
+                <li>Scheduled acquisition (every 10–60 min)</li>
+                <li>Continuous, mobile large‑area sampling</li>
+              </ul>
+            </div>
+            <div class="card reveal">
+              <h4>Data Transmission</h4>
+              <ul>
+                <li>Live or delayed via NB‑IoT, LTE‑M, GSM, or LoRa</li>
+                <li>Real‑time updates on an interactive map</li>
+              </ul>
+            </div>
+          </div>
+          <div class="stack">
+            <div class="card reveal">
+              <h4>Geolocation</h4>
+              <ul>
+                <li>GPS for precise spatial mapping</li>
+              </ul>
+            </div>
+            <div class="card reveal">
+              <h4>Sustainable Energy</h4>
+              <ul>
+                <li>Solar charging and intelligent power management</li>
+                <li>24/7 autonomous operation</li>
+              </ul>
+            </div>
+            <div class="card reveal">
+              <h4>User Interface</h4>
+              <ul>
+                <li>Complete web app: map, insights, filters, alerts</li>
+                <li>Admin panel for devices, firmware, maintenance</li>
+              </ul>
+            </div>
+            <div class="card reveal">
+              <h4>Physical Durability</h4>
+              <ul>
+                <li>Waterproof IP68 shell</li>
+                <li>Stable in rivers and marine environments</li>
+                <li>Resistant to impacts, currents, and harsh conditions</li>
+              </ul>
+            </div>
+            <div class="card reveal">
+              <h4>Key Features from the Official Site</h4>
+              <ul>
+                <li>Real‑time Pollutant Mapping</li>
+                <li>Integrated Green Technology</li>
+                <li>Real‑time Insights</li>
+                <li>Zero Carbon Emissions</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3 — Hardware Components -->
+    <section id="hardware">
+      <div class="wrap">
+        <div class="headline reveal">
+          <h2 style="font-size: var(--size-6);">Hardware Components</h2>
+          <p>Precision engineering with eco‑conscious materials and calibrated sensors.</p>
+        </div>
+        <div class="hardware">
+          <div class="panel reveal">
+            <h3 style="margin-top:0">Outer Structure</h3>
+            <ul class="list">
+              <li>Floating HDPE or recycled‑material sphere</li>
+              <li>Ergonomic, hydrodynamic design by Violo &amp; Buzatu</li>
+            </ul>
+            <h3>Electronics / MCU</h3>
+            <ul class="list">
+              <li>STM32 Nucleo</li>
+              <li>Professional multiparametric water sensors</li>
+              <li>High‑sensitivity GPS</li>
+              <li>NB‑IoT / LTE‑M / GSM / LoRa modem</li>
+              <li>ADC signal conditioning</li>
+              <li>Smart solar/battery management (simplified MPPT)</li>
+            </ul>
+            <h3>Power System</h3>
+            <ul class="list">
+              <li>10–20 Wh Li‑ion battery</li>
+              <li>3–10 W solar panel</li>
+              <li>Intelligent power‑saving modes</li>
+            </ul>
+            <h3>Additional Features</h3>
+            <ul class="list">
+              <li>Eco‑conscious materials</li>
+              <li>Self‑sustaining energy automation</li>
+              <li>99% data accuracy through calibrated sensors</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4 — Software Architecture -->
+<section id="software">
+  <div class="wrap">
+    <div class="headline reveal">
+      <h2 style="font-size: var(--size-6);">Software Architecture</h2>
+      <p>End-to-end data pipeline from embedded systems to user insights</p>
+    </div>
+    <div class="architecture">
+      <div class="module module--firmware reveal">
+        <div class="module-header">
+          <h4>Embedded Firmware</h4>
+        </div>
+        <ul class="module-list">
+          <li class="module-item">Sensor drivers and calibration</li>
+          <li class="module-item">Adaptive power management</li>
+          <li class="module-item">GPS and data acquisition</li>
+          <li class="module-item">On-board processing</li>
+          <li class="module-item">Secure transmission protocols</li>
+          <li class="module-item">System monitoring and logging</li>
+        </ul>
+        <div class="data-flow">Collect → Process → Transmit</div>
+      </div>
+      
+      <div class="module module--backend reveal">
+        <div class="module-header">
+          <h4>Cloud Infrastructure</h4>
+        </div>
+        <ul class="module-list">
+          <li class="module-item">Real-time data ingestion</li>
+          <li class="module-item">Time-series database</li>
+          <li class="module-item">Water quality analytics</li>
+          <li class="module-item">Dynamic visualization engine</li>
+          <li class="module-item">Automated alert system</li>
+        </ul>
+        <div class="data-flow">Ingest → Analyze → Visualize</div>
+      </div>
+      
+      <div class="module module--frontend reveal">
+        <div class="module-header">
+          <h4>User Interface</h4>
+        </div>
+        <ul class="module-list">
+          <li class="module-item">Interactive monitoring dashboard</li>
+          <li class="module-item">Real-time map visualization</li>
+          <li class="module-item">Advanced data filtering</li>
+          <li class="module-item">Device management console</li>
+          <li class="module-item">Environmental impact analytics</li>
+        </ul>
+        <div class="data-flow">Visualize → Analyze → Act</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- Section 5 — Field Deployment Modes -->
+    <section id="deployment">
+      <div class="wrap">
+        <div class="headline reveal">
+          <h2 style="font-size: var(--size-6);">Field Deployment Modes</h2>
+          <p>Flexible strategies for any mission profile.</p>
+        </div>
+        <div class="cards-4">
+          <div class="tile reveal">
+            <h5>Fixed units</h5>
+            <p>Constant monitoring at critical points.</p>
+          </div>
+          <div class="tile reveal">
+            <h5>Mobile units</h5>
+            <p>Large‑area dynamic sampling while moving.</p>
+          </div>
+          <div class="tile reveal">
+            <h5>Temporary missions</h5>
+            <p>Surveying, events, and scouting operations.</p>
+          </div>
+          <div class="tile reveal">
+            <h5>Multi‑unit fleets</h5>
+            <p>Generate city‑ or region‑scale water maps.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6 — Maintenance & Operations -->
+    <section id="maintenance">
+      <div class="wrap">
+        <div class="headline reveal">
+          <h2 style="font-size: var(--size-6);">Maintenance &amp; Operations</h2>
+          <p>Reliable lifecycle with remote diagnostics and OTA updates.</p>
+        </div>
+        <div class="panel reveal">
+          <ul class="list">
+            <li>Sensor cleaning and calibration</li>
+            <li>Battery checks/replacement</li>
+            <li>Remote diagnostics</li>
+            <li>OTA firmware updates</li>
+            <li>Solar panel integrity monitoring</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 7 — Challenges & Risks -->
+    <section id="risks">
+      <div class="wrap">
+        <div class="headline reveal">
+          <h2 style="font-size: var(--size-6);">Challenges &amp; Risks</h2>
+          <p>Transparent view of constraints to design robust deployments.</p>
+        </div>
+        <div class="alerts">
+          <div class="alert warn reveal"><span class="icon"></span><p>Sensor biofouling</p></div>
+          <div class="alert warn reveal"><span class="icon"></span><p>Low solar exposure</p></div>
+          <div class="alert info reveal"><span class="icon"></span><p>Signal loss in narrow valleys or remote areas</p></div>
+          <div class="alert danger reveal"><span class="icon"></span><p>Device retrieval in difficult environments</p></div>
+          <div class="alert info reveal"><span class="icon"></span><p>Legal/authorization requirements in public waters</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 8 — Operating Workflow -->
+<section id="workflow">
+  <div class="wrap">
+    <div class="headline reveal">
+      <h2 style="font-size: var(--size-6);">Operating Workflow</h2>
+      <p>Autonomous cycle from activation to actionable environmental intelligence</p>
+    </div>
+    <div class="panel reveal">
+      <div class="timeline">
+        <div class="step reveal">
+          <div class="step-number">1.</div>
+          <div class="step-content">
+            <h6>Device Activation</h6>
+            <p>Smart scheduler wakes system based on energy and mission parameters</p>
+          </div>
+        </div>
+        
+        <div class="step reveal">
+          <div class="step-number">2.</div>
+          <div class="step-content">
+            <h6>Position & Sensor Acquisition</h6>
+            <p>GPS location fix and multiparametric water quality sampling</p>
+          </div>
+        </div>
+        
+        <div class="step reveal">
+          <div class="step-number">3.</div>
+          <div class="step-content">
+            <h6>Data Processing</h6>
+            <p>On-board normalization, compression, and integrity verification</p>
+          </div>
+        </div>
+        
+        <div class="step reveal">
+          <div class="step-number">4.</div>
+          <div class="step-content">
+            <h6>Secure Transmission</h6>
+            <p>NB-IoT/LTE-M connectivity for live or scheduled data transfer</p>
+          </div>
+        </div>
+        
+        <div class="step reveal">
+          <div class="step-number">5.</div>
+          <div class="step-content">
+            <h6>Cloud Integration</h6>
+            <p>Real-time heatmap generation and water quality computation</p>
+          </div>
+        </div>
+        
+        <div class="step reveal">
+          <div class="step-number">6.</div>
+          <div class="step-content">
+            <h6>Analytics & Insights</h6>
+            <p>Trend analysis, hotspot detection, and automated alerts</p>
+          </div>
+        </div>
+        
+        <div class="step reveal">
+          <div class="step-number">7.</div>
+          <div class="step-content">
+            <h6>Human Oversight</h6>
+            <p>Maintenance coordination and mission optimization</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- Section 9 — Future Extensions -->
+    <section id="future">
+      <div class="wrap">
+        <div class="headline reveal">
+          <h2 style="font-size: var(--size-6);">Future Extensions</h2>
+          <p>Expanding capabilities through modular hardware and intelligent software.</p>
+        </div>
+        <div class="chip-group reveal">
+  <span class="chip magnetic" data-category="sensing">
+    <span class="dot"></span>
+    <span class="chip-text">Algae / eDNA detection</span>
+    <span class="chip-glow"></span>
+  </span>
+  <span class="chip magnetic" data-category="connectivity">
+    <span class="dot"></span>
+    <span class="chip-text">Mesh network between EcoBalls</span>
+    <span class="chip-glow"></span>
+  </span>
+  <span class="chip magnetic" data-category="analytics">
+    <span class="dot"></span>
+    <span class="chip-text">Predictive AI/ML analytics</span>
+    <span class="chip-glow"></span>
+  </span>
+  <span class="chip magnetic" data-category="forecasting">
+    <span class="dot"></span>
+    <span class="chip-text">Pollution‑risk forecasting</span>
+    <span class="chip-glow"></span>
+  </span>
+  <span class="chip magnetic" data-category="engagement">
+    <span class="dot"></span>
+    <span class="chip-text">Citizen‑science app</span>
+    <span class="chip-glow"></span>
+  </span>
+</div>
+      </div>
+    </section>
+
+    <!-- Section 10 — Minimum Technical Specs -->
+    <section id="specs">
+      <div class="wrap">
+        <div class="headline reveal">
+          <h2 style="font-size: var(--size-6);">Minimum Technical Specs</h2>
+          <p>Baseline configuration for robust real‑time monitoring.</p>
+        </div>
+        <div class="specs">
+          <div class="spec reveal">STM32 Nucleo MCU</div>
+          <div class="spec reveal">NB‑IoT / LTE‑M modem</div>
+          <div class="spec reveal">±0.1 accuracy sensors</div>
+          <div class="spec reveal">3–10 W solar panel</div>
+          <div class="spec reveal">10–20 Wh battery</div>
+          <div class="spec reveal">IP68 casing</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 11 — Positive Impact -->
+<section id="impact">
+  <div class="wrap">
+    <div class="headline reveal">
+      <h2 style="font-size: var(--size-6);">Positive Impact</h2>
+      <p>Environmental intelligence that accelerates response and engages communities</p>
+    </div>
+    
+    <div class="impact">
+      <!-- Features List -->
+      <div class="impact-features">
+        <div class="impact-feature reveal">
+          <strong>24/7 Continuous Monitoring</strong>
+          <span>Round-the-clock automated data collection without interruption</span>
+        </div>
+        
+        <div class="impact-feature reveal">
+          <strong>Rapid Response Capability</strong>
+          <span>Immediate alerts enable swift intervention in pollution events</span>
+        </div>
+        
+        <div class="impact-feature reveal">
+          <strong>Predictive Analytics</strong>
+          <span>Advanced modeling for proactive environmental protection</span>
+        </div>
+        
+        <div class="impact-feature reveal">
+          <strong>Community Engagement</strong>
+          <span>Educational outreach and citizen science programs</span>
+        </div>
+        
+        <div class="impact-feature reveal">
+          <strong>Zero Emission Operation</strong>
+          <span>Fully solar-powered with carbon-neutral lifecycle</span>
+        </div>
+      </div>
+      
+      <!-- Impact Statement -->
+      <div class="impact-statement reveal">
+        <p>
+          By <span class="accent">democratizing access</span> to water quality data and 
+          <span class="accent">reducing operational barriers</span>, EcoBall enables 
+          continuous, scalable stewardship of rivers, lakes, and coastal ecosystems.
+        </p>
+      </div>
+    </div>
+    
+    <!-- Impact Metrics -->
+    <div class="impact-metrics">
+      <div class="impact-metric reveal">
+        <span class="metric-value">100%</span>
+        <div class="metric-label">Solar Powered</div>
+      </div>
+      <div class="impact-metric reveal">
+        <span class="metric-value">24/7</span>
+        <div class="metric-label">Operation</div>
+      </div>
+      <div class="impact-metric reveal">
+        <span class="metric-value">0</span>
+        <div class="metric-label">Carbon Emissions</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 12 — Recognition & Achievements -->
+<section id="recognition">
+  <div class="wrap">
+    <div class="headline reveal">
+      <h2 style="font-size: var(--size-6);">Recognition & Achievements</h2>
+      <p>Validated through competitions and exhibitions by leading institutions</p>
+    </div>
+    <div class="cards-4">
+      <div class="tile reveal tile--accent">
+        <div class="tile__header">
+          <div class="tile__icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2"/>
+              <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2"/>
+              <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <h5>Institutional Development</h5>
+        </div>
+        <p>Istituto Rapisardi–Da Vinci<br><span class="tile__subtitle">Leading technical institute</span></p>
+      </div>
+      
+      <div class="tile reveal tile--highlight">
+        <span class="achievement-badge">Finalist</span>
+        <div class="tile__header">
+          <div class="tile__icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M12 15L7 10H17L12 15Z" fill="currentColor"/>
+              <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <h5>STM32 Contest</h5>
+        </div>
+        <p>Selected among top embedded systems projects worldwide</p>
+      </div>
+      
+      <div class="tile reveal">
+        <div class="tile__header">
+          <div class="tile__icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <rect x="2" y="6" width="20" height="12" rx="2" stroke="currentColor" stroke-width="2"/>
+              <path d="M8 6V4C8 2.89543 8.89543 2 10 2H14C15.1046 2 16 2.89543 16 4V6" stroke="currentColor" stroke-width="2"/>
+              <path d="M12 12V12.01" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <h5>Maker Faire 2022</h5>
+        </div>
+        <p>Showcased to international audience of innovators and creators</p>
+      </div>
+      
+      <div class="tile reveal">
+        <div class="tile__header">
+          <div class="tile__icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2"/>
+              <path d="M6 18C6 15.7909 7.79086 14 10 14H14C16.2091 14 18 15.7909 18 18V20H6V18Z" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <h5>Team Collaboration</h5>
+        </div>
+        <p>Multidisciplinary collaboration across design, engineering, and programming</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- Section 13 — Official Team -->
+<section id="team">
+  <div class="wrap">
+    <div class="headline reveal">
+      <h2 style="font-size: var(--size-6);">Official Team</h2>
+      <p>Design, engineering, and programming — united by purpose and innovation</p>
+    </div>
+    <div class="team-grid">
+      <div class="panel team-group reveal">
+        <h3 style="margin-top:0">Design</h3>
+        <div class="member">
+          <span>Samir Buzatu</span>
+          <span>UI/UX, 3D modeling, designer</span>
+        </div>
+        <div class="member">
+          <span>Christian Violo</span>
+          <span>illustrations, CAD</span>
+        </div>
+      </div>
+      <div class="panel team-group reveal">
+        <h3 style="margin-top:0">Engineering</h3>
+        <div class="member">
+          <span>Francesco Pilato</span>
+          <span>embedded systems, hardware</span>
+        </div>
+        <h3 style="margin-top: var(--space-4);">Programming</h3>
+        <div class="member">
+          <span>Andrea Lombardo</span>
+          <span>programmer, APIs</span>
+        </div>
+        <div class="member">
+          <span>Michele Ottaviano</span>
+          <span>backend, programmer</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  </main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-content">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <div class="logo">
+            <div class="logo__dot"></div>
+            <span class="logo__text">EB</span>
+          </div>
+          <div class="footer-tagline">
+            <span>EcoBall</span>
+            <span class="footer-subtle">Water intelligence</span>
+          </div>
+        </div>
+        
+        <nav class="footer-nav">
+          <a href="#mission">Mission</a>
+          <a href="#hardware">Tech</a>
+          <a href="#impact">Impact</a>
+          <a href="#team">Team</a>
+        </nav>
+      </div>
+      
+      <div class="footer-meta">
+        <div class="footer-legal">
+          <span>© <span id="year"></span> EcoBall</span>
+          <span class="footer-divider">•</span>
+          <span>Istituto Rapisardi–Da Vinci</span>
+        </div>
+        <div class="footer-status">
+          <div class="status-indicator"></div>
+          <span>Autonomous monitoring</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+  <!--include script.js-->
+  <script src="script.js"></script>
+
+</body>
+</html>
