@@ -20,6 +20,7 @@
   --warn: #ffd56a;
   --alert: #ff7a7a;
 
+  
   /* Typography & rhythm */
   --font-sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", system-ui, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -126,15 +127,32 @@ img { max-width: 100%; display: block; }
 }
 
 /* Reveal animation base (stable, no flicker) */
+/* Optimized reveal animation (performance-focused) */
 .reveal {
-  transform: translateY(14px) translateZ(0);
-  opacity: 0.001;
-  will-change: transform, opacity;
-  transition: transform var(--dur-3) var(--ease-out), opacity var(--dur-3) var(--ease-out);
+  transform: translateY(30px);
+  opacity: 0;
+  transition: 
+    transform var(--dur-3) var(--ease-out),
+    opacity var(--dur-3) var(--ease-out);
 }
+
 .reveal.show {
-  transform: translateY(0) translateZ(0);
+  transform: translateY(0);
   opacity: 1;
+}
+
+/* Remove will-change from other elements to prevent performance issues */
+.hero .orbital,
+.orbital::before, 
+.orbital::after,
+.btn,
+.magnetic {
+  will-change: auto;
+}
+
+/* Optimize the orbital animation */
+.hero .orbital {
+  will-change: transform;
 }
 
 /* Magnetic hover micro-interaction */
@@ -386,212 +404,7 @@ section {
   line-height: 1.6;
 }
 
-/* Section 3 — Hardware Components */
-/* Section 3 — Premium Hardware Components */
-.hardware {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: var(--space-4);
-  align-items: stretch;
-  position: relative;
-}
 
-.exploded {
-  padding: 0;
-  overflow: hidden;
-  position: relative;
-  border-radius: 24px;
-  background: 
-    radial-gradient(ellipse at 30% 20%, color-mix(in srgb, var(--brand) 15%, transparent) 0%, transparent 60%),
-    radial-gradient(ellipse at 70% 80%, color-mix(in srgb, var(--accent) 8%, transparent) 0%, transparent 50%),
-    linear-gradient(165deg, var(--elev-2) 0%, var(--elev-1) 100%);
-  border: 1px solid color-mix(in srgb, var(--stroke) 30%, transparent);
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.08),
-    0 2px 8px rgba(0, 0, 0, 0.04),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-.exploded .canvas {
-  aspect-ratio: 4/3;
-  display: grid;
-  place-items: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.exploded .canvas::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(
-      circle at 30% 30%,
-      color-mix(in srgb, var(--brand) 20%, transparent) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 80% 80%,
-      color-mix(in srgb, var(--brand) 10%, transparent) 0%,
-      transparent 40%
-    );
-  pointer-events: none;
-  z-index: 1;
-}
-
-
-.sphere-container {
-  position: relative;
-  display: grid;
-  place-items: center;
-  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.15));
-}
-
-.sphere {
-  width: clamp(100px, 28vw, 220px);
-  height: clamp(100px, 28vw, 220px);
-  object-fit: contain;
-  animation: float 8s var(--ease) infinite;
-  position: relative;
-  z-index: -1;
-}
-
-.sphere-glow {
-  position: absolute;
-  width: 120%;
-  height: 120%;
-  background: radial-gradient(ellipse at center, var(--brand) 0%, transparent 70%);
-  opacity: 0.08;
-  filter: blur(20px);
-  z-index: 1;
-  animation: pulse 4s ease-in-out infinite alternate;
-}
-
-.sphere-reflection {
-  position: absolute;
-  top: 8%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60%;
-  height: 15%;
-  border-radius: 50%;
-  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
-  filter: blur(4px);
-  opacity: 0.6;
-  z-index: 3;
-}
-
-@keyframes float {
-  0%, 100% { 
-    transform: translateY(0px) rotate(0deg); 
-  }
-  33% { 
-    transform: translateY(-12px) rotate(1deg); 
-  }
-  66% { 
-    transform: translateY(-6px) rotate(-1deg); 
-  }
-}
-
-@keyframes pulse {
-  0% { opacity: 0.06; transform: scale(1); }
-  100% { opacity: 0.12; transform: scale(1.05); }
-}
-
-.legend {
-  display: grid;
-  gap: 12px;
-  position: absolute;
-  bottom: 24px;
-  left: 24px;
-  right: 24px;
-  font-size: var(--size-1);
-  color: var(--text-muted);
-  backdrop-filter: blur(20px) saturate(180%);
-  background: color-mix(in srgb, var(--elev-1) 85%, transparent);
-  border: 1px solid color-mix(in srgb, var(--stroke) 40%, transparent);
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.12),
-    0 2px 6px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s var(--ease);
-}
-
-.legend:hover {
-  background: color-mix(in srgb, var(--elev-1) 92%, transparent);
-  border-color: color-mix(in srgb, var(--stroke) 60%, transparent);
-  transform: translateY(-2px);
-  box-shadow: 
-    0 12px 40px rgba(0, 0, 0, 0.15),
-    0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 8px 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--stroke) 15%, transparent);
-  transition: all 0.2s ease;
-}
-
-.legend-item:last-child {
-  border-bottom: none;
-}
-
-.legend-item:hover {
-  color: var(--text);
-  transform: translateX(4px);
-}
-
-.legend-marker {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--brand);
-  flex-shrink: 0;
-  transition: all 0.3s ease;
-}
-
-.legend-item:hover .legend-marker {
-  transform: scale(1.4);
-  background: var(--accent);
-}
-
-/* Premium decorative elements */
-.hardware::before {
-  content: "";
-  position: absolute;
-  top: -50px;
-  right: -50px;
-  width: 200px;
-  height: 200px;
-  background: radial-gradient(circle, color-mix(in srgb, var(--brand) 5%, transparent) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: -1;
-}
-
-/* Responsive refinement */
-@media (max-width: 768px) {
-  .hardware {
-    grid-template-columns: 1fr;
-    gap: var(--space-3);
-  }
-  
-  .legend {
-    visibility: hidden;
-  }
-  .sphere {
-  width: clamp(200px, 38vw, 320px);
-  height: clamp(200px, 38vw, 320px);
-  object-fit: contain;
-  animation: float 8s var(--ease) infinite;
-  position: relative;
-  z-index: -1;
-  }
-
-}
 
 
 /* Section 6 — Maintenance & Operations */
@@ -601,27 +414,6 @@ section {
   font-size: var(--size-2);
 }
 
-/* Section 7 — Challenges & Risks */
-.alerts {
-  display: grid; gap: var(--space-2);
-}
-.alert {
-  display: grid; grid-template-columns: 28px 1fr;
-  gap: 12px;
-  align-items: center;
-  padding: 14px 16px;
-  border-radius: var(--radius-m);
-  border: 1px solid var(--stroke);
-  background: linear-gradient(180deg, color-mix(in srgb, var(--elev-2) 55%, transparent), var(--elev-1));
-}
-.alert .icon {
-  width: 10px; height: 10px; border-radius: 50%;
-  box-shadow: 0 0 10px rgba(0,0,0,0.25);
-}
-.alert.warn .icon { background: var(--warn); }
-.alert.danger .icon { background: var(--alert); }
-.alert.info .icon { background: var(--brand); }
-.alert p { margin: 0; color: var(--text-dim); }
 
 /* Section 9 — Future, Section 10 — Specs, Section 11 — Impact, Section 12 — Recognition, Section 13 — Team */
 .chips {

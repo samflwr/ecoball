@@ -1,10 +1,10 @@
-/* Clean Impact Section */
-.impact {
+/* Positive Impact Section */
+.impact-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.2fr 0.8fr;
   gap: var(--space-6);
-  align-items: start;
   margin-top: var(--space-5);
+  align-items: start;
 }
 
 .impact-features {
@@ -13,67 +13,133 @@
   gap: var(--space-3);
 }
 
-.impact-feature {
+.impact-card {
+  background: linear-gradient(145deg, 
+    color-mix(in srgb, var(--elev-2) 80%, transparent),
+    color-mix(in srgb, var(--elev-1) 95%, transparent));
+  border: 1px solid color-mix(in srgb, var(--stroke) 25%, transparent);
+  border-radius: var(--radius-xl);
   padding: var(--space-4);
-  border: 1px solid color-mix(in srgb, var(--stroke) 30%, transparent);
-  border-radius: var(--radius-l);
-  background: color-mix(in srgb, var(--elev-1) 60%, transparent);
+  backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: var(--shadow-subtle);
   transition: all var(--dur-2) var(--ease);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
   position: relative;
+  overflow: hidden;
 }
 
-.impact-feature::before {
-  content: "";
+.impact-card::before {
+  content: '';
   position: absolute;
-  left: 0;
   top: 0;
-  bottom: 0;
-  width: 3px;
-  background: var(--brand);
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    color-mix(in srgb, var(--brand) 40%, transparent), 
+    transparent);
   opacity: 0;
   transition: opacity var(--dur-2) var(--ease);
 }
 
-.impact-feature:hover {
-  border-color: color-mix(in srgb, var(--brand) 40%, transparent);
-  background: color-mix(in srgb, var(--elev-1) 80%, transparent);
-  transform: translateX(8px);
+.impact-card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--brand) 35%, var(--stroke));
+  box-shadow: var(--shadow-soft);
 }
 
-.impact-feature:hover::before {
+.impact-card:hover::before {
   opacity: 1;
 }
 
-.impact-feature strong {
-  display: block;
-  font-size: var(--size-2);
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 4px;
+.impact-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--brand) 8%, transparent);
+  border-radius: var(--radius-m);
+  color: var(--brand);
+  flex-shrink: 0;
+  transition: all var(--dur-2) var(--ease);
 }
 
-.impact-feature span {
-  font-size: var(--size-1);
-  color: var(--text-muted);
-  line-height: 1.4;
+.impact-card:hover .impact-icon {
+  background: color-mix(in srgb, var(--brand) 12%, transparent);
+  transform: scale(1.05);
 }
 
-.impact-statement {
-  padding: var(--space-5);
-  border-left: 3px solid var(--brand);
-  background: color-mix(in srgb, var(--elev-1) 40%, transparent);
-  border-radius: 0 var(--radius-l) var(--radius-l) 0;
+.impact-content {
+  flex: 1;
 }
 
-.impact-statement p {
-  margin: 0;
+.impact-content h3 {
+  margin: 0 0 var(--space-1) 0;
   font-size: var(--size-3);
-  line-height: 1.5;
+  font-weight: 700;
   color: var(--text);
-  font-weight: 450;
+  line-height: 1.3;
 }
 
-.impact-statement .accent {
+.impact-content p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: var(--size-2);
+  line-height: 1.5;
+}
+
+/* Impact Statement */
+.impact-statement {
+  position: relative;
+}
+
+.statement-card {
+  background: linear-gradient(145deg, 
+    color-mix(in srgb, var(--brand) 5%, var(--elev-2)),
+    color-mix(in srgb, var(--brand) 2%, var(--elev-1)));
+  border: 1px solid color-mix(in srgb, var(--brand) 25%, transparent);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5);
+  backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.statement-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    color-mix(in srgb, var(--brand) 50%, transparent), 
+    transparent);
+}
+
+.statement-card h3 {
+  margin: 0 0 var(--space-3) 0;
+  font-size: var(--size-4);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.statement-card p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: var(--size-2);
+  line-height: 1.6;
+}
+
+.accent {
   color: var(--brand);
   font-weight: 600;
 }
@@ -84,58 +150,175 @@
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-4);
   margin-top: var(--space-6);
-  padding-top: var(--space-5);
-  border-top: 1px solid color-mix(in srgb, var(--stroke) 30%, transparent);
 }
 
-.impact-metric {
+.metric-card {
+  background: linear-gradient(145deg, 
+    color-mix(in srgb, var(--elev-2) 80%, transparent),
+    color-mix(in srgb, var(--elev-1) 95%, transparent));
+  border: 1px solid color-mix(in srgb, var(--stroke) 25%, transparent);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5);
+  backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: var(--shadow-subtle);
   text-align: center;
-  padding: var(--space-3);
+  transition: all var(--dur-2) var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+
+.metric-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    color-mix(in srgb, var(--brand) 40%, transparent), 
+    transparent);
+  opacity: 0;
+  transition: opacity var(--dur-2) var(--ease);
+}
+
+.metric-card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--brand) 35%, var(--stroke));
+  box-shadow: var(--shadow-soft);
+}
+
+.metric-card:hover::before {
+  opacity: 1;
 }
 
 .metric-value {
-  display: block;
   font-size: var(--size-5);
-  font-weight: 700;
+  font-weight: 800;
   color: var(--brand);
-  margin-bottom: var(--space-1);
   line-height: 1;
+  margin-bottom: var(--space-2);
+  display: block;
 }
 
 .metric-label {
+  font-size: var(--size-2);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: var(--space-1);
+  display: block;
+}
+
+.metric-desc {
   font-size: var(--size-1);
   color: var(--text-muted);
-  font-weight: 500;
-  letter-spacing: 0.5px;
+  line-height: 1.4;
 }
 
-/* Responsive */
-@media (max-width: 968px) {
-  .impact {
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .impact-grid {
     grid-template-columns: 1fr;
-    gap: var(--space-5);
+    gap: var(--space-4);
+    margin-top: var(--space-4);
   }
   
-  .impact-statement {
-    border-left: none;
-    border-top: 3px solid var(--brand);
-    border-radius: 0 0 var(--radius-l) var(--radius-l);
+  .impact-features {
+    gap: var(--space-2);
   }
-}
-
-@media (max-width: 640px) {
+  
+  .impact-card {
+    padding: var(--space-3);
+    gap: var(--space-2);
+  }
+  
+  .impact-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .impact-content h3 {
+    font-size: var(--size-2);
+    margin-bottom: 6px;
+  }
+  
+  .impact-content p {
+    font-size: var(--size-1);
+  }
+  
+  .statement-card {
+    padding: var(--space-4);
+  }
+  
+  .statement-card h3 {
+    font-size: var(--size-3);
+    margin-bottom: var(--space-2);
+  }
+  
+  .statement-card p {
+    font-size: var(--size-1);
+  }
+  
   .impact-metrics {
-  display: grid; /* nel caso non ci fosse già */
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-3);
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+    margin-top: var(--space-5);
+  }
+  
+  .metric-card {
+    padding: var(--space-4);
+  }
+  
+  .metric-value {
+    font-size: var(--size-4);
+  }
+  
+  .metric-label {
+    font-size: var(--size-1);
+  }
 }
 
+@media (max-width: 480px) {
+  .impact-card {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-2);
+  }
   
-  .impact-feature {
+  .impact-icon {
+    align-self: center;
+  }
+  
+  .metric-card {
     padding: var(--space-3);
   }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .impact-card,
+  .metric-card,
+  .impact-icon {
+    transition: none;
+  }
   
-  .impact-statement {
-    padding: var(--space-4);
+  .impact-card:hover,
+  .metric-card:hover {
+    transform: none;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+  .impact-card:hover,
+  .metric-card:hover {
+    transform: none;
+    border-color: color-mix(in srgb, var(--stroke) 25%, transparent);
+  }
+  
+  .impact-card:active,
+  .metric-card:active {
+    transform: scale(0.98);
+    transition: transform var(--dur-1) var(--ease);
   }
 }

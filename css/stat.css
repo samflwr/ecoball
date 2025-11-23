@@ -10,43 +10,46 @@
 .stat-row::before {
   content: "";
   position: absolute;
-  top: -40px;
-  left: -40px;
-  right: -40px;
-  bottom: -40px;
+  top: -50px;
+  left: -50px;
+  right: -50px;
+  bottom: -50px;
   background: 
-    radial-gradient(ellipse at 30% 50%, color-mix(in srgb, var(--brand) 4%, transparent) 0%, transparent 60%),
-    radial-gradient(ellipse at 70% 30%, color-mix(in srgb, var(--brand) 3%, transparent) 0%, transparent 60%);
+    radial-gradient(800px circle at 20% 30%, color-mix(in srgb, var(--brand) 6%, transparent) 0%, transparent 50%),
+    radial-gradient(600px circle at 80% 70%, color-mix(in srgb, var(--accent) 4%, transparent) 0%, transparent 50%);
   pointer-events: none;
   opacity: 0;
-  transition: opacity var(--dur-3) var(--ease);
+  transition: opacity var(--dur-3) var(--ease-out);
   z-index: -1;
+  filter: blur(20px);
 }
 
 .stat-row:hover::before {
-  opacity: 0.8;
+  opacity: 1;
 }
 
 .stat {
   position: relative;
-  padding: 28px 24px;
+  padding: 32px 24px;
   background: 
-    linear-gradient(135deg, 
-      color-mix(in srgb, var(--elev-2) 70%, transparent) 0%, 
-      color-mix(in srgb, var(--elev-1) 90%, transparent) 100%),
+    linear-gradient(145deg, 
+      color-mix(in srgb, var(--elev-2) 80%, transparent) 0%, 
+      color-mix(in srgb, var(--elev-1) 95%, transparent) 100%),
     radial-gradient(ellipse at 50% 0%, 
-      color-mix(in srgb, var(--brand) 6%, transparent) 0%, 
+      color-mix(in srgb, var(--brand) 8%, transparent) 0%, 
       transparent 70%);
-  border: 1px solid color-mix(in srgb, var(--stroke) 60%, transparent);
-  border-radius: var(--radius-l);
+  border: 1px solid color-mix(in srgb, var(--stroke) 40%, transparent);
+  border-radius: var(--radius-xl);
   box-shadow: 
     var(--shadow-subtle),
-    0 1px 0 rgba(255, 255, 255, 0.03) inset;
-  backdrop-filter: blur(12px) saturate(160%);
-  transition: all var(--dur-2) var(--ease);
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px) saturate(180%);
+  transition: all var(--dur-3) cubic-bezier(0.2, 0.8, 0.2, 1);
   overflow: hidden;
   isolation: isolate;
   text-align: center;
+  cursor: pointer;
 }
 
 .stat::before {
@@ -58,9 +61,11 @@
   height: 1px;
   background: linear-gradient(90deg, 
     transparent, 
-    color-mix(in srgb, var(--brand) 40%, transparent), 
+    color-mix(in srgb, var(--brand) 60%, transparent), 
     transparent);
-  opacity: 0.6;
+  opacity: 0.8;
+  transform: scaleX(0);
+  transition: transform var(--dur-2) var(--ease-out);
 }
 
 .stat::after {
@@ -68,21 +73,27 @@
   position: absolute;
   inset: 0;
   background: 
-    radial-gradient(120px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
-      color-mix(in srgb, var(--brand) 8%, transparent), 
-      transparent 60%);
+    radial-gradient(200px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+      color-mix(in srgb, var(--brand) 12%, transparent), 
+      transparent 70%);
   opacity: 0;
   transition: opacity var(--dur-2) var(--ease);
   z-index: -1;
 }
 
 .stat:hover {
-  transform: translateY(-6px) scale(1.02);
-  border-color: color-mix(in srgb, var(--brand) 35%, var(--stroke));
+  transform: translateY(-8px) scale(1.03);
+  border-color: color-mix(in srgb, var(--brand) 50%, var(--stroke));
   box-shadow: 
-    var(--shadow-soft),
-    0 8px 32px color-mix(in srgb, var(--brand) 8%, transparent),
-    0 1px 0 rgba(255, 255, 255, 0.05) inset;
+    0 24px 60px rgba(0, 0, 0, 0.18),
+    0 12px 32px color-mix(in srgb, var(--brand) 12%, transparent),
+    0 4px 12px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+}
+
+.stat:hover::before {
+  transform: scaleX(1);
 }
 
 .stat:hover::after {
@@ -90,40 +101,59 @@
 }
 
 .stat:active {
-  transform: translateY(-2px) scale(1);
+  transform: translateY(-4px) scale(1.01);
   transition-duration: var(--dur-1);
+}
+
+/* Stat content animations */
+.stat-content {
+  position: relative;
+  z-index: 2;
 }
 
 .stat .k {
   font-size: var(--size-5);
   font-weight: 800;
   letter-spacing: -0.03em;
-  background: linear-gradient(135deg, var(--text), color-mix(in srgb, var(--text) 80%, var(--brand)));
+  background: linear-gradient(135deg, var(--text), color-mix(in srgb, var(--text) 70%, var(--brand)));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   line-height: 1.1;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   position: relative;
   display: inline-block;
+  transition: all var(--dur-2) var(--ease);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.stat:hover .k {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, var(--text), var(--brand-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .stat .k::after {
   content: "";
   position: absolute;
-  bottom: -4px;
+  bottom: -6px;
   left: 50%;
-  transform: translateX(-50%);
-  width: 30px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--brand), transparent);
-  border-radius: 2px;
-  opacity: 0.7;
-  transition: all var(--dur-2) var(--ease);
+  transform: translateX(-50%) scaleX(0);
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    color-mix(in srgb, var(--brand) 30%, transparent), 
+    var(--brand-2), 
+    color-mix(in srgb, var(--brand) 30%, transparent));
+  border-radius: 3px;
+  opacity: 0;
+  transition: all var(--dur-2) var(--ease-out);
 }
 
 .stat:hover .k::after {
-  width: 50px;
+  transform: translateX(-50%) scaleX(1);
+  width: 60px;
   opacity: 1;
 }
 
@@ -133,48 +163,125 @@
   font-weight: 500;
   letter-spacing: 0.02em;
   line-height: 1.4;
-  transition: color var(--dur-2) var(--ease);
+  transition: all var(--dur-2) var(--ease);
+  position: relative;
 }
 
 .stat:hover .label {
   color: var(--text-dim);
+  transform: translateY(2px);
 }
 
-/* Individual stat enhancements */
-.stat:nth-child(1) .k {
-  background: linear-gradient(135deg, var(--text), color-mix(in srgb, var(--brand) 70%, var(--text)));
+/* Individual stat color variations with smooth transitions */
+.stat:nth-child(1) {
+  --stat-color: var(--brand);
+}
+
+.stat:nth-child(2) {
+  --stat-color: #4FE3B7;
+}
+
+.stat:nth-child(3) {
+  --stat-color: #4F8DFE;
+}
+
+.stat:nth-child(4) {
+  --stat-color: #9D4EFF;
+}
+
+.stat .k {
+  background: linear-gradient(135deg, var(--text), color-mix(in srgb, var(--stat-color, var(--brand)) 70%, var(--text)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all var(--dur-2) var(--ease);
+}
+
+.stat:hover .k {
+  background: linear-gradient(135deg, var(--text), var(--stat-color, var(--brand-2)));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.stat:nth-child(2) .k {
-  background: linear-gradient(135deg, var(--text), color-mix(in srgb, #4FE3B7 70%, var(--text)));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+/* Floating particles effect */
+.stat-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--brand);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
 }
 
-.stat:nth-child(3) .k {
-  background: linear-gradient(135deg, var(--text), color-mix(in srgb, #4F8DFE 70%, var(--text)));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.stat:hover .stat-particle {
+  animation: float-particle 2s var(--ease-out) forwards;
 }
 
-.stat:nth-child(4) .k {
-  background: linear-gradient(135deg, var(--text), color-mix(in srgb, #9D4EFF 70%, var(--text)));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+@keyframes float-particle {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0);
+  }
+  20% {
+    opacity: 0.8;
+    transform: translate(var(--tx, 20px), var(--ty, -20px)) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--tx-end, 40px), var(--ty-end, -40px)) scale(0);
+  }
 }
 
-/* Animated counter for stats (optional) */
-.stat .k[data-count] {
-  transition: all var(--dur-3) var(--ease-out);
+/* Icon integration */
+.stat-icon {
+  width: 24px;
+  height: 24px;
+  margin: 0 auto 12px;
+  opacity: 0.7;
+  transition: all var(--dur-2) var(--ease);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.stat:hover .stat-icon {
+  opacity: 1;
+  transform: scale(1.1) translateY(-2px);
+  filter: drop-shadow(0 4px 8px color-mix(in srgb, var(--brand) 20%, transparent));
+}
+
+/* Progress bar animation */
+.stat-progress {
+  height: 3px;
+  background: color-mix(in srgb, var(--stroke) 30%, transparent);
+  border-radius: 3px;
+  margin-top: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.stat-progress::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    var(--stat-color, var(--brand)), 
+    transparent);
+  transition: left var(--dur-3) var(--ease-out);
+}
+
+.stat:hover .stat-progress::after {
+  left: 100%;
 }
 
 /* Responsive design */
 @media (max-width: 1024px) {
   .stat-row {
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-3);
+    gap: var(--space-4);
   }
 }
 
@@ -185,22 +292,38 @@
   }
   
   .stat {
-    padding: 24px 20px;
+    padding: 28px 20px;
   }
   
   .stat .k {
     font-size: var(--size-4);
+  }
+  
+  .stat:hover {
+    transform: translateY(-4px) scale(1.02);
   }
 }
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   .stat,
-  .stat .k::after {
+  .stat .k::after,
+  .stat-particle,
+  .stat-icon {
     transition: none;
+    animation: none;
   }
   
   .stat:hover {
     transform: none;
   }
+}
+
+/* Mouse tracking for dynamic glow */
+.stat-row {
+  cursor: none;
+}
+
+.stat {
+  position: relative;
 }

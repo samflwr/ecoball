@@ -1,0 +1,247 @@
+/* Challenges & Risks Section */
+.risks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+.risk-category {
+  background: linear-gradient(145deg, 
+    color-mix(in srgb, var(--elev-2) 80%, transparent),
+    color-mix(in srgb, var(--elev-1) 95%, transparent));
+  border: 1px solid color-mix(in srgb, var(--stroke) 25%, transparent);
+  border-radius: var(--radius-xl);
+  padding: var(--space-4);
+  backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: var(--shadow-subtle);
+  transition: all var(--dur-2) var(--ease);
+}
+
+.risk-category:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--brand) 30%, var(--stroke));
+  box-shadow: var(--shadow-soft);
+}
+
+.risk-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid color-mix(in srgb, var(--stroke) 20%, transparent);
+}
+
+.risk-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--brand) 8%, transparent);
+  border-radius: var(--radius-m);
+  color: var(--brand);
+  transition: all var(--dur-2) var(--ease);
+}
+
+.risk-category:hover .risk-icon {
+  background: color-mix(in srgb, var(--brand) 12%, transparent);
+  transform: scale(1.05);
+}
+
+.risk-header h3 {
+  margin: 0;
+  font-size: var(--size-3);
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.risk-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  transition: all var(--dur-1) var(--ease);
+}
+
+.risk-item:hover {
+  transform: translateX(4px);
+}
+
+.risk-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--brand);
+  border-radius: 50%;
+  margin-top: 8px;
+  flex-shrink: 0;
+  transition: all var(--dur-1) var(--ease);
+  position: relative;
+}
+
+.risk-item:hover .risk-dot {
+  background: var(--brand-2);
+  transform: scale(1.3);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 15%, transparent);
+}
+
+.risk-text {
+  color: var(--text-muted);
+  font-size: var(--size-2);
+  line-height: 1.5;
+  transition: color var(--dur-1) var(--ease);
+}
+
+.risk-item:hover .risk-text {
+  color: var(--text);
+}
+
+/* Mitigation Panel */
+.mitigation-panel {
+  margin-top: var(--space-6);
+  background: linear-gradient(145deg, 
+    color-mix(in srgb, var(--elev-2) 70%, transparent),
+    color-mix(in srgb, var(--elev-1) 90%, transparent));
+  border: 1px solid color-mix(in srgb, var(--brand) 20%, transparent);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5);
+  backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: var(--shadow-subtle);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.mitigation-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    color-mix(in srgb, var(--brand) 40%, transparent), 
+    transparent);
+}
+
+.mitigation-content h4 {
+  margin: 0 0 var(--space-2) 0;
+  font-size: var(--size-3);
+  font-weight: 700;
+  color: var(--text);
+}
+
+.mitigation-content p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: var(--size-2);
+  line-height: 1.6;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .risks-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+  }
+  
+  .risk-category {
+    padding: var(--space-3);
+  }
+  
+  .risk-header {
+    gap: var(--space-2);
+    margin-bottom: var(--space-2);
+    padding-bottom: var(--space-2);
+  }
+  
+  .risk-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .risk-header h3 {
+    font-size: var(--size-2);
+  }
+  
+  .risk-item {
+    padding: var(--space-1) 0;
+    gap: var(--space-2);
+  }
+  
+  .risk-text {
+    font-size: var(--size-1);
+  }
+  
+  .mitigation-panel {
+    margin-top: var(--space-5);
+    padding: var(--space-4);
+  }
+  
+  .mitigation-content h4 {
+    font-size: var(--size-2);
+  }
+  
+  .mitigation-content p {
+    font-size: var(--size-1);
+  }
+}
+
+@media (max-width: 480px) {
+  .risk-category {
+    padding: var(--space-3);
+  }
+  
+  .risk-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+    text-align: left;
+  }
+  
+  .mitigation-panel {
+    padding: var(--space-3);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .risk-category,
+  .risk-item,
+  .risk-dot,
+  .risk-icon {
+    transition: none;
+  }
+  
+  .risk-category:hover {
+    transform: none;
+  }
+  
+  .risk-item:hover {
+    transform: none;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+  .risk-category:hover {
+    transform: none;
+    border-color: color-mix(in srgb, var(--stroke) 25%, transparent);
+  }
+  
+  .risk-item:hover {
+    transform: none;
+  }
+  
+  .risk-category:active {
+    transform: scale(0.98);
+    transition: transform var(--dur-1) var(--ease);
+  }
+}

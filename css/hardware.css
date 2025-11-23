@@ -1,0 +1,241 @@
+/* Hardware Components Section */
+.hardware-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-5);
+  margin-top: var(--space-5);
+}
+
+.hardware-category {
+  background: linear-gradient(145deg, 
+    color-mix(in srgb, var(--elev-2) 80%, transparent),
+    color-mix(in srgb, var(--elev-1) 95%, transparent));
+  border: 1px solid color-mix(in srgb, var(--stroke) 30%, transparent);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5);
+  backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: var(--shadow-subtle);
+  transition: all var(--dur-2) var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+
+.hardware-category::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    color-mix(in srgb, var(--brand) 40%, transparent), 
+    transparent);
+  opacity: 0;
+  transition: opacity var(--dur-2) var(--ease);
+}
+
+.hardware-category:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--brand) 40%, var(--stroke));
+  box-shadow: var(--shadow-soft);
+}
+
+.hardware-category:hover::before {
+  opacity: 1;
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid color-mix(in srgb, var(--stroke) 20%, transparent);
+}
+
+.category-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--brand) 10%, transparent);
+  border-radius: var(--radius-m);
+  color: var(--brand);
+  flex-shrink: 0;
+  transition: all var(--dur-2) var(--ease);
+}
+
+.hardware-category:hover .category-icon {
+  background: color-mix(in srgb, var(--brand) 20%, transparent);
+  transform: scale(1.05);
+}
+
+.category-header h3 {
+  margin: 0;
+  font-size: var(--size-4);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.component-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.component-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border-radius: var(--radius-m);
+  transition: all var(--dur-1) var(--ease);
+  position: relative;
+}
+
+.component-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: color-mix(in srgb, var(--brand) 5%, transparent);
+  border-radius: var(--radius-m);
+  opacity: 0;
+  transition: opacity var(--dur-1) var(--ease);
+}
+
+.component-item:hover::before {
+  opacity: 1;
+}
+
+.component-item:hover {
+  transform: translateX(4px);
+}
+
+.component-marker {
+  width: 8px;
+  height: 8px;
+  background: var(--brand);
+  border-radius: 50%;
+  margin-top: 8px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  transition: all var(--dur-1) var(--ease);
+}
+
+.component-item:hover .component-marker {
+  background: var(--brand-2);
+  transform: scale(1.3);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--brand) 20%, transparent);
+}
+
+.component-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  position: relative;
+  z-index: 1;
+  flex: 1;
+}
+
+.component-name {
+  font-weight: 600;
+  color: var(--text);
+  font-size: var(--size-2);
+  line-height: 1.3;
+  transition: color var(--dur-1) var(--ease);
+}
+
+.component-item:hover .component-name {
+  color: var(--text-dim);
+}
+
+.component-desc {
+  color: var(--text-muted);
+  font-size: var(--size-1);
+  line-height: 1.4;
+  transition: color var(--dur-1) var(--ease);
+}
+
+.component-item:hover .component-desc {
+  color: var(--text-muted);
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .hardware-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    margin-top: var(--space-4);
+  }
+  
+  .hardware-category {
+    padding: var(--space-4);
+  }
+  
+  .category-header {
+    gap: var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+  
+  .category-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .category-header h3 {
+    font-size: var(--size-3);
+  }
+  
+  .component-item {
+    padding: var(--space-2);
+    gap: var(--space-2);
+  }
+  
+  .component-name {
+    font-size: var(--size-1);
+  }
+  
+  .component-desc {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hardware-category {
+    padding: var(--space-3);
+  }
+  
+  .category-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+  
+  .component-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-1);
+  }
+  
+  .component-marker {
+    margin-top: 6px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .hardware-category,
+  .component-item,
+  .component-marker,
+  .category-icon {
+    transition: none;
+  }
+  
+  .hardware-category:hover {
+    transform: none;
+  }
+}
