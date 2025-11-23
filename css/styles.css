@@ -84,6 +84,8 @@
 
 * { box-sizing: border-box; }
 html, body {
+  scroll-behavior: smooth;
+
   margin: 0;
   background:
     radial-gradient(1200px 800px at 70% -10%, color-mix(in srgb, var(--brand) 6%, transparent), transparent 60%),
@@ -128,18 +130,7 @@ img { max-width: 100%; display: block; }
 
 /* Reveal animation base (stable, no flicker) */
 /* Optimized reveal animation (performance-focused) */
-.reveal {
-  transform: translateY(30px);
-  opacity: 0;
-  transition: 
-    transform var(--dur-3) var(--ease-out),
-    opacity var(--dur-3) var(--ease-out);
-}
 
-.reveal.show {
-  transform: translateY(0);
-  opacity: 1;
-}
 
 /* Remove will-change from other elements to prevent performance issues */
 .hero .orbital,
@@ -167,9 +158,10 @@ img { max-width: 100%; display: block; }
 .magnetic:hover {
   transform: translateY(-1px);
 }
-
 /* Hero (site header) */
 header.hero {
+  transform: translateZ(0);
+  backface-visibility: hidden;
   position: sticky;
   top: 0;
   z-index: 40;
