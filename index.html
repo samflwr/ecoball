@@ -19,6 +19,13 @@
   <link rel="stylesheet" href="css/chip.css" />
   <link rel="stylesheet" href="css/scroll-line.css" />
   <link rel="stylesheet" href="css/teams.css" />
+  <link rel="stylesheet" href="css/sphere.css" />
+  <link rel="stylesheet" href="css/hardware.css" />
+  <link rel="stylesheet" href="css/functional.css" />
+  <link rel="stylesheet" href="css/maintenance.css" />
+  <link rel="stylesheet" href="css/challenges.css" />
+  <link rel="stylesheet" href="css/deployment.css" />
+
 
 
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
@@ -64,7 +71,7 @@
       <a href="#hardware" class="mobile-link">Hardware</a>
       <a href="#software" class="mobile-link">Software</a>
       <a href="#team" class="mobile-link">Team</a>
-      <a href="#deployment" class="mobile-cta">Get Started</a>
+      <a href="leaderboard.html" class="mobile-cta">Leaderboard (game)</a>
     </div>
   </div>
 
@@ -104,12 +111,28 @@
         </div>
       </div>
       <div class="panel exploded reveal" aria-label="EcoBall visual">
-        <div class="canvas">
-          <img src="ecoball-def.png" alt="" class="sphere" aria-hidden="true">
-          <div class="legend">
-            <div>Green energy autonomy</div>
-            <div>Mobile sampling</div>
-            <div>Real‑time intelligence</div>
+        <div class="exploded">
+          <div class="canvas">
+            <div class="sphere-container">
+              <div class="sphere-shadow"></div>
+              <div class="sphere-glow"></div>
+              <img src="ecoball-def.png" alt="Ecoball hardware component visualization" class="sphere">
+              <div class="sphere-reflection"></div>
+            </div>
+            <div class="legend">
+              <div class="legend-item">
+                <div class="legend-marker"></div>
+                <div>Green energy autonomy</div>
+              </div>
+              <div class="legend-item">
+                <div class="legend-marker"></div>
+                <div>Mobile sampling</div>
+              </div>
+              <div class="legend-item">
+                <div class="legend-marker"></div>
+                <div>Real‑time intelligence</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -191,68 +214,115 @@
           <h2 style="font-size: var(--size-6);">Functional Requirements</h2>
           <p>Structured capabilities designed for reliability, accuracy, and scale.</p>
         </div>
-        <div class="grid-2">
-          <div class="stack">
-            <div class="card reveal">
+        
+        <div class="requirements-grid">
+          <div class="requirement-category reveal">
+            <div class="req-header">
+              <div class="req-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <h3>Core Sensing</h3>
+            </div>
+            <div class="req-card">
               <h4>Environmental Sensing</h4>
-              <ul>
-                <li>Temperature, pH, Electrical conductivity (EC)</li>
-                <li>Dissolved oxygen (DO), Turbidity</li>
-                <li>Optional: nitrates, phosphates, ammonium, oils/hydrocarbons</li>
-              </ul>
-            </div>
-            <div class="card reveal">
-              <h4>Automated Sampling</h4>
-              <ul>
-                <li>Scheduled acquisition (every 10–60 min)</li>
-                <li>Continuous, mobile large‑area sampling</li>
-              </ul>
-            </div>
-            <div class="card reveal">
-              <h4>Data Transmission</h4>
-              <ul>
-                <li>Live or delayed via NB‑IoT, LTE‑M, GSM, or LoRa</li>
-                <li>Real‑time updates on an interactive map</li>
-              </ul>
+              <div class="req-features">
+                <span class="req-feature">Temperature, pH, Electrical conductivity (EC)</span>
+                <span class="req-feature">Dissolved oxygen (DO), Turbidity</span>
+                <span class="req-feature highlight">Optional: nitrates, phosphates, ammonium, oils/hydrocarbons</span>
+              </div>
             </div>
           </div>
-          <div class="stack">
-            <div class="card reveal">
+
+          <div class="requirement-category reveal">
+            <div class="req-header">
+              <div class="req-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 6V12L15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <h3>Data Operations</h3>
+            </div>
+            <div class="req-card">
+              <h4>Automated Sampling</h4>
+              <div class="req-features">
+                <span class="req-feature">Scheduled acquisition (every 10–60 min)</span>
+                <span class="req-feature">Continuous, mobile large‑area sampling</span>
+              </div>
+            </div>
+            <div class="req-card">
+              <h4>Data Transmission</h4>
+              <div class="req-features">
+                <span class="req-feature">Live or delayed via NB‑IoT, LTE‑M, GSM, or LoRa</span>
+                <span class="req-feature">Real‑time updates on interactive map</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="requirement-category reveal">
+            <div class="req-header">
+              <div class="req-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M19 12C19 15.866 15.866 19 12 19C8.13401 19 5 15.866 5 12C5 8.13401 8.13401 5 12 5" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <h3>Infrastructure</h3>
+            </div>
+            <div class="req-card">
               <h4>Geolocation</h4>
-              <ul>
-                <li>GPS for precise spatial mapping</li>
-              </ul>
+              <div class="req-features">
+                <span class="req-feature">GPS for precise spatial mapping</span>
+              </div>
             </div>
-            <div class="card reveal">
+            <div class="req-card">
               <h4>Sustainable Energy</h4>
-              <ul>
-                <li>Solar charging and intelligent power management</li>
-                <li>24/7 autonomous operation</li>
-              </ul>
+              <div class="req-features">
+                <span class="req-feature">Solar charging & intelligent power management</span>
+                <span class="req-feature highlight">24/7 autonomous operation</span>
+              </div>
             </div>
-            <div class="card reveal">
+          </div>
+
+          <div class="requirement-category reveal">
+            <div class="req-header">
+              <div class="req-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M8 8H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M8 12H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M8 16H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h3>Interface & Design</h3>
+            </div>
+            <div class="req-card">
               <h4>User Interface</h4>
-              <ul>
-                <li>Complete web app: map, insights, filters, alerts</li>
-                <li>Admin panel for devices, firmware, maintenance</li>
-              </ul>
+              <div class="req-features">
+                <span class="req-feature">Complete web app: map, insights, filters, alerts</span>
+                <span class="req-feature">Admin panel for devices & maintenance</span>
+              </div>
             </div>
-            <div class="card reveal">
+            <div class="req-card">
               <h4>Physical Durability</h4>
-              <ul>
-                <li>Waterproof IP68 shell</li>
-                <li>Stable in rivers and marine environments</li>
-                <li>Resistant to impacts, currents, and harsh conditions</li>
-              </ul>
+              <div class="req-features">
+                <span class="req-feature">Waterproof IP68 shell</span>
+                <span class="req-feature">Stable in rivers & marine environments</span>
+                <span class="req-feature">Impact & current resistant</span>
+              </div>
             </div>
-            <div class="card reveal">
-              <h4>Key Features from the Official Site</h4>
-              <ul>
-                <li>Real‑time Pollutant Mapping</li>
-                <li>Integrated Green Technology</li>
-                <li>Real‑time Insights</li>
-                <li>Zero Carbon Emissions</li>
-              </ul>
+            <div class="req-card highlight-card">
+              <h4>Key Features</h4>
+              <div class="req-features">
+                <span class="req-feature highlight">Real‑time Pollutant Mapping</span>
+                <span class="req-feature highlight">Integrated Green Technology</span>
+                <span class="req-feature highlight">Real‑time Insights</span>
+                <span class="req-feature highlight">Zero Carbon Emissions</span>
+              </div>
             </div>
           </div>
         </div>
@@ -266,116 +336,305 @@
           <h2 style="font-size: var(--size-6);">Hardware Components</h2>
           <p>Precision engineering with eco‑conscious materials and calibrated sensors.</p>
         </div>
-        <div class="hardware">
-          <div class="panel reveal">
-            <h3 style="margin-top:0">Outer Structure</h3>
-            <ul class="list">
-              <li>Floating HDPE or recycled‑material sphere</li>
-              <li>Ergonomic, hydrodynamic design by Violo &amp; Buzatu</li>
-            </ul>
-            <h3>Electronics / MCU</h3>
-            <ul class="list">
-              <li>STM32 Nucleo</li>
-              <li>Professional multiparametric water sensors</li>
-              <li>High‑sensitivity GPS</li>
-              <li>NB‑IoT / LTE‑M / GSM / LoRa modem</li>
-              <li>ADC signal conditioning</li>
-              <li>Smart solar/battery management (simplified MPPT)</li>
-            </ul>
-            <h3>Power System</h3>
-            <ul class="list">
-              <li>10–20 Wh Li‑ion battery</li>
-              <li>3–10 W solar panel</li>
-              <li>Intelligent power‑saving modes</li>
-            </ul>
-            <h3>Additional Features</h3>
-            <ul class="list">
-              <li>Eco‑conscious materials</li>
-              <li>Self‑sustaining energy automation</li>
-              <li>99% data accuracy through calibrated sensors</li>
-            </ul>
+        
+        <div class="hardware-grid">
+          <!-- Component Categories with Interactive Cards -->
+          <div class="hardware-category reveal">
+            <div class="category-header">
+              <div class="category-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+                  <circle cx="12" cy="12" r="6" stroke="currentColor" stroke-width="1.5"/>
+                  <circle cx="12" cy="12" r="2" fill="currentColor"/>
+                </svg>
+              </div>
+              <h3>Outer Structure</h3>
+            </div>
+            <div class="component-list">
+              <div class="component-item">
+                <div class="component-marker"></div>
+                <div class="component-content">
+                  <span class="component-name">Floating HDPE sphere</span>
+                  <span class="component-desc">Recycled-material construction</span>
+                </div>
+              </div>
+              <div class="component-item">
+                <div class="component-marker"></div>
+                <div class="component-content">
+                  <span class="component-name">Hydrodynamic design</span>
+                  <span class="component-desc">By Violo & Buzatu</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hardware-category reveal">
+            <div class="category-header">
+              <div class="category-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M8 8H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M8 12H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M8 16H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h3>Electronics / MCU</h3>
+            </div>
+            <div class="component-list">
+              <div class="component-item">
+                <div class="component-marker"></div>
+                <div class="component-content">
+                  <span class="component-name">STM32 Nucleo</span>
+                  <span class="component-desc">Main processing unit</span>
+                </div>
+              </div>
+              <div class="component-item">
+                <div class="component-marker"></div>
+                <div class="component-content">
+                  <span class="component-name">Multiparametric sensors</span>
+                  <span class="component-desc">Professional water quality</span>
+                </div>
+              </div>
+              <div class="component-item">
+                <div class="component-marker"></div>
+                <div class="component-content">
+                  <span class="component-name">High-sensitivity GPS</span>
+                  <span class="component-desc">Precision location tracking</span>
+                </div>
+              </div>
+              <div class="component-item">
+                <div class="component-marker"></div>
+                <div class="component-content">
+                  <span class="component-name">NB-IoT / LTE-M modem</span>
+                  <span class="component-desc">Multi-network connectivity</span>
+                </div>
+              </div>
+              <div class="component-item">
+                <div class="component-marker"></div>
+                <div class="component-content">
+                  <span class="component-name">ADC signal conditioning</span>
+                  <span class="component-desc">Precision data acquisition</span>
+                </div>
+              </div>
+              <div class="component-item">
+                <div class="component-marker"></div>
+                <div class="component-content">
+                  <span class="component-name">Smart power management</span>
+                  <span class="component-desc">Simplified MPPT</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hardware-category reveal">
+            <div class="category-header">
+              <div class="category-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 6V12L15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <h3>Power System</h3>
+            </div>
+            <div class="component-list">
+              <div class="component-item">
+                <div class="component-marker"></div>
+                <div class="component-content">
+                  <span class="component-name">10–20 Wh Li-ion battery</span>
+                  <span class="component-desc">Extended operation</span>
+                </div>
+              </div>
+              <div class="component-item">
+                <div class="component-marker"></div>
+                <div class="component-content">
+                  <span class="component-name">3–10 W solar panel</span>
+                  <span class="component-desc">Sustainable charging</span>
+                </div>
+              </div>
+              <div class="component-item">
+                <div class="component-marker"></div>
+                <div class="component-content">
+                  <span class="component-name">Intelligent power-saving</span>
+                  <span class="component-desc">Optimized energy usage</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hardware-category reveal">
+            <div class="category-header">
+              <div class="category-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <h3>Additional Features</h3>
+            </div>
+            <div class="component-list">
+              <div class="component-item">
+                <div class="component-marker"></div>
+                <div class="component-content">
+                  <span class="component-name">Eco-conscious materials</span>
+                  <span class="component-desc">Sustainable construction</span>
+                </div>
+              </div>
+              <div class="component-item">
+                <div class="component-marker"></div>
+                <div class="component-content">
+                  <span class="component-name">Self-sustaining energy</span>
+                  <span class="component-desc">Autonomous operation</span>
+                </div>
+              </div>
+              <div class="component-item">
+                <div class="component-marker"></div>
+                <div class="component-content">
+                  <span class="component-name">99% data accuracy</span>
+                  <span class="component-desc">Calibrated sensors</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Section 4 — Software Architecture -->
-<section id="software">
-  <div class="wrap">
-    <div class="headline reveal">
-      <h2 style="font-size: var(--size-6);">Software Architecture</h2>
-      <p>End-to-end data pipeline from embedded systems to user insights</p>
-    </div>
-    <div class="architecture">
-      <div class="module module--firmware reveal">
-        <div class="module-header">
-          <h4>Embedded Firmware</h4>
+    <section id="software">
+      <div class="wrap">
+        <div class="headline reveal">
+          <h2 style="font-size: var(--size-6);">Software Architecture</h2>
+          <p>End-to-end data pipeline from embedded systems to user insights</p>
         </div>
-        <ul class="module-list">
-          <li class="module-item">Sensor drivers and calibration</li>
-          <li class="module-item">Adaptive power management</li>
-          <li class="module-item">GPS and data acquisition</li>
-          <li class="module-item">On-board processing</li>
-          <li class="module-item">Secure transmission protocols</li>
-          <li class="module-item">System monitoring and logging</li>
-        </ul>
-        <div class="data-flow">Collect → Process → Transmit</div>
-      </div>
-      
-      <div class="module module--backend reveal">
-        <div class="module-header">
-          <h4>Cloud Infrastructure</h4>
+        <div class="architecture">
+          <div class="module module--firmware reveal">
+            <div class="module-header">
+              <h4>Embedded Firmware</h4>
+            </div>
+            <ul class="module-list">
+              <li class="module-item">Sensor drivers and calibration</li>
+              <li class="module-item">Adaptive power management</li>
+              <li class="module-item">GPS and data acquisition</li>
+              <li class="module-item">On-board processing</li>
+              <li class="module-item">Secure transmission protocols</li>
+              <li class="module-item">System monitoring and logging</li>
+            </ul>
+            <div class="data-flow">Collect → Process → Transmit</div>
+          </div>
+          
+          <div class="module module--backend reveal">
+            <div class="module-header">
+              <h4>Cloud Infrastructure</h4>
+            </div>
+            <ul class="module-list">
+              <li class="module-item">Real-time data ingestion</li>
+              <li class="module-item">Time-series database</li>
+              <li class="module-item">Water quality analytics</li>
+              <li class="module-item">Dynamic visualization engine</li>
+              <li class="module-item">Automated alert system</li>
+            </ul>
+            <div class="data-flow">Ingest → Analyze → Visualize</div>
+          </div>
+          
+          <div class="module module--frontend reveal">
+            <div class="module-header">
+              <h4>User Interface</h4>
+            </div>
+            <ul class="module-list">
+              <li class="module-item">Interactive monitoring dashboard</li>
+              <li class="module-item">Real-time map visualization</li>
+              <li class="module-item">Advanced data filtering</li>
+              <li class="module-item">Device management console</li>
+              <li class="module-item">Environmental impact analytics</li>
+            </ul>
+            <div class="data-flow">Visualize → Analyze → Act</div>
+          </div>
         </div>
-        <ul class="module-list">
-          <li class="module-item">Real-time data ingestion</li>
-          <li class="module-item">Time-series database</li>
-          <li class="module-item">Water quality analytics</li>
-          <li class="module-item">Dynamic visualization engine</li>
-          <li class="module-item">Automated alert system</li>
-        </ul>
-        <div class="data-flow">Ingest → Analyze → Visualize</div>
       </div>
-      
-      <div class="module module--frontend reveal">
-        <div class="module-header">
-          <h4>User Interface</h4>
-        </div>
-        <ul class="module-list">
-          <li class="module-item">Interactive monitoring dashboard</li>
-          <li class="module-item">Real-time map visualization</li>
-          <li class="module-item">Advanced data filtering</li>
-          <li class="module-item">Device management console</li>
-          <li class="module-item">Environmental impact analytics</li>
-        </ul>
-        <div class="data-flow">Visualize → Analyze → Act</div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
     <!-- Section 5 — Field Deployment Modes -->
-    <section id="deployment">
+   <section id="deployment">
       <div class="wrap">
         <div class="headline reveal">
           <h2 style="font-size: var(--size-6);">Field Deployment Modes</h2>
           <p>Flexible strategies for any mission profile.</p>
         </div>
-        <div class="cards-4">
-          <div class="tile reveal">
-            <h5>Fixed units</h5>
-            <p>Constant monitoring at critical points.</p>
+        
+        <div class="deployment-grid">
+          <div class="deployment-card reveal">
+            <div class="deployment-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M12 2V4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M12 20V22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M4 12H2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M22 12H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M19.071 19.071L17.657 17.657" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M6.343 6.343L4.929 4.929" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M19.071 4.929L17.657 6.343" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M6.343 17.657L4.929 19.071" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="deployment-content">
+              <h3>Fixed Units</h3>
+              <p>Constant monitoring at critical points with uninterrupted data collection</p>
+            </div>
+            <div class="deployment-badge">Stable</div>
           </div>
-          <div class="tile reveal">
-            <h5>Mobile units</h5>
-            <p>Large‑area dynamic sampling while moving.</p>
+          
+          <div class="deployment-card reveal">
+            <div class="deployment-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                <path d="M3 12H5M5 12C5 15.866 8.13401 19 12 19C15.866 19 19 15.866 19 12C19 8.13401 15.866 5 12 5C8.13401 5 5 8.13401 5 12Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M21 12H19M19 12C19 8.13401 15.866 5 12 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M12 3V5M12 19V21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="deployment-content">
+              <h3>Mobile Units</h3>
+              <p>Large‑area dynamic sampling while moving across water bodies</p>
+            </div>
+            <div class="deployment-badge">Dynamic</div>
           </div>
-          <div class="tile reveal">
-            <h5>Temporary missions</h5>
-            <p>Surveying, events, and scouting operations.</p>
+          
+          <div class="deployment-card reveal">
+            <div class="deployment-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="deployment-content">
+              <h3>Temporary Missions</h3>
+              <p>Surveying, events, and scouting operations with rapid deployment</p>
+            </div>
+            <div class="deployment-badge">Flexible</div>
           </div>
-          <div class="tile reveal">
-            <h5>Multi‑unit fleets</h5>
-            <p>Generate city‑ or region‑scale water maps.</p>
+          
+          <div class="deployment-card reveal">
+            <div class="deployment-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                <circle cx="8" cy="8" r="2" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="16" cy="8" r="2" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="8" cy="16" r="2" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="16" cy="16" r="2" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M8 8V16M16 8V16M8 8H16M8 16H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="deployment-content">
+              <h3>Multi‑Unit Fleets</h3>
+              <p>Generate city‑ or region‑scale water maps with coordinated deployment</p>
+            </div>
+            <div class="deployment-badge">Scalable</div>
+          </div>
+        </div>
+        
+        <!-- Deployment Info -->
+        <div class="deployment-info reveal">
+          <div class="info-content">
+            <h4>Adaptive Deployment Strategy</h4>
+            <p>EcoBall supports multiple deployment scenarios, from single-point monitoring to large-scale fleet operations, ensuring optimal coverage for any environmental monitoring need.</p>
           </div>
         </div>
       </div>
@@ -385,21 +644,117 @@
     <section id="maintenance">
       <div class="wrap">
         <div class="headline reveal">
-          <h2 style="font-size: var(--size-6);">Maintenance &amp; Operations</h2>
+          <h2 style="font-size: var(--size-6);">Maintenance & Operations</h2>
           <p>Reliable lifecycle with remote diagnostics and OTA updates.</p>
         </div>
-        <div class="panel reveal">
-          <ul class="list">
-            <li>Sensor cleaning and calibration</li>
-            <li>Battery checks/replacement</li>
-            <li>Remote diagnostics</li>
-            <li>OTA firmware updates</li>
-            <li>Solar panel integrity monitoring</li>
-          </ul>
+        
+        <div class="maintenance-grid">
+          <div class="maintenance-card reveal">
+            <div class="maintenance-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                <path d="M14 10L12 12M12 12L10 14M12 12L14 14M12 12L10 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="maintenance-content">
+              <h3>Sensor Maintenance</h3>
+              <p>Regular cleaning and calibration to ensure 99% data accuracy</p>
+            </div>
+            <div class="maintenance-badge">Monthly</div>
+          </div>
+
+          <div class="maintenance-card reveal">
+            <div class="maintenance-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                <path d="M12 8V12L15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <rect x="3" y="10" width="18" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M7 6H17V10H7V6Z" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="maintenance-content">
+              <h3>Power Management</h3>
+              <p>Battery health checks and replacement when needed</p>
+            </div>
+            <div class="maintenance-badge">Quarterly</div>
+          </div>
+
+          <div class="maintenance-card reveal">
+            <div class="maintenance-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                <path d="M15 12L12 12M12 12L9 12M12 12L12 9M12 12L12 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M12 19C15.866 19 19 15.866 19 12C19 8.13401 15.866 5 12 5C8.13401 5 5 8.13401 5 12C5 15.866 8.13401 19 12 19Z" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="maintenance-content">
+              <h3>Remote Diagnostics</h3>
+              <p>Continuous system monitoring and proactive issue detection</p>
+            </div>
+            <div class="maintenance-badge">24/7</div>
+          </div>
+
+          <div class="maintenance-card reveal">
+            <div class="maintenance-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                <path d="M12 16L12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M12 8L12 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M7 12H5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M19 12H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M16 8L17 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M8 8L7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M16 16L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M8 16L7 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="maintenance-content">
+              <h3>Solar Monitoring</h3>
+              <p>Panel integrity and efficiency tracking</p>
+            </div>
+            <div class="maintenance-badge">Continuous</div>
+          </div>
+
+          <div class="maintenance-card highlight reveal">
+            <div class="maintenance-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M12 16L12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M12 8L12 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M21 3V7H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="maintenance-content">
+              <h3>OTA Updates</h3>
+              <p>Wireless firmware updates for continuous improvement</p>
+            </div>
+            <div class="maintenance-badge highlight">As Needed</div>
+          </div>
+        </div>
+        
+        <!-- Additional Info Panel -->
+        <div class="maintenance-info reveal">
+          <div class="info-content">
+            <h4>Proactive Maintenance Cycle</h4>
+            <p>Our automated monitoring system ensures optimal performance with minimal manual intervention. Remote diagnostics alert our team before issues impact data quality.</p>
+          </div>
+          <div class="info-stats">
+            <div class="info-stat">
+              <span class="stat-value">99.8%</span>
+              <span class="stat-label">Uptime</span>
+            </div>
+            <div class="info-stat">
+              <span class="stat-value">24/7</span>
+              <span class="stat-label">Monitoring</span>
+            </div>
+            <div class="info-stat">
+              <span class="stat-value">&lt;1h</span>
+              <span class="stat-label">Response Time</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- Section 7 — Challenges & Risks -->
     <!-- Section 7 — Challenges & Risks -->
     <section id="risks">
       <div class="wrap">
@@ -407,12 +762,78 @@
           <h2 style="font-size: var(--size-6);">Challenges &amp; Risks</h2>
           <p>Transparent view of constraints to design robust deployments.</p>
         </div>
-        <div class="alerts">
-          <div class="alert warn reveal"><span class="icon"></span><p>Sensor biofouling</p></div>
-          <div class="alert warn reveal"><span class="icon"></span><p>Low solar exposure</p></div>
-          <div class="alert info reveal"><span class="icon"></span><p>Signal loss in narrow valleys or remote areas</p></div>
-          <div class="alert danger reveal"><span class="icon"></span><p>Device retrieval in difficult environments</p></div>
-          <div class="alert info reveal"><span class="icon"></span><p>Legal/authorization requirements in public waters</p></div>
+        
+        <div class="risks-grid">
+          <div class="risk-category reveal">
+            <div class="risk-header">
+              <div class="risk-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 9V14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M12 17V17.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <h3>Environmental</h3>
+            </div>
+            <div class="risk-item">
+              <span class="risk-dot"></span>
+              <span class="risk-text">Sensor biofouling in organic-rich waters</span>
+            </div>
+            <div class="risk-item">
+              <span class="risk-dot"></span>
+              <span class="risk-text">Low solar exposure in shaded areas</span>
+            </div>
+          </div>
+
+          <div class="risk-category reveal">
+            <div class="risk-header">
+              <div class="risk-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M8 12H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M12 16V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <h3>Technical</h3>
+            </div>
+            <div class="risk-item">
+              <span class="risk-dot"></span>
+              <span class="risk-text">Signal loss in narrow valleys or remote areas</span>
+            </div>
+            <div class="risk-item">
+              <span class="risk-dot"></span>
+              <span class="risk-text">Device retrieval in difficult environments</span>
+            </div>
+          </div>
+
+          <div class="risk-category reveal">
+            <div class="risk-header">
+              <div class="risk-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M12 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M12 8V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h3>Operational</h3>
+            </div>
+            <div class="risk-item">
+              <span class="risk-dot"></span>
+              <span class="risk-text">Legal/authorization requirements in public waters</span>
+            </div>
+            <div class="risk-item">
+              <span class="risk-dot"></span>
+              <span class="risk-text">Extreme weather condition resilience</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Mitigation Panel -->
+        <div class="mitigation-panel reveal">
+          <div class="mitigation-content">
+            <h4>Proactive Mitigation</h4>
+            <p>Each challenge has been addressed through robust design, redundant systems, and comprehensive deployment planning.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -542,174 +963,294 @@
     </section>
 
     <!-- Section 11 — Positive Impact -->
-<section id="impact">
-  <div class="wrap">
-    <div class="headline reveal">
-      <h2 style="font-size: var(--size-6);">Positive Impact</h2>
-      <p>Environmental intelligence that accelerates response and engages communities</p>
-    </div>
-    
-    <div class="impact">
-      <!-- Features List -->
-      <div class="impact-features">
-        <div class="impact-feature reveal">
-          <strong>24/7 Continuous Monitoring</strong>
-          <span>Round-the-clock automated data collection without interruption</span>
+  <section id="impact">
+    <div class="wrap">
+      <div class="headline reveal">
+        <h2 style="font-size: var(--size-6);">Positive Impact</h2>
+        <p>Environmental intelligence that accelerates response and engages communities</p>
+      </div>
+      
+      <div class="impact-grid">
+        <!-- Impact Features -->
+        <div class="impact-features">
+          <div class="impact-card reveal">
+            <div class="impact-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M12 6V12L15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="impact-content">
+              <h3>24/7 Continuous Monitoring</h3>
+              <p>Round-the-clock automated data collection without interruption</p>
+            </div>
+          </div>
+          
+          <div class="impact-card reveal">
+            <div class="impact-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M12 8V12L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="impact-content">
+              <h3>Rapid Response Capability</h3>
+              <p>Immediate alerts enable swift intervention in pollution events</p>
+            </div>
+          </div>
+          
+          <div class="impact-card reveal">
+            <div class="impact-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M19 9L20.25 6.25L23 5L20.25 3.75L19 1L17.75 3.75L15 5L17.75 6.25L19 9Z" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M19 15L17.75 17.75L15 19L17.75 20.25L19 23L20.25 20.25L23 19L20.25 17.75L19 15Z" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M11 12C11 9.23858 13.2386 7 16 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="impact-content">
+              <h3>Predictive Analytics</h3>
+              <p>Advanced modeling for proactive environmental protection</p>
+            </div>
+          </div>
+          
+          <div class="impact-card reveal">
+            <div class="impact-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M16 21V19C16 17.9391 15.5786 16.9217 14.8284 16.1716C14.0783 15.4214 13.0609 15 12 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M9 11C11.2091 11 13 9.20914 13 7C13 4.79086 11.2091 3 9 3C6.79086 3 5 4.79086 5 7C5 9.20914 6.79086 11 9 11Z" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M17 3.13C17.8604 3.35031 18.623 3.85071 19.1676 4.55232C19.7122 5.25392 20.0078 6.11683 20.0078 7.005C20.0078 7.89318 19.7122 8.75608 19.1676 9.45769C18.623 10.1593 17.8604 10.6597 17 10.88" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="impact-content">
+              <h3>Community Engagement</h3>
+              <p>Educational outreach and citizen science programs</p>
+            </div>
+          </div>
+          
+          <div class="impact-card reveal">
+            <div class="impact-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M12 3V4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M12 20V21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M21 12H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M4 12H3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M18.364 18.364L17.657 17.657" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M6.343 6.343L5.636 5.636" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M18.364 5.636L17.657 6.343" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M6.343 17.657L5.636 18.364" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="impact-content">
+              <h3>Zero Emission Operation</h3>
+              <p>Fully solar-powered with carbon-neutral lifecycle</p>
+            </div>
+          </div>
         </div>
         
-        <div class="impact-feature reveal">
-          <strong>Rapid Response Capability</strong>
-          <span>Immediate alerts enable swift intervention in pollution events</span>
-        </div>
-        
-        <div class="impact-feature reveal">
-          <strong>Predictive Analytics</strong>
-          <span>Advanced modeling for proactive environmental protection</span>
-        </div>
-        
-        <div class="impact-feature reveal">
-          <strong>Community Engagement</strong>
-          <span>Educational outreach and citizen science programs</span>
-        </div>
-        
-        <div class="impact-feature reveal">
-          <strong>Zero Emission Operation</strong>
-          <span>Fully solar-powered with carbon-neutral lifecycle</span>
+        <!-- Impact Statement -->
+        <div class="impact-statement reveal">
+          <div class="statement-card">
+            <h3>Environmental Stewardship</h3>
+            <p>
+              By <span class="accent">democratizing access</span> to water quality data and 
+              <span class="accent">reducing operational barriers</span>, EcoBall enables 
+              continuous, scalable protection of aquatic ecosystems worldwide.
+            </p>
+          </div>
         </div>
       </div>
       
-      <!-- Impact Statement -->
-      <div class="impact-statement reveal">
-        <p>
-          By <span class="accent">democratizing access</span> to water quality data and 
-          <span class="accent">reducing operational barriers</span>, EcoBall enables 
-          continuous, scalable stewardship of rivers, lakes, and coastal ecosystems.
-        </p>
+      <!-- Impact Metrics -->
+      <div class="impact-metrics">
+        <div class="metric-card reveal">
+          <div class="metric-value">100%</div>
+          <div class="metric-label">Solar Powered</div>
+          <div class="metric-desc">Renewable energy operation</div>
+        </div>
+        <div class="metric-card reveal">
+          <div class="metric-value">24/7</div>
+          <div class="metric-label">Continuous</div>
+          <div class="metric-desc">Uninterrupted monitoring</div>
+        </div>
+        <div class="metric-card reveal">
+          <div class="metric-value">0</div>
+          <div class="metric-label">Carbon Free</div>
+          <div class="metric-desc">Zero emissions footprint</div>
+        </div>
       </div>
     </div>
-    
-    <!-- Impact Metrics -->
-    <div class="impact-metrics">
-      <div class="impact-metric reveal">
-        <span class="metric-value">100%</span>
-        <div class="metric-label">Solar Powered</div>
-      </div>
-      <div class="impact-metric reveal">
-        <span class="metric-value">24/7</span>
-        <div class="metric-label">Operation</div>
-      </div>
-      <div class="impact-metric reveal">
-        <span class="metric-value">0</span>
-        <div class="metric-label">Carbon Emissions</div>
-      </div>
-    </div>
-  </div>
-</section>
-
+  </section>
 <!-- Section 12 — Recognition & Achievements -->
-<section id="recognition">
-  <div class="wrap">
-    <div class="headline reveal">
-      <h2 style="font-size: var(--size-6);">Recognition & Achievements</h2>
-      <p>Validated through competitions and exhibitions by leading institutions</p>
+  <section id="recognition">
+    <div class="wrap">
+      <div class="headline reveal">
+        <h2 style="font-size: var(--size-6);">Recognition & Achievements</h2>
+        <p>Validated through competitions and exhibitions by leading institutions</p>
+      </div>
+      
+      <div class="achievements-grid">
+        <div class="achievement-card reveal">
+          <div class="achievement-badge">Institutional</div>
+          <div class="achievement-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="achievement-content">
+            <h3>Institutional Development</h3>
+            <p class="achievement-org">Istituto Rapisardi–Da Vinci</p>
+            <p class="achievement-desc">Leading technical institute supporting innovative projects</p>
+          </div>
+        </div>
+        
+        <div class="achievement-card highlight reveal">
+          <div class="achievement-badge primary">1st Place Winner</div>
+          <div class="achievement-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M12 4L13.5 8.5L18 9L14.5 12L15.5 16.5L12 14L8.5 16.5L9.5 12L6 9L10.5 8.5L12 4Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="achievement-content">
+            <h3>STM32 Contest Winner</h3>
+            <p class="achievement-org">6th Edition "Costruiamo il futuro con STM32"</p>
+            <p class="achievement-desc">1st place winner 2021/2022 - Top embedded systems project worldwide</p>
+          </div>
+        </div>
+        
+        <div class="achievement-card reveal">
+          <div class="achievement-badge">Exhibition</div>
+          <div class="achievement-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M8 8H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M8 12H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M8 16H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="achievement-content">
+            <h3>Maker Faire 2022</h3>
+            <p class="achievement-org">International Showcase</p>
+            <p class="achievement-desc">Presented to global audience of innovators and creators</p>
+          </div>
+        </div>
+        
+        <div class="achievement-card reveal">
+          <div class="achievement-badge">Collaboration</div>
+          <div class="achievement-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M6 18C6 15.7909 7.79086 14 10 14H14C16.2091 14 18 15.7909 18 18V20H6V18Z" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M16 8C16 9.65685 17.3431 11 19 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M22 18V20H19C17.3431 20 16 18.6569 16 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="achievement-content">
+            <h3>Team Excellence</h3>
+            <p class="achievement-org">Multidisciplinary Team</p>
+            <p class="achievement-desc">Collaboration across design, engineering, and programming disciplines</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="cards-4">
-      <div class="tile reveal tile--accent">
-        <div class="tile__header">
-          <div class="tile__icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2"/>
-              <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2"/>
-              <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2"/>
-            </svg>
-          </div>
-          <h5>Institutional Development</h5>
-        </div>
-        <p>Istituto Rapisardi–Da Vinci<br><span class="tile__subtitle">Leading technical institute</span></p>
-      </div>
-      
-      <div class="tile reveal tile--highlight">
-        <span class="achievement-badge">Finalist</span>
-        <div class="tile__header">
-          <div class="tile__icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path d="M12 15L7 10H17L12 15Z" fill="currentColor"/>
-              <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
-            </svg>
-          </div>
-          <h5>STM32 Contest</h5>
-        </div>
-        <p>Selected among top embedded systems projects worldwide</p>
-      </div>
-      
-      <div class="tile reveal">
-        <div class="tile__header">
-          <div class="tile__icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <rect x="2" y="6" width="20" height="12" rx="2" stroke="currentColor" stroke-width="2"/>
-              <path d="M8 6V4C8 2.89543 8.89543 2 10 2H14C15.1046 2 16 2.89543 16 4V6" stroke="currentColor" stroke-width="2"/>
-              <path d="M12 12V12.01" stroke="currentColor" stroke-width="2"/>
-            </svg>
-          </div>
-          <h5>Maker Faire 2022</h5>
-        </div>
-        <p>Showcased to international audience of innovators and creators</p>
-      </div>
-      
-      <div class="tile reveal">
-        <div class="tile__header">
-          <div class="tile__icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2"/>
-              <path d="M6 18C6 15.7909 7.79086 14 10 14H14C16.2091 14 18 15.7909 18 18V20H6V18Z" stroke="currentColor" stroke-width="2"/>
-            </svg>
-          </div>
-          <h5>Team Collaboration</h5>
-        </div>
-        <p>Multidisciplinary collaboration across design, engineering, and programming</p>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
     <!-- Section 13 — Official Team -->
-<section id="team">
-  <div class="wrap">
-    <div class="headline reveal">
-      <h2 style="font-size: var(--size-6);">Official Team</h2>
-      <p>Design, engineering, and programming — united by purpose and innovation</p>
-    </div>
-    <div class="team-grid">
-      <div class="panel team-group reveal">
-        <h3 style="margin-top:0">Design</h3>
-        <div class="member">
-          <span>Samir Buzatu</span>
-          <span>UI/UX, 3D modeling, designer</span>
+  <section id="team">
+    <div class="wrap">
+      <div class="headline reveal">
+        <h2 style="font-size: var(--size-6);">Official Team</h2>
+        <p>Design, engineering, and programming — united by purpose and innovation</p>
+      </div>
+      
+      <div class="team-grid">
+        <div class="team-category reveal">
+          <div class="category-header">
+            <div class="category-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M8 12H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M12 16V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Design</h3>
+          </div>
+          <div class="team-members">
+            <div class="team-member">
+              <div class="member-avatar">
+                <span>SB</span>
+              </div>
+              <div class="member-info">
+                <h4 class="member-name">Samir Buzatu</h4>
+                <p class="member-role">UI/UX, 3D modeling, designer</p>
+              </div>
+            </div>
+            <div class="team-member">
+              <div class="member-avatar">
+                <span>CV</span>
+              </div>
+              <div class="member-info">
+                <h4 class="member-name">Christian Violo</h4>
+                <p class="member-role">Illustrations, CAD design</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="member">
-          <span>Christian Violo</span>
-          <span>illustrations, CAD</span>
+
+        <div class="team-category reveal">
+          <div class="category-header">
+            <div class="category-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M8 8H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M8 12H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M8 16H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Engineering & Programming</h3>
+          </div>
+          <div class="team-members">
+            <div class="subcategory">
+              <h5 class="subcategory-title">Engineering</h5>
+              <div class="team-member">
+                <div class="member-avatar">
+                  <span>FP</span>
+                </div>
+                <div class="member-info">
+                  <h4 class="member-name">Francesco Pilato</h4>
+                  <p class="member-role">Embedded systems, hardware</p>
+                </div>
+              </div>
+            </div>
+            <div class="subcategory">
+              <h5 class="subcategory-title">Programming</h5>
+              <div class="team-member">
+                <div class="member-avatar">
+                  <span>AL</span>
+                </div>
+                <div class="member-info">
+                  <h4 class="member-name">Andrea Lombardo</h4>
+                  <p class="member-role">APIs, system architecture</p>
+                </div>
+              </div>
+              <div class="team-member">
+                <div class="member-avatar">
+                  <span>MO</span>
+                </div>
+                <div class="member-info">
+                  <h4 class="member-name">Michele Ottaviano</h4>
+                  <p class="member-role">Backend development</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="panel team-group reveal">
-        <h3 style="margin-top:0">Engineering</h3>
-        <div class="member">
-          <span>Francesco Pilato</span>
-          <span>embedded systems, hardware</span>
-        </div>
-        <h3 style="margin-top: var(--space-4);">Programming</h3>
-        <div class="member">
-          <span>Andrea Lombardo</span>
-          <span>programmer, APIs</span>
-        </div>
-        <div class="member">
-          <span>Michele Ottaviano</span>
-          <span>backend, programmer</span>
-        </div>
-      </div>
     </div>
-  </div>
-</section>
+  </section>
   </main>
 
 <footer>

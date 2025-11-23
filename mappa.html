@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="it" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <link rel="icon" href="icon.png" type="image/x-icon">
+    <title>EcoBall - Mappa Monitoraggio</title>
+
+    <!-- Stili principali -->
+    <link rel="stylesheet" href="css/topbar.css" />
+    <link rel="stylesheet" href="css/stat.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/spec.css" />
+    <link rel="stylesheet" href="css/tile.css" />
+    <link rel="stylesheet" href="css/impact.css" />
+    <link rel="stylesheet" href="css/timeline.css" />
+    <link rel="stylesheet" href="css/architecture.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/chip.css" />
+    <link rel="stylesheet" href="css/scroll-line.css" />
+    <link rel="stylesheet" href="css/teams.css" />
+    <link rel="stylesheet" href="css/map.css" />
+</head>
+<body>
+    <!-- Top Bar Navigation -->
+    <nav class="top-bar" id="topBar">
+        <div class="top-bar__content">
+            <div class="top-bar__brand">
+                <div class="logo">
+                    <span class="logo__text">eb</span>
+                </div>
+            </div>
+
+            <div class="top-bar__nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="map.html" class="nav-link active">Mappa</a>
+                <a href="leaderboard.html" class="nav-link">Classifica</a>
+                <a href="contact.html" class="nav-link">Contatti</a>
+            </div>
+
+            <div class="top-bar__actions">
+                <a href="#filters" class="cta-btn">
+                    <span>Filtri</span>
+                </a>
+            </div>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-menu__content">
+                <a href="index.html" class="mobile-link">Home</a>
+                <a href="map.html" class="mobile-link active">Mappa</a>
+                <a href="leaderboard.html" class="mobile-link">Classifica</a>
+                <a href="contact.html" class="mobile-link">Contatti</a>
+                <a href="#filters" class="mobile-cta">Filtri Mappa</a>
+            </div>
+        </div>
+
+        <div class="top-bar__progress"></div>
+    </nav>
+
+    <!-- Map Hero Section -->
+    <section class="map-hero">
+        <div class="wrap">
+            <div class="hero-content reveal">
+                <span class="chip magnetic"><span class="dot"></span> EcoBall — Mappa in Tempo Reale</span>
+                <h1 class="title">Monitoraggio Qualità Acqua</h1>
+                <p class="subtitle">Visualizzazione in tempo reale dei dati di qualità dell'acqua raccolti dalla rete EcoBall</p>
+                
+                <div class="map-stats">
+                    <div class="stat reveal">
+                        <div class="k" id="totalPoints">0</div>
+                        <div class="label">Punti Monitoraggio</div>
+                    </div>
+                    <div class="stat reveal">
+                        <div class="k" id="activeDevices">0</div>
+                        <div class="label">Dispositivi Attivi</div>
+                    </div>
+                    <div class="stat reveal">
+                        <div class="k">24/7</div>
+                        <div class="label">Aggiornamento Dati</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-background" aria-hidden="true"></div>
+    </section>
+
+    <!-- Map Controls -->
+    <section class="map-controls" id="filters">
+        <div class="wrap">
+            <div class="controls-panel panel reveal">
+                <h3>Filtri Mappa</h3>
+                <div class="filters-grid">
+                    <div class="filter-group">
+                        <label class="filter-label">Parametri Qualità Acqua</label>
+                        <div class="filter-options">
+                            <label class="filter-checkbox">
+                                <input type="checkbox" id="filter-tds" checked>
+                                <span class="checkmark"></span>
+                                TDS (Solidi Disciolti)
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" id="filter-turbidity" checked>
+                                <span class="checkmark"></span>
+                                Torbidità
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" id="filter-temperature">
+                                <span class="checkmark"></span>
+                                Temperatura
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label class="filter-label">Intervallo Temporale</label>
+                        <div class="filter-options">
+                            <select id="time-range" class="filter-select">
+                                <option value="24h">Ultime 24 ore</option>
+                                <option value="7d" selected>Ultimi 7 giorni</option>
+                                <option value="30d">Ultimi 30 giorni</option>
+                                <option value="all">Tutti i dati</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label class="filter-label">Qualità Dati</label>
+                        <div class="filter-options">
+                            <label class="filter-checkbox">
+                                <input type="checkbox" id="filter-high-quality" checked>
+                                <span class="checkmark"></span>
+                                Alta qualità
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" id="filter-medium-quality" checked>
+                                <span class="checkmark"></span>
+                                Qualità media
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="controls-actions">
+                    <button id="apply-filters" class="btn primary">Applica Filtri</button>
+                    <button id="reset-filters" class="btn">Reset</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Map Container -->
+    <section class="map-container">
+        <div id="googleMap"></div>
+        <div class="map-legend panel">
+            <h4>Legenda Qualità Acqua</h4>
+            <div class="legend-items">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #00cc66;"></div>
+                    <span>Eccellente</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #66ff66;"></div>
+                    <span>Buona</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #ffff66;"></div>
+                    <span>Accettabile</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #ff9966;"></div>
+                    <span>Moderata</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #ff5050;"></div>
+                    <span>Critica</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Map Controls -->
+        <div class="map-controls-simple">
+            <div class="control-group">
+                <button id="zoomIn" class="control-btn">+</button>
+                <button id="zoomOut" class="control-btn">-</button>
+            </div>
+            <div class="control-group">
+                <button id="locateItaly" class="control-btn">🇮🇹</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Summary -->
+    <section class="data-summary">
+        <div class="wrap">
+            <div class="headline reveal">
+                <h2 style="font-size: var(--size-6);">Dati in Tempo Reale</h2>
+                <p>Metriche aggregate dalla rete di monitoraggio EcoBall</p>
+            </div>
+            
+            <div class="summary-grid">
+                <div class="summary-card reveal">
+                    <div class="summary-icon">🌡️</div>
+                    <div class="summary-content">
+                        <div class="summary-value" id="avg-tds">0</div>
+                        <div class="summary-label">TDS Medio (ppm)</div>
+                    </div>
+                </div>
+                
+                <div class="summary-card reveal">
+                    <div class="summary-icon">💧</div>
+                    <div class="summary-content">
+                        <div class="summary-value" id="avg-turbidity">0</div>
+                        <div class="summary-label">Torbidità Media (NTU)</div>
+                    </div>
+                </div>
+                
+                <div class="summary-card reveal">
+                    <div class="summary-icon">📊</div>
+                    <div class="summary-content">
+                        <div class="summary-value" id="data-quality">95%</div>
+                        <div class="summary-label">Qualità Dati</div>
+                    </div>
+                </div>
+                
+                <div class="summary-card reveal">
+                    <div class="summary-icon">🕒</div>
+                    <div class="summary-content">
+                        <div class="summary-value" id="update-frequency">0</div>
+                        <div class="summary-label">Aggiornamenti/Ora</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="wrap">
+            <div class="footer-content">
+                <div class="footer-main">
+                    <div class="footer-brand">
+                        <div class="logo">
+                            <div class="logo__dot"></div>
+                            <span class="logo__text">EB</span>
+                        </div>
+                        <div class="footer-tagline">
+                            <span>EcoBall</span>
+                            <span class="footer-subtle">Intelligenza idrica</span>
+                        </div>
+                    </div>
+                    
+                    <nav class="footer-nav">
+                        <a href="index.html">Home</a>
+                        <a href="map.html">Mappa</a>
+                        <a href="leaderboard.html">Classifica</a>
+                        <a href="contact.html">Contatti</a>
+                    </nav>
+                </div>
+                
+                <div class="footer-meta">
+                    <div class="footer-legal">
+                        <span>© <span id="year"></span> EcoBall</span>
+                        <span class="footer-divider">•</span>
+                        <span>Istituto Rapisardi–Da Vinci</span>
+                    </div>
+                    <div class="footer-status">
+                        <div class="status-indicator"></div>
+                        <span>Monitoraggio attivo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts - USANDO LO STESSO APPROCCIO FUNZIONANTE -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.11&sensor=false" type="text/javascript"></script>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-database-compat.js"></script>
+
+    <script src="js/script.js"></script>
+
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyA_0f0OS1AYgrCiZHQ9kAWzdn8TwzAuZ5A",
+            authDomain: "ecoball-database.firebaseapp.com",
+            databaseURL: "https://ecoball-database-default-rtdb.firebaseio.com",
+            projectId: "ecoball-database",
+            storageBucket: "ecoball-database.appspot.com",
+            messagingSenderId: "124474531451",
+            appId: "1:124474531451:web:f1eb1ac9540e0b7e404cde"
+        };
+
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        // Global variables
+        let googleMap;
+        let markers = [];
+        let totalPoints = 0;
+        let tdsSum = 0;
+        let turbiditySum = 0;
+        let dataCount = 0;
+        let uniqueDevices = new Set();
+
+        // Initialize the map
+        function initMap() {
+            // Map options
+            var optionsMap = {
+                zoom: 6,
+                center: new google.maps.LatLng(43.094056784340914, 12.505439322730146),
+                mapTypeId: google.maps.MapTypeId.TERRAIN,
+                mapTypeControl: false,
+                zoomControl: false, // We'll use custom controls
+                streetViewControl: false,
+                fullscreenControl: true,
+                styles: [
+                    {
+                        "featureType": "poi",
+                        "stylers": [{ "visibility": "off" }]
+                    },
+                    {
+                        "elementType": "geometry",
+                        "stylers": [{ "color": "#f5f5f5" }]
+                    },
+                    {
+                        "elementType": "labels.icon",
+                        "stylers": [{ "visibility": "on" }]
+                    }
+                ]
+            };
+
+            // Initialize map
+            googleMap = new google.maps.Map(document.getElementById('googleMap'), optionsMap);
+            
+            // Setup controls
+            setupMapControls();
+            
+            // Load data from Firebase
+            loadFirebaseData();
+            
+            // Update copyright year
+            updateCopyrightYear();
+
+            // Setup filter functionality
+            setupFilters();
+        }
+
+        function setupMapControls() {
+            // Zoom in
+            document.getElementById('zoomIn').addEventListener('click', function() {
+                googleMap.setZoom(googleMap.getZoom() + 1);
+            });
+
+            // Zoom out
+            document.getElementById('zoomOut').addEventListener('click', function() {
+                googleMap.setZoom(googleMap.getZoom() - 1);
+            });
+
+            // Locate Italy
+            document.getElementById('locateItaly').addEventListener('click', function() {
+                googleMap.setCenter(new google.maps.LatLng(43.094056784340914, 12.505439322730146));
+                googleMap.setZoom(6);
+            });
+        }
+
+        function setupFilters() {
+            // Apply filters button
+            document.getElementById('apply-filters').addEventListener('click', function() {
+                applyFilters();
+            });
+
+            // Reset filters button
+            document.getElementById('reset-filters').addEventListener('click', function() {
+                resetFilters();
+            });
+        }
+
+        function applyFilters() {
+            // Get filter values
+            const showTDS = document.getElementById('filter-tds').checked;
+            const showTurbidity = document.getElementById('filter-turbidity').checked;
+            const timeRange = document.getElementById('time-range').value;
+            
+            console.log('Applying filters:', { showTDS, showTurbidity, timeRange });
+            // In a real implementation, you would filter the markers based on these criteria
+            // For now, we'll just reload all data
+            loadFirebaseData();
+        }
+
+        function resetFilters() {
+            // Reset all checkboxes to checked
+            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                checkbox.checked = true;
+            });
+            
+            // Reset select to default
+            document.getElementById('time-range').value = '7d';
+            
+            // Reload data
+            loadFirebaseData();
+        }
+
+        function loadFirebaseData() {
+            const dbRef = database.ref('ecoBall/');
+            
+            dbRef.on('value', (snapshot) => {
+                clearMarkers();
+                resetStats();
+                
+                const data = snapshot.val();
+                if (data) {
+                    for (let pointId in data) {
+                        if (data.hasOwnProperty(pointId)) {
+                            createMarker(data[pointId], pointId);
+                            updateStats(data[pointId]);
+                        }
+                    }
+                    
+                    updateDisplay();
+                }
+            });
+        }
+
+        function createMarker(pointData, pointId) {
+            const { Latitudine, Longitudine, Orario, Data, TDS, torb, deviceId } = pointData;
+            
+            // Track unique devices
+            if (deviceId) {
+                uniqueDevices.add(deviceId);
+            }
+            
+            // Determine marker color based on water quality
+            const markerColor = getWaterQualityColor(TDS, torb);
+            
+            const marker = new google.maps.Marker({
+                position: new google.maps.LatLng(Latitudine, Longitudine),
+                map: googleMap,
+                title: `Dati: ${Orario}`,
+                icon: {
+                    path: google.maps.SymbolPath.CIRCLE,
+                    scale: 10,
+                    fillColor: markerColor,
+                    fillOpacity: 0.9,
+                    strokeColor: '#ffffff',
+                    strokeWeight: 2,
+                    strokeOpacity: 0.8
+                }
+            });
+
+            // Create improved info window content
+            const infoContent = `
+                <div class="custom-info-window">
+                    <h3>📊 Dati Monitoraggio</h3>
+                    <div class="info-grid">
+                        <div class="info-row">
+                            <span class="info-label">Coordinate:</span>
+                            <span class="info-value">${Latitudine?.toFixed(6)}, ${Longitudine?.toFixed(6)}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Data/Ora:</span>
+                            <span class="info-value">${Data} ${Orario}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">TDS:</span>
+                            <span class="info-value">${TDS || 'N/D'} ppm</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Torbidità:</span>
+                            <span class="info-value">${torb || 'N/D'} NTU</span>
+                        </div>
+                        <div class="info-row quality-row">
+                            <span class="info-label">Qualità:</span>
+                            <span class="info-value quality-${getWaterQualityLevel(TDS, torb)}">
+                                ${getWaterQualityText(TDS, torb)}
+                            </span>
+                        </div>
+                        ${deviceId ? `<div class="info-row">
+                            <span class="info-label">Dispositivo:</span>
+                            <span class="info-value">${deviceId}</span>
+                        </div>` : ''}
+                    </div>
+                </div>
+            `;
+
+            const infowindow = new google.maps.InfoWindow({
+                content: infoContent
+            });
+
+            marker.addListener('click', function() {
+                // Close all other info windows
+                markers.forEach(m => {
+                    if (m.infoWindow) {
+                        m.infoWindow.close();
+                    }
+                });
+                
+                infowindow.open(googleMap, marker);
+                marker.infoWindow = infowindow;
+            });
+
+            // Add hover effect
+            marker.addListener('mouseover', function() {
+                this.setIcon({
+                    path: google.maps.SymbolPath.CIRCLE,
+                    scale: 12,
+                    fillColor: markerColor,
+                    fillOpacity: 1,
+                    strokeColor: '#ffffff',
+                    strokeWeight: 3,
+                    strokeOpacity: 1
+                });
+            });
+
+            marker.addListener('mouseout', function() {
+                this.setIcon({
+                    path: google.maps.SymbolPath.CIRCLE,
+                    scale: 10,
+                    fillColor: markerColor,
+                    fillOpacity: 0.9,
+                    strokeColor: '#ffffff',
+                    strokeWeight: 2,
+                    strokeOpacity: 0.8
+                });
+            });
+
+            markers.push(marker);
+            totalPoints++;
+        }
+
+        function getWaterQualityColor(tds, turbidity) {
+            tds = tds || 0;
+            turbidity = turbidity || 0;
+            
+            if (tds < 50 && turbidity < 5) return '#00cc66'; // Excellent
+            if (tds < 100 && turbidity < 10) return '#66ff66'; // Good
+            if (tds < 200 && turbidity < 20) return '#ffff66'; // Acceptable
+            if (tds < 300 && turbidity < 30) return '#ff9966'; // Moderate
+            return '#ff5050'; // Critical
+        }
+
+        function getWaterQualityLevel(tds, turbidity) {
+            tds = tds || 0;
+            turbidity = turbidity || 0;
+            
+            if (tds < 50 && turbidity < 5) return 'excellent';
+            if (tds < 100 && turbidity < 10) return 'good';
+            if (tds < 200 && turbidity < 20) return 'acceptable';
+            if (tds < 300 && turbidity < 30) return 'moderate';
+            return 'critical';
+        }
+
+        function getWaterQualityText(tds, turbidity) {
+            tds = tds || 0;
+            turbidity = turbidity || 0;
+            
+            if (tds < 50 && turbidity < 5) return 'Eccellente';
+            if (tds < 100 && turbidity < 10) return 'Buona';
+            if (tds < 200 && turbidity < 20) return 'Accettabile';
+            if (tds < 300 && turbidity < 30) return 'Moderata';
+            return 'Critica';
+        }
+
+        function updateStats(pointData) {
+            const { TDS, torb } = pointData;
+            
+            if (TDS) {
+                tdsSum += TDS;
+                turbiditySum += (torb || 0);
+                dataCount++;
+            }
+        }
+
+        function resetStats() {
+            totalPoints = 0;
+            tdsSum = 0;
+            turbiditySum = 0;
+            dataCount = 0;
+            uniqueDevices.clear();
+        }
+
+        function updateDisplay() {
+            // Update hero stats
+            document.getElementById('totalPoints').textContent = totalPoints;
+            document.getElementById('activeDevices').textContent = uniqueDevices.size;
+            
+            // Update summary cards
+            document.getElementById('avg-tds').textContent = dataCount > 0 ? Math.round(tdsSum / dataCount) : 0;
+            document.getElementById('avg-turbidity').textContent = dataCount > 0 ? Math.round(turbiditySum / dataCount) : 0;
+            document.getElementById('update-frequency').textContent = dataCount > 0 ? Math.round(dataCount / 24) : 0;
+        }
+
+        function clearMarkers() {
+            markers.forEach(marker => {
+                if (marker.infoWindow) {
+                    marker.infoWindow.close();
+                }
+                marker.setMap(null);
+            });
+            markers = [];
+        }
+
+        function updateCopyrightYear() {
+            const yearElement = document.getElementById('year');
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+        }
+
+        // Error handling
+        window.gm_authFailure = function() {
+            alert('Errore nel caricamento di Google Maps. Controlla la tua connessione internet.');
+        };
+
+        // Initialize when Google Maps is loaded
+        if (typeof google !== 'undefined') {
+            initMap();
+        }
+
+        // Fallback initialization
+        window.initMap = initMap;
+    </script>
+</body>
+</html>
