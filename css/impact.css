@@ -1,0 +1,141 @@
+/* Clean Impact Section */
+.impact {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  align-items: start;
+  margin-top: var(--space-5);
+}
+
+.impact-features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.impact-feature {
+  padding: var(--space-4);
+  border: 1px solid color-mix(in srgb, var(--stroke) 30%, transparent);
+  border-radius: var(--radius-l);
+  background: color-mix(in srgb, var(--elev-1) 60%, transparent);
+  transition: all var(--dur-2) var(--ease);
+  position: relative;
+}
+
+.impact-feature::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--brand);
+  opacity: 0;
+  transition: opacity var(--dur-2) var(--ease);
+}
+
+.impact-feature:hover {
+  border-color: color-mix(in srgb, var(--brand) 40%, transparent);
+  background: color-mix(in srgb, var(--elev-1) 80%, transparent);
+  transform: translateX(8px);
+}
+
+.impact-feature:hover::before {
+  opacity: 1;
+}
+
+.impact-feature strong {
+  display: block;
+  font-size: var(--size-2);
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.impact-feature span {
+  font-size: var(--size-1);
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.impact-statement {
+  padding: var(--space-5);
+  border-left: 3px solid var(--brand);
+  background: color-mix(in srgb, var(--elev-1) 40%, transparent);
+  border-radius: 0 var(--radius-l) var(--radius-l) 0;
+}
+
+.impact-statement p {
+  margin: 0;
+  font-size: var(--size-3);
+  line-height: 1.5;
+  color: var(--text);
+  font-weight: 450;
+}
+
+.impact-statement .accent {
+  color: var(--brand);
+  font-weight: 600;
+}
+
+/* Impact Metrics */
+.impact-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid color-mix(in srgb, var(--stroke) 30%, transparent);
+}
+
+.impact-metric {
+  text-align: center;
+  padding: var(--space-3);
+}
+
+.metric-value {
+  display: block;
+  font-size: var(--size-5);
+  font-weight: 700;
+  color: var(--brand);
+  margin-bottom: var(--space-1);
+  line-height: 1;
+}
+
+.metric-label {
+  font-size: var(--size-1);
+  color: var(--text-muted);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .impact {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+  
+  .impact-statement {
+    border-left: none;
+    border-top: 3px solid var(--brand);
+    border-radius: 0 0 var(--radius-l) var(--radius-l);
+  }
+}
+
+@media (max-width: 640px) {
+  .impact-metrics {
+  display: grid; /* nel caso non ci fosse già */
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+}
+
+  
+  .impact-feature {
+    padding: var(--space-3);
+  }
+  
+  .impact-statement {
+    padding: var(--space-4);
+  }
+}

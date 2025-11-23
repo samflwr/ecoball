@@ -1,0 +1,167 @@
+/* Team premium upgrade */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+  position: relative;
+}
+
+.team-grid::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  right: -30px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--brand) 8%, transparent) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.panel.team-group {
+  position: relative;
+  overflow: hidden;
+  background: 
+    linear-gradient(135deg, color-mix(in srgb, var(--elev-2) 70%, transparent), color-mix(in srgb, var(--elev-1) 90%, transparent)),
+    radial-gradient(ellipse at 80% 20%, color-mix(in srgb, var(--brand) 6%, transparent) 0%, transparent 50%);
+  border: 1px solid color-mix(in srgb, var(--stroke) 60%, transparent);
+  border-radius: var(--radius-xl);
+  box-shadow: 
+    var(--shadow-subtle),
+    0 1px 0 rgba(255, 255, 255, 0.03) inset;
+  padding: clamp(24px, 4vw, 42px);
+  backdrop-filter: blur(12px) saturate(180%);
+  transition: all var(--dur-2) var(--ease);
+  z-index: 1;
+}
+
+.panel.team-group:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--brand) 25%, var(--stroke));
+  box-shadow: 
+    var(--shadow-soft),
+    0 1px 0 rgba(255, 255, 255, 0.05) inset;
+}
+
+.panel.team-group::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--brand) 30%, transparent), transparent);
+  opacity: 0.6;
+}
+
+.panel.team-group h3 {
+  font-size: var(--size-4);
+  letter-spacing: -0.01em;
+  margin: 0 0 var(--space-3);
+  background: linear-gradient(135deg, var(--text), color-mix(in srgb, var(--text) 70%, var(--brand)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  display: inline-block;
+}
+
+.panel.team-group h3::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--brand), transparent);
+  border-radius: 2px;
+}
+
+.team-group .member {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--stroke-2) 40%, transparent);
+  transition: all var(--dur-2) var(--ease);
+  gap: var(--space-2);
+}
+
+.team-group .member::before {
+  content: "";
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--brand);
+  opacity: 0;
+  transition: all var(--dur-2) var(--ease);
+}
+
+.team-group .member:hover {
+  transform: translateX(8px);
+  border-bottom-color: color-mix(in srgb, var(--brand) 20%, var(--stroke-2));
+  padding-left: 12px;
+}
+
+.team-group .member:hover::before {
+  opacity: 1;
+  left: 0;
+}
+
+.team-group .member:last-child {
+  border-bottom: none;
+}
+
+.team-group .member span:first-child {
+  font-weight: 700;
+  font-size: clamp(1.1rem, 1rem + 0.6vw, 1.4rem);
+  letter-spacing: -0.01em;
+  color: var(--text);
+  line-height: 1.3;
+  flex-shrink: 0;
+  min-width: 140px;
+}
+
+.team-group .member span:last-child {
+  color: var(--text-muted);
+  font-size: var(--size-2);
+  line-height: 1.4;
+  text-align: right;
+  flex: 1;
+}
+
+/* Enhanced role styling */
+.team-group .member span:last-child {
+  background: linear-gradient(135deg, var(--text-muted), color-mix(in srgb, var(--text-muted) 80%, var(--brand)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Responsive refinement */
+@media (max-width: 768px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+  
+  .team-group .member {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  
+  .team-group .member span:last-child {
+    text-align: left;
+    font-size: var(--size-1);
+  }
+  
+  .team-group .member span:first-child {
+    min-width: auto;
+  }
+}

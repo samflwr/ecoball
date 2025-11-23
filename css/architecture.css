@@ -1,0 +1,105 @@
+
+/* Clean Architecture Diagram */
+.architecture {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+.module {
+  padding: var(--space-5);
+  border: 1px solid color-mix(in srgb, var(--stroke) 40%, transparent);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--elev-2) 50%, transparent) 0%,
+    color-mix(in srgb, var(--elev-1) 70%, transparent) 100%
+  );
+  transition: all var(--dur-2) var(--ease);
+  position: relative;
+}
+
+.module::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  opacity: 0.8;
+}
+
+.module:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--brand) 50%, transparent);
+  box-shadow: var(--shadow-soft);
+}
+
+.module-header {
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid color-mix(in srgb, var(--stroke) 30%, transparent);
+}
+
+.module h4 {
+  margin: 0;
+  font-size: var(--size-3);
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.module-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.module-item {
+  padding: var(--space-2) 0;
+  color: var(--text-muted);
+  font-size: var(--size-2);
+  line-height: 1.5;
+  position: relative;
+  padding-left: var(--space-3);
+}
+
+.module-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--brand);
+  opacity: 0.6;
+}
+
+.data-flow {
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px solid color-mix(in srgb, var(--stroke) 30%, transparent);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--size-1);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .architecture {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+  
+  .module {
+    padding: var(--space-4);
+  }
+}

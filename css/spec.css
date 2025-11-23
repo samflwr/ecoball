@@ -1,0 +1,151 @@
+/* Premium Technical Specs */
+.specs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+.spec {
+  padding: var(--space-4);
+  border: 1px solid color-mix(in srgb, var(--stroke) 50%, transparent);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--elev-2) 60%, transparent) 0%,
+    color-mix(in srgb, var(--elev-1) 80%, transparent) 100%
+  );
+  color: var(--text);
+  font-size: var(--size-2);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--dur-2) var(--ease);
+  backdrop-filter: blur(10px);
+}
+
+.spec::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--brand) 8%, transparent) 0%,
+    color-mix(in srgb, var(--brand) 4%, transparent) 50%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity var(--dur-2) var(--ease);
+}
+
+.spec::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--brand) 30%, transparent),
+    transparent
+  );
+  opacity: 0.5;
+}
+
+.spec:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--brand) 40%, transparent);
+  box-shadow: 
+    var(--shadow-soft),
+    0 8px 32px color-mix(in srgb, var(--brand) 8%, transparent);
+}
+
+.spec:hover::before {
+  opacity: 1;
+}
+
+/* Spec Icons */
+.spec[data-icon] {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding-left: var(--space-5);
+}
+
+.spec[data-icon]::before {
+  content: attr(data-icon);
+  font-size: var(--size-4);
+  opacity: 0.7;
+  transition: all var(--dur-2) var(--ease);
+  position: static;
+  background: none;
+}
+
+.spec:hover[data-icon]::before {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Spec Categories */
+.spec[data-category="processing"] {
+  border-left: 3px solid color-mix(in srgb, var(--brand) 60%, transparent);
+}
+
+.spec[data-category="connectivity"] {
+  border-left: 3px solid color-mix(in srgb, var(--ok) 60%, transparent);
+}
+
+.spec[data-category="sensing"] {
+  border-left: 3px solid color-mix(in srgb, var(--warn) 60%, transparent);
+}
+
+.spec[data-category="power"] {
+  border-left: 3px solid color-mix(in srgb, #4FD1E3 60%, transparent);
+}
+
+.spec[data-category="durability"] {
+  border-left: 3px solid color-mix(in srgb, var(--alert) 60%, transparent);
+}
+
+/* Spec with description */
+.spec.has-desc {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.spec__title {
+  font-size: var(--size-2);
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.spec__desc {
+  font-size: var(--size-1);
+  font-weight: 400;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Enhanced grid layout */
+@media (min-width: 768px) {
+  .specs.enhanced {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .specs.enhanced .spec:nth-child(5),
+  .specs.enhanced .spec:nth-child(6) {
+    grid-column: span 1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .specs.enhanced {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

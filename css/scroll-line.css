@@ -1,0 +1,325 @@
+.scroll-indicator {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.4s var(--ease, cubic-bezier(0.25, 0.46, 0.45, 0.94));
+  z-index: 10;
+  border: none;
+  background: none;
+  padding: 8px;
+  border-radius: 24px;
+}
+
+.scroll-indicator:hover {
+  transform: translateX(-50%) translateY(-5px);
+  background: color-mix(in srgb, var(--brand, #3B82F6) 8%, transparent);
+}
+
+.scroll-indicator:focus-visible {
+  outline: 2px solid var(--brand, #3B82F6);
+  outline-offset: 4px;
+  background: color-mix(in srgb, var(--brand, #3B82F6) 12%, transparent);
+}
+
+.scroll-indicator:hover .scroll-label,
+.scroll-indicator:focus .scroll-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-indicator:hover .scroll-line,
+.scroll-indicator:focus .scroll-line {
+  height: 52px;
+  background: linear-gradient(to bottom, var(--brand, #3B82F6) 0%, color-mix(in srgb, var(--brand, #3B82F6) 30%, transparent) 100%);
+}
+
+.scroll-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted, #6B7280);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: all 0.4s var(--ease, cubic-bezier(0.25, 0.46, 0.45, 0.94));
+  user-select: none;
+}
+
+.scroll-line {
+  width: 2.5px;
+  height: 44px;
+  background: linear-gradient(
+    to bottom, 
+    var(--text-muted, #6B7280) 0%, 
+    color-mix(in srgb, var(--text-muted, #6B7280) 50%, transparent) 60%, 
+    transparent 100%
+  );
+  border-radius: 2px;
+  position: relative;
+  transition: all 0.5s var(--ease, cubic-bezier(0.25, 0.46, 0.45, 0.94));
+  overflow: hidden;
+  filter: drop-shadow(0 2px 4px color-mix(in srgb, var(--brand, #3B82F6) 20%));
+}
+
+.scroll-line::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 24px;
+  background: linear-gradient(
+    to bottom, 
+    var(--brand, #3B82F6) 0%, 
+    color-mix(in srgb, var(--brand, #3B82F6) 70%, transparent) 100%
+  );
+  border-radius: 2px;
+  animation: scrollLine 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  box-shadow: 
+    0 0 12px color-mix(in srgb, var(--brand, #3B82F6) 50%),
+    0 0 24px color-mix(in srgb, var(--brand, #3B82F6) 20%);
+}
+
+.scroll-line::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom, 
+    transparent 0%, 
+    color-mix(in srgb, white 15%, transparent) 20%,
+    color-mix(in srgb, white 8%, transparent) 50%,
+    color-mix(in srgb, white 15%, transparent) 80%,
+    transparent 100%
+  );
+  animation: scrollShine 2.5s ease-in-out infinite;
+  opacity: 0.6;
+}
+
+.scroll-chevron {
+  width: 18px;
+  height: 18px;
+  opacity: 0.8;
+  transition: all 0.4s var(--ease, cubic-bezier(0.25, 0.46, 0.45, 0.94));
+  animation: scrollBounce 2.2s ease-in-out infinite;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.scroll-indicator:hover .scroll-chevron,
+.scroll-indicator:focus .scroll-chevron {
+  opacity: 1;
+  transform: scale(1.15);
+  animation-duration: 1.5s;
+}
+
+/* Enhanced animations */
+@keyframes scrollLine {
+  0% {
+    transform: translateY(-24px);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(68px);
+    opacity: 0;
+  }
+}
+
+@keyframes scrollShine {
+  0%, 100% {
+    opacity: 0.4;
+    transform: translateY(-100%);
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes scrollBounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  40% {
+    transform: translateY(6px) scale(1.08);
+  }
+  60% {
+    transform: translateY(3px) scale(1.04);
+  }
+}
+
+/* Subtle pulse effect */
+.scroll-indicator::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  right: -12px;
+  bottom: -12px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--brand, #3B82F6) 12%, transparent) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  animation: scrollPulse 3.5s ease-in-out infinite;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes scrollPulse {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  25% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.25);
+  }
+}
+
+/* Enhanced click feedback */
+.scroll-indicator:active {
+  transform: translateX(-50%) scale(0.92);
+  transition-duration: 0.1s;
+}
+
+.scroll-indicator:active .scroll-line {
+  transform: scale(0.88);
+}
+
+.scroll-indicator:active .scroll-chevron {
+  transform: scale(0.95);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-indicator,
+  .scroll-label,
+  .scroll-line,
+  .scroll-chevron {
+    transition-duration: 0.1s;
+    animation: none;
+  }
+  
+  .scroll-line::before,
+  .scroll-line::after {
+    animation: none;
+  }
+  
+  .scroll-indicator::before {
+    animation: none;
+  }
+}
+
+/* Enhanced responsive design */
+@media (max-width: 768px) {
+  .scroll-indicator {
+    bottom: 2rem;
+    gap: 10px;
+    padding: 6px;
+  }
+  
+  .scroll-line {
+    height: 38px;
+    width: 2px;
+  }
+  
+  .scroll-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+  }
+  
+  .scroll-chevron {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .scroll-indicator:hover .scroll-line {
+    height: 42px;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .scroll-indicator {
+    bottom: 1.5rem;
+    transform: translateX(-50%) scale(0.9);
+  }
+  
+  .scroll-indicator:hover {
+    transform: translateX(-50%) scale(0.9) translateY(-3px);
+  }
+}
+
+/* Enhanced dark mode */
+@media (prefers-color-scheme: dark) {
+  .scroll-line {
+    background: linear-gradient(
+      to bottom, 
+      color-mix(in srgb, white 90%, transparent) 0%, 
+      color-mix(in srgb, white 40%, transparent) 70%, 
+      transparent 100%
+    );
+  }
+  
+  .scroll-line::before {
+    box-shadow: 
+      0 0 16px color-mix(in srgb, var(--brand, #3B82F6) 70%),
+      0 0 32px color-mix(in srgb, var(--brand, #3B82F6) 30%);
+  }
+  
+  .scroll-label {
+    color: color-mix(in srgb, white 70%, transparent);
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .scroll-line {
+    width: 3px;
+    background: var(--text-muted, #6B7280);
+  }
+  
+  .scroll-line::before {
+    background: var(--brand, #3B82F6);
+    box-shadow: none;
+  }
+  
+  .scroll-line::after {
+    display: none;
+  }
+}
+
+/* Performance optimizations */
+.scroll-indicator {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.scroll-line::before,
+.scroll-line::after {
+  will-change: transform, opacity;
+}
+
