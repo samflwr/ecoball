@@ -46,25 +46,6 @@ if (yEl) yEl.textContent = new Date().getFullYear();
 
 
 /* Intersection-based reveal animations (staggered, premium cadence) */
-(function reveals() {
-  const revealEls = Array.from(document.querySelectorAll('.reveal'));
-  const io = new IntersectionObserver((entries) => {
-    for (const e of entries) {
-      if (e.isIntersecting) {
-        const parent = e.target.parentElement;
-        const siblings = parent ? Array.from(parent.querySelectorAll(':scope > .reveal')) : [e.target];
-        siblings.forEach((el, i) => {
-          if (!el.classList.contains('show')) {
-            el.style.transitionDelay = `${i * 40}ms`;
-          }
-        });
-        e.target.classList.add('show');
-        io.unobserve(e.target);
-      }
-    }
-  }, { threshold: 0.12, rootMargin: '0px 0px -5% 0px' });
-  revealEls.forEach(el => io.observe(el));
-})();
 
 /* Magnetic hover micro-interaction with proximity light (stable, no flicker)
    Only transforms are animated; no box-shadow animation to avoid jank. */
