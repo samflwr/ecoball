@@ -43,27 +43,7 @@ if (yEl) yEl.textContent = new Date().getFullYear();
   }
 })();
 
-/* Sticky header stabilization:
-   prevent jump on scroll by avoiding height changes and throttling expensive work. */
-(function stableHeader() {
-  const header = document.querySelector('header.hero');
-  if (!header) return;
-  let ticking = false;
 
-  function onScroll() {
-    const y = window.scrollY;
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        // Subtle opacity modulation for glass feel; avoid layout changes.
-        const o = Math.min(1, y / 240);
-        header.style.background = `linear-gradient(180deg, rgba(0,0,0,${0.35 + o * 0.25}), transparent 60%), var(--bg)`;
-        ticking = false;
-      });
-      ticking = true;
-    }
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-})();
 
 /* Intersection-based reveal animations (staggered, premium cadence) */
 (function reveals() {
