@@ -162,7 +162,8 @@
 <nav class="top-bar" id="topBar">
   <div class="top-bar__container">
     
-    <a href="/" class="brand-link">
+    <!-- Brand -->
+    <a href="/" class="brand-link" aria-label="EcoBall Home">
       <div class="logo-mark">
         <div class="logo-core"></div>
         <div class="logo-ring"></div>
@@ -170,48 +171,57 @@
       <span class="brand-name">EcoBall</span>
     </a>
 
+    <!-- Desktop Nav (Center) -->
     <div class="nav-menu">
       <a href="/" class="nav-item active">
         <span class="nav-text">Home</span>
         <div class="nav-glow"></div>
       </a>
-      <a href="/technical-specs" class="nav-item">
+      <a href="/technical-specs.html" class="nav-item">
         <span class="nav-text">Specs</span>
         <div class="nav-glow"></div>
       </a>
-      <a href="/challenges" class="nav-item">
+      <a href="/challenges.html" class="nav-item">
         <span class="nav-text">Future</span>
         <div class="nav-glow"></div>
       </a>
-      <a href="/about" class="nav-item">
+      <a href="/recognition-about.html" class="nav-item">
         <span class="nav-text">About</span>
         <div class="nav-glow"></div>
       </a>
     </div>
 
+    <!-- Right Actions -->
     <div class="nav-actions">
-      <a href="/leaderboard" class="action-link">Leaderboard</a>
+      <a href="/leaderboard.html" class="action-link">Leaderboard</a>
+      
       <a href="#deployment" class="action-btn">
         <span>Start Mission</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
       </a>
       
-      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+      <!-- Mobile Toggle -->
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
         <div class="hamburger">
-          <span></span><span></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
       </button>
     </div>
 
   </div>
 
+  <!-- Mobile Overlay -->
   <div class="mobile-menu-overlay" id="mobileMenu">
     <div class="mobile-nav-content">
       <a href="/" class="m-link active">Home</a>
-      <a href="/technical-specs" class="m-link">Tech Specs</a>
-      <a href="/challenges" class="m-link">Challenges</a>
-      <a href="/about" class="m-link">Recognition</a>
-      <a href="/leaderboard" class="m-link">Leaderboard</a>
+      <a href="/technical-specs.html" class="m-link">Tech Specs</a>
+      <a href="/challenges.html" class="m-link">Challenges</a>
+      <a href="/recognition-about.html" class="m-link">Recognition</a>
+      <a href="/leaderboard.html" class="m-link">Leaderboard</a>
       <a href="#deployment" class="m-cta">Start Mission</a>
     </div>
   </div>
@@ -279,36 +289,8 @@
             <div class="k">NB‑IoT</div>
             <div class="label">Live transmission</div>
           </div>
-        </div>
-      </div>
-      <div class="panel exploded " aria-label="EcoBall visual">
-        <div class="exploded">
-          <div class="canvas">
-            <div class="sphere-container">
-              <div class="sphere-shadow"></div>
-              <div class="sphere-glow"></div>
-              <img src="ecoball-def.png" alt="Ecoball hardware component visualization" class="sphere">
-              <div class="sphere-reflection"></div>
-            </div>
-            <div class="legend">
-              <div class="legend-item">
-                <div class="legend-marker"></div>
-                <div>Green energy autonomy</div>
-              </div>
-              <div class="legend-item">
-                <div class="legend-marker"></div>
-                <div>Mobile sampling</div>
-              </div>
-              <div class="legend-item">
-                <div class="legend-marker"></div>
-                <div>Real‑time intelligence</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="scroll-indicator-wrapper">
+          <div>
+            <div class="scroll-indicator-wrapper">
   <div class="scroll-trigger" role="button" aria-label="Scroll down">
     
     <div class="sonar-emitter">
@@ -340,6 +322,36 @@
 
   </div>
 </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel exploded " aria-label="EcoBall visual">
+        <div class="exploded">
+          <div class="canvas">
+            <div class="sphere-container">
+              <div class="sphere-shadow"></div>
+              <div class="sphere-glow"></div>
+              <img src="ecoball-def.png" alt="Ecoball hardware component visualization" class="sphere">
+              <div class="sphere-reflection"></div>
+            </div>
+            <div class="legend">
+              <div class="legend-item">
+                <div class="legend-marker"></div>
+                <div>Green energy autonomy</div>
+              </div>
+              <div class="legend-item">
+                <div class="legend-marker"></div>
+                <div>Mobile sampling</div>
+              </div>
+              <div class="legend-item">
+                <div class="legend-marker"></div>
+                <div>Real‑time intelligence</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 </header>
   
   <main>
@@ -425,8 +437,8 @@
             </svg>
           </div>
           <div class="system-status">
-            <span class="status-dot"></span>
-            SYSTEM ONLINE
+            <span class="status-dot-offline"></span>
+            SYSTEM OFFLINE
           </div>
         </div>
         <div class="vision-caption">
@@ -763,280 +775,114 @@
 </section>
 <!-- Section 4 — Software Architecture -->
 <section id="software" class="software-architecture">
+  <div class="ambient-glow"></div>
+
   <div class="wrap">
-    <div class="headline">
+    <div class="headline fade-in-up">
       <h2>Software Architecture</h2>
-      <p>End-to-end data pipeline from embedded systems to actionable user insights</p>
+      <p>End-to-end data pipeline: from deep abyss to surface insights.</p>
     </div>
     
-    <div class="architecture-visual">
-      <!-- Data Flow Visualization -->
-      <div class="data-flow-diagram">
-        <div class="flow-path">
-          <div class="flow-line"></div>
-          <div class="flow-connector">
-            <div class="connector-dot"></div>
-            <div class="connector-pulse"></div>
-          </div>
-          <div class="flow-connector">
-            <div class="connector-dot"></div>
-            <div class="connector-pulse"></div>
-          </div>
-        </div>
+    <div class="architecture-visual fade-in-up" style="animation-delay: 0.2s;">
+      
+      <div class="pipeline-connector">
+        <div class="pipeline-line"></div>
+        <div class="pipeline-pulse"></div>
+        <div class="pipeline-pulse delay-1"></div>
+      </div>
+
+      <div class="module-grid">
         
-        <!-- Modules -->
-        <div class="module-container">
-          <div class="arch-module module--firmware" data-step="1">
-            <div class="module-glow"></div>
-            <div class="module-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M8 3H6a2 2 0 0 0-2 2v2m12 0V5a2 2 0 0 0-2-2h-2m0 12h.01M12 12h.01M16 12h.01M8 12h.01"/>
-                <rect x="4" y="7" width="16" height="10" rx="2"/>
-                <path d="M16 19a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2"/>
-              </svg>
-            </div>
-            <div class="module-content">
-              <div class="module-header">
-                <div class="module-badge">Edge</div>
-                <h4>Embedded Firmware</h4>
-              </div>
-              <ul class="module-list">
-                <li class="module-item">
-                  <span class="item-icon">
-                    <svg viewBox="0 0 16 16" fill="currentColor">
-                      <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13a6 6 0 1 1 0-12 6 6 0 0 1 0 12z"/>
-                      <path d="M8 4a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h2a1 1 0 1 0 0-2H9V5a1 1 0 0 0-1-1z"/>
-                    </svg>
-                  </span>
-                  Sensor drivers and calibration
-                </li>
-                <li class="module-item">
-                  <span class="item-icon">
-                    <svg viewBox="0 0 16 16" fill="currentColor">
-                      <path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0-2h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4z"/>
-                      <path d="M8 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/>
-                    </svg>
-                  </span>
-                  Adaptive power management
-                </li>
-                <li class="module-item">
-                  <span class="item-icon">
-                    <svg viewBox="0 0 16 16" fill="currentColor">
-                      <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13a6 6 0 1 1 0-12 6 6 0 0 1 0 12z"/>
-                      <path d="M8 4l4 4-4 4-4-4z"/>
-                    </svg>
-                  </span>
-                  GPS and data acquisition
-                </li>
-                <li class="module-item">
-                  <span class="item-icon">
-                    <svg viewBox="0 0 16 16" fill="currentColor">
-                      <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13a6 6 0 1 1 0-12 6 6 0 0 1 0 12z"/>
-                      <path d="M8 4l2 2-2 2-2-2z"/>
-                    </svg>
-                  </span>
-                  On-board processing
-                </li>
-                <li class="module-item">
-                  <span class="item-icon">
-                    <svg viewBox="0 0 16 16" fill="currentColor">
-                      <path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0-2h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4z"/>
-                      <path d="M6 8l2 2 4-4"/>
-                    </svg>
-                  </span>
-                  Secure transmission protocols
-                </li>
-                <li class="module-item">
-                  <span class="item-icon">
-                    <svg viewBox="0 0 16 16" fill="currentColor">
-                      <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13a6 6 0 1 1 0-12 6 6 0 0 1 0 12z"/>
-                      <path d="M8 4v4l2 1"/>
-                    </svg>
-                  </span>
-                  System monitoring and logging
-                </li>
-              </ul>
-              <div class="data-flow">
-                <span class="flow-arrow">→</span>
-                Collect → Process → Transmit
-                <span class="flow-arrow">→</span>
-              </div>
-            </div>
+        <article class="glass-card module--firmware">
+          <div class="card-highlight"></div>
+          <div class="module-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M8 3H6a2 2 0 0 0-2 2v2m12 0V5a2 2 0 0 0-2-2h-2m0 12h.01M12 12h.01M16 12h.01M8 12h.01"/>
+              <rect x="4" y="7" width="16" height="10" rx="2"/>
+              <path d="M16 19a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2"/>
+            </svg>
+            <div class="icon-glow"></div>
           </div>
+          <div class="module-content">
+            <header>
+              <span class="badge">Edge</span>
+              <h4>Embedded FW</h4>
+            </header>
+            <ul class="feature-list">
+              <li>Sensor calibration</li>
+              <li>Power management</li>
+              <li>Encrypted Logging</li>
+            </ul>
+          </div>
+        </article>
 
-          <div class="arch-module module--backend" data-step="2">
-            <div class="module-glow"></div>
-            <div class="module-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M3 6h18M3 12h18m-9 6h9"/>
-                <rect x="2" y="2" width="20" height="20" rx="2"/>
-                <circle cx="8" cy="8" r="1" fill="currentColor"/>
-                <circle cx="8" cy="12" r="1" fill="currentColor"/>
-                <circle cx="8" cy="16" r="1" fill="currentColor"/>
-              </svg>
-            </div>
-            <div class="module-content">
-              <div class="module-header">
-                <div class="module-badge">Cloud</div>
-                <h4>Cloud Infrastructure</h4>
-              </div>
-              <ul class="module-list">
-                <li class="module-item">
-                  <span class="item-icon">
-                    <svg viewBox="0 0 16 16" fill="currentColor">
-                      <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13a6 6 0 1 1 0-12 6 6 0 0 1 0 12z"/>
-                      <path d="M8 4l4 4-4 4-4-4z"/>
-                    </svg>
-                  </span>
-                  Real-time data ingestion
-                </li>
-                <li class="module-item">
-                  <span class="item-icon">
-                    <svg viewBox="0 0 16 16" fill="currentColor">
-                      <path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0-2h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4z"/>
-                      <rect x="3" y="3" width="10" height="10" rx="1"/>
-                    </svg>
-                  </span>
-                  Time-series database
-                </li>
-                <li class="module-item">
-                  <span class="item-icon">
-                    <svg viewBox="0 0 16 16" fill="currentColor">
-                      <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13a6 6 0 1 1 0-12 6 6 0 0 1 0 12z"/>
-                      <path d="M4 8h8M8 4v8"/>
-                    </svg>
-                  </span>
-                  Water quality analytics
-                </li>
-                <li class="module-item">
-                  <span class="item-icon">
-                    <svg viewBox="0 0 16 16" fill="currentColor">
-                      <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13a6 6 0 1 1 0-12 6 6 0 0 1 0 12z"/>
-                      <path d="M4 6l4 4 4-4"/>
-                    </svg>
-                  </span>
-                  Dynamic visualization engine
-                </li>
-                <li class="module-item">
-                  <span class="item-icon">
-                    <svg viewBox="0 0 16 16" fill="currentColor">
-                      <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13a6 6 0 1 1 0-12 6 6 0 0 1 0 12z"/>
-                      <path d="M8 4v4l2 2"/>
-                    </svg>
-                  </span>
-                  Automated alert system
-                </li>
-              </ul>
-              <div class="data-flow">
-                <span class="flow-arrow">→</span>
-                Ingest → Analyze → Visualize
-                <span class="flow-arrow">→</span>
-              </div>
-            </div>
+        <article class="glass-card module--backend">
+          <div class="card-highlight"></div>
+          <div class="module-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 6h18M3 12h18m-9 6h9"/>
+              <rect x="2" y="2" width="20" height="20" rx="2"/>
+            </svg>
+            <div class="icon-glow"></div>
           </div>
+          <div class="module-content">
+            <header>
+              <span class="badge">Cloud</span>
+              <h4>Infrastructure</h4>
+            </header>
+            <ul class="feature-list">
+              <li>Time-series DB</li>
+              <li>Stream Analytics</li>
+              <li>Auto-scaling</li>
+            </ul>
+          </div>
+        </article>
 
-          <div class="arch-module module--frontend" data-step="3">
-            <div class="module-glow"></div>
-            <div class="module-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <rect x="2" y="2" width="20" height="16" rx="2"/>
-                <path d="M2 8h20M8 21v-5m8 5v-5"/>
-                <circle cx="6" cy="5" r="1" fill="currentColor"/>
-                <circle cx="10" cy="5" r="1" fill="currentColor"/>
-                <circle cx="14" cy="5" r="1" fill="currentColor"/>
-              </svg>
-            </div>
-            <div class="module-content">
-              <div class="module-header">
-                <div class="module-badge">Interface</div>
-                <h4>User Interface</h4>
-              </div>
-              <ul class="module-list">
-                <li class="module-item">
-                  <span class="item-icon">
-                    <svg viewBox="0 0 16 16" fill="currentColor">
-                      <path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0-2h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4z"/>
-                      <rect x="2" y="2" width="12" height="8" rx="1"/>
-                      <path d="M4 12h8M6 14h4"/>
-                    </svg>
-                  </span>
-                  Interactive monitoring dashboard
-                </li>
-                <li class="module-item">
-                  <span class="item-icon">
-                    <svg viewBox="0 0 16 16" fill="currentColor">
-                      <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13a6 6 0 1 1 0-12 6 6 0 0 1 0 12z"/>
-                      <path d="M4 6l2 2 4-4"/>
-                      <path d="M12 6l-2 2-2-2"/>
-                    </svg>
-                  </span>
-                  Real-time map visualization
-                </li>
-                <li class="module-item">
-                  <span class="item-icon">
-                    <svg viewBox="0 0 16 16" fill="currentColor">
-                      <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13a6 6 0 1 1 0-12 6 6 0 0 1 0 12z"/>
-                      <circle cx="8" cy="8" r="2"/>
-                      <path d="M12 12l-2-2-2 2"/>
-                    </svg>
-                  </span>
-                  Advanced data filtering
-                </li>
-                <li class="module-item">
-                  <span class="item-icon">
-                    <svg viewBox="0 0 16 16" fill="currentColor">
-                      <path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0-2h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4z"/>
-                      <circle cx="8" cy="6" r="1"/>
-                      <circle cx="11" cy="9" r="1"/>
-                      <circle cx="5" cy="9" r="1"/>
-                    </svg>
-                  </span>
-                  Device management console
-                </li>
-                <li class="module-item">
-                  <span class="item-icon">
-                    <svg viewBox="0 0 16 16" fill="currentColor">
-                      <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13a6 6 0 1 1 0-12 6 6 0 0 1 0 12z"/>
-                      <path d="M4 8h8M8 4v8"/>
-                      <circle cx="8" cy="8" r="2"/>
-                    </svg>
-                  </span>
-                  Environmental impact analytics
-                </li>
-              </ul>
-              <div class="data-flow">
-                <span class="flow-arrow">→</span>
-                Visualize → Analyze → Act
-                <span class="flow-arrow">→</span>
-              </div>
-            </div>
+        <article class="glass-card module--frontend">
+          <div class="card-highlight"></div>
+          <div class="module-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="2" width="20" height="16" rx="2"/>
+              <path d="M2 8h20M8 21v-5m8 5v-5"/>
+            </svg>
+            <div class="icon-glow"></div>
           </div>
-        </div>
+          <div class="module-content">
+            <header>
+              <span class="badge">UI/UX</span>
+              <h4>Dashboard</h4>
+            </header>
+            <ul class="feature-list">
+              <li>Real-time Maps</li>
+              <li>Impact Analytics</li>
+              <li>Device Manager</li>
+            </ul>
+          </div>
+        </article>
+
       </div>
     </div>
     
-    <!-- Architecture Stats -->
-    <div class="architecture-stats">
-      <div class="stat-item">
+    <div class="stats-grid fade-in-up" style="animation-delay: 0.4s;">
+      <div class="stat-card">
         <div class="stat-value">99.9%</div>
         <div class="stat-label">Uptime</div>
       </div>
-      <div class="stat-item">
+      <div class="stat-card">
         <div class="stat-value">&lt;2s</div>
-        <div class="stat-label">Data Latency</div>
+        <div class="stat-label">Latency</div>
       </div>
-      <div class="stat-item">
+      <div class="stat-card">
         <div class="stat-value">256-bit</div>
-        <div class="stat-label">Encryption</div>
+        <div class="stat-label">AES Crypto</div>
       </div>
-      <div class="stat-item">
+      <div class="stat-card">
         <div class="stat-value">24/7</div>
-        <div class="stat-label">Monitoring</div>
+        <div class="stat-label">Sync</div>
       </div>
     </div>
   </div>
 </section>
-
 <!-- Section 5 — Field Deployment Modes -->
    <section id="deployment">
       <div class="wrap">
@@ -1332,49 +1178,66 @@
 
 <footer>
   <div class="wrap">
-    <div class="footer-content">
-      <div class="footer-main">
-        <div class="footer-brand">
-          <div class="logo">
-            <div class="logo__dot"></div>
-            <span class="logo__text">EB</span>
+    
+    <!-- Main Footer Grid -->
+    <div class="footer-grid">
+      
+      <!-- Column 1: Brand & Mission -->
+      <div class="f-col-brand">
+        <a href="/" class="f-logo" aria-label="EcoBall Homepage">
+          <div class="f-mark">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+              <path d="M2 12h20"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
           </div>
-          <div class="footer-tagline">
-            <span>EcoBall</span>
-            <span class="footer-subtle">Water intelligence</span>
-          </div>
-        </div>
-        
-        <!-- <nav class="footer-nav">
-          <a href="#mission">Mission</a>
-          <a href="#hardware">Tech</a>
-          <a href="#impact">Impact</a>
-          <a href="#team">Team</a>
-        </nav> -->
-        <nav class="footer-nav">
-          <a href="/">Home</a>
-          <a href="/technical-specs">Tech Specs</a>
-          <a href="/challenges">Challenges & Future</a>
-          <a href="/about">Recognition</a>
-          <a href="/deployment">Deployment</a>
+          <span class="f-name">EcoBall</span>
+        </a>
+        <p class="f-desc">
+          Autonomous environmental intelligence. 
+          Protecting aquatic ecosystems through solar-powered, real-time monitoring networks.
+        </p>
+      </div>
+
+      <!-- Column 2: Navigation (Floating Pill) -->
+      <div class="f-col-nav">
+        <nav class="f-nav-pill">
+          <a href="/" class="f-link active">Home</a>
+          <a href="/technical-specs.html" class="f-link">Specs</a>
+          <a href="/challenges.html" class="f-link">Future</a>
+          <a href="/recognition-about.html" class="f-link">About</a>
+          <a href="/deployment.html" class="f-link">Deploy</a>
         </nav>
       </div>
-      
-      <div class="footer-meta">
-        <div class="footer-legal">
-          <span>© <span id="year"></span> EcoBall</span>
-          <span class="footer-divider">•</span>
-          <span>Istituto Rapisardi–Da Vinci</span>
+
+      <!-- Column 3: System Status -->
+      <div class="f-col-status">
+        <div class="sys-badge" title="Live System Status">
+          <span class="pulse-dot"></span>
+          <span>ALL SYSTEMS NOMINAL</span>
         </div>
-        <div class="footer-status">
-          <div class="status-indicator"></div>
-          <span>Autonomous monitoring</span>
-        </div>
+        <span class="version-tag">Build v2.4.0 (Stable)</span>
+        <span class="version-tag">Istituto Rapisardi–Da Vinci</span>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar: Legal & Copyright -->
+    <div class="f-bottom">
+      <div class="copyright">
+        &copy; <span id="year">2025</span> EcoBall Project. Open Hardware License.
+      </div>
+      <div class="legal-group">
+        <a href="#" class="legal-link">Privacy Policy</a>
+        <a href="#" class="legal-link">Terms of Service</a>
+        <a href="https://www.rapisardidavinci.edu.it" target="_blank" rel="noopener" class="legal-link">Institute</a>
       </div>
     </div>
+
   </div>
 </footer>
-  <!--include script.js-->
+<!--include script.js-->
   <script src="js/script.js"></script>
 
 </body>

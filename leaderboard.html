@@ -27,44 +27,76 @@
 
 <body>
     <!-- Top Bar Navigation -->
-    <nav class="top-bar" id="topBar">
-        <div class="top-bar__content">
-            <div class="top-bar__brand">
-                <div class="logo">
-                    <span class="logo__text">eb</span>
-                </div>
-            </div>
+  <!-- Top Bar Navigation -->
+<nav class="top-bar" id="topBar">
+  <div class="top-bar__container">
+    
+    <!-- Brand -->
+    <a href="/" class="brand-link" aria-label="EcoBall Home">
+      <div class="logo-mark">
+        <div class="logo-core"></div>
+        <div class="logo-ring"></div>
+      </div>
+      <span class="brand-name">EcoBall</span>
+    </a>
 
-            <div class="top-bar__nav">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="map.html" class="nav-link">Mappa</a>
-                <a href="contact.html" class="nav-link">Contatti</a>
-            </div>
+    <!-- Desktop Nav (Center) -->
+    <div class="nav-menu">
+      <a href="/" class="nav-item">
+        <span class="nav-text">Home</span>
+        <div class="nav-glow"></div>
+      </a>
+      <a href="/technical-specs.html" class="nav-item">
+        <span class="nav-text">Specs</span>
+        <div class="nav-glow"></div>
+      </a>
+      <a href="/challenges.html" class="nav-item">
+        <span class="nav-text">Future</span>
+        <div class="nav-glow"></div>
+      </a>
+      <a href="/recognition-about.html" class="nav-item">
+        <span class="nav-text">About</span>
+        <div class="nav-glow"></div>
+      </a>
+    </div>
 
-            <div class="top-bar__actions">
-                <a href="#classifica" class="cta-btn">
-                    <span>Classifica</span>
-                </a>
-            </div>
-
-            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-            </button>
+    <!-- Right Actions -->
+    <div class="nav-actions">
+      <a href="/leaderboard.html" class="action-link">Leaderboard</a>
+      
+      <a href="#deployment" class="action-btn">
+        <span>Start Mission</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+      
+      <!-- Mobile Toggle -->
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
+      </button>
+    </div>
 
-        <!-- Mobile Menu -->
-        <div class="mobile-menu" id="mobileMenu">
-            <div class="mobile-menu__content">
-                <a href="index.html" class="mobile-link">Home</a>
-                <a href="map.html" class="mobile-link">Mappa</a>
-                <a href="contact.html" class="mobile-link">Contatti</a>
-                <a href="#classifica" class="mobile-cta">Classifica</a>
-            </div>
-        </div>
+  </div>
 
-        <div class="top-bar__progress"></div>
-    </nav>
+  <!-- Mobile Overlay -->
+  <div class="mobile-menu-overlay" id="mobileMenu">
+    <div class="mobile-nav-content">
+      <a href="/" class="m-link">Home</a>
+      <a href="/technical-specs.html" class="m-link">Tech Specs</a>
+      <a href="/challenges.html" class="m-link">Challenges</a>
+      <a href="/recognition-about.html" class="m-link">Recognition</a>
+      <a href="/leaderboard.html" class="m-link active">Leaderboard</a>
+      <a href="#deployment" class="m-cta">Start Mission</a>
+    </div>
+  </div>
+
+  <div class="scroll-progress-bar"></div>
+</nav>
 
     <!-- Hero Section -->
     <section class="leaderboard-hero">
@@ -82,133 +114,183 @@
     </section>
 
     <!-- Leaderboard Section -->
-    <section id="classifica" class="leaderboard-section">
-        <div class="wrap">
-            <div class="headline reveal">
-                <h2 style="font-size: var(--size-6);">Classifica Top Contributor</h2>
-                <p>Riconoscimento per i membri più attivi della community EcoBall</p>
+<section id="classifica" class="leaderboard-section">
+  <div class="winner-glow"></div>
+
+  <div class="wrap">
+    <div class="headline fade-in-up">
+      <h2>Top Contributors</h2>
+      <p>I pionieri della rete EcoBall che fanno la differenza.</p>
+    </div>
+
+    <div class="podium-container">
+      
+      <div class="podium-column rank-2 fade-in-up" style="animation-delay: 0.2s;">
+        <div class="glass-card podium-card">
+          <div class="rank-badge badge-silver">
+            <span>2</span>
+          </div>
+          <div class="avatar-container">
+            <div class="avatar-ring silver-ring"></div>
+            <div class="avatar-placeholder" id="avatar-2">🥈</div>
+          </div>
+          <div class="user-info">
+            <h3 id="secName" class="user-name">Loading...</h3>
+            <div class="user-id-chip" id="idsecondo">
+              <span class="code-font">####-####</span>
             </div>
-
-            <div class="leaderboard-container reveal">
-                <!-- Secondo Classificato -->
-                <div class="leaderboard-card leaderboard-second reveal">
-                    <div class="rank-badge">
-                        <div class="rank-number">2</div>
-                        <div class="rank-icon">🥈</div>
-                    </div>
-                    <div class="user-info">
-                        <h3 id="secName" class="user-name">Caricamento...</h3>
-                        <div class="user-id" id="idsecondo">
-                            <span class="id-display">####-####-####</span>
-                            <span class="id-full"></span>
-                        </div>
-                    </div>
-                    <div class="score-container">
-                        <div class="score" id="secondo">0</div>
-                        <div class="score-label">Punti</div>
-                    </div>
-                </div>
-
-                <!-- Primo Classificato -->
-                <div class="leaderboard-card leaderboard-first reveal">
-                    <div class="rank-badge">
-                        <div class="rank-number">1</div>
-                        <div class="rank-icon">🥇</div>
-                    </div>
-                    <div class="user-info">
-                        <h3 id="firName" class="user-name">Caricamento...</h3>
-                        <div class="user-id" id="idprimo">
-                            <span class="id-display">####-####-####</span>
-                            <span class="id-full"></span>
-                        </div>
-                    </div>
-                    <div class="score-container">
-                        <div class="score" id="primo">0</div>
-                        <div class="score-label">Punti</div>
-                    </div>
-                </div>
-
-                <!-- Terzo Classificato -->
-                <div class="leaderboard-card leaderboard-third reveal">
-                    <div class="rank-badge">
-                        <div class="rank-number">3</div>
-                        <div class="rank-icon">🥉</div>
-                    </div>
-                    <div class="user-info">
-                        <h3 id="thiName" class="user-name">Caricamento...</h3>
-                        <div class="user-id" id="idterzo">
-                            <span class="id-display">####-####-####</span>
-                            <span class="id-full"></span>
-                        </div>
-                    </div>
-                    <div class="score-container">
-                        <div class="score" id="terzo">0</div>
-                        <div class="score-label">Punti</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Additional Info -->
-            <div class="leaderboard-info panel reveal">
-                <h3>Come accumulare punti</h3>
-                <div class="info-grid">
-                    <div class="info-item">
-                        <strong>Segnalazioni validate</strong>
-                        <span>+10 punti per ogni segnalazione verificata</span>
-                    </div>
-                    <div class="info-item">
-                        <strong>Qualità dati</strong>
-                        <span>+5 punti per dati ad alta precisione</span>
-                    </div>
-                    <div class="info-item">
-                        <strong>Contributi continui</strong>
-                        <span>+2 punti per giorni consecutivi di attività</span>
-                    </div>
-                </div>
-            </div>
+          </div>
+          <div class="score-display">
+            <span class="score-value counter" id="secondo" data-target="0">0</span>
+            <span class="score-label">PTS</span>
+          </div>
         </div>
-    </section>
+        <div class="podium-base base-silver"></div>
+      </div>
 
+      <div class="podium-column rank-1 fade-in-up" style="animation-delay: 0s;">
+        <div class="crown-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/>
+          </svg>
+        </div>
+        <div class="glass-card podium-card winner-card">
+          <div class="rank-badge badge-gold">
+            <span>1</span>
+          </div>
+          <div class="avatar-container">
+            <div class="avatar-ring gold-ring"></div>
+            <div class="avatar-placeholder" id="avatar-1">🥇</div>
+          </div>
+          <div class="user-info">
+            <h3 id="firName" class="user-name">Loading...</h3>
+            <div class="user-id-chip" id="idprimo">
+              <span class="code-font">####-####</span>
+            </div>
+          </div>
+          <div class="score-display">
+            <span class="score-value counter" id="primo" data-target="0">0</span>
+            <span class="score-label">PTS</span>
+          </div>
+          <div class="winner-flare"></div>
+        </div>
+        <div class="podium-base base-gold">
+          <span>Leader</span>
+        </div>
+      </div>
+
+      <div class="podium-column rank-3 fade-in-up" style="animation-delay: 0.3s;">
+        <div class="glass-card podium-card">
+          <div class="rank-badge badge-bronze">
+            <span>3</span>
+          </div>
+          <div class="avatar-container">
+            <div class="avatar-ring bronze-ring"></div>
+            <div class="avatar-placeholder" id="avatar-3">🥉</div>
+          </div>
+          <div class="user-info">
+            <h3 id="thiName" class="user-name">Loading...</h3>
+            <div class="user-id-chip" id="idterzo">
+              <span class="code-font">####-####</span>
+            </div>
+          </div>
+          <div class="score-display">
+            <span class="score-value counter" id="terzo" data-target="0">0</span>
+            <span class="score-label">PTS</span>
+          </div>
+        </div>
+        <div class="podium-base base-bronze"></div>
+      </div>
+
+    </div>
+
+    <div class="rules-ticker fade-in-up" style="animation-delay: 0.5s;">
+      <div class="ticker-label">How to win:</div>
+      <div class="ticker-items">
+        <div class="ticker-item">
+          <span class="icon">📡</span>
+          <span><strong>+10</strong> Valid Signal</span>
+        </div>
+        <div class="ticker-item">
+          <span class="icon">💎</span>
+          <span><strong>+5</strong> High Precision</span>
+        </div>
+        <div class="ticker-item">
+          <span class="icon">🔥</span>
+          <span><strong>+2</strong> Daily Streak</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
     <footer>
-        <div class="wrap">
-            <div class="footer-content">
-                <div class="footer-main">
-                    <div class="footer-brand">
-                        <div class="logo">
-                            <div class="logo__dot"></div>
-                            <span class="logo__text">EB</span>
-                        </div>
-                        <div class="footer-tagline">
-                            <span>EcoBall</span>
-                            <span class="footer-subtle">Intelligenza idrica</span>
-                        </div>
-                    </div>
-                    
-                    <nav class="footer-nav">
-                        <a href="index.html">Home</a>
-                        <a href="map.html">Mappa</a>
-                        <a href="#classifica">Classifica</a>
-                        <a href="contact.html">Contatti</a>
-                    </nav>
-                </div>
-                
-                <div class="footer-meta">
-                    <div class="footer-legal">
-                        <span>© <span id="year"></span> EcoBall</span>
-                        <span class="footer-divider">•</span>
-                        <span>Istituto Rapisardi–Da Vinci</span>
-                    </div>
-                    <div class="footer-status">
-                        <div class="status-indicator"></div>
-                        <span>Monitoraggio attivo</span>
-                    </div>
-                </div>
-            </div>
+  <div class="wrap">
+    
+    <!-- Main Footer Grid -->
+    <div class="footer-grid">
+      
+      <!-- Column 1: Brand & Mission -->
+      <div class="f-col-brand">
+        <a href="/" class="f-logo" aria-label="EcoBall Homepage">
+          <div class="f-mark">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+              <path d="M2 12h20"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </div>
+          <span class="f-name">EcoBall</span>
+        </a>
+        <p class="f-desc">
+          Autonomous environmental intelligence. 
+          Protecting aquatic ecosystems through solar-powered, real-time monitoring networks.
+        </p>
+      </div>
+
+      <!-- Column 2: Navigation (Floating Pill) -->
+      <div class="f-col-nav">
+        <nav class="f-nav-pill">
+          <a href="/" class="f-link active">Home</a>
+          <a href="/technical-specs.html" class="f-link">Specs</a>
+          <a href="/challenges.html" class="f-link">Future</a>
+          <a href="/recognition-about.html" class="f-link">About</a>
+          <a href="/deployment.html" class="f-link">Deploy</a>
+        </nav>
+      </div>
+
+      <!-- Column 3: System Status -->
+      <div class="f-col-status">
+        <div class="sys-badge" title="Live System Status">
+          <span class="pulse-dot"></span>
+          <span>ALL SYSTEMS NOMINAL</span>
         </div>
-    </footer>
+        <span class="version-tag">Build v2.4.0 (Stable)</span>
+        <span class="version-tag">Istituto Rapisardi–Da Vinci</span>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar: Legal & Copyright -->
+    <div class="f-bottom">
+      <div class="copyright">
+        &copy; <span id="year">2025</span> EcoBall Project. Open Hardware License.
+      </div>
+      <div class="legal-group">
+        <a href="#" class="legal-link">Privacy Policy</a>
+        <a href="#" class="legal-link">Terms of Service</a>
+        <a href="https://www.rapisardidavinci.edu.it" target="_blank" rel="noopener" class="legal-link">Institute</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
 
     <!-- Scripts -->
     <script src="js/script.js"></script>
+    <script>
+        
+    </script>
     <script type="module" src="js/leaderboard.js"></script>
 </body>
 </html>

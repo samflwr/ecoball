@@ -57,50 +57,75 @@
 </head>
 <body>
   <!-- Top Bar Navigation -->
-  <nav class="top-bar" id="topBar">
-    <div class="top-bar__content">
-      <!-- Logo -->
-      <div class="top-bar__brand">
-        <div class="logo">
-          <span class="logo__text">eb</span>
+<nav class="top-bar" id="topBar">
+  <div class="top-bar__container">
+    
+    <!-- Brand -->
+    <a href="/" class="brand-link" aria-label="EcoBall Home">
+      <div class="logo-mark">
+        <div class="logo-core"></div>
+        <div class="logo-ring"></div>
+      </div>
+      <span class="brand-name">EcoBall</span>
+    </a>
+
+    <!-- Desktop Nav (Center) -->
+    <div class="nav-menu">
+      <a href="/" class="nav-item">
+        <span class="nav-text">Home</span>
+        <div class="nav-glow"></div>
+      </a>
+      <a href="/technical-specs.html" class="nav-item">
+        <span class="nav-text">Specs</span>
+        <div class="nav-glow"></div>
+      </a>
+      <a href="/challenges.html" class="nav-item">
+        <span class="nav-text">Future</span>
+        <div class="nav-glow"></div>
+      </a>
+      <a href="/recognition-about.html" class="nav-item">
+        <span class="nav-text">About</span>
+        <div class="nav-glow"></div>
+      </a>
+    </div>
+
+    <!-- Right Actions -->
+    <div class="nav-actions">
+      <a href="/leaderboard.html" class="action-link">Leaderboard</a>
+      
+      <a href="#deployment" class="action-btn">
+        <span>Start Mission</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+      
+      <!-- Mobile Toggle -->
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
-      </div>
-
-      <!-- Desktop Navigation -->
-      <div class="top-bar__nav">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="#specs" class="nav-link">Specifications</a>
-        <a href="#maintenance" class="nav-link">Maintenance</a>
-        <a href="#workflow" class="nav-link">Workflow</a>
-      </div>
-
-      <!-- CTA -->
-      <div class="top-bar__actions">
-        <a href="index.html" class="cta-btn">
-          <span>Back to Home</span>
-        </a>
-      </div>
-
-      <!-- Mobile Menu Button -->
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
       </button>
     </div>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-      <div class="mobile-menu__content">
-        <a href="index.html" class="mobile-link">Home</a>
-        <a href="#specs" class="mobile-link">Specifications</a>
-        <a href="#maintenance" class="mobile-link">Maintenance</a>
-        <a href="#workflow" class="mobile-link">Workflow</a>
-      </div>
-    </div>
+  </div>
 
-    <!-- Progress Line -->
-    <div class="top-bar__progress"></div>
-  </nav>
+  <!-- Mobile Overlay -->
+  <div class="mobile-menu-overlay" id="mobileMenu">
+    <div class="mobile-nav-content">
+      <a href="/" class="m-link">Home</a>
+      <a href="/technical-specs.html" class="m-link active">Tech Specs</a>
+      <a href="/challenges.html" class="m-link">Challenges</a>
+      <a href="/recognition-about.html" class="m-link">Recognition</a>
+      <a href="/leaderboard.html" class="m-link">Leaderboard</a>
+      <a href="#deployment" class="m-cta">Start Mission</a>
+    </div>
+  </div>
+
+  <div class="scroll-progress-bar"></div>
+</nav>
 
   <header class="hero">
     <div class="orbital" aria-hidden="true"></div>
@@ -441,7 +466,7 @@
       <div class="wf-badge">
         <span class="pulse-dot"></span> Operations Cycle
       </div>
-      <h2 class="wf-title">Autonomous <span class="text-gradient">Workflow</span></h2>
+      <h2 class="wf-title">Autonomous <span class="text-gradient-timeline">Workflow</span></h2>
       <p class="wf-subtitle">From solar wakeup to cloud intelligence. Zero human intervention required.</p>
     </div>
 
@@ -557,43 +582,67 @@
 
 </main>
 
-  <footer>
-    <div class="wrap">
-      <div class="footer-content">
-        <div class="footer-main">
-          <div class="footer-brand">
-            <div class="logo">
-              <div class="logo__dot"></div>
-              <span class="logo__text">EB</span>
-            </div>
-            <div class="footer-tagline">
-              <span>EcoBall</span>
-              <span class="footer-subtle">Technical Specifications</span>
-            </div>
+<footer>
+  <div class="wrap">
+    
+    <!-- Main Footer Grid -->
+    <div class="footer-grid">
+      
+      <!-- Column 1: Brand & Mission -->
+      <div class="f-col-brand">
+        <a href="/" class="f-logo" aria-label="EcoBall Homepage">
+          <div class="f-mark">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+              <path d="M2 12h20"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
           </div>
-          
-          <nav class="footer-nav">
-            <a href="index.html">Home</a>
-            <a href="#specs">Specifications</a>
-            <a href="#maintenance">Maintenance</a>
-            <a href="#workflow">Workflow</a>
-          </nav>
+          <span class="f-name">EcoBall</span>
+        </a>
+        <p class="f-desc">
+          Autonomous environmental intelligence. 
+          Protecting aquatic ecosystems through solar-powered, real-time monitoring networks.
+        </p>
+      </div>
+
+      <!-- Column 2: Navigation (Floating Pill) -->
+      <div class="f-col-nav">
+        <nav class="f-nav-pill">
+          <a href="/" class="f-link active">Home</a>
+          <a href="/technical-specs.html" class="f-link">Specs</a>
+          <a href="/challenges.html" class="f-link">Future</a>
+          <a href="/recognition-about.html" class="f-link">About</a>
+          <a href="/deployment.html" class="f-link">Deploy</a>
+        </nav>
+      </div>
+
+      <!-- Column 3: System Status -->
+      <div class="f-col-status">
+        <div class="sys-badge" title="Live System Status">
+          <span class="pulse-dot"></span>
+          <span>ALL SYSTEMS NOMINAL</span>
         </div>
-        
-        <div class="footer-meta">
-          <div class="footer-legal">
-            <span>© <span id="year"></span> EcoBall</span>
-            <span class="footer-divider">•</span>
-            <span>Istituto Rapisardi–Da Vinci</span>
-          </div>
-          <div class="footer-status">
-            <div class="status-indicator"></div>
-            <span>Technical documentation</span>
-          </div>
-        </div>
+        <span class="version-tag">Build v2.4.0 (Stable)</span>
+        <span class="version-tag">Istituto Rapisardi–Da Vinci</span>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar: Legal & Copyright -->
+    <div class="f-bottom">
+      <div class="copyright">
+        &copy; <span id="year">2025</span> EcoBall Project. Open Hardware License.
+      </div>
+      <div class="legal-group">
+        <a href="#" class="legal-link">Privacy Policy</a>
+        <a href="#" class="legal-link">Terms of Service</a>
+        <a href="https://www.rapisardidavinci.edu.it" target="_blank" rel="noopener" class="legal-link">Institute</a>
       </div>
     </div>
-  </footer>
+
+  </div>
+</footer>
 
   <script src="js/script.js"></script>
 </body>
