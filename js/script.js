@@ -335,70 +335,97 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-
-
-
-
-
-// Topbar with mobile menu
+// ----------------------------------------------------
+// Top Bar Interactions (Deep Hydro Premium)
+// ----------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
-  const topBar = document.querySelector('.top-bar');
+  const topBar = document.getElementById('topBar');
   const menuToggle = document.getElementById('menuToggle');
   const mobileMenu = document.getElementById('mobileMenu');
   const progressBar = document.querySelector('.scroll-progress-bar');
-  let lastScroll = 0;
+  const mobileLinks = document.querySelectorAll('.m-link, .m-cta'); // Select mobile menu links
+  
+  let lastScrollY = window.scrollY;
+  let ticking = false;
 
-  // 1. Scroll Handling
-  window.addEventListener('scroll', () => {
-    const currentScroll = window.scrollY;
+  // 1. Scroll Handling (Throttled for performance)
+  function onScroll() {
+    const currentScrollY = window.scrollY;
     
-    // Progress Bar
-    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = (winScroll / height) * 100;
-    if(progressBar) progressBar.style.width = scrolled + "%";
+    // Calculate scroll progress percentage
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (currentScrollY / docHeight) * 100;
+    
+    // Update progress bar width
+    if (progressBar) {
+      progressBar.style.width = `${scrollPercent}%`;
+    }
 
-    // Glass Effect Trigger
-    if (currentScroll > 50) {
+    // Glass effect trigger
+    if (currentScrollY > 20) {
       topBar.classList.add('scrolled');
     } else {
       topBar.classList.remove('scrolled');
     }
 
-    // Hide/Show on Scroll (Smart Nav)
-    if (currentScroll > lastScroll && currentScroll > 200 && !mobileMenu.classList.contains('open')) {
-      topBar.classList.add('hidden');
-    } else {
-      topBar.classList.remove('hidden');
-    }
-    lastScroll = currentScroll;
-  });
-
-  // 2. Mobile Menu Toggle
-  if(menuToggle && mobileMenu) {
-    menuToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('open');
-      menuToggle.classList.toggle('active');
-      
-      // Animate Hamburger
-      const spans = menuToggle.querySelectorAll('span');
-      if (mobileMenu.classList.contains('open')) {
-        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-        spans[1].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+    // Smart Hide/Show Logic
+    // Hide if scrolling down > 100px and menu is NOT open
+    // Show if scrolling up OR at the very top
+    if (!mobileMenu.classList.contains('open')) {
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        topBar.classList.add('hidden');
       } else {
-        spans[0].style.transform = 'none';
-        spans[1].style.transform = 'none';
+        topBar.classList.remove('hidden');
       }
+    }
+
+    lastScrollY = currentScrollY;
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(onScroll);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  // 2. Mobile Menu Toggle Logic
+  if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      menuToggle.classList.toggle('active'); // Animates the hamburger to X
+      
+      // Accessibility updates
+      menuToggle.setAttribute('aria-expanded', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : ''; // Prevent body scroll when menu open
+    });
+
+    // Close mobile menu when a link is clicked
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        menuToggle.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
     });
   }
+
+  // 3. Active Link Highlighter based on URL
+  const currentPath = window.location.pathname;
+  const navLinks = document.querySelectorAll('.nav-item');
+  
+  navLinks.forEach(link => {
+    // Check if href matches current path (considering root / vs index.html)
+    const href = link.getAttribute('href');
+    if (href === currentPath || (href === '/' && (currentPath === '' || currentPath === '/index.html'))) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
+    }
+  });
 });
-
-
-
-
-
-
-
 
 
 // Enhanced spec animations
@@ -478,83 +505,104 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 // Contact Form Interactions
-document.addEventListener('DOMContentLoaded', function() {
-  // Toggle between whole team and specific member
-  const toggleBtns = document.querySelectorAll('.toggle-btn');
-  const contactOptions = document.querySelectorAll('.contact-option');
-  
-  toggleBtns.forEach(btn => {
-    btn.addEventListener('click', function() {
-      const target = this.dataset.target;
-      
-      // Update active toggle button
-      toggleBtns.forEach(b => b.classList.remove('active'));
-      this.classList.add('active');
-      
-      // Show corresponding contact option
-      contactOptions.forEach(option => {
-        option.classList.remove('active');
-        if (option.id === target) {
-          option.classList.add('active');
-        }
-      });
-      
-      // Update recipient display
-      if (target === 'whole-team') {
-        updateRecipientDisplay('team@ecoball.it', 'Team');
-      }
+document.addEventListener('DOMContentLoaded', () => {
+    // --- Elements ---
+    const toggleBtns = document.querySelectorAll('.toggle-btn');
+    const toggleContainer = document.querySelector('.recipient-toggle');
+    const views = {
+        team: document.getElementById('view-team'),
+        individual: document.getElementById('view-individual')
+    };
+    const activeRecipientDisplay = document.getElementById('active-recipient');
+    const memberCards = document.querySelectorAll('.member-card');
+    const teamCard = document.querySelector('.team-card');
+    let currentMode = 'team'; // 'team' or 'individual'
+
+    // --- Toggle Logic ---
+    toggleBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.dataset.target;
+            
+            // Visual Updates
+            toggleBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            // Move the background pill
+            if(target === 'individual') {
+                toggleContainer.setAttribute('data-state', 'individual');
+                toggleContainer.querySelector('.toggle-bg').style.transform = 'translateX(100%)';
+            } else {
+                toggleContainer.setAttribute('data-state', 'team');
+                toggleContainer.querySelector('.toggle-bg').style.transform = 'translateX(0)';
+            }
+
+            // View Switching
+            Object.values(views).forEach(v => v.classList.remove('active'));
+            views[target].classList.add('active');
+            currentMode = target;
+
+            // Reset selection to default if switching back to team
+            if (target === 'team') {
+                updateRecipient('EcoBall Team', 'team@ecoball.it');
+                // clear member selection
+                memberCards.forEach(c => c.classList.remove('active'));
+            }
+        });
     });
-  });
-  
-  // Member selection
-  const memberCards = document.querySelectorAll('.member-contact-card');
-  memberCards.forEach(card => {
-    card.addEventListener('click', function() {
-      const email = this.dataset.email;
-      const name = this.querySelector('h5').textContent;
-      
-      // Update selected state
-      memberCards.forEach(c => c.classList.remove('selected'));
-      this.classList.add('selected');
-      
-      // Update recipient display
-      updateRecipientDisplay(email, name);
+
+    // --- Member Selection Logic ---
+    memberCards.forEach(card => {
+        card.addEventListener('click', () => {
+            // Remove active class from all
+            memberCards.forEach(c => c.classList.remove('active'));
+            // Add to clicked
+            card.classList.add('active');
+            
+            const name = card.dataset.name;
+            const email = card.dataset.email;
+            updateRecipient(name, email);
+        });
     });
-  });
-  
-  function updateRecipientDisplay(email, name) {
-    const display = document.getElementById('recipient-display');
-    const type = document.querySelector('.recipient-type');
-    
-    display.textContent = email;
-    type.textContent = name === 'Team' ? 'Team' : 'Individual';
-  }
-  
-  // Form submission
-  const contactForm = document.getElementById('contactForm');
-  const submitBtn = contactForm.querySelector('.submit-btn');
-  
-  contactForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Show loading state
-    submitBtn.classList.add('loading');
-    
-    // Simulate form submission
-    setTimeout(() => {
-      submitBtn.classList.remove('loading');
-      submitBtn.classList.add('success');
-      
-      // Reset form after success
-      setTimeout(() => {
-        contactForm.reset();
-        submitBtn.classList.remove('success');
+
+    // --- Helper: Update Recipient UI ---
+    function updateRecipient(name, email) {
+        // Update the visual badge in the form
+        activeRecipientDisplay.textContent = name;
+        activeRecipientDisplay.style.opacity = '0';
+        setTimeout(() => {
+            activeRecipientDisplay.style.opacity = '1';
+        }, 150);
+
+        // Optional: Update a hidden input field if you are actually sending data
+        // document.getElementById('recipient_email').value = email;
+    }
+
+    // --- Form Submission Animation ---
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('.submit-btn');
+        const originalText = btn.innerHTML;
         
-        // Show success message (you can replace this with a proper notification)
-        alert('Message sent successfully! We\'ll get back to you soon.');
-      }, 2000);
-    }, 2000);
-  });
+        // Loading State
+        btn.innerHTML = `<span class="loader"></span> Sending...`;
+        btn.style.opacity = '0.8';
+        
+        // Simulate API call
+        setTimeout(() => {
+            // Success State
+            btn.innerHTML = `<span>Sent Successfully!</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>`;
+            btn.style.background = '#10b981'; // Green
+            form.reset();
+            
+            // Reset button after 3 seconds
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.background = '';
+                btn.style.opacity = '1';
+            }, 3000);
+        }, 1500);
+    });
 });
 
 
@@ -621,6 +669,8 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Function to render content with a "typing" effect simulation
   function updatePanel(key) {
+    if (!hardwareData[key] || !contentArea) return;
+    
     const data = hardwareData[key];
     const html = `
       <h3 class="panel-title fade-in">${data.title}</h3>
@@ -686,6 +736,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const progFill = document.querySelector('.prog-fill');
   const progLabel = document.querySelector('.prog-label');
   
+  if (!steps.length) return; // Exit if workflow section not present
+
   let currentStep = 0; // 0-index based
   const totalSteps = steps.length;
 
@@ -702,28 +754,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 2. Update Progress Bar
-    const percent = ((currentStep + 1) / totalSteps) * 100;
-    progFill.style.width = `${percent}%`;
-    progLabel.textContent = `Step ${currentStep + 1}/${totalSteps}`;
+    if (progFill) {
+      const percent = ((currentStep + 1) / totalSteps) * 100;
+      progFill.style.width = `${percent}%`;
+    }
+    if (progLabel) {
+      progLabel.textContent = `Step ${currentStep + 1}/${totalSteps}`;
+    }
 
     // 3. Update Buttons
-    prevBtn.disabled = currentStep === 0;
-    nextBtn.disabled = currentStep === totalSteps - 1;
+    if (prevBtn) prevBtn.disabled = currentStep === 0;
+    if (nextBtn) nextBtn.disabled = currentStep === totalSteps - 1;
   }
 
-  nextBtn.addEventListener('click', () => {
-    if (currentStep < totalSteps - 1) {
-      currentStep++;
-      updateWorkflow();
-    }
-  });
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      if (currentStep < totalSteps - 1) {
+        currentStep++;
+        updateWorkflow();
+      }
+    });
+  }
 
-  prevBtn.addEventListener('click', () => {
-    if (currentStep > 0) {
-      currentStep--;
-      updateWorkflow();
-    }
-  });
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      if (currentStep > 0) {
+        currentStep--;
+        updateWorkflow();
+      }
+    });
+  }
 
   // Optional: Click on step directly
   steps.forEach((step, index) => {
@@ -964,3 +1024,30 @@ if(scrollTrigger) {
     if(nextSection) nextSection.scrollIntoView({ behavior: 'smooth' });
   });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// MISSION
