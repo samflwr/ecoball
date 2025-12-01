@@ -71,7 +71,7 @@
   will-change: transform;
 }
 
-.sphere-glow {
+/* .sphere-glow {
   position: absolute;
   width: 280%;
   height: 280%;
@@ -88,7 +88,7 @@
     pulse 3s ease-in-out infinite alternate,
     drift 2s ease-in-out infinite;
   mix-blend-mode: multiply;
-}
+} */
 
 .sphere-shadow {
   position: absolute;
@@ -406,6 +406,9 @@
   .hardware {
     grid-template-columns: 1fr;
     gap: var(--space-3);
+  }
+  .exploded{
+    width: 100%;
   }
   
   .legend {

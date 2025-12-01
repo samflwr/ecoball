@@ -327,3 +327,20 @@
 .stat {
   position: relative;
 }
+
+/* 9. RESPONSIVE FIXES */
+@media (max-width: 1024px) {
+  .stat-row {
+  display: flex;       /* Assicurati di avere flex attivo */
+  flex-wrap: wrap;     /* Permette agli elementi di andare a capo */
+  gap: 2rem;           /* Spazio tra elementi */
+  justify-content: center; /* Opzionale: centra gli elementi orizzontalmente */
+}
+
+.stat-row > * {
+  flex: 1 1 calc(50% - 2rem); /* Ogni elemento occupa metà della riga meno il gap */
+  box-sizing: border-box;      /* Per includere padding e border nel calcolo */
+}
+
+
+}

@@ -1,568 +1,278 @@
-/* Hardware Components Section Styles */
-.hardware-components-section {
-  padding: var(--space-7) 0;
+/* --- HARDWARE SECTION: HOLOGRAPHIC BLUEPRINT (Refined) --- */
+
+.hardware-section {
+  /* Scoped Variables using Deep Hydro Palette */
+  --h-bg: var(--bg, #050a10);
+  --h-card: color-mix(in srgb, var(--elev-2, #111b26) 60%, transparent);
+  --h-border: var(--stroke, #1e293b);
+  --h-border-hover: var(--stroke-2, #334155);
+  --h-highlight: var(--brand, #06b6d4);
+  --h-text: var(--text, #f0f9ff);
+  --h-text-dim: var(--text-muted, #64748b);
+  --h-glow: color-mix(in srgb, var(--brand, #06b6d4) 20%, transparent);
+  
   position: relative;
+  padding: 8rem 0;
+  background-color: var(--h-bg);
   overflow: hidden;
+  font-family: inherit;
 }
 
-.hardware-visualization {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: var(--space-5);
-  align-items: center;
-  margin-bottom: var(--space-6);
+/* Background Grid Effect */
+.hw-overlay {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image: 
+    linear-gradient(rgba(6,182,212,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6,182,212,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at 50% 50%, black 30%, transparent 80%);
 }
 
-.hardware-sphere {
-  position: relative;
-  width: 400px;
-  height: 400px;
-  margin: 0 auto;
+/* --- HEADER --- */
+.hw-header {
+  text-align: center; margin-bottom: 4rem; position: relative; z-index: 2;
 }
 
-.sphere-core {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, color-mix(in srgb, var(--brand) 20%, var(--elev-2)), var(--elev-1));
-  border: 1px solid color-mix(in srgb, var(--brand) 30%, var(--stroke));
-  box-shadow: 
-    0 0 0 1px color-mix(in srgb, var(--brand) 10%, transparent),
-    inset 0 1px 0 rgba(255,255,255,0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.sys-status {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: monospace; font-size: 0.75rem; color: var(--h-highlight);
+  border: 1px solid var(--h-border); padding: 4px 12px; border-radius: 100px;
+  background: rgba(6,182,212,0.05); margin-bottom: 1rem;
 }
 
-.core-glow {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: radial-gradient(circle, color-mix(in srgb, var(--brand) 40%, transparent) 0%, transparent 70%);
-  animation: pulse 4s ease-in-out infinite;
+.blink-led {
+  width: 6px; height: 6px; background: var(--h-highlight); border-radius: 50%;
+  box-shadow: 0 0 8px var(--h-highlight); animation: blink 2s infinite;
 }
 
-.core-pulse {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  border: 1px solid color-mix(in srgb, var(--brand) 20%, transparent);
-  animation: ripple 3s ease-out infinite;
+.hw-header h2 { 
+  font-size: clamp(2rem, 4vw, 3rem); 
+  font-weight: 700;
+  color: var(--h-text); 
+  margin-bottom: 0.5rem; 
+  letter-spacing: -0.02em;
 }
 
-.component-orbit {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.hw-header p { 
+  color: var(--h-text-dim); 
+  font-size: 1.1rem;
 }
 
-.orbit-path {
-  position: absolute;
-  border-radius: 50%;
-  border: 1px dashed color-mix(in srgb, var(--brand) 15%, var(--stroke));
-  opacity: 0.3;
+/* --- INTERFACE GRID --- */
+.hw-interface {
+  display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem;
+  max-width: 1100px; margin: 0 auto; align-items: center;
+  position: relative; z-index: 2;
 }
 
-.orbit-1 {
-  width: 200px;
-  height: 200px;
+/* --- LEFT: VISUALIZER (The Sphere) --- */
+.hw-visualizer {
+  display: flex; justify-content: center; height: 450px; position: relative;
+  /* Add a subtle radial glow behind the sphere */
+  background: radial-gradient(circle at center, var(--h-glow) 0%, transparent 60%);
 }
 
-.orbit-1 .orbit-path {
-  width: 100%;
-  height: 100%;
+.holo-stage {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  perspective: 1000px;
 }
 
-.orbit-2 {
-  width: 280px;
-  height: 280px;
-  animation: rotate 40s linear infinite;
+.sphere-group {
+  position: relative; width: 320px; height: 320px;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.orbit-2 .orbit-path {
-  width: 100%;
-  height: 100%;
-}
-
-.orbit-3 {
-  width: 360px;
-  height: 360px;
-  animation: rotate 60s linear infinite reverse;
-}
-
-.orbit-3 .orbit-path {
-  width: 100%;
-  height: 100%;
-}
-
-.component-dot {
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: var(--brand);
-  border: 2px solid var(--elev-1);
-  cursor: pointer;
-  transition: all var(--dur-2) var(--ease);
-  transform-origin: center;
-}
-
-.component-dot:hover {
-  transform: scale(1.4);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--brand) 30%, transparent);
-}
-
-.component-dot::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--elev-1);
-}
-
-.dot-tooltip {
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-8px);
-  background: var(--elev-3);
-  border: 1px solid var(--stroke);
-  padding: 8px 12px;
-  border-radius: var(--radius-m);
-  font-size: var(--size-1);
-  white-space: nowrap;
-  opacity: 0;
+/* Layers Logic: Active/Inactive States */
+.layer {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  opacity: 0.2; /* Dimmed state */
+  filter: grayscale(1) blur(1px);
+  transform: scale(0.9);
   pointer-events: none;
-  transition: all var(--dur-2) var(--ease);
-  box-shadow: var(--shadow-subtle);
 }
 
-.component-dot:hover .dot-tooltip {
-  opacity: 1;
-  transform: translateX(-50%) translateY(-12px);
+.layer.active {
+  opacity: 1; 
+  filter: grayscale(0) blur(0); 
+  transform: scale(1);
+  z-index: 10;
 }
 
-.sensor-dot {
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--ok);
+/* Layer 1: Core (MCU) */
+.core-box {
+  width: 90px; height: 90px; 
+  background: color-mix(in srgb, var(--h-highlight) 10%, transparent);
+  border: 1px solid var(--h-highlight); border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 40px var(--h-glow);
+  color: var(--h-highlight);
+  backdrop-filter: blur(4px);
+}
+.core-box svg { width: 44px; height: 44px; }
+
+.pulse-ring {
+  position: absolute; inset: 25%; border: 1px solid var(--h-highlight);
+  border-radius: 50%; opacity: 0; animation: ripple 2s infinite;
 }
 
-.comms-dot {
-  top: 20%;
-  right: 0;
-  background: var(--warn);
+/* Layer 2 & 3: Rings */
+.orbit-ring {
+  position: absolute; border-radius: 50%; border: 1px solid var(--h-border);
+}
+.ring-1 { width: 55%; height: 55%; border-style: dashed; animation: spin 20s linear infinite; }
+.ring-2 { width: 100%; height: 100%; border: 1px solid rgba(6,182,212,0.3); animation: spinRev 30s linear infinite; }
+.ring-3 { width: 115%; height: 115%; border: 1px dotted rgba(6,182,212,0.15); animation: spin 60s linear infinite; }
+
+/* Nodes (The dots on the rings) */
+.node {
+  position: absolute; width: 32px; height: 32px;
+  top: 50%; left: 50%;
+  margin-top: -16px; margin-left: -16px; /* Center pivot */
+  /* Orbit Logic: Rotate container, counter-rotate icon to keep upright */
+  transform: rotate(var(--angle)) translate(160px) rotate(calc(var(--angle) * -1));
+  transition: transform 0.5s ease;
+}
+.layer-inner .node { transform: rotate(var(--angle)) translate(95px) rotate(calc(var(--angle) * -1)); }
+
+.node-icon {
+  width: 100%; height: 100%; background: var(--bg); /* Opaque background to hide line behind */
+  border: 1px solid var(--h-highlight); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; color: var(--h-highlight);
+  box-shadow: 0 0 15px var(--h-glow);
+}
+.node-icon svg { width: 16px; height: 16px; }
+
+.node-sens {
+  width: 10px; height: 10px; background: var(--h-highlight);
+  border-radius: 50%; box-shadow: 0 0 15px var(--h-highlight);
 }
 
-.gps-dot {
-  bottom: 20%;
-  left: 0;
-  background: #7bb7ff;
+.holo-base {
+  position: absolute; bottom: 0px; width: 220px; height: 30px;
+  background: radial-gradient(ellipse, var(--h-glow), transparent 70%);
+  filter: blur(15px);
+  opacity: 0.6;
 }
 
-.power-dot {
-  top: 10%;
-  left: 20%;
-  background: #ffa85c;
+/* --- RIGHT: CONTROLS --- */
+.hw-controls { display: flex; flex-direction: column; gap: 2rem; }
+
+.hw-tabs { display: flex; flex-direction: column; gap: 12px; }
+
+.hw-tab {
+  display: flex; align-items: center; gap: 1rem;
+  background: transparent; border: 1px solid transparent;
+  padding: 1.2rem; text-align: left; cursor: pointer;
+  color: var(--h-text-dim); transition: all 0.3s ease;
+  border-radius: 12px;
+  position: relative; overflow: hidden;
 }
 
-.mcu-dot {
-  bottom: 10%;
-  right: 20%;
-  background: #b78cff;
+.hw-tab:hover { 
+  background: rgba(255,255,255,0.03); 
+  color: var(--h-text); 
+  border-color: var(--h-border);
 }
 
-.structure-dot {
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--text-muted);
+.hw-tab.active {
+  background: linear-gradient(90deg, rgba(6,182,212,0.08), transparent);
+  border: 1px solid var(--h-border);
+  border-left: 3px solid var(--h-highlight);
+  color: var(--h-text);
+  box-shadow: 0 4px 20px -5px rgba(0,0,0,0.2);
 }
 
-.hardware-legend {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  background: var(--elev-1);
-  border: 1px solid var(--stroke);
-  border-radius: var(--radius-l);
-  padding: var(--space-3);
-  box-shadow: var(--shadow-subtle);
+.tab-idx { font-family: monospace; font-size: 0.85rem; opacity: 0.5; color: var(--h-highlight); }
+.tab-label { font-weight: 600; font-size: 1.1rem; flex: 1; }
+.tab-arr { opacity: 0; transform: translateX(-10px); transition: 0.3s; color: var(--h-highlight); }
+.hw-tab.active .tab-arr { opacity: 1; transform: translateX(0); }
+
+/* Detail Panel (HUD Style) */
+.hw-detail-panel {
+  background: var(--h-card);
+  border: 1px solid var(--h-border);
+  padding: 2rem; border-radius: 16px;
+  position: relative; backdrop-filter: blur(12px);
+  min-height: 220px;
+  display: flex; flex-direction: column;
 }
 
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  padding: 10px 12px;
-  border-radius: var(--radius-m);
-  cursor: pointer;
-  transition: all var(--dur-2) var(--ease);
-  font-size: var(--size-2);
+/* Decorative Corners for "Tech" feel */
+.panel-decor .corner {
+  position: absolute; width: 12px; height: 12px;
+  border-color: var(--h-highlight); border-style: solid;
+  opacity: 0.4;
+}
+.tl { top: -1px; left: -1px; border-width: 1px 0 0 1px; }
+.tr { top: -1px; right: -1px; border-width: 1px 1px 0 0; }
+.bl { bottom: -1px; left: -1px; border-width: 0 0 1px 1px; }
+.br { bottom: -1px; right: -1px; border-width: 0 1px 1px 0; }
+
+.panel-title { 
+  font-size: 1.5rem; 
+  color: var(--h-text); 
+  margin-bottom: 0.75rem; 
+  font-weight: 700;
 }
 
-.legend-item:hover,
-.legend-item.active {
-  background: color-mix(in srgb, var(--brand) 8%, transparent);
-  border-color: color-mix(in srgb, var(--brand) 30%, var(--stroke));
+.panel-desc { 
+  color: var(--h-text-dim); 
+  line-height: 1.6; 
+  margin-bottom: 2rem; 
+  font-size: 0.95rem; 
 }
 
-.legend-icon {
-  width: 24px;
-  height: 24px;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--elev-2);
-  border: 1px solid var(--stroke);
-  transition: all var(--dur-2) var(--ease);
+.panel-specs { 
+  display: grid; 
+  gap: 1rem; 
+  margin-top: auto; 
 }
 
-.legend-item.active .legend-icon {
-  background: color-mix(in srgb, var(--brand) 15%, var(--elev-2));
-  border-color: color-mix(in srgb, var(--brand) 40%, var(--stroke));
+.spec-row {
+  display: flex; justify-content: space-between; align-items: center;
+  border-bottom: 1px solid var(--h-border); padding-bottom: 10px;
 }
+.spec-row span { font-size: 0.9rem; color: var(--h-text-dim); }
+.spec-row .mono { font-family: monospace; color: var(--h-highlight); font-weight: 600; }
 
-.icon-core {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--brand);
+.panel-footer {
+  margin-top: 1.5rem; padding-top: 1rem; 
+  display: flex; justify-content: space-between; align-items: center;
 }
-
-.legend-icon.structure svg {
-  color: var(--text-muted);
-}
-
-.legend-icon.mcu svg {
-  color: #b78cff;
-}
-
-.legend-icon.sensors svg {
-  color: var(--ok);
-}
-
-.legend-icon.comms svg {
-  color: var(--warn);
-}
-
-.legend-icon.power svg {
-  color: #ffa85c;
-}
-
-.hardware-details {
-  margin-bottom: var(--space-6);
-}
-
-.hardware-category {
-  display: none;
-  animation: fadeInUp var(--dur-3) var(--ease-out);
-}
-
-.hardware-category.active {
-  display: block;
-}
-
-.category-header {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  margin-bottom: var(--space-4);
-  padding: var(--space-3);
-  background: var(--elev-1);
-  border: 1px solid var(--stroke);
-  border-radius: var(--radius-l);
-  box-shadow: var(--shadow-subtle);
-}
-
-.category-header .category-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-m);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: color-mix(in srgb, var(--brand) 8%, transparent);
-  border: 1px solid color-mix(in srgb, var(--brand) 20%, var(--stroke));
-}
-
-.category-header h3 {
-  margin: 0;
-  flex: 1;
-  font-size: var(--size-4);
-}
-
-.category-badge {
-  padding: 6px 12px;
-  background: color-mix(in srgb, var(--brand) 15%, transparent);
-  border: 1px solid color-mix(in srgb, var(--brand) 30%, var(--stroke));
-  border-radius: var(--radius-m);
-  font-size: var(--size-1);
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
-
-.components-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: var(--space-3);
-}
-
-.component-card {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-3);
-  padding: var(--space-3);
-  background: var(--elev-1);
-  border: 1px solid var(--stroke);
-  border-radius: var(--radius-l);
-  transition: all var(--dur-2) var(--ease);
-  position: relative;
-  overflow: hidden;
-}
-
-.component-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--brand) 30%, transparent), transparent);
-  opacity: 0;
-  transition: opacity var(--dur-2) var(--ease);
-}
-
-.component-card:hover::before {
-  opacity: 1;
-}
-
-.component-card:hover {
-  transform: translateY(-2px);
-  border-color: color-mix(in srgb, var(--brand) 30%, var(--stroke));
-  box-shadow: var(--shadow-soft);
-}
-
-.component-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-m);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--elev-2);
-  border: 1px solid var(--stroke);
-  flex-shrink: 0;
-  transition: all var(--dur-2) var(--ease);
-}
-
-.component-card:hover .component-icon {
-  background: color-mix(in srgb, var(--brand) 10%, var(--elev-2));
-  border-color: color-mix(in srgb, var(--brand) 30%, var(--stroke));
-}
-
-.component-info {
-  flex: 1;
-}
-
-.component-info h4 {
-  margin: 0 0 4px;
-  font-size: var(--size-2);
-  font-weight: 600;
-}
-
-.component-info p {
-  margin: 0;
-  color: var(--text-muted);
-  font-size: var(--size-1);
-  line-height: 1.4;
-}
-
-.component-badge {
-  padding: 4px 8px;
-  background: color-mix(in srgb, var(--ok) 15%, transparent);
-  border: 1px solid color-mix(in srgb, var(--ok) 30%, var(--stroke));
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-}
-
-.component-badge.highlight {
-  background: color-mix(in srgb, var(--brand) 15%, transparent);
-  border-color: color-mix(in srgb, var(--brand) 30%, var(--stroke));
-}
-
-.component-badge.eco {
-  background: color-mix(in srgb, var(--ok) 15%, transparent);
-  border-color: color-mix(in srgb, var(--ok) 30%, var(--stroke));
-}
-
-.technical-specs-panel {
-  background: linear-gradient(180deg, color-mix(in srgb, var(--elev-2) 65%, transparent), var(--elev-1));
-  border: 1px solid var(--stroke);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-subtle);
-  padding: var(--space-5);
-  backdrop-filter: blur(6px) saturate(110%);
-}
-
-.specs-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: var(--space-4);
-  padding-bottom: var(--space-3);
-  border-bottom: 1px solid var(--stroke);
-}
-
-.specs-header h3 {
-  margin: 0;
-  font-size: var(--size-4);
-}
-
-.specs-badge {
-  padding: 6px 12px;
-  background: color-mix(in srgb, var(--ok) 15%, transparent);
-  border: 1px solid color-mix(in srgb, var(--ok) 30%, var(--stroke));
-  border-radius: var(--radius-m);
-  font-size: var(--size-1);
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
-
-.specs-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--space-4);
-}
-
-.specs-column h4 {
-  margin: 0 0 var(--space-3);
-  font-size: var(--size-2);
-  color: var(--text-dim);
-  font-weight: 600;
-}
-
-.spec-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--stroke) 50%, transparent);
-}
-
-.spec-item:last-child {
-  border-bottom: none;
-}
-
-.spec-label {
-  color: var(--text-muted);
-  font-size: var(--size-1);
-}
-
-.spec-value {
-  font-weight: 600;
-  font-size: var(--size-1);
-  color: var(--text-dim);
+.mono-xs { font-family: monospace; font-size: 0.7rem; color: var(--h-highlight); letter-spacing: 1px; }
+.scan-line {
+  flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--h-highlight), transparent);
+  margin-right: 1.5rem; opacity: 0.3; animation: scan 3s linear infinite;
 }
 
 /* Animations */
-@keyframes pulse {
-  0%, 100% { opacity: 0.6; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.1); }
-}
+@keyframes spin { from {transform: rotate(0deg);} to {transform: rotate(360deg);} }
+@keyframes spinRev { from {transform: rotate(360deg);} to {transform: rotate(0deg);} }
+@keyframes blink { 0%, 100% {opacity: 1;} 50% {opacity: 0.4;} }
+@keyframes ripple { 0% {transform: scale(1); opacity: 1;} 100% {transform: scale(2); opacity: 0;} }
+@keyframes scan { 0% {transform: translateX(-100%);} 100% {transform: translateX(100%);} }
 
-@keyframes ripple {
-  0% { transform: scale(1); opacity: 1; }
-  100% { transform: scale(1.8); opacity: 0; }
+/* Fade In Effect for Content Switching */
+.fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
 }
-
-@keyframes rotate {
-  0% { transform: translate(-50%, -50%) rotate(0deg); }
-  100% { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
-@keyframes fadeInUp {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* Responsive */
 @media (max-width: 1024px) {
-  .hardware-visualization {
-    grid-template-columns: 1fr;
-    gap: var(--space-4);
-  }
-  
-  .hardware-sphere {
-    width: 320px;
-    height: 320px;
-  }
-  
-  .orbit-1 { width: 160px; height: 160px; }
-  .orbit-2 { width: 224px; height: 224px; }
-  .orbit-3 { width: 288px; height: 288px; }
-  
-  .components-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .specs-grid {
-    grid-template-columns: 1fr;
-  }
+  .hw-interface { grid-template-columns: 1fr; gap: 4rem; }
+  .hw-visualizer { height: 350px; order: -1; }
 }
 
-@media (max-width: 640px) {
-  .hardware-sphere {
-    width: 280px;
-    height: 280px;
-  }
-  
-  .orbit-1 { width: 140px; height: 140px; }
-  .orbit-2 { width: 196px; height: 196px; }
-  .orbit-3 { width: 252px; height: 252px; }
-  
-  .category-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-2);
-  }
-  
-  .specs-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-2);
-  }
-}
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .component-orbit,
-  .core-glow,
-  .core-pulse {
-    animation: none;
-  }
-  
-  .component-card,
-  .legend-item,
-  .component-dot {
-    transition: none;
-  }
+@media (max-width: 600px) {
+  .hw-header h2 { font-size: 2rem; }
+  .sphere-group { width: 260px; height: 260px; }
+  .node { transform: rotate(var(--angle)) translate(130px) rotate(calc(var(--angle) * -1)); }
 }

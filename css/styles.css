@@ -1,5 +1,5 @@
 :root {
-  /* Color system */
+  /* Color system
   --bg: #0b0c0e;
   --elev-1: #0f1114;
   --elev-2: #13161a;
@@ -14,11 +14,63 @@
   --focus: #9ef8d9;
 
   --stroke: #232a33;
-  --stroke-2: #1b2129;
+  --stroke-2: #1b2129; */
 
-  --ok: #89f0d2;
-  --warn: #ffd56a;
-  --alert: #ff7a7a;
+  /* Color system — Neo Forest Blue 
+  --bg: #0a1017;         
+  --elev-1: #0f1620;     
+  --elev-2: #16212c;      
+  --elev-3: #1c2b38;      
+
+  --text: #e0ebf5;        
+  --text-dim: #c9d8e6;    
+  --text-muted: #90a6b8; 
+
+  --brand: #5aa0f2;       
+  --brand-2: #84c0ff;     
+  --focus: #b0e0ff;       
+
+  --stroke: #1c2a38;      
+  --stroke-2: #15202b;    */
+
+
+  /* Color system
+    --bg: #07100c;
+    --elev-1: #0b1612;
+    --elev-2: #10201b;
+    --elev-3: #162822;
+
+    --text: #e9f5ee;
+    --text-dim: #d7ebe0;
+    --text-muted: #9eb6a7;
+
+    --brand: #5af2a0;
+    --brand-2: #8cf8bf;
+    --focus: #b1ffda;
+
+    --stroke: #1c2a24;
+    --stroke-2: #15201b; */
+
+    --bg: #050a10;           /* Nero bluastro profondo (Abisso) */
+    --elev-1: #0a111a;       /* Elevazione minima */
+    --elev-2: #111b26;       /* Card background */
+    --elev-3: #1a2633;       /* Hover state */
+
+    --text: #f0f9ff;         /* Bianco ghiaccio */
+    --text-dim: #bae6fd;     /* Azzurro chiarissimo */
+    --text-muted: #64748b;   /* Grigio ardesia per testi secondari */
+
+    --brand: #06b6d4;        /* Ciano Elettrico (Cyan 500) */
+    --brand-2: #67e8f9;      /* Ciano chiaro (Cyan 300) */
+    --focus: #cffafe;        /* Highlight quasi bianco */
+
+    --stroke: #1e293b;       /* Bordi blu scuro */
+    --stroke-2: #334155;     /* Bordi più visibili */
+
+
+      --ok: #89f0d2;
+      --warn: #ffd56a;
+      --alert: #ff7a7a;
 
   
   /* Typography & rhythm */
@@ -63,9 +115,11 @@
   --ring: 0 0 0 2px color-mix(in srgb, var(--brand) 30%, transparent), 0 0 0 6px color-mix(in srgb, var(--brand) 12%, transparent);
 }
 
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
   :root {
     --bg: #f7f8f9;
+      --brand: #1d936f;
+
     --elev-1: #ffffff;
     --elev-2: #f2f4f6;
     --elev-3: #e9edf1;
@@ -80,7 +134,87 @@
     --shadow-soft: 0 18px 60px rgba(0,0,0,0.10), 0 6px 18px rgba(0,0,0,0.06), 0 1px 0 rgba(255,255,255,0.7) inset;
     --shadow-subtle: 0 10px 24px rgba(0,0,0,0.06), 0 2px 6px rgba(0,0,0,0.05), inset 0 1px 0 rgba(0,0,0,0.03);
   }
+} */
+ /* @media (prefers-color-scheme: light) {
+  :root {
+    /* Backgrounds 
+    --bg: #f6f9f7;
+    --elev-1: #ffffff;
+    --elev-2: #eef3f0;
+    --elev-3: #e3ece7;
+
+    /* Text 
+    --text: #0c110f;
+    --text-dim: #111a16;
+    --text-muted: #65756e;
+
+    /* Brand (smeraldo freddo, versione chiara) 
+    --brand: #1ea87a;
+    --brand-2: #44c89a;
+    --focus: #6be7ba;
+
+    /* Borders 
+    --stroke: #dbe4df;
+    --stroke-2: #cfdad5;
+
+    /* Shadows 
+    --shadow-soft: 
+      0 18px 60px rgba(0,0,0,0.08),
+      0 6px 18px rgba(0,0,0,0.05),
+      0 1px 0 rgba(255,255,255,0.7) inset;
+
+    --shadow-subtle:
+      0 10px 24px rgba(0,0,0,0.04),
+      0 2px 6px rgba(0,0,0,0.04),
+      inset 0 1px 0 rgba(0,0,0,0.02);
+  }
+} */
+
+@media (prefers-color-scheme: light) {
+  :root {
+    /* Backgrounds: Surface & Lab Cleanliness */
+    --bg: #f0f4f8;           /* Bianco "ghiaccio" con una punta di azzurro */
+    --elev-1: #ffffff;       /* Bianco puro per le card */
+    --elev-2: #e1e7ef;       /* Grigio-blu chiarissimo per sezioni secondarie */
+    --elev-3: #cbd5e1;       /* Per input o elementi disabilitati */
+
+    /* Text: Deep Navy/Slate (invece del nero puro, più armonioso col blu) */
+    --text: #0f172a;         /* Slate 900 - Blu notte profondissimo */
+    --text-dim: #334155;     /* Slate 700 - Grigio-blu scuro */
+    --text-muted: #64748b;   /* Slate 500 - Grigio tecnico */
+
+    /* Brand: Deep Cyan (più scuro della dark mode per contrasto su bianco) */
+    --brand: #0891b2;        /* Cyan 600 - Leggibile su bianco, ma vibrante */
+    --brand-2: #06b6d4;      /* Cyan 500 - Più acceso (per gradienti/icone) */
+    --focus: #cffafe;        /* Cyan 100 - Background evidenziatori */
+
+    /* Borders */
+    --stroke: #e2e8f0;       /* Slate 200 - Delicato */
+    --stroke-2: #cbd5e1;     /* Slate 300 - Più definito */
+
+    /* Shadows: Cool tinted shadows instead of pure black */
+    --shadow-soft: 
+      0 18px 60px rgba(15, 23, 42, 0.06),
+      0 6px 18px rgba(15, 23, 42, 0.04),
+      0 0 0 1px rgba(255,255,255,0.8) inset;
+
+    --shadow-subtle:
+      0 4px 6px -1px rgba(15, 23, 42, 0.05),
+      0 2px 4px -1px rgba(15, 23, 42, 0.03),
+      inset 0 1px 0 rgba(255,255,255,1);
+      
+  }
+  
 }
+
+
+
+
+
+
+
+
+
 
 * { box-sizing: border-box; }
 html, body {
@@ -457,9 +591,7 @@ footer {
   .pillars {
     grid-template-columns: 1fr 1fr;
   }
-  .stat-row {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  
 }
 
 @media (max-width: 640px) {

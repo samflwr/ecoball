@@ -1,48 +1,99 @@
-/* Challenges & Risks Section */
+/* Challenges & Risks Section - Enhanced */
+.challenges-section {
+  position: relative;
+  padding: var(--space-8) 0;
+  background: linear-gradient(180deg, 
+    color-mix(in srgb, var(--bg) 95%, transparent),
+    color-mix(in srgb, var(--elev-1) 20%, transparent) 100%);
+}
+
+.challenges-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    color-mix(in srgb, var(--brand) 15%, transparent) 50%, 
+    transparent 100%);
+}
+
+.challenges-container {
+  margin-top: var(--space-6);
+}
+
+/* Enhanced Risks Grid */
 .risks-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--space-4);
-  margin-top: var(--space-5);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-5);
+  margin-bottom: var(--space-7);
 }
 
 .risk-category {
   background: linear-gradient(145deg, 
-    color-mix(in srgb, var(--elev-2) 80%, transparent),
+    color-mix(in srgb, var(--elev-2) 85%, transparent),
     color-mix(in srgb, var(--elev-1) 95%, transparent));
-  border: 1px solid color-mix(in srgb, var(--stroke) 25%, transparent);
+  border: 1px solid color-mix(in srgb, var(--stroke) 20%, transparent);
   border-radius: var(--radius-xl);
-  padding: var(--space-4);
-  backdrop-filter: blur(20px) saturate(180%);
-  box-shadow: var(--shadow-subtle);
-  transition: all var(--dur-2) var(--ease);
+  padding: var(--space-5);
+  backdrop-filter: blur(10px);
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.risk-category::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    color-mix(in srgb, var(--brand) 30%, transparent), 
+    transparent);
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
 }
 
 .risk-category:hover {
-  transform: translateY(-2px);
-  border-color: color-mix(in srgb, var(--brand) 30%, var(--stroke));
-  box-shadow: var(--shadow-soft);
+  transform: translateY(-8px);
+  border-color: color-mix(in srgb, var(--brand) 25%, transparent);
+  box-shadow: 
+    0 24px 48px rgba(0,0,0,0.12),
+    0 12px 24px color-mix(in srgb, var(--brand) 6%, transparent);
 }
 
+.risk-category:hover::before {
+  opacity: 1;
+}
+
+/* Risk Header */
 .risk-header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: var(--space-3);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-4);
   padding-bottom: var(--space-3);
-  border-bottom: 1px solid color-mix(in srgb, var(--stroke) 20%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--stroke) 15%, transparent);
 }
 
 .risk-icon {
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: color-mix(in srgb, var(--brand) 8%, transparent);
-  border-radius: var(--radius-m);
+  border: 1px solid color-mix(in srgb, var(--brand) 20%, transparent);
+  border-radius: var(--radius-l);
   color: var(--brand);
-  transition: all var(--dur-2) var(--ease);
+  transition: all 0.3s var(--ease);
+  flex-shrink: 0;
 }
 
 .risk-category:hover .risk-icon {
@@ -50,71 +101,170 @@
   transform: scale(1.05);
 }
 
-.risk-header h3 {
-  margin: 0;
+.risk-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.risk-title {
+  flex: 1;
+}
+
+.risk-title h3 {
+  margin: 0 0 var(--space-1) 0;
   font-size: var(--size-3);
   font-weight: 700;
   color: var(--text);
   letter-spacing: -0.01em;
 }
 
+.risk-count {
+  font-size: var(--size-1);
+  color: var(--text-muted);
+  font-weight: 500;
+  background: color-mix(in srgb, var(--elev-3) 60%, transparent);
+  padding: 2px 8px;
+  border-radius: 12px;
+  display: inline-block;
+}
+
+/* Risk Items */
+.risk-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
 .risk-item {
   display: flex;
   align-items: flex-start;
   gap: var(--space-3);
-  padding: var(--space-2) 0;
-  transition: all var(--dur-1) var(--ease);
+  padding: var(--space-3);
+  background: color-mix(in srgb, var(--elev-3) 30%, transparent);
+  border: 1px solid color-mix(in srgb, var(--stroke) 10%, transparent);
+  border-radius: var(--radius-l);
+  transition: all 0.3s var(--ease);
+  cursor: pointer;
 }
 
 .risk-item:hover {
+  background: color-mix(in srgb, var(--elev-3) 50%, transparent);
+  border-color: color-mix(in srgb, var(--brand) 15%, transparent);
   transform: translateX(4px);
 }
 
+.risk-indicator {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
 .risk-dot {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   background: var(--brand);
   border-radius: 50%;
-  margin-top: 8px;
-  flex-shrink: 0;
-  transition: all var(--dur-1) var(--ease);
   position: relative;
+  z-index: 2;
+  transition: all 0.3s var(--ease);
+}
+
+.risk-pulse {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: color-mix(in srgb, var(--brand) 20%, transparent);
+  border-radius: 50%;
+  animation: riskPulse 2s ease-in-out infinite;
+  opacity: 0;
+}
+
+.risk-item:hover .risk-pulse {
+  opacity: 1;
 }
 
 .risk-item:hover .risk-dot {
   background: var(--brand-2);
-  transform: scale(1.3);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 15%, transparent);
+  transform: scale(1.2);
+}
+
+.risk-content {
+  flex: 1;
+  min-width: 0;
 }
 
 .risk-text {
-  color: var(--text-muted);
-  font-size: var(--size-2);
-  line-height: 1.5;
-  transition: color var(--dur-1) var(--ease);
-}
-
-.risk-item:hover .risk-text {
   color: var(--text);
+  font-size: var(--size-2);
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: var(--space-1);
+  transition: color 0.3s var(--ease);
 }
 
-/* Mitigation Panel */
-.mitigation-panel {
-  margin-top: var(--space-6);
-  background: linear-gradient(145deg, 
-    color-mix(in srgb, var(--elev-2) 70%, transparent),
-    color-mix(in srgb, var(--elev-1) 90%, transparent));
-  border: 1px solid color-mix(in srgb, var(--brand) 20%, transparent);
+.risk-mitigation {
+  color: var(--text-muted);
+  font-size: var(--size-1);
+  line-height: 1.4;
+  padding-left: var(--space-2);
+  border-left: 2px solid color-mix(in srgb, var(--brand) 30%, transparent);
+  transition: all 0.3s var(--ease);
+}
+
+.risk-item:hover .risk-mitigation {
+  color: var(--text-dim);
+  border-left-color: var(--brand);
+}
+
+/* Risk Footer */
+.risk-footer {
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px solid color-mix(in srgb, var(--stroke) 15%, transparent);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.risk-status {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  background: color-mix(in srgb, var(--ok) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ok) 25%, transparent);
+  border-radius: 20px;
+  color: var(--ok);
+  font-size: var(--size-1);
+  font-weight: 600;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--ok);
+  border-radius: 50%;
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+/* Enhanced Mitigation Showcase */
+.mitigation-showcase {
+  background: linear-gradient(135deg, 
+    color-mix(in srgb, var(--elev-2) 80%, transparent),
+    color-mix(in srgb, var(--elev-1) 95%, transparent));
+  border: 1px solid color-mix(in srgb, var(--brand) 15%, transparent);
   border-radius: var(--radius-xl);
-  padding: var(--space-5);
-  backdrop-filter: blur(20px) saturate(180%);
-  box-shadow: var(--shadow-subtle);
+  padding: var(--space-6);
+  backdrop-filter: blur(10px);
   text-align: center;
   position: relative;
   overflow: hidden;
 }
 
-.mitigation-panel::before {
+.mitigation-showcase::before {
   content: '';
   position: absolute;
   top: 0;
@@ -127,113 +277,224 @@
     transparent);
 }
 
-.mitigation-content h4 {
-  margin: 0 0 var(--space-2) 0;
-  font-size: var(--size-3);
+.mitigation-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.mitigation-icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--brand) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--brand) 20%, transparent);
+  border-radius: var(--radius-l);
+  color: var(--brand);
+}
+
+.mitigation-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.mitigation-title h4 {
+  margin: 0 0 var(--space-1) 0;
+  font-size: var(--size-4);
   font-weight: 700;
   color: var(--text);
 }
 
-.mitigation-content p {
+.mitigation-title p {
   margin: 0;
   color: var(--text-muted);
   font-size: var(--size-2);
-  line-height: 1.6;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
-/* Mobile Optimizations */
-@media (max-width: 768px) {
+/* Mitigation Stats */
+.mitigation-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+  padding: var(--space-4);
+  background: color-mix(in srgb, var(--elev-3) 40%, transparent);
+  border-radius: var(--radius-l);
+}
+
+.mitigation-stat {
+  text-align: center;
+}
+
+.stat-value {
+  font-size: var(--size-5);
+  font-weight: 800;
+  color: var(--brand);
+  line-height: 1;
+  margin-bottom: var(--space-1);
+}
+
+.stat-label {
+  font-size: var(--size-1);
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Mitigation Features */
+.mitigation-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-3);
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background: color-mix(in srgb, var(--ok) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ok) 15%, transparent);
+  border-radius: var(--radius-m);
+  color: var(--ok);
+  font-size: var(--size-2);
+  font-weight: 600;
+  transition: all 0.3s var(--ease);
+}
+
+.feature:hover {
+  background: color-mix(in srgb, var(--ok) 12%, transparent);
+  border-color: color-mix(in srgb, var(--ok) 25%, transparent);
+  transform: translateY(-2px);
+}
+
+.feature-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ok);
+  color: white;
+  border-radius: 50%;
+  font-size: var(--size-1);
+  font-weight: 700;
+}
+
+/* Animations */
+@keyframes riskPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.6;
+  }
+}
+
+@keyframes statusPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
   .risks-grid {
     grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+  
+  .mitigation-stats {
+    grid-template-columns: 1fr;
     gap: var(--space-3);
-    margin-top: var(--space-4);
+  }
+  
+  .mitigation-features {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .challenges-section {
+    padding: var(--space-6) 0;
   }
   
   .risk-category {
-    padding: var(--space-3);
-  }
-  
-  .risk-header {
-    gap: var(--space-2);
-    margin-bottom: var(--space-2);
-    padding-bottom: var(--space-2);
-  }
-  
-  .risk-icon {
-    width: 40px;
-    height: 40px;
-  }
-  
-  .risk-header h3 {
-    font-size: var(--size-2);
-  }
-  
-  .risk-item {
-    padding: var(--space-1) 0;
-    gap: var(--space-2);
-  }
-  
-  .risk-text {
-    font-size: var(--size-1);
-  }
-  
-  .mitigation-panel {
-    margin-top: var(--space-5);
     padding: var(--space-4);
   }
   
-  .mitigation-content h4 {
-    font-size: var(--size-2);
+  .mitigation-showcase {
+    padding: var(--space-4);
   }
   
-  .mitigation-content p {
-    font-size: var(--size-1);
-  }
-}
-
-@media (max-width: 480px) {
-  .risk-category {
-    padding: var(--space-3);
+  .mitigation-header {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-2);
   }
   
   .risk-header {
     flex-direction: column;
     align-items: flex-start;
     gap: var(--space-2);
-    text-align: left;
-  }
-  
-  .mitigation-panel {
-    padding: var(--space-3);
   }
 }
 
-/* Reduced motion support */
+@media (max-width: 480px) {
+  .risk-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+  
+  .risk-indicator {
+    align-self: flex-start;
+  }
+  
+  .mitigation-stats {
+    padding: var(--space-3);
+  }
+  
+  .stat-value {
+    font-size: var(--size-4);
+  }
+}
+
+/* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
   .risk-category,
   .risk-item,
-  .risk-dot,
-  .risk-icon {
+  .risk-icon,
+  .feature {
     transition: none;
   }
   
-  .risk-category:hover {
+  .risk-category:hover,
+  .risk-item:hover,
+  .feature:hover {
     transform: none;
   }
   
-  .risk-item:hover {
-    transform: none;
+  .risk-pulse,
+  .status-dot {
+    animation: none;
   }
 }
 
-/* Touch device optimizations */
+/* Touch Device Optimizations */
 @media (hover: none) {
   .risk-category:hover {
     transform: none;
-    border-color: color-mix(in srgb, var(--stroke) 25%, transparent);
   }
   
   .risk-item:hover {
@@ -242,6 +503,5 @@
   
   .risk-category:active {
     transform: scale(0.98);
-    transition: transform var(--dur-1) var(--ease);
   }
 }

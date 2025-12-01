@@ -1,0 +1,291 @@
+/* Future Section Enhancements */
+.future-section {
+  position: relative;
+  padding: var(--space-8) 0;
+  background: linear-gradient(180deg, 
+    color-mix(in srgb, var(--bg) 95%, transparent),
+    color-mix(in srgb, var(--elev-1) 30%, transparent) 100%);
+}
+
+.future-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    color-mix(in srgb, var(--brand) 20%, transparent) 50%, 
+    transparent 100%);
+}
+
+/* Feature Grid */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-4);
+  margin: var(--space-6) 0;
+}
+
+.feature-card {
+  position: relative;
+  padding: var(--space-5);
+  background: linear-gradient(135deg, 
+    color-mix(in srgb, var(--elev-2) 80%, transparent),
+    color-mix(in srgb, var(--elev-1) 60%, transparent));
+  border: 1px solid color-mix(in srgb, var(--stroke) 60%, transparent);
+  border-radius: var(--radius-l);
+  transition: all var(--dur-2) var(--ease);
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    color-mix(in srgb, var(--brand) 30%, transparent), 
+    transparent);
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  border-color: color-mix(in srgb, var(--brand) 40%, var(--stroke));
+  box-shadow: 
+    0 20px 40px rgba(0,0,0,0.15),
+    0 8px 24px rgba(0,0,0,0.1),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+.feature-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: var(--space-3);
+  background: linear-gradient(135deg, 
+    color-mix(in srgb, var(--brand) 15%, transparent),
+    color-mix(in srgb, var(--brand-2) 8%, transparent));
+  border-radius: var(--radius-m);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand);
+}
+
+.feature-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.feature-card h4 {
+  margin: 0 0 var(--space-2);
+  font-size: var(--size-3);
+  font-weight: 600;
+  color: var(--text);
+}
+
+.feature-card p {
+  margin: 0 0 var(--space-3);
+  color: var(--text-muted);
+  font-size: var(--size-2);
+  line-height: 1.5;
+}
+
+.feature-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  background: color-mix(in srgb, var(--brand) 12%, transparent);
+  color: var(--brand);
+  border: 1px solid color-mix(in srgb, var(--brand) 30%, transparent);
+  border-radius: 20px;
+  font-size: var(--size-1);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Roadmap */
+.future-roadmap {
+  margin-top: var(--space-7);
+}
+
+.roadmap-header {
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+
+.roadmap-header h3 {
+  font-size: var(--size-5);
+  margin: 0 0 var(--space-2);
+  color: var(--text);
+}
+
+.roadmap-header p {
+  color: var(--text-muted);
+  margin: 0;
+  font-size: var(--size-3);
+}
+
+.roadmap-timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timeline-path {
+  position: absolute;
+  left: 30px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, 
+    color-mix(in srgb, var(--brand) 30%, transparent),
+    color-mix(in srgb, var(--stroke) 50%, transparent),
+    color-mix(in srgb, var(--brand) 30%, transparent));
+  border-radius: 1px;
+}
+
+.roadmap-item {
+  position: relative;
+  display: flex;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+  padding-left: 60px;
+}
+
+.roadmap-marker {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.marker-circle {
+  width: 12px;
+  height: 12px;
+  background: var(--brand);
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--brand) 20%, transparent);
+}
+
+.marker-pulse {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background: color-mix(in srgb, var(--brand) 30%, transparent);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.roadmap-content {
+  flex: 1;
+  padding: var(--space-4);
+  background: color-mix(in srgb, var(--elev-2) 50%, transparent);
+  border: 1px solid color-mix(in srgb, var(--stroke) 40%, transparent);
+  border-radius: var(--radius-l);
+  transition: all var(--dur-2) var(--ease);
+}
+
+.roadmap-content:hover {
+  border-color: color-mix(in srgb, var(--brand) 30%, var(--stroke));
+  transform: translateX(8px);
+}
+
+.phase-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  background: color-mix(in srgb, var(--warn) 15%, transparent);
+  color: var(--warn);
+  border-radius: 12px;
+  font-size: var(--size-1);
+  font-weight: 600;
+  margin-bottom: var(--space-3);
+}
+
+.roadmap-content h4 {
+  margin: 0 0 var(--space-2);
+  font-size: var(--size-3);
+  color: var(--text);
+}
+
+.roadmap-content p {
+  margin: 0 0 var(--space-3);
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.roadmap-features {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.roadmap-features li {
+  position: relative;
+  padding: var(--space-1) 0 var(--space-1) var(--space-3);
+  color: var(--text-dim);
+  font-size: var(--size-2);
+}
+
+.roadmap-features li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background: color-mix(in srgb, var(--brand) 60%, transparent);
+  border-radius: 50%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .feature-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+  
+  .roadmap-item {
+    padding-left: 50px;
+  }
+  
+  .roadmap-marker {
+    width: 50px;
+  }
+  
+  .roadmap-content:hover {
+    transform: translateX(4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marker-pulse {
+    animation: none;
+  }
+  
+  .feature-card:hover,
+  .roadmap-content:hover {
+    transform: none;
+  }
+}

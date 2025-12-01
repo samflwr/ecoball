@@ -1,0 +1,204 @@
+/* --- TIMELINE SECTION: DEEP HYDRO --- */
+
+.timeline-section {
+  /* Scoped Variables */
+  --l-bg: var(--bg, #050a10);
+  --l-card: color-mix(in srgb, var(--elev-2, #111b26) 40%, transparent);
+  --l-border: rgba(255, 255, 255, 0.08);
+  --l-accent: var(--brand, #06b6d4);
+  --l-text: var(--text, #f0f9ff);
+  --l-muted: var(--text-muted, #64748b);
+  --l-gold: #fcd34d;
+  
+  position: relative;
+  padding: 8rem 0;
+  background-color: var(--l-bg);
+  overflow: hidden;
+  font-family: inherit;
+}
+
+/* Background Effects */
+.tl-ambient { position: absolute; inset: 0; pointer-events: none; }
+.tl-beam {
+  position: absolute; top: 0; left: 50%; width: 2px; height: 100%;
+  background: linear-gradient(to bottom, transparent, rgba(6,182,212,0.1), transparent);
+  transform: translateX(-50%);
+}
+
+/* --- HEADER --- */
+.tl-header {
+  text-align: center; max-width: 600px; margin: 0 auto 6rem; position: relative; z-index: 2;
+}
+.tl-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px;
+  color: var(--l-accent); margin-bottom: 1rem;
+  background: rgba(6,182,212,0.08); padding: 6px 14px; border-radius: 100px;
+  border: 1px solid rgba(6,182,212,0.2);
+}
+.tl-icon { width: 12px; height: 12px; color: currentColor; }
+
+.tl-title {
+  font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--l-text); margin-bottom: 1rem;
+}
+.text-gradient {
+  background: linear-gradient(135deg, var(--l-accent), #fff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.tl-subtitle { color: var(--l-muted); font-size: 1.1rem; }
+.highlight { color: var(--l-text); font-weight: 500; border-bottom: 1px solid var(--l-accent); }
+
+/* --- TIMELINE CONTAINER --- */
+.timeline-container {
+  position: relative; max-width: 1000px; margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* SPINE (Vertical Line) */
+.timeline-spine {
+  position: absolute; top: 0; bottom: 0; left: 50%; width: 2px;
+  background: rgba(255,255,255,0.05); transform: translateX(-50%);
+  z-index: 1;
+}
+.spine-progress {
+  position: absolute; top: 0; left: 0; width: 100%; height: 0%; /* JS will animate this */
+  background: linear-gradient(to bottom, var(--l-accent), transparent);
+  box-shadow: 0 0 15px var(--l-accent);
+  transition: height 0.5s ease-out;
+}
+
+/* NODES (The Years) */
+.tl-node {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 6rem;
+  opacity: 0.3; /* Dim by default */
+  transform: translateY(20px);
+  transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.tl-node.active-node {
+  opacity: 1; transform: translateY(0);
+}
+
+/* MARKER (The Center Dot) */
+.node-marker {
+  position: absolute; left: 50%; top: 30px;
+  transform: translateX(-50%);
+  width: 20px; height: 20px; z-index: 3;
+  display: flex; align-items: center; justify-content: center;
+}
+.marker-core {
+  width: 12px; height: 12px; background: var(--l-bg);
+  border: 2px solid var(--l-muted); border-radius: 50%;
+  transition: 0.3s;
+}
+.marker-halo {
+  position: absolute; inset: -10px; border-radius: 50%;
+  background: radial-gradient(circle, var(--l-accent) 0%, transparent 70%);
+  opacity: 0; transition: 0.3s;
+}
+
+.tl-node.active-node .marker-core {
+  background: var(--l-accent); border-color: var(--l-accent);
+  box-shadow: 0 0 10px var(--l-accent);
+}
+.tl-node.active-node .marker-halo { opacity: 0.5; }
+
+/* NODE CONTENT (Left/Right positioning) */
+.node-content {
+  width: 45%; margin-right: auto; /* Default Left */
+  padding-right: 3rem; text-align: right;
+  position: relative;
+}
+
+.tl-node.right .node-content {
+  margin-right: 0; margin-left: auto; /* Switch to Right */
+  padding-right: 0; padding-left: 3rem; text-align: left;
+}
+
+/* CARD STYLING */
+.node-card {
+  background: var(--l-card); border: 1px solid var(--l-border);
+  border-radius: 16px; padding: 2rem; position: relative; overflow: hidden;
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  transition: 0.3s;
+}
+
+.tl-node.active-node .node-card {
+  border-color: rgba(6,182,212,0.3);
+  box-shadow: 0 10px 40px -10px rgba(0,0,0,0.4);
+}
+
+/* Featured Card (Award) */
+.node-card.featured {
+  background: linear-gradient(135deg, rgba(6,182,212,0.1), rgba(5,10,16,0.8));
+  border-color: rgba(6,182,212,0.4);
+}
+
+.card-shimmer {
+  position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+  transition: left 0.6s;
+}
+.node-card:hover .card-shimmer { left: 100%; }
+
+.card-meta {
+  font-size: 0.8rem; font-family: monospace; color: var(--l-accent);
+  margin-bottom: 0.8rem; letter-spacing: 1px;
+}
+.card-meta.gold { color: var(--l-gold); }
+
+.node-card h3 {
+  font-size: 1.5rem; color: var(--l-text); margin: 0 0 1rem;
+}
+
+.node-card p {
+  color: var(--l-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;
+}
+.gold-txt { color: var(--l-gold); }
+
+.tags {
+  display: flex; gap: 8px; justify-content: flex-end; /* Right align for left cards */
+}
+.tl-node.right .tags { justify-content: flex-start; }
+
+.tags span {
+  font-size: 0.7rem; color: var(--l-text-dim);
+  background: rgba(255,255,255,0.05); padding: 4px 10px; border-radius: 100px;
+}
+
+/* Connector Lines (Pseudo elements) */
+.node-content::after {
+  content: ''; position: absolute; top: 40px; right: 0;
+  width: 3rem; height: 1px; background: var(--l-border);
+  transition: 0.3s;
+}
+.tl-node.right .node-content::after {
+  right: auto; left: 0;
+}
+
+.tl-node.active-node .node-content::after {
+  background: var(--l-accent); box-shadow: 0 0 10px var(--l-accent);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .timeline-spine { left: 20px; }
+  .tl-node, .tl-node.right { flex-direction: column; align-items: flex-start; margin-left: 0; }
+  .node-marker { left: 20px; top: 0; transform: none; }
+  
+  .node-content, .tl-node.right .node-content {
+    width: 100%; margin: 0; padding: 0 0 0 3.5rem; text-align: left;
+  }
+  
+  .tags, .tl-node.right .tags { justify-content: flex-start; }
+  
+  /* Connector for mobile */
+  .node-content::after, .tl-node.right .node-content::after {
+    width: 1px; height: 2rem; top: 20px; left: 20px; right: auto;
+    background: transparent; /* Hide horizontal connector */
+  }
+}

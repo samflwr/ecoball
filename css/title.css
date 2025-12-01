@@ -1,0 +1,210 @@
+/* Enhanced Title & Subtitle Styles - Isolated */
+.enhanced-title-group {
+  margin-bottom: 0;
+}
+
+.enhanced-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.5rem 0 !important;
+}
+
+.title-line {
+  display: block;
+  overflow: hidden;
+  margin-bottom: 0.15em;
+}
+
+.title-word {
+  display: inline-block;
+  transform: translateY(120%);
+  opacity: 0;
+  animation: titleWordReveal 0.7s var(--ease-out) forwards;
+}
+
+.title-word:nth-child(1) { animation-delay: 0.1s; }
+.title-word:nth-child(2) { animation-delay: 0.2s; }
+.title-word:nth-child(3) { animation-delay: 0.3s; }
+.title-word:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes titleWordReveal {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Solar highlight effect */
+.solar-highlight {
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(135deg, #FFD700, #FF8C00, #FF6B00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 8px rgba(255, 107, 0, 0.3));
+}
+
+.solar-dot {
+  position: absolute;
+  top: -0.2em;
+  right: -0.3em;
+  width: 0.4em;
+  height: 0.4em;
+  background: radial-gradient(circle, #FFD700, #FF6B00);
+  border-radius: 50%;
+  opacity: 0;
+  animation: solarPulse 2s ease-in-out infinite 1s;
+}
+
+@keyframes solarPulse {
+  0%, 100% { opacity: 0; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Enhanced Subtitle */
+.enhanced-subtitle {
+  font-size: var(--size-3);
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin: 0 0 2.5rem 0 !important;
+  position: relative;
+  max-width: 52ch;
+}
+
+.subtitle-content {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: subtitleReveal 0.8s var(--ease-out) 0.5s forwards;
+}
+
+@keyframes subtitleReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Text highlights */
+.text-highlight {
+  position: relative;
+  color: var(--text);
+  font-weight: 600;
+  cursor: default;
+  transition: color 0.3s var(--ease);
+}
+
+.text-highlight::before {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    color-mix(in srgb, var(--brand) 60%, transparent),
+    color-mix(in srgb, var(--brand) 30%, transparent));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s var(--ease);
+}
+
+.text-highlight:hover {
+  color: var(--brand-2);
+}
+
+.text-highlight:hover::before {
+  transform: scaleX(1);
+}
+
+.text-accent {
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  cursor: default;
+  transition: filter 0.3s var(--ease);
+}
+
+.text-accent:hover {
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--brand) 25%, transparent));
+}
+
+.subtitle-line {
+  position: absolute;
+  bottom: -1rem;
+  left: 0;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    var(--brand),
+    color-mix(in srgb, var(--brand) 30%, transparent));
+  border-radius: 2px;
+  opacity: 0;
+  animation: subtitleLineReveal 0.8s var(--ease-out) 1s forwards;
+}
+
+@keyframes subtitleLineReveal {
+  to {
+    opacity: 1;
+    width: 120px;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .enhanced-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+  
+  .enhanced-subtitle {
+    font-size: var(--size-2);
+  }
+}
+
+@media (max-width: 768px) {
+  .enhanced-title {
+    margin-bottom: 1rem !important;
+  }
+  
+  .enhanced-subtitle {
+    margin-bottom: 2rem !important;
+  }
+  
+  .subtitle-line {
+    bottom: -0.75rem;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .title-word,
+  .subtitle-content,
+  .solar-dot,
+  .subtitle-line {
+    animation: none;
+    transition: none;
+  }
+  
+  .title-word,
+  .subtitle-content {
+    opacity: 1;
+    transform: none;
+  }
+  
+  .solar-dot {
+    display: none;
+  }
+  
+  .solar-highlight {
+    background: var(--brand);
+    -webkit-background-clip: initial;
+    -webkit-text-fill-color: initial;
+    background-clip: initial;
+    filter: none;
+  }
+}

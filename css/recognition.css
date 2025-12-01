@@ -1,0 +1,167 @@
+/* --- RECOGNITION SECTION: DEEP HYDRO --- */
+
+.recognition-section {
+  /* Scoped Variables */
+  --r-bg: var(--bg, #050a10);
+  --r-card: color-mix(in srgb, var(--elev-2, #111b26) 40%, transparent);
+  --r-border: rgba(255, 255, 255, 0.08);
+  --r-accent: var(--brand, #06b6d4);
+  --r-gold: #fbbf24; /* Amber Gold */
+  --r-text: var(--text, #f0f9ff);
+  --r-muted: var(--text-muted, #64748b);
+  
+  position: relative;
+  padding: 8rem 0;
+  background-color: var(--r-bg);
+  overflow: hidden;
+  font-family: inherit;
+}
+
+/* Spotlight Effect */
+.rec-spotlight {
+  position: absolute; top: -20%; left: 50%; transform: translateX(-50%);
+  width: 80vw; height: 600px;
+  background: radial-gradient(ellipse at top, rgba(6,182,212,0.1) 0%, transparent 70%);
+  filter: blur(80px); pointer-events: none;
+}
+
+/* --- HEADER --- */
+.rec-header {
+  text-align: center; max-width: 600px; margin: 0 auto 5rem; position: relative; z-index: 2;
+}
+
+.rec-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px;
+  color: var(--r-gold); margin-bottom: 1rem;
+  background: rgba(251, 191, 36, 0.1); padding: 6px 14px; border-radius: 100px;
+  border: 1px solid rgba(251, 191, 36, 0.2);
+}
+.star-icon { font-size: 0.8rem; }
+
+.rec-title {
+  font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--r-text); margin-bottom: 1rem;
+}
+.text-gradient {
+  background: linear-gradient(135deg, var(--r-accent), #fff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.rec-subtitle { color: var(--r-muted); font-size: 1.1rem; }
+
+/* --- GRID --- */
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px; margin: 0 auto;
+  position: relative; z-index: 2;
+}
+
+/* --- CARD STYLING --- */
+.award-card {
+  background: var(--r-card);
+  border: 1px solid var(--r-border);
+  border-radius: 20px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  display: flex; flex-direction: column;
+}
+
+/* Hover Interaction */
+.award-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(6,182,212,0.3);
+  box-shadow: 
+    0 20px 40px -10px rgba(0,0,0,0.4),
+    0 0 0 1px rgba(6,182,212,0.1) inset;
+}
+
+.card-shine {
+  position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+  transform: skewX(-20deg); pointer-events: none; transition: 0.6s;
+}
+.award-card:hover .card-shine { left: 150%; transition: 0.8s; }
+
+/* --- FEATURED GOLD CARD --- */
+.award-card.featured-gold {
+  background: linear-gradient(145deg, rgba(251, 191, 36, 0.05), rgba(5,10,16,0.9));
+  border-color: rgba(251, 191, 36, 0.3);
+}
+.award-card.featured-gold:hover {
+  border-color: var(--r-gold);
+  box-shadow: 0 20px 50px -10px rgba(251, 191, 36, 0.15);
+}
+
+.card-glow {
+  position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.1) 0%, transparent 60%);
+  opacity: 0; transition: 0.4s; pointer-events: none;
+}
+.featured-gold:hover .card-glow { opacity: 1; }
+
+/* CARD CONTENT */
+.card-top {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.icon-circle {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: rgba(255,255,255,0.03); border: 1px solid var(--r-border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--r-text); transition: 0.3s;
+}
+.icon-circle svg { width: 24px; height: 24px; stroke-width: 1.5; }
+
+.award-card:hover .icon-circle {
+  background: var(--r-accent); color: var(--r-bg); border-color: var(--r-accent);
+  box-shadow: 0 0 20px rgba(6,182,212,0.4);
+}
+
+/* Gold Icon Override */
+.icon-circle.gold {
+  background: rgba(251, 191, 36, 0.1); color: var(--r-gold); border-color: rgba(251, 191, 36, 0.3);
+}
+.featured-gold:hover .icon-circle.gold {
+  background: var(--r-gold); color: var(--r-bg); box-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
+}
+
+.award-tag {
+  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px;
+  color: var(--r-text-dim); border: 1px solid var(--r-border);
+  padding: 4px 10px; border-radius: 50px; height: fit-content;
+}
+.award-tag.gold {
+  color: var(--r-gold); border-color: rgba(251, 191, 36, 0.3); background: rgba(251, 191, 36, 0.05);
+  font-weight: 700;
+}
+
+.card-body h3 {
+  font-size: 1.25rem; margin: 0 0 0.5rem; color: var(--r-text);
+}
+.org-name {
+  display: block; font-size: 0.85rem; color: var(--r-accent);
+  margin-bottom: 1rem; font-weight: 500;
+}
+.featured-gold .org-name { color: var(--r-gold); }
+
+.card-body p {
+  font-size: 0.95rem; line-height: 1.6; color: var(--r-muted); margin: 0;
+}
+
+/* Confetti Decor (Subtle dots for gold card) */
+.confetti-deco {
+  position: absolute; inset: 0; background-image: radial-gradient(var(--r-gold) 1px, transparent 1px);
+  background-size: 20px 20px; opacity: 0.05; pointer-events: none;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .achievements-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .rec-header { padding: 0 1rem; }
+  .award-card { min-height: auto; }
+}

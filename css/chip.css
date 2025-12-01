@@ -1,160 +1,146 @@
-/* Enhanced Chip Component */
+/* --- PREMIUM TECH CHIP (Deep Hydro Edition) --- */
+
 .chip {
+  /* Local variables for portability */
+  --c-bg: rgba(6, 182, 212, 0.05); /* Brand tint */
+  --c-border: rgba(255, 255, 255, 0.1);
+  --c-border-hover: rgba(6, 182, 212, 0.5); /* Cyan border on hover */
+  --c-text: var(--text-dim, #bae6fd);
+  --c-brand: var(--brand, #06b6d4);
+  
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 18px;
+  padding: 8px 16px 8px 10px; /* Asymmetric padding for optical balance with dot */
+  
   background: 
-    linear-gradient(135deg, 
-      color-mix(in srgb, var(--elev-2) 80%, transparent) 0%, 
-      color-mix(in srgb, var(--elev-1) 90%, transparent) 100%),
-    radial-gradient(ellipse at 50% 0%, 
-      color-mix(in srgb, var(--brand) 8%, transparent) 0%, 
-      transparent 70%);
-  border: 1px solid color-mix(in srgb, var(--stroke) 70%, transparent);
-  border-radius: 999px;
-  color: var(--text-dim);
-  font-size: var(--size-1);
+    linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%),
+    var(--c-bg);
+  border: 1px solid var(--c-border);
+  border-radius: 100px;
+  
+  color: var(--c-text);
+  font-family: inherit;
+  font-size: 0.85rem;
   font-weight: 500;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.02em;
+  
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  
   box-shadow: 
-    var(--shadow-subtle),
-    0 1px 0 rgba(255, 255, 255, 0.03) inset;
-  backdrop-filter: saturate(140%) blur(12px);
-  transition: all var(--dur-2) var(--ease);
+    0 4px 20px -4px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1); /* Top highlight */
+    
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
   position: relative;
   overflow: hidden;
-  isolation: isolate;
+  cursor: pointer;
+  user-select: none;
+  z-index: 10;
 }
 
-.chip::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, 
-    color-mix(in srgb, var(--brand) 4%, transparent), 
-    color-mix(in srgb, var(--brand) 1%, transparent));
-  opacity: 0;
-  transition: opacity var(--dur-2) var(--ease);
-  z-index: -1;
-}
-
+/* Hover State: "Activation" */
 .chip:hover {
-  transform: translateY(-2px) scale(1.02);
-  border-color: color-mix(in srgb, var(--brand) 40%, var(--stroke));
+  transform: translateY(-2px);
+  border-color: var(--c-border-hover);
+  background: rgba(6, 182, 212, 0.12);
+  color: #fff;
   box-shadow: 
-    var(--shadow-soft),
-    0 1px 0 rgba(255, 255, 255, 0.05) inset;
-  color: var(--text);
+    0 10px 30px -5px rgba(6, 182, 212, 0.3), /* Cyan glow */
+    inset 0 0 0 1px rgba(6, 182, 212, 0.2); /* Inner glow */
 }
 
-.chip:hover::before {
-  opacity: 1;
-}
-
+/* Click State */
 .chip:active {
   transform: translateY(0) scale(0.98);
-  transition-duration: var(--dur-1);
 }
 
+/* --- THE PULSING DOT (Sensor Status) --- */
 .chip .dot {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: 
-    radial-gradient(circle at 30% 30%, 
-      color-mix(in srgb, var(--brand-2) 80%, transparent), 
-      var(--brand));
-  border: 1px solid color-mix(in srgb, var(--brand) 60%, transparent);
-  box-shadow: 
-    0 0 12px color-mix(in srgb, var(--brand) 45%, transparent),
-    0 1px 2px rgba(0, 0, 0, 0.2) inset;
+  background: var(--c-brand);
   position: relative;
-  transition: all var(--dur-2) var(--ease);
+  box-shadow: 0 0 10px var(--c-brand);
 }
 
-.chip:hover .dot {
-  transform: scale(1.2);
-  box-shadow: 
-    0 0 16px color-mix(in srgb, var(--brand) 60%, transparent),
-    0 1px 3px rgba(0, 0, 0, 0.3) inset;
+/* Inner Core Pulse (Heartbeat) */
+.chip .dot::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0.6;
+  animation: corePulse 3s ease-in-out infinite;
 }
 
+/* Outer Ripple (Radar Wave) */
 .chip .dot::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%; height: 100%;
+  border: 1px solid var(--c-brand);
+  border-radius: 50%;
+  opacity: 0;
+  animation: rippleOut 3s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Hover Enhancement for Dot */
+.chip:hover .dot {
+  background: #fff;
+  box-shadow: 0 0 15px #fff, 0 0 5px var(--c-brand);
+}
+
+/* --- SHIMMER EFFECT (Glass Reflection) --- */
+.chip::after {
   content: "";
   position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 2px;
-  height: 2px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.8);
-  filter: blur(0.5px);
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+  pointer-events: none;
 }
 
-/* Chip variants */
-.chip.primary {
-  background: 
-    linear-gradient(135deg, 
-      color-mix(in srgb, var(--brand) 15%, var(--elev-2)) 0%, 
-      color-mix(in srgb, var(--brand) 8%, var(--elev-1)) 100%);
-  border-color: color-mix(in srgb, var(--brand) 50%, var(--stroke));
-  color: var(--text);
+.chip:hover::after {
+  left: 150%;
+  transition: left 0.8s ease;
 }
 
-.chip.warning {
-  background: 
-    linear-gradient(135deg, 
-      color-mix(in srgb, var(--warn) 12%, var(--elev-2)) 0%, 
-      color-mix(in srgb, var(--warn) 6%, var(--elev-1)) 100%);
-  border-color: color-mix(in srgb, var(--warn) 40%, var(--stroke));
+/* --- ANIMATIONS --- */
+@keyframes corePulse {
+  0%, 100% { transform: scale(0.8); opacity: 0.5; }
+  50% { transform: scale(1); opacity: 0.9; }
 }
 
-.chip.warning .dot {
-  background: 
-    radial-gradient(circle at 30% 30%, 
-      color-mix(in srgb, var(--warn) 80%, white), 
-      var(--warn));
-  box-shadow: 
-    0 0 12px color-mix(in srgb, var(--warn) 45%, transparent),
-    0 1px 2px rgba(0, 0, 0, 0.2) inset;
+@keyframes rippleOut {
+  0% { width: 100%; height: 100%; opacity: 0.8; border-width: 1px; }
+  100% { width: 300%; height: 300%; opacity: 0; border-width: 0; }
 }
 
-.chip.alert {
-  background: 
-    linear-gradient(135deg, 
-      color-mix(in srgb, var(--alert) 12%, var(--elev-2)) 0%, 
-      color-mix(in srgb, var(--alert) 6%, var(--elev-1)) 100%);
-  border-color: color-mix(in srgb, var(--alert) 40%, var(--stroke));
+/* --- MAGNETIC VARIANT (Optional JS hook class) --- */
+.chip.magnetic {
+  /* Smoother transition for JS-driven movement */
+  transition: transform 0.1s linear, background 0.3s ease, border-color 0.3s ease; 
 }
 
-.chip.alert .dot {
-  background: 
-    radial-gradient(circle at 30% 30%, 
-      color-mix(in srgb, var(--alert) 80%, white), 
-      var(--alert));
-  box-shadow: 
-    0 0 12px color-mix(in srgb, var(--alert) 45%, transparent),
-    0 1px 2px rgba(0, 0, 0, 0.2) inset;
-}
-
-/* Chip group styling */
-.chip-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-items: center;
-}
-
-/* Responsive refinement */
-@media (max-width: 768px) {
-  .chip {
-    padding: 8px 14px;
-    font-size: 0.9rem;
-  }
-  
-  .chip .dot {
-    width: 8px;
-    height: 8px;
-  }
+/* --- REDUCED MOTION --- */
+@media (prefers-reduced-motion: reduce) {
+  .chip, .chip::after { transition: none; }
+  .chip:hover { transform: none; }
+  .chip .dot::before, .chip .dot::after { animation: none; }
+  .chip:hover::after { display: none; }
 }
