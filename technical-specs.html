@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  
+  <!-- Primary Meta Tags -->
+  <title>Technical Specifications - EcoBall | Complete Technical Details</title>
+  <meta name="description" content="Complete technical specifications for EcoBall autonomous water quality monitoring device. Detailed sensor specifications, power systems, and performance metrics." />
+  <meta name="keywords" content="EcoBall technical specs, water sensor specifications, IoT device specifications, environmental monitoring technical details" />
+  <meta name="author" content="EcoBall Team - Istituto Rapisardi-Da Vinci" />
+  <meta name="robots" content="index, follow" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ecoball.it/technical-specs/" />
+  <meta property="og:title" content="Technical Specifications - EcoBall | Complete Technical Details" />
+  <meta property="og:description" content="Detailed technical specifications for EcoBall autonomous water quality monitoring device." />
+  <meta property="og:image" content="https://ecoball.it/images/ecoball-og-image.jpg" />
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://ecoball.it/technical-specs/" />
+  <meta property="twitter:title" content="Technical Specifications - EcoBall" />
+  <meta property="twitter:description" content="Complete technical details for EcoBall water monitoring device." />
+  <meta property="twitter:image" content="https://ecoball.it/images/ecoball-og-image.png" />
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://ecoball.it/technical-specs/" />
+  
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="css/topbar.css" />
+  <link rel="stylesheet" href="css/stat.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/spec.css" />
+  <link rel="stylesheet" href="css/tile.css" />
+  <link rel="stylesheet" href="css/impact.css" />
+  <link rel="stylesheet" href="css/timeline.css" />
+  <link rel="stylesheet" href="css/architecture.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/chip.css" />
+  <link rel="stylesheet" href="css/scroll-line.css" />
+  <link rel="stylesheet" href="css/teams.css" />
+  <link rel="stylesheet" href="css/sphere.css" />
+  <link rel="stylesheet" href="css/hardware.css" />
+  <link rel="stylesheet" href="css/technical.css" />
+  <link rel="stylesheet" href="css/maintenance.css" />
+  <link rel="stylesheet" href="css/challenges.css" />
+  <link rel="stylesheet" href="css/deployment.css" />
+  <link rel="stylesheet" href="css/contact.css" />
+  <link rel="stylesheet" href="css/mission.css" />
+  <link rel="stylesheet" href="css/title.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+  <!-- Top Bar Navigation -->
+  <nav class="top-bar" id="topBar">
+    <div class="top-bar__content">
+      <!-- Logo -->
+      <div class="top-bar__brand">
+        <div class="logo">
+          <span class="logo__text">eb</span>
+        </div>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="top-bar__nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="#specs" class="nav-link">Specifications</a>
+        <a href="#maintenance" class="nav-link">Maintenance</a>
+        <a href="#workflow" class="nav-link">Workflow</a>
+      </div>
+
+      <!-- CTA -->
+      <div class="top-bar__actions">
+        <a href="index.html" class="cta-btn">
+          <span>Back to Home</span>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-menu__content">
+        <a href="index.html" class="mobile-link">Home</a>
+        <a href="#specs" class="mobile-link">Specifications</a>
+        <a href="#maintenance" class="mobile-link">Maintenance</a>
+        <a href="#workflow" class="mobile-link">Workflow</a>
+      </div>
+    </div>
+
+    <!-- Progress Line -->
+    <div class="top-bar__progress"></div>
+  </nav>
+
+  <header class="hero">
+    <div class="orbital" aria-hidden="true"></div>
+    <div class="wrap hero-grid">
+      <div class="">
+        <span class="chip magnetic"><span class="dot"></span> Technical Specifications</span>
+        
+        <div class="enhanced-title-group">
+          <h1 class="title enhanced-title">
+            <span class="title-line">
+              <span class="title-word" data-word="Complete">Complete</span>
+            </span>
+            <span class="title-line">
+              <span class="title-word" data-word="Technical">Technical</span>
+            </span>
+            <span class="title-line">
+              <span class="title-word" data-word="Details">Details</span>
+            </span>
+          </h1>
+          
+          <p class="subtitle enhanced-subtitle">
+            <span class="subtitle-content">
+              Comprehensive specifications, maintenance procedures, and operational workflows for the EcoBall autonomous water monitoring system.
+            </span>
+            <span class="subtitle-line"></span>
+          </p>
+        </div>
+
+        <div class="actions">
+          <a href="#specs" class="btn primary magnetic" data-ripple="true">View Specifications</a>
+          <a href="#workflow" class="btn magnetic" data-ripple="true">Operating Workflow</a>
+        </div>
+      </div>
+      <div class="panel exploded " aria-label="EcoBall technical visualization">
+        <div class="exploded">
+          <div class="canvas">
+            <div class="sphere-container">
+              <div class="sphere-shadow"></div>
+              <div class="sphere-glow"></div>
+              <img src="ecoball-def.png" alt="Ecoball technical component visualization" class="sphere">
+              <div class="sphere-reflection"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Technical Specifications Section -->
+    <section id="specs" class="technical-specs-mobile">
+      <div class="wrap">
+        <div class="headline">
+          <h2>Technical Specifications</h2>
+          <p>Precision-engineered capabilities for reliable environmental monitoring at scale.</p>
+        </div>
+        
+        <div class="specs-grid">
+          <!-- Sensing & Measurement -->
+          <div class="spec-category">
+            <div class="spec-header">
+              <div class="spec-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <h3>Sensing & Measurement</h3>
+            </div>
+            <div class="spec-content">
+              <div class="feature-group">
+                <h4 class="feature-group-title">Core Parameters</h4>
+                <div class="feature-list">
+                  <span class="feature-item">Temperature: ±0.1°C accuracy</span>
+                  <span class="feature-item">pH: 0-14 range, ±0.1 resolution</span>
+                  <span class="feature-item">Electrical Conductivity: 0-200 mS/cm</span>
+                  <span class="feature-item">Dissolved Oxygen: 0-20 mg/L</span>
+                  <span class="feature-item">Turbidity: 0-1000 NTU</span>
+                </div>
+              </div>
+              <div class="feature-group">
+                <h4 class="feature-group-title">Extended Capabilities</h4>
+                <div class="feature-list">
+                  <span class="feature-item">Nitrates: 0-100 mg/L (optional)</span>
+                  <span class="feature-item">Phosphates: 0-50 mg/L (optional)</span>
+                  <span class="feature-item highlight">Hydrocarbon detection module</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Data & Connectivity -->
+          <div class="spec-category">
+            <div class="spec-header">
+              <div class="spec-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 6V12L15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <h3>Data & Connectivity</h3>
+            </div>
+            <div class="spec-content">
+              <div class="feature-group">
+                <h4 class="feature-group-title">Sampling & Processing</h4>
+                <div class="feature-list">
+                  <span class="feature-item">Configurable intervals: 10-60 minutes</span>
+                  <span class="feature-item">On-board data preprocessing</span>
+                  <span class="feature-item">Real-time quality validation</span>
+                  <span class="feature-item">Local storage: 4MB flash</span>
+                </div>
+              </div>
+              <div class="feature-group">
+                <h4 class="feature-group-title">Communication Systems</h4>
+                <div class="feature-list">
+                  <span class="feature-item">Primary: NB-IoT/LTE-M</span>
+                  <span class="feature-item">Fallback: GSM/GPRS</span>
+                  <span class="feature-item">Long-range: LoRaWAN support</span>
+                  <span class="feature-item highlight">Multi-operator SIM</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Power & Hardware -->
+          <div class="spec-category">
+            <div class="spec-header">
+              <div class="spec-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M19 12C19 15.866 15.866 19 12 19C8.13401 19 5 15.866 5 12C5 8.13401 8.13401 5 12 5" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <h3>Power & Hardware</h3>
+            </div>
+            <div class="spec-content">
+              <div class="feature-group">
+                <h4 class="feature-group-title">Energy System</h4>
+                <div class="feature-list">
+                  <span class="feature-item">Battery: 20Wh Li-ion polymer</span>
+                  <span class="feature-item">Solar: 10W monocrystalline panel</span>
+                  <span class="feature-item">MPPT charge controller</span>
+                  <span class="feature-item highlight">30-day autonomous operation</span>
+                </div>
+              </div>
+              <div class="feature-group">
+                <h4 class="feature-group-title">Physical Specifications</h4>
+                <div class="feature-list">
+                  <span class="feature-item">Diameter: 300mm sphere</span>
+                  <span class="feature-item">Weight: 1.2kg in air</span>
+                  <span class="feature-item">Enclosure: IP68 rated</span>
+                  <span class="feature-item">Operating temp: -10°C to 50°C</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Performance & Compliance -->
+          <div class="spec-category key-features">
+            <div class="spec-header">
+              <div class="spec-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M12 3V4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M12 20V21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M21 12H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M4 12H3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <h3>Performance & Compliance</h3>
+            </div>
+            <div class="spec-content">
+              <div class="feature-group">
+                <h4 class="feature-group-title">Operational Standards</h4>
+                <div class="feature-list">
+                  <span class="feature-item">Data accuracy: >99% validated</span>
+                  <span class="feature-item">Uptime: 99.8% field proven</span>
+                  <span class="feature-item">Calibration cycle: 90 days</span>
+                  <span class="feature-item highlight">ISO 17025 compliant methods</span>
+                </div>
+              </div>
+              <div class="feature-group">
+                <h4 class="feature-group-title">Environmental Compliance</h4>
+                <div class="feature-list">
+                  <span class="feature-item">RoHS compliant components</span>
+                  <span class="feature-item">REACH substance compliance</span>
+                  <span class="feature-item">100% recyclable HDPE</span>
+                  <span class="feature-item highlight">Zero liquid discharge</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Minimum Technical Specs -->
+    <section id="min-specs">
+      <div class="wrap">
+        <div class="headline ">
+          <h2 style="font-size: var(--size-6);">Minimum Technical Specs</h2>
+          <p>Baseline configuration for robust real‑time monitoring.</p>
+        </div>
+        <div class="specs">
+          <div class="spec ">STM32 Nucleo MCU</div>
+          <div class="spec ">NB‑IoT / LTE‑M modem</div>
+          <div class="spec ">±0.1 accuracy sensors</div>
+          <div class="spec ">3–10 W solar panel</div>
+          <div class="spec ">10–20 Wh battery</div>
+          <div class="spec ">IP68 casing</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Maintenance & Operations -->
+    <section id="maintenance">
+      <div class="wrap">
+        <div class="headline ">
+          <h2 style="font-size: var(--size-6);">Maintenance & Operations</h2>
+          <p>Reliable lifecycle with remote diagnostics and OTA updates.</p>
+        </div>
+        
+        <div class="maintenance-grid">
+          <div class="maintenance-card ">
+            <div class="maintenance-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                <path d="M14 10L12 12M12 12L10 14M12 12L14 14M12 12L10 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="maintenance-content">
+              <h3>Sensor Maintenance</h3>
+              <p>Regular cleaning and calibration to ensure 99% data accuracy</p>
+            </div>
+            <div class="maintenance-badge">Monthly</div>
+          </div>
+
+          <div class="maintenance-card ">
+            <div class="maintenance-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                <path d="M12 8V12L15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <rect x="3" y="10" width="18" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M7 6H17V10H7V6Z" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="maintenance-content">
+              <h3>Power Management</h3>
+              <p>Battery health checks and replacement when needed</p>
+            </div>
+            <div class="maintenance-badge">Quarterly</div>
+          </div>
+
+          <div class="maintenance-card ">
+            <div class="maintenance-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                <path d="M15 12L12 12M12 12L9 12M12 12L12 9M12 12L12 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M12 19C15.866 19 19 15.866 19 12C19 8.13401 15.866 5 12 5C8.13401 5 5 8.13401 5 12C5 15.866 8.13401 19 12 19Z" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="maintenance-content">
+              <h3>Remote Diagnostics</h3>
+              <p>Continuous system monitoring and proactive issue detection</p>
+            </div>
+            <div class="maintenance-badge">24/7</div>
+          </div>
+
+          <div class="maintenance-card ">
+            <div class="maintenance-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                <path d="M12 16L12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M12 8L12 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M7 12H5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M19 12H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M16 8L17 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M8 8L7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M16 16L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M8 16L7 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="maintenance-content">
+              <h3>Solar Monitoring</h3>
+              <p>Panel integrity and efficiency tracking</p>
+            </div>
+            <div class="maintenance-badge">Continuous</div>
+          </div>
+
+          <div class="maintenance-card highlight ">
+            <div class="maintenance-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M12 16L12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M12 8L12 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M21 3V7H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="maintenance-content">
+              <h3>OTA Updates</h3>
+              <p>Wireless firmware updates for continuous improvement</p>
+            </div>
+            <div class="maintenance-badge highlight">As Needed</div>
+          </div>
+        </div>
+        
+        <!-- Additional Info Panel -->
+        <div class="maintenance-info ">
+          <div class="info-content">
+            <h4>Proactive Maintenance Cycle</h4>
+            <p>Our automated monitoring system ensures optimal performance with minimal manual intervention. Remote diagnostics alert our team before issues impact data quality.</p>
+          </div>
+          <div class="info-stats">
+            <div class="info-stat">
+              <span class="stat-value">99.8%</span>
+              <span class="stat-label">Uptime</span>
+            </div>
+            <div class="info-stat">
+              <span class="stat-value">24/7</span>
+              <span class="stat-label">Monitoring</span>
+            </div>
+            <div class="info-stat">
+              <span class="stat-value">&lt;1h</span>
+              <span class="stat-label">Response Time</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Operating Workflow -->
+<section id="workflow" class="workflow-section">
+  <div class="wf-overlay"></div>
+
+  <div class="wrap">
+    
+    <div class="wf-header">
+      <div class="wf-badge">
+        <span class="pulse-dot"></span> Operations Cycle
+      </div>
+      <h2 class="wf-title">Autonomous <span class="text-gradient">Workflow</span></h2>
+      <p class="wf-subtitle">From solar wakeup to cloud intelligence. Zero human intervention required.</p>
+    </div>
+
+    <div class="workflow-interface">
+      
+      <div class="timeline-track">
+        <div class="track-line"></div>
+        <div class="data-packet"></div>
+        <div class="data-packet delay-1"></div>
+      </div>
+
+      <div class="steps-container">
+        
+        <div class="wf-step active" data-step="1">
+          <div class="step-marker">01</div>
+          <div class="step-card">
+            <div class="card-head">
+              <div class="step-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+              </div>
+              <h3>System Wakeup</h3>
+              <span class="status-tag">Completed</span>
+            </div>
+            <div class="card-body">
+              <p>Smart power scheduler activates core systems based on solar charge levels and mission parameters.</p>
+              <div class="metric-row">
+                <span>Power Check: <strong class="ok">PASS</strong></span>
+                <span>Boot Time: <strong>0.8s</strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="wf-step" data-step="2">
+          <div class="step-marker">02</div>
+          <div class="step-card">
+            <div class="card-head">
+              <div class="step-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 12V7a5 5 0 0 0-10 0v5c0 5.523 4.477 10 10 10s10-4.477 10-10v-5a5 5 0 0 0-10 0v5"/><circle cx="12" cy="12" r="3"/></svg>
+              </div>
+              <h3>Data Acquisition</h3>
+              <span class="status-tag pending">Processing</span>
+            </div>
+            <div class="card-body">
+              <p>Multiparametric sensors capture pH, turbidity, and temperature while GPS locks precise coordinates.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="wf-step" data-step="3">
+          <div class="step-marker">03</div>
+          <div class="step-card">
+            <div class="card-head">
+              <div class="step-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+              </div>
+              <h3>Edge Processing</h3>
+            </div>
+            <div class="card-body">
+              <p>On-board STM32 MCU normalizes data, compresses payloads, and runs initial anomaly detection algorithms.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="wf-step" data-step="4">
+          <div class="step-marker">04</div>
+          <div class="step-card">
+            <div class="card-head">
+              <div class="step-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2m0 4v6l4 2"/></svg>
+              </div>
+              <h3>Secure Uplink</h3>
+            </div>
+            <div class="card-body">
+              <p>Encrypted transmission via NB-IoT or LTE-M networks to the secure cloud infrastructure.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="wf-step" data-step="5">
+          <div class="step-marker">05</div>
+          <div class="step-card">
+            <div class="card-head">
+              <div class="step-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+              </div>
+              <h3>Actionable Insight</h3>
+            </div>
+            <div class="card-body">
+              <p>Cloud dashboard updates risk maps instantly. Critical alerts are pushed to authorities if thresholds are breached.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="wf-controls">
+      <button class="wf-btn prev" id="wf-prev" disabled>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      </button>
+      <div class="wf-progress">
+        <div class="prog-bar"><div class="prog-fill" style="width: 20%"></div></div>
+        <span class="prog-label">Step 1/5</span>
+      </div>
+      <button class="wf-btn next" id="wf-next">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-content">
+        <div class="footer-main">
+          <div class="footer-brand">
+            <div class="logo">
+              <div class="logo__dot"></div>
+              <span class="logo__text">EB</span>
+            </div>
+            <div class="footer-tagline">
+              <span>EcoBall</span>
+              <span class="footer-subtle">Technical Specifications</span>
+            </div>
+          </div>
+          
+          <nav class="footer-nav">
+            <a href="index.html">Home</a>
+            <a href="#specs">Specifications</a>
+            <a href="#maintenance">Maintenance</a>
+            <a href="#workflow">Workflow</a>
+          </nav>
+        </div>
+        
+        <div class="footer-meta">
+          <div class="footer-legal">
+            <span>© <span id="year"></span> EcoBall</span>
+            <span class="footer-divider">•</span>
+            <span>Istituto Rapisardi–Da Vinci</span>
+          </div>
+          <div class="footer-status">
+            <div class="status-indicator"></div>
+            <span>Technical documentation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
