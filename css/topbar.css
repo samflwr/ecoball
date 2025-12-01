@@ -1,154 +1,344 @@
-/* --- TOP BAR: DEEP HYDRO --- */
+/* --- TOP BAR: DEEP HYDRO PREMIUM SYSTEM --- */
 
-/* Base Styles */
 .top-bar {
-  --n-bg: rgba(5, 10, 16, 0.85); /* Deep Hydro Dark */
-  --n-border: rgba(255, 255, 255, 0.08);
-  --n-text: #94a3b8; /* Slate */
-  --n-text-hover: #f0f9ff; /* White */
-  --n-brand: #06b6d4; /* Cyan */
-  --n-glass: blur(16px);
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  height: 72px;
   
-  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  height: 70px;
-  background: var(--n-bg);
-  backdrop-filter: var(--n-glass); -webkit-backdrop-filter: var(--n-glass);
-  border-bottom: 1px solid var(--n-border);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s;
+  /* Premium Glass Effect (macOS style) */
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: saturate(180%) blur(24px);
+  -webkit-backdrop-filter: saturate(180%) blur(24px);
+  
+  /* Subtle bottom border */
+  border-bottom: 1px solid color-mix(in srgb, var(--stroke) 60%, transparent);
+  
+  transition: 
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
+/* Scrolled State: Increased Contrast & Shadow */
 .top-bar.scrolled {
-  background: rgba(5, 10, 16, 0.95);
-  box-shadow: 0 4px 30px rgba(0,0,0,0.4);
+  background: color-mix(in srgb, var(--bg) 95%, transparent);
+  border-bottom-color: var(--stroke);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
 }
 
-.top-bar.hidden { transform: translateY(-100%); }
+/* Smart Hide (Scroll Down) */
+.top-bar.hidden {
+  transform: translateY(-100%);
+}
 
 .top-bar__container {
-  display: flex; align-items: center; justify-content: space-between;
-  max-width: 1400px; margin: 0 auto; height: 100%; padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+  padding: 0 var(--space-4);
 }
 
-/* --- LOGO --- */
+/* --- BRANDING --- */
 .brand-link {
-  display: flex; align-items: center; gap: 10px; text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--text);
+  transition: opacity 0.2s;
+}
+
+.brand-link:hover {
+  opacity: 0.9;
 }
 
 .logo-mark {
-  width: 32px; height: 32px; position: relative;
-  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* Logo Core */
 .logo-core {
-  width: 10px; height: 10px; background: var(--n-brand); border-radius: 50%;
-  box-shadow: 0 0 10px var(--n-brand); z-index: 2;
+  width: 10px;
+  height: 10px;
+  background: var(--brand);
+  border-radius: 50%;
+  box-shadow: 0 0 15px var(--brand);
+  z-index: 2;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
+/* Logo Ring (Asymmetric) */
 .logo-ring {
-  position: absolute; inset: 0; border: 1px solid rgba(6, 182, 212, 0.3); border-radius: 50%;
-  animation: spinLogo 10s linear infinite;
+  position: absolute;
+  inset: 0;
+  border: 1.5px solid color-mix(in srgb, var(--brand) 30%, transparent);
+  border-top-color: var(--brand);
+  border-radius: 50%;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-.logo-ring::before {
-  content: ''; position: absolute; top: -2px; left: 50%; width: 4px; height: 4px;
-  background: #fff; border-radius: 50%; box-shadow: 0 0 5px #fff;
-}
+
+.brand-link:hover .logo-core { transform: scale(1.2); }
+.brand-link:hover .logo-ring { transform: rotate(180deg); }
 
 .brand-name {
-  font-size: 1.1rem; font-weight: 700; color: #fff; letter-spacing: -0.02em;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--text) 60%, var(--brand-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-/* --- DESKTOP NAV --- */
+/* --- DESKTOP NAVIGATION (Pill Container) --- */
 .nav-menu {
-  display: flex; gap: 4px; background: rgba(255,255,255,0.03);
-  padding: 4px; border-radius: 100px; border: 1px solid var(--n-border);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: color-mix(in srgb, var(--elev-1) 60%, transparent);
+  border: 1px solid var(--stroke);
+  padding: 4px;
+  border-radius: 100px;
+  backdrop-filter: blur(10px);
 }
 
 .nav-item {
-  position: relative; padding: 8px 20px;
-  text-decoration: none; color: var(--n-text); font-size: 0.85rem; font-weight: 500;
-  transition: color 0.3s; border-radius: 50px; overflow: hidden;
+  position: relative;
+  padding: 8px 20px;
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 50px;
+  transition: color 0.3s ease;
+  overflow: hidden;
 }
 
-.nav-item:hover, .nav-item.active { color: var(--n-text-hover); }
+/* Hover & Active States */
+.nav-item:hover { color: var(--text); }
+.nav-item.active { color: var(--text); font-weight: 600; }
 
-/* Hover Pill Effect */
+/* The "Glow" Pill */
 .nav-glow {
-  position: absolute; inset: 0; background: rgba(255,255,255,0.08);
-  border-radius: 50px; opacity: 0; transform: scale(0.9); transition: 0.3s;
+  position: absolute;
+  inset: 0;
+  background: var(--elev-3);
+  border-radius: 50px;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index: -1;
 }
-.nav-item:hover .nav-glow { opacity: 1; transform: scale(1); }
-.nav-item.active .nav-glow { background: rgba(6,182,212,0.15); opacity: 1; transform: scale(1); }
 
-/* --- ACTIONS (Right) --- */
-.nav-actions { display: flex; align-items: center; gap: 1.5rem; }
+.nav-item:hover .nav-glow {
+  opacity: 0.6;
+  transform: scale(1);
+}
+
+.nav-item.active .nav-glow {
+  background: color-mix(in srgb, var(--brand) 10%, var(--elev-3));
+  border: 1px solid color-mix(in srgb, var(--brand) 20%, transparent);
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* --- ACTIONS (Right Side) --- */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
 
 .action-link {
-  font-size: 0.85rem; color: var(--n-text); text-decoration: none; transition: 0.3s;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s;
 }
-.action-link:hover { color: var(--n-brand); }
+.action-link:hover { color: var(--brand); }
 
+/* Primary CTA Button */
 .action-btn {
-  display: flex; align-items: center; gap: 8px;
-  background: var(--n-brand); color: #050a10;
-  padding: 8px 18px; border-radius: 100px;
-  font-size: 0.85rem; font-weight: 600; text-decoration: none;
-  transition: 0.3s; box-shadow: 0 0 15px rgba(6,182,212,0.3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  color: #050a10; /* Dark text for contrast on cyan */
+  padding: 8px 20px;
+  border-radius: 100px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 4px 15px color-mix(in srgb, var(--brand) 30%, transparent);
 }
-.action-btn svg { width: 16px; height: 16px; stroke-width: 2.5; transition: transform 0.3s; }
-.action-btn:hover { background: #22d3ee; transform: translateY(-1px); }
+
+.action-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 25px color-mix(in srgb, var(--brand) 40%, transparent);
+}
+
+.action-btn svg {
+  width: 16px; height: 16px; stroke-width: 2.5;
+  transition: transform 0.3s ease;
+}
 .action-btn:hover svg { transform: translateX(3px); }
 
 /* --- MOBILE TOGGLE --- */
 .menu-toggle {
-  display: none; background: none; border: none; cursor: pointer; padding: 8px;
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1001;
 }
-.hamburger { width: 24px; display: flex; flex-direction: column; gap: 6px; }
+
+.hamburger {
+  width: 24px;
+  height: 18px; /* Slightly tighter height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
 .hamburger span {
-  width: 100%; height: 2px; background: #fff; border-radius: 2px; transition: 0.3s;
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--text);
+  border-radius: 4px;
+  transition: 
+    transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+    opacity 0.3s ease,
+    background-color 0.3s ease;
 }
 
-/* --- MOBILE MENU --- */
+/* Hamburger to X Animation */
+.menu-toggle.active .hamburger span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+  background: var(--brand);
+}
+.menu-toggle.active .hamburger span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+.menu-toggle.active .hamburger span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+  background: var(--brand);
+}
+
+/* --- MOBILE MENU OVERLAY --- */
 .mobile-menu-overlay {
-  position: fixed; top: 70px; left: 0; right: 0; height: 0;
-  background: var(--n-bg); backdrop-filter: blur(20px);
-  overflow: hidden; transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  border-bottom: 1px solid var(--n-border);
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  height: 100dvh;
+  background: color-mix(in srgb, var(--bg) 95%, transparent);
+  backdrop-filter: blur(40px); /* Heavy blur for mobile focus */
+  -webkit-backdrop-filter: blur(40px);
+  padding-top: 80px; /* Offset for header */
+  
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 999;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.mobile-menu-overlay.open { height: auto; padding-bottom: 2rem; border-bottom-color: var(--n-brand); }
 
-.mobile-nav-content { display: flex; flex-direction: column; padding: 2rem; gap: 1rem; }
+.mobile-menu-overlay.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.mobile-nav-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+}
 
 .m-link {
-  font-size: 1.5rem; font-weight: 600; color: var(--n-text); text-decoration: none;
-  transform: translateY(20px); opacity: 0; transition: 0.4s;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+  transform: translateY(30px);
+  opacity: 0;
+  transition: 
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.5s ease,
+    color 0.2s ease;
 }
-.mobile-menu-overlay.open .m-link { transform: translateY(0); opacity: 1; }
-/* Stagger delay done via nth-child in refined CSS if needed, or simple all transition */
 
-.m-link:hover, .m-link.active { color: var(--n-brand); padding-left: 10px; }
+/* Stagger Animation for Links */
+.mobile-menu-overlay.open .m-link:nth-child(1) { transition-delay: 0.1s; transform: translateY(0); opacity: 1; }
+.mobile-menu-overlay.open .m-link:nth-child(2) { transition-delay: 0.15s; transform: translateY(0); opacity: 1; }
+.mobile-menu-overlay.open .m-link:nth-child(3) { transition-delay: 0.2s; transform: translateY(0); opacity: 1; }
+.mobile-menu-overlay.open .m-link:nth-child(4) { transition-delay: 0.25s; transform: translateY(0); opacity: 1; }
+.mobile-menu-overlay.open .m-link:nth-child(5) { transition-delay: 0.3s; transform: translateY(0); opacity: 1; }
+
+.m-link:hover, .m-link.active {
+  color: var(--brand);
+}
 
 .m-cta {
-  margin-top: 1rem; text-align: center; background: var(--n-brand); color: #000;
-  padding: 1rem; border-radius: 12px; font-weight: 700; text-decoration: none;
-  transform: translateY(20px); opacity: 0; transition: 0.4s 0.2s;
+  margin-top: 2rem;
+  width: 80%;
+  text-align: center;
+  padding: 18px;
+  background: var(--brand);
+  color: #000;
+  font-weight: 700;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  text-decoration: none;
+  
+  transform: translateY(40px);
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.4s; /* Long delay */
 }
-.mobile-menu-overlay.open .m-cta { transform: translateY(0); opacity: 1; }
 
-/* --- SCROLL PROGRESS --- */
+.mobile-menu-overlay.open .m-cta {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* --- SCROLL PROGRESS LINE --- */
 .scroll-progress-bar {
-  position: absolute; bottom: 0; left: 0; height: 1px; width: 0%;
-  background: var(--n-brand);
-  box-shadow: 0 0 10px var(--n-brand);
+  position: absolute;
+  bottom: 0; left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, transparent, var(--brand), var(--brand-2));
+  box-shadow: 0 0 10px var(--brand);
   transition: width 0.1s linear;
+  opacity: 0.8;
 }
-
-/* --- ANIMATIONS --- */
-@keyframes spinLogo { 100% { transform: rotate(360deg); } }
 
 /* --- RESPONSIVE --- */
-@media (max-width: 900px) {
-  .nav-menu { display: none; }
-  .action-link { display: none; }
-  .action-btn { display: none; } /* Hide desktop CTA, show in mobile menu */
-  .menu-toggle { display: block; }
+@media (max-width: 968px) {
+  .nav-menu, .action-link, .action-btn {
+    display: none; /* Hide desktop elements */
+  }
+  .menu-toggle {
+    display: block; /* Show hamburger */
+  }
 }

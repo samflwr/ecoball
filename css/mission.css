@@ -91,7 +91,7 @@
 }
 
 .text-gradient {
-  background: linear-gradient(120deg, var(--m-brand) 0%, #fff 60%);
+  background: linear-gradient(120deg, var(--m-brand) 0%, var(--m-text) 60%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -285,11 +285,12 @@
 .system-status {
   position: absolute; bottom: 30px;
   font-family: monospace; font-size: 0.7rem; color: var(--m-brand);
-  background: rgba(0,0,0,0.4); padding: 4px 8px; border-radius: 4px;
+  background: rgba(0,0,0,0.4); padding: 4px 8px; border-radius: 12px;
   border: 1px solid rgba(6,182,212,0.3);
   display: flex; align-items: center; gap: 6px;
 }
 .status-dot { width: 6px; height: 6px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 6px #22c55e; }
+.status-dot-offline { width: 6px; height: 6px; background: #c52222; border-radius: 50%; box-shadow: 0 0 6px #c52222; }
 
 .vision-caption { text-align: center; }
 .vision-caption h4 { text-transform: uppercase; font-size: 0.8rem; letter-spacing: 3px; color: var(--m-brand); margin-bottom: 0.5rem; }

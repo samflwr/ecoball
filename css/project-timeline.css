@@ -42,7 +42,7 @@
   font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--l-text); margin-bottom: 1rem;
 }
 .text-gradient {
-  background: linear-gradient(135deg, var(--l-accent), #fff);
+  background: linear-gradient(135deg, var(--t-accent), var(--t-text));
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
 .tl-subtitle { color: var(--l-muted); font-size: 1.1rem; }
