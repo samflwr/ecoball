@@ -1,278 +1,523 @@
-/* --- HARDWARE SECTION: HOLOGRAPHIC BLUEPRINT (Refined) --- */
-
-.hardware-section {
-  /* Scoped Variables using Deep Hydro Palette */
-  --h-bg: var(--bg, #050a10);
-  --h-card: color-mix(in srgb, var(--elev-2, #111b26) 60%, transparent);
-  --h-border: var(--stroke, #1e293b);
-  --h-border-hover: var(--stroke-2, #334155);
-  --h-highlight: var(--brand, #06b6d4);
-  --h-text: var(--text, #f0f9ff);
-  --h-text-dim: var(--text-muted, #64748b);
-  --h-glow: color-mix(in srgb, var(--brand, #06b6d4) 20%, transparent);
-  
-  position: relative;
-  padding: 8rem 0;
-  background-color: var(--h-bg);
-  overflow: hidden;
-  font-family: inherit;
+/* --- SCOPED VARIABLES & FONTS --- */
+.hw-a-section {
+    position: relative; 
+    padding: 10rem 0; 
+    background: var(--bg);
+    overflow: hidden; 
+    color: var(--text); 
+    perspective: 2500px;
+    font-family: var(--font-sans);
 }
 
-/* Background Grid Effect */
-.hw-overlay {
-  position: absolute; inset: 0; pointer-events: none;
-  background-image: 
-    linear-gradient(rgba(6,182,212,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(6,182,212,0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
-  mask-image: radial-gradient(circle at 50% 50%, black 30%, transparent 80%);
+.mono-font { font-family: 'JetBrains Mono', var(--font-mono); letter-spacing: -0.05em; }
+
+/* --- ADVANCED ATMOSPHERE --- */
+.hw-a-bg-ambient {
+    position: absolute;  width: 100%; height: 100%;
+    background: radial-gradient(circle at center, var(--brand-glow) 0%, transparent 50%);
+    opacity: 0.1; pointer-events: none;
 }
 
-/* --- HEADER --- */
-.hw-header {
-  text-align: center; margin-bottom: 4rem; position: relative; z-index: 2;
+/* Caustics: Fake refracted light on the floor */
+.hw-a-floor-caustics {
+    position: absolute; bottom: -5%; left: 0%; width: 100%; height: 60%;
+    background: repeating-linear-gradient(45deg, transparent, transparent 10px, var(--brand-glow) 10px, var(--brand-glow) 20px);
+    filter: blur(30px); opacity: 0.2; transform: rotateX(70deg);
+    mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
 }
 
-.sys-status {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: monospace; font-size: 0.75rem; color: var(--h-highlight);
-  border: 1px solid var(--h-border); padding: 4px 12px; border-radius: 100px;
-  background: rgba(6,182,212,0.05); margin-bottom: 1rem;
+.hw-a-grid-floor {
+    position: absolute; bottom: -25%; left: -50%; width: 200%; height: 100%;
+    /* Uses text color for grid lines so it works in light mode too */
+    background-image: linear-gradient(color-mix(in srgb, var(--text) 5%, transparent) 1px, transparent 1px),
+                      linear-gradient(90deg, color-mix(in srgb, var(--text) 5%, transparent) 1px, transparent 1px);
+    background-size: 80px 80px; transform: rotateX(70deg);
+    mask-image: linear-gradient(to bottom, transparent 10%, black 50%, transparent 90%);
+    opacity: 0.9;
 }
 
-.blink-led {
-  width: 6px; height: 6px; background: var(--h-highlight); border-radius: 50%;
-  box-shadow: 0 0 8px var(--h-highlight); animation: blink 2s infinite;
+/* --- LAYOUT & HEADER --- */
+.hw-a-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 2; }
+
+.hw-a-header { text-align: center; max-width: 660px; margin: 0 auto 6rem; }
+
+
+
+
+
+
+/* --- TECH READOUT: Apple-Style System Pill --- */
+
+.hw-a-tech-readout {
+    /* Layout & Shape */
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 14px 6px 8px; /* Tighter left padding for the dot */
+    border-radius: 100px; /* Full pill shape */
+    
+    /* Glass Material */
+    background: color-mix(in srgb, var(--elev-2) 60%, var(--bg));
+    border: 1px solid color-mix(in srgb, var(--text) 15%, transparent);
+    box-shadow: 
+        0 4px 20px -5px rgba(0, 0, 0, 0.4), /* Deep shadow for lift */
+        inset 0 1px 0 var(--glass-highlight); /* Top highlight */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    
+    /* Interaction */
+    transition: all 0.3s var(--ease-out-expo);
+    cursor: default;
+    user-select: none;
+    margin-bottom: 2rem; /* Spacing from title */
 }
 
-.hw-header h2 { 
-  font-size: clamp(2rem, 4vw, 3rem); 
-  font-weight: 700;
-  color: var(--h-text); 
-  margin-bottom: 0.5rem; 
-  letter-spacing: -0.02em;
+/* Hover State: "Active" look */
+.hw-a-tech-readout:hover {
+    border-color: var(--brand-glow);
+    background: color-mix(in srgb, var(--elev-2) 80%, var(--bg));
+    transform: translateY(-1px);
+    box-shadow: 
+        0 8px 30px -10px rgba(0, 0, 0, 0.5),
+        0 0 15px var(--brand-glow); /* Subtle accent glow */
 }
 
-.hw-header p { 
-  color: var(--h-text-dim); 
-  font-size: 1.1rem;
+/* --- 1. STATUS BEACON (The Dot) --- */
+.status-beacon {
+    position: relative;
+    width: 16px; height: 16px;
+    display: flex; align-items: center; justify-content: center;
 }
 
-/* --- INTERFACE GRID --- */
-.hw-interface {
-  display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem;
-  max-width: 1100px; margin: 0 auto; align-items: center;
-  position: relative; z-index: 2;
+.beacon-core {
+    width: 6px; height: 6px;
+    background: var(--ok); /* Success Green (Universal "Nominal" color) */
+    border-radius: 50%;
+    z-index: 2;
+    box-shadow: 0 0 8px var(--ok);
 }
 
-/* --- LEFT: VISUALIZER (The Sphere) --- */
-.hw-visualizer {
-  display: flex; justify-content: center; height: 450px; position: relative;
-  /* Add a subtle radial glow behind the sphere */
-  background: radial-gradient(circle at center, var(--h-glow) 0%, transparent 60%);
+.beacon-ping {
+    position: absolute;
+    width: 100%; height: 100%;
+    background: var(--ok);
+    border-radius: 50%;
+    opacity: 0;
+    z-index: 1;
+    animation: beaconPulse 2s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
-.holo-stage {
-  width: 100%; height: 100%;
-  display: flex; align-items: center; justify-content: center;
-  perspective: 1000px;
+/* --- 2. TEXT ELEMENTS --- */
+.readout-text {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: 0.01em;
 }
 
-.sphere-group {
-  position: relative; width: 320px; height: 320px;
-  transform-style: preserve-3d;
-  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+.readout-divider {
+    width: 1px;
+    height: 12px;
+    background: color-mix(in srgb, var(--text) 15%, transparent);
+    opacity: 0.5;
 }
 
-/* Layers Logic: Active/Inactive States */
-.layer {
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-  opacity: 0.2; /* Dimmed state */
-  filter: grayscale(1) blur(1px);
-  transform: scale(0.9);
-  pointer-events: none;
+/* --- 3. METRIC DATA --- */
+.readout-metric {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
 }
 
-.layer.active {
-  opacity: 1; 
-  filter: grayscale(0) blur(0); 
-  transform: scale(1);
-  z-index: 10;
+.metric-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
 }
 
-/* Layer 1: Core (MCU) */
-.core-box {
-  width: 90px; height: 90px; 
-  background: color-mix(in srgb, var(--h-highlight) 10%, transparent);
-  border: 1px solid var(--h-highlight); border-radius: 16px;
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 0 40px var(--h-glow);
-  color: var(--h-highlight);
-  backdrop-filter: blur(4px);
-}
-.core-box svg { width: 44px; height: 44px; }
-
-.pulse-ring {
-  position: absolute; inset: 25%; border: 1px solid var(--h-highlight);
-  border-radius: 50%; opacity: 0; animation: ripple 2s infinite;
+.metric-val {
+    font-size: 0.8rem;
+    color: var(--brand);
+    font-weight: 600;
+    /* Uses the mono-font class from parent section for numbers */
 }
 
-/* Layer 2 & 3: Rings */
-.orbit-ring {
-  position: absolute; border-radius: 50%; border: 1px solid var(--h-border);
-}
-.ring-1 { width: 55%; height: 55%; border-style: dashed; animation: spin 20s linear infinite; }
-.ring-2 { width: 100%; height: 100%; border: 1px solid rgba(6,182,212,0.3); animation: spinRev 30s linear infinite; }
-.ring-3 { width: 115%; height: 115%; border: 1px dotted rgba(6,182,212,0.15); animation: spin 60s linear infinite; }
-
-/* Nodes (The dots on the rings) */
-.node {
-  position: absolute; width: 32px; height: 32px;
-  top: 50%; left: 50%;
-  margin-top: -16px; margin-left: -16px; /* Center pivot */
-  /* Orbit Logic: Rotate container, counter-rotate icon to keep upright */
-  transform: rotate(var(--angle)) translate(160px) rotate(calc(var(--angle) * -1));
-  transition: transform 0.5s ease;
-}
-.layer-inner .node { transform: rotate(var(--angle)) translate(95px) rotate(calc(var(--angle) * -1)); }
-
-.node-icon {
-  width: 100%; height: 100%; background: var(--bg); /* Opaque background to hide line behind */
-  border: 1px solid var(--h-highlight); border-radius: 50%;
-  display: flex; align-items: center; justify-content: center; color: var(--h-highlight);
-  box-shadow: 0 0 15px var(--h-glow);
-}
-.node-icon svg { width: 16px; height: 16px; }
-
-.node-sens {
-  width: 10px; height: 10px; background: var(--h-highlight);
-  border-radius: 50%; box-shadow: 0 0 15px var(--h-highlight);
+/* --- ANIMATION --- */
+@keyframes beaconPulse {
+    0% { transform: scale(0.5); opacity: 0.8; }
+    70% { transform: scale(1.5); opacity: 0; }
+    100% { transform: scale(1.5); opacity: 0; }
 }
 
-.holo-base {
-  position: absolute; bottom: 0px; width: 220px; height: 30px;
-  background: radial-gradient(ellipse, var(--h-glow), transparent 70%);
-  filter: blur(15px);
-  opacity: 0.6;
+
+
+
+
+
+.separator { opacity: 0.3; }
+
+.hw-a-header h2 { font-size: clamp(3rem, 6vw, 4.5rem); line-height: 1; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 1.5rem; }
+.hw-a-text-gradient { background: linear-gradient(135deg, var(--text) 30%, var(--brand)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hw-a-header p { font-size: 1.25rem; color: var(--text-muted); max-width: 500px; margin: auto; }
+
+/* --- 3D STAGE --- */
+.hw-a-stage-wrapper { display: grid; grid-template-columns: 1.5fr 1fr; gap: 5rem; align-items: center; }
+.hw-a-visualizer { height: 600px; display: flex; align-items: center; justify-content: center; position: relative; }
+
+/* The High-Fidelity Stack Container */
+.hw-a-stack-container {
+    position: relative; width: 340px; height: 340px;
+    transform-style: preserve-3d;
+    /* Initial isometric view */
+    transform: rotateX(55deg) rotateZ(-45deg);
+    transition: transform 0.1s ease-out; /* Fast for parallax */
 }
 
-/* --- RIGHT: CONTROLS --- */
-.hw-controls { display: flex; flex-direction: column; gap: 2rem; }
+/* --- THE "THICK GLASS" PLATES --- */
+.hw-a-plate {
+    position: absolute; inset: 0;
+    transform-style: preserve-3d;
+    transition: transform 1s var(--ease-out-expo);
+}
+/* Base Z-positions */
+.hw-a-plate.plate-btm { transform: translateZ(0px); }
+.hw-a-plate.plate-mid { transform: translateZ(50px); }
+.hw-a-plate.plate-top { transform: translateZ(100px); }
 
-.hw-tabs { display: flex; flex-direction: column; gap: 12px; }
-
-.hw-tab {
-  display: flex; align-items: center; gap: 1rem;
-  background: transparent; border: 1px solid transparent;
-  padding: 1.2rem; text-align: left; cursor: pointer;
-  color: var(--h-text-dim); transition: all 0.3s ease;
-  border-radius: 12px;
-  position: relative; overflow: hidden;
+/* The "Surface" - Top of the glass */
+.plate-surface {
+    position: absolute; inset: 0;
+    background: color-mix(in srgb, var(--elev-2) 60%, transparent);
+    border-radius: 24px;
+    /* The "Thick Edge" Hack: Multiple shadows */
+    box-shadow: 
+        inset 0 1px 1px color-mix(in srgb, var(--text) 15%, transparent), /* Top edge highlight */
+        inset 0 0 20px color-mix(in srgb, var(--brand) 5%, transparent), /* subtle inner color */
+        0 4px 10px rgba(0,0,0,0.2); /* Drop shadow beneath */
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--stroke);
+    overflow: hidden;
+    backface-visibility: hidden;
 }
 
-.hw-tab:hover { 
-  background: rgba(255,255,255,0.03); 
-  color: var(--h-text); 
-  border-color: var(--h-border);
+/* Active State Glow */
+.hw-a-plate.active .plate-surface {
+    border-color: var(--brand-glow);
+    box-shadow: 
+        inset 0 1px 1px color-mix(in srgb, var(--text) 15%, transparent),
+        inset 0 0 30px var(--brand-glow),
+        0 0 40px var(--brand-glow),
+        0 10px 20px rgba(0,0,0,0.3);
+    background: color-mix(in srgb, var(--brand) 8%, color-mix(in srgb, var(--elev-2) 70%, transparent));
 }
 
-.hw-tab.active {
-  background: linear-gradient(90deg, rgba(6,182,212,0.08), transparent);
-  border: 1px solid var(--h-border);
-  border-left: 3px solid var(--h-highlight);
-  color: var(--h-text);
-  box-shadow: 0 4px 20px -5px rgba(0,0,0,0.2);
+/* The Label floating off the side */
+.plate-label {
+    position: absolute; right: -100px; top: 50%;
+    transform: translateY(-50%) rotateX(-90deg) rotateY(45deg);
+    font-size: 0.7rem; color: var(--text-muted);
+    pointer-events: none; opacity: 0; transition: 0.5s ease;
+}
+.hw-a-plate.active .plate-label { opacity: 1; color: var(--brand); transform: translateY(-50%) rotateX(-90deg) rotateY(45deg) translateX(20px); }
+
+/* --- PLATE CONTENTS & MICRO-ANIMATIONS --- */
+.plate-content { position: absolute; inset: 0; perspective: 500px; }
+
+/* Circuitry */
+.circuit-svg { position: absolute; inset: 10%; width: 80%; height: 80%; color: var(--text-muted); opacity: 0.4; transition: 0.5s; }
+.active .circuit-svg { color: var(--brand); opacity: 1; filter: drop-shadow(0 0 5px var(--brand)); }
+
+/* Blinking LEDs */
+.blink-led { width: 4px; height: 4px; background: var(--brand); border-radius: 50%; position: absolute; box-shadow: 0 0 10px var(--brand); animation: blink 2s infinite; }
+.blink-led.fast { animation-duration: 0.8s; }
+
+/* Data Packets Animating along paths */
+.data-packet { opacity: 0; }
+.active .p1 { animation: movePath 3s linear infinite; animation-path: path('M50 50 L85 15'); }
+.active .p2 { animation: movePath 3s linear infinite 1s; animation-path: path('M50 50 L15 15'); }
+.active .p3 { animation: movePath 3s linear infinite 2s; animation-path: path('M50 50 L50 95'); }
+
+/* Core Processor */
+.chip-assembly {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) translateZ(5px);
+    width: 80px; height: 80px; 
+    background: var(--elev-1); 
+    border: 1px solid var(--stroke);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); transition: 0.5s;
+}
+.active .chip-assembly { border-color: var(--brand); box-shadow: 0 0 20px var(--brand-glow); }
+.main-processor { position: relative; z-index: 2; text-align: center; }
+.chip-text { font-size: 0.5rem; color: var(--text); opacity: 0.6; display: block; line-height: 1.2; }
+.processor-glow {
+    position: absolute; top: 50%; left: 50%; width: 10px; height: 10px;
+    background: var(--brand); border-radius: 50%; transform: translate(-50%, -50%);
+    filter: blur(10px); opacity: 0; transition: 0.5s;
+}
+.active .processor-glow { opacity: 0.8; animation: pulse 2s infinite; }
+
+/* Battery Cells */
+.power-matrix { display: flex; gap: 10px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.bat-cell { 
+    width: 40px; height: 70px; 
+    background: var(--elev-1); 
+    border: 1px solid var(--stroke); 
+    position: relative; overflow: hidden; 
+}
+.energy-bar { position: absolute; bottom: 0; left: 0; width: 100%; height: 0%; background: var(--brand); opacity: 0.5; transition: 1s; }
+.active .energy-bar { height: 80%; animation: chargeUp 4s ease-out infinite alternate; }
+.power-connector { display: flex; align-items: center; color: var(--stroke-2); transition: 0.5s; }
+.active .power-connector { color: var(--brand); filter: drop-shadow(0 0 5px var(--brand)); }
+
+
+/* --- UI CONTROLS --- */
+/* --- UI CONTROLS: Apple-Pro / Industrial Aesthetics --- */
+
+.hw-a-controls {
+    position: relative; 
+    /* Glassmorphism surface using global elev-2 */
+    background: color-mix(in srgb, var(--elev-2) 60%, transparent);
+    padding: 3rem 2rem; 
+    border-radius: 32px;
+    /* Subtle border using global stroke */
+    border: 1px solid var(--stroke);
+    box-shadow: 
+        0 20px 40px -10px rgba(0,0,0,0.3),
+        inset 0 1px 0 var(--glass-highlight);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 }
 
-.tab-idx { font-family: monospace; font-size: 0.85rem; opacity: 0.5; color: var(--h-highlight); }
-.tab-label { font-weight: 600; font-size: 1.1rem; flex: 1; }
-.tab-arr { opacity: 0; transform: translateX(-10px); transition: 0.3s; color: var(--h-highlight); }
-.hw-tab.active .tab-arr { opacity: 1; transform: translateX(0); }
+/* Decorative "Screws" - Industrial detail */
+.ui-screw { 
+    position: absolute; width: 10px; height: 10px; border-radius: 50%; 
+    border: 1px solid var(--stroke-2); background: var(--elev-1); 
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.5);
+    z-index: 5;
+}
+.ui-screw::after { 
+    content: '+'; position: absolute; inset: 0; 
+    display: flex; align-items: center; justify-content: center; 
+    font-size: 10px; color: var(--text-dim); transform: rotate(45deg); 
+}
+.tl { top: 16px; left: 16px; } .tr { top: 16px; right: 16px; }
+.bl { bottom: 16px; left: 16px; } .br { bottom: 16px; right: 16px; }
 
-/* Detail Panel (HUD Style) */
-.hw-detail-panel {
-  background: var(--h-card);
-  border: 1px solid var(--h-border);
-  padding: 2rem; border-radius: 16px;
-  position: relative; backdrop-filter: blur(12px);
-  min-height: 220px;
-  display: flex; flex-direction: column;
+/* --- SELECTOR LIST --- */
+.hw-a-selector-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0; /* Gap handled by padding for timeline continuity */
 }
 
-/* Decorative Corners for "Tech" feel */
-.panel-decor .corner {
-  position: absolute; width: 12px; height: 12px;
-  border-color: var(--h-highlight); border-style: solid;
-  opacity: 0.4;
-}
-.tl { top: -1px; left: -1px; border-width: 1px 0 0 1px; }
-.tr { top: -1px; right: -1px; border-width: 1px 1px 0 0; }
-.bl { bottom: -1px; left: -1px; border-width: 0 0 1px 1px; }
-.br { bottom: -1px; right: -1px; border-width: 0 1px 1px 0; }
-
-.panel-title { 
-  font-size: 1.5rem; 
-  color: var(--h-text); 
-  margin-bottom: 0.75rem; 
-  font-weight: 700;
+/* --- THE ITEM --- */
+.hw-a-item {
+    background: transparent; 
+    border: none; 
+    text-align: left;
+    position: relative; 
+    cursor: pointer; 
+    color: var(--text-muted);
+    transition: all 0.4s var(--ease-out-expo);
+    display: grid; 
+    grid-template-columns: 48px 1fr; /* Timeline column + Content */
+    gap: 1.5rem; 
+    padding: 0 0 2rem 0; /* Bottom padding for timeline spacing */
+    outline: none;
 }
 
-.panel-desc { 
-  color: var(--h-text-dim); 
-  line-height: 1.6; 
-  margin-bottom: 2rem; 
-  font-size: 0.95rem; 
+/* --- TIMELINE COLUMN --- */
+.item-timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.panel-specs { 
-  display: grid; 
-  gap: 1rem; 
-  margin-top: auto; 
+/* The Line */
+.timeline-line {
+    position: absolute;
+    top: 24px; bottom: -100%; /* Extend to next item */
+    width: 2px;
+    background: var(--stroke);
+    transition: background 0.4s ease;
+    z-index: 0;
+}
+/* Hide line for last item to prevent dangling */
+.hw-a-item:last-child .timeline-line { display: none; }
+
+/* The Knob/Dot */
+.timeline-knob {
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--elev-1);
+    border: 2px solid var(--stroke-2);
+    z-index: 1;
+    transition: all 0.4s var(--ease-out-expo);
+    box-shadow: 0 0 0 4px var(--bg); /* Fake margin for clean line cut */
+    margin-top: 4px; /* Align with text */
 }
 
-.spec-row {
-  display: flex; justify-content: space-between; align-items: center;
-  border-bottom: 1px solid var(--h-border); padding-bottom: 10px;
-}
-.spec-row span { font-size: 0.9rem; color: var(--h-text-dim); }
-.spec-row .mono { font-family: monospace; color: var(--h-highlight); font-weight: 600; }
-
-.panel-footer {
-  margin-top: 1.5rem; padding-top: 1rem; 
-  display: flex; justify-content: space-between; align-items: center;
-}
-.mono-xs { font-family: monospace; font-size: 0.7rem; color: var(--h-highlight); letter-spacing: 1px; }
-.scan-line {
-  flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--h-highlight), transparent);
-  margin-right: 1.5rem; opacity: 0.3; animation: scan 3s linear infinite;
+/* --- ITEM BODY --- */
+.item-body {
+    position: relative;
+    padding: 1rem 1.5rem;
+    border-radius: 16px;
+    border: 1px solid transparent;
+    transition: all 0.4s ease;
 }
 
-/* Animations */
-@keyframes spin { from {transform: rotate(0deg);} to {transform: rotate(360deg);} }
-@keyframes spinRev { from {transform: rotate(360deg);} to {transform: rotate(0deg);} }
-@keyframes blink { 0%, 100% {opacity: 1;} 50% {opacity: 0.4;} }
-@keyframes ripple { 0% {transform: scale(1); opacity: 1;} 100% {transform: scale(2); opacity: 0;} }
-@keyframes scan { 0% {transform: translateX(-100%);} 100% {transform: translateX(100%);} }
-
-/* Fade In Effect for Content Switching */
-.fade-in {
-  animation: fadeIn 0.4s ease-out forwards;
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(5px); }
-  to { opacity: 1; transform: translateY(0); }
+.item-header { 
+    display: flex; 
+    align-items: center; 
+    gap: 1rem; 
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-  .hw-interface { grid-template-columns: 1fr; gap: 4rem; }
-  .hw-visualizer { height: 350px; order: -1; }
+.item-header .idx { 
+    font-size: 0.75rem; 
+    color: var(--brand); 
+    opacity: 0.5; 
+    font-weight: 700;
+    transition: opacity 0.3s;
 }
 
+.item-header h4 { 
+    margin: 0; 
+    font-size: 1.1rem; 
+    font-weight: 600; 
+    color: currentColor;
+    transition: transform 0.3s ease;
+}
+
+/* Accordion Description */
+.item-content-wrapper {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.5s var(--ease-out-expo);
+}
+
+.item-desc { 
+    margin: 0; 
+    font-size: 0.9rem; 
+    line-height: 1.6; 
+    color: var(--text-muted); 
+    overflow: hidden; 
+    opacity: 0;
+    transform: translateY(-5px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    padding-top: 0;
+}
+
+/* --- HOVER STATE --- */
+.hw-a-item:hover .timeline-knob {
+    border-color: var(--brand);
+    background: color-mix(in srgb, var(--brand) 10%, var(--elev-1));
+}
+.hw-a-item:hover .item-header h4 {
+    color: var(--text);
+    transform: translateX(4px);
+}
+
+/* --- ACTIVE STATE --- */
+.hw-a-item.active {
+    color: var(--text);
+}
+
+/* Active Timeline */
+.hw-a-item.active .timeline-knob {
+    background: var(--brand);
+    border-color: var(--brand);
+    box-shadow: 0 0 0 4px var(--bg), 0 0 15px var(--brand);
+    transform: scale(1.2);
+}
+.hw-a-item.active .timeline-line {
+    background: linear-gradient(to bottom, var(--brand) 0%, var(--stroke) 100%);
+}
+
+/* Active Card Body */
+.hw-a-item.active .item-body {
+    background: color-mix(in srgb, var(--elev-1) 40%, transparent);
+    border-color: color-mix(in srgb, var(--brand) 20%, transparent);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.hw-a-item.active .idx { opacity: 1; }
+
+.hw-a-item.active .item-content-wrapper {
+    grid-template-rows: 1fr;
+}
+
+.hw-a-item.active .item-desc {
+    opacity: 1;
+    transform: translateY(0);
+    padding-top: 0.75rem; /* Add breathing room when open */
+}
+
+/* Specs Footer */
+.hw-a-specs-footer {
+    margin-top: 1rem; 
+    padding-top: 2rem; 
+    border-top: 1px solid var(--stroke);
+    display: flex; 
+    justify-content: space-around; 
+    position: relative;
+    opacity: 0.8;
+}
+.spec-block { display: flex; flex-direction: column; gap: 6px; align-items: center; }
+.spec-block .lbl { font-size: 0.7rem; color: var(--text-dim); letter-spacing: 0.05em; }
+.spec-block .val { font-size: 0.95rem; color: var(--brand); font-weight: 600; }
+.spec-divider { width: 1px; height: 30px; background: var(--stroke); }
+
+/* Mobile Adjustment */
 @media (max-width: 600px) {
-  .hw-header h2 { font-size: 2rem; }
-  .sphere-group { width: 260px; height: 260px; }
-  .node { transform: rotate(var(--angle)) translate(130px) rotate(calc(var(--angle) * -1)); }
+    .hw-a-item {
+        grid-template-columns: 32px 1fr;
+        gap: 1rem;
+    }
+    .timeline-knob { width: 12px; height: 12px; }
+    .timeline-line { left: 5px; width: 2px; } /* Center line to knob width */
+    .hw-a-controls { padding: 2rem 1.5rem; }
 }
+
+
+
+
+
+
+
+
+
+
+/* Specs Footer */
+.hw-a-specs-footer {
+    margin-top: 3rem; padding-top: 2rem; border-top: 1px solid color-mix(in srgb, var(--stroke) 50%, transparent);
+    display: flex; justify-content: space-around; position: relative;
+}
+.spec-block { display: flex; flex-direction: column; gap: 6px; align-items: center; }
+.spec-block .lbl { font-size: 0.7rem; color: var(--text-dim); }
+.spec-block .val { font-size: 1rem; color: var(--brand); }
+.spec-divider { width: 1px; height: 40px; background: color-mix(in srgb, var(--stroke) 50%, transparent); }
+
+/* --- KEYFRAMES --- */
+@keyframes blink { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; box-shadow: 0 0 15px var(--brand); } }
+@keyframes pulse { 0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; } 50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; } }
+@keyframes chargeUp { 0% { height: 70%; } 100% { height: 95%; filter: brightness(1.2); } }
+
+/* --- MOBILE --- */
+@media (max-width: 1024px) {
+    .hw-a-stage-wrapper { grid-template-columns: 1fr; gap: 3rem; }
+    .hw-a-visualizer { height: 450px; order: -1; }
+    .hw-a-floor-caustics {
+        position: absolute; bottom: 20%; left: 0%; width: 100%; height: 60%;
+        background: repeating-linear-gradient(45deg, transparent, transparent 10px, var(--brand-glow) 10px, var(--brand-glow) 20px);
+}
+}
+
+
+
+
+
+
+
+

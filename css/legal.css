@@ -1,0 +1,180 @@
+/* --- LEGAL PAGE STYLES (Deep Hydro Theme) --- */
+
+/* Hero Adjustment for Text-Heavy Page */
+.hero.small-hero {
+  padding: calc(env(safe-area-inset-top) + 6rem) 0 4rem;
+  min-height: auto;
+}
+
+.hero-grid-center {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.last-updated {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.85rem;
+  color: var(--brand);
+  margin-top: 1rem;
+  opacity: 0.8;
+  letter-spacing: 0.5px;
+}
+
+/* --- LAYOUT --- */
+.legal-layout {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 3rem;
+  position: relative;
+  align-items: start;
+}
+
+/* --- SIDEBAR NAVIGATION (Table of Contents) --- */
+.legal-sidebar {
+  position: sticky;
+  top: 100px; /* Below fixed header */
+  display: block;
+}
+
+.toc-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-left: 1rem;
+  border-left: 1px solid color-mix(in srgb, var(--stroke) 50%, transparent);
+}
+
+.toc-link {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 8px 0;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.toc-link:hover {
+  color: var(--text);
+  transform: translateX(4px);
+}
+
+.toc-link.active {
+  color: var(--brand);
+  font-weight: 600;
+}
+
+.toc-link.active::before {
+  content: '';
+  position: absolute;
+  left: -17px; /* Align with border */
+  top: 50%; transform: translateY(-50%);
+  width: 3px; height: 16px;
+  background: var(--brand);
+  border-radius: 2px;
+}
+
+/* --- MAIN CONTENT AREA --- */
+.legal-content {
+  padding: 3rem;
+  background: color-mix(in srgb, var(--elev-2) 60%, transparent);
+  border: 1px solid color-mix(in srgb, var(--stroke) 60%, transparent);
+  border-radius: var(--radius-xl);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.legal-content section {
+  margin-bottom: 3.5rem;
+  padding: 0; /* Override default section padding */
+  scroll-margin-top: 120px; /* For sticky header anchor offset */
+}
+
+.legal-content section:last-child {
+  margin-bottom: 0;
+}
+
+.legal-content h2 {
+  font-size: 1.75rem;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--stroke) 40%, transparent);
+}
+
+.legal-content p {
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+}
+
+.legal-content ul {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.legal-content li {
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.legal-content li strong {
+  color: var(--text);
+}
+
+/* --- SERVICE CARDS (For Section 3) --- */
+.service-card {
+  background: color-mix(in srgb, var(--elev-1) 50%, transparent);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-m);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--brand) 30%, transparent);
+}
+
+.service-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.service-header svg {
+  color: var(--brand);
+}
+
+.service-card p {
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+  .legal-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .legal-sidebar {
+    display: none; /* Hide TOC on mobile for simplicity */
+  }
+
+  .legal-content {
+    padding: 2rem 1.5rem;
+  }
+  
+  .legal-content h2 {
+    font-size: 1.5rem;
+  }
+}
+
+

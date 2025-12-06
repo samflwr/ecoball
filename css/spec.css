@@ -60,7 +60,7 @@
   border-color: color-mix(in srgb, var(--brand) 40%, transparent);
   box-shadow: 
     var(--shadow-soft),
-    0 8px 32px color-mix(in srgb, var(--brand) 8%, transparent);
+    0 8px 32px var(--brand-glow);
 }
 
 .spec:hover::before {
@@ -103,7 +103,7 @@
 }
 
 .spec[data-category="power"] {
-  border-left: 3px solid color-mix(in srgb, #4FD1E3 60%, transparent);
+  border-left: 3px solid color-mix(in srgb, var(--info) 60%, transparent);
 }
 
 .spec[data-category="durability"] {

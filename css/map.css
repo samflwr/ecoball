@@ -346,11 +346,11 @@
     font-size: 12px;
 }
 
-.quality-excellent { background: #00cc66; color: white; }
-.quality-good { background: #66ff66; color: #1a1a1a; }
-.quality-acceptable { background: #ffff66; color: #1a1a1a; }
-.quality-moderate { background: #ff9966; color: #1a1a1a; }
-.quality-critical { background: #ff5050; color: white; }
+.quality-excellent { background: var(--ok); color: var(--text-inverse); }
+.quality-good { background: color-mix(in srgb, var(--ok) 50%, white); color: var(--text-inverse); }
+.quality-acceptable { background: var(--warn); color: var(--text-inverse); }
+.quality-moderate { background: var(--orange); color: var(--text-inverse); }
+.quality-critical { background: var(--alert); color: var(--text); }
 
 /* Google Maps Custom Styles */
 .gm-style .gm-style-iw-c {

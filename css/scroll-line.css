@@ -1,7 +1,7 @@
 /* --- SCROLL INDICATOR (Deep Hydro Edition) --- */
 
 .scroll-indicator-wrapper {
-  position: absolute;
+  position: fixed;
   bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
@@ -18,11 +18,6 @@
   gap: 12px;
   padding: 20px;
   transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-  
-  /* Hydro Variables */
-  --s-brand: #06b6d4;
-  --s-glow: rgba(6, 182, 212, 0.4);
-  --s-text: #64748b;
 }
 
 /* Hover Interaction: Lift */
@@ -31,13 +26,13 @@
 }
 
 .scroll-trigger:hover .scroll-text {
-  color: #f0f9ff;
+  color: var(--text);
   letter-spacing: 4px;
 }
 
 .scroll-trigger:hover .emitter-core {
-  background: #fff;
-  box-shadow: 0 0 20px #fff, 0 0 40px var(--s-brand);
+  background: var(--text);
+  box-shadow: 0 0 20px var(--text), 0 0 40px var(--brand);
 }
 
 /* --- 1. SONAR EMITTER (The Orb) --- */
@@ -49,10 +44,10 @@
 
 .emitter-core {
   width: 8px; height: 8px;
-  background: var(--s-brand);
+  background: var(--brand);
   border-radius: 50%;
   z-index: 2;
-  box-shadow: 0 0 10px var(--s-brand);
+  box-shadow: 0 0 10px var(--brand);
   transition: 0.3s ease;
 }
 
@@ -61,7 +56,7 @@
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  border: 1px solid var(--s-brand);
+  border: 1px solid var(--brand);
   opacity: 0;
   animation: sonarPing 3s cubic-bezier(0, 0.2, 0.8, 1) infinite;
 }
@@ -80,7 +75,7 @@
   position: relative;
   width: 1px;
   height: 60px;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--glass-highlight);
   overflow: hidden;
 }
 
@@ -88,7 +83,7 @@
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 20px;
-  background: linear-gradient(to bottom, transparent, var(--s-brand), transparent);
+  background: linear-gradient(to bottom, transparent, var(--brand), transparent);
   opacity: 0.8;
   animation: scanDown 2s linear infinite;
 }
@@ -104,7 +99,7 @@
 .scroll-text {
   font-family: monospace;
   font-size: 0.7rem;
-  color: var(--s-text);
+  color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 2px;
   transition: all 0.4s ease;

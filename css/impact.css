@@ -1,324 +1,333 @@
-/* Positive Impact Section */
-.impact-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: var(--space-6);
-  margin-top: var(--space-5);
-  align-items: start;
+/* --- IMPACT SECTION: Modern Clean --- */
+
+.imp-section {
+    position: relative;
+    padding: clamp(6rem, 10vh, 10rem) 0;
+    background-color: var(--bg);
+    overflow: hidden;
+    color: var(--text);
 }
 
-.impact-features {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
+/* --- AMBIENT --- */
+.imp-ambient {
+    position: absolute; inset: 0; pointer-events: none; z-index: 0;
+}
+.imp-blur-blob {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, color-mix(in srgb, var(--brand) 8%, transparent), transparent 70%);
+    filter: blur(100px);
+}
+.imp-grid-lines {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(var(--stroke) 1px, transparent 1px);
+    background-size: 100% 40px;
+    opacity: 0.1;
 }
 
-.impact-card {
-  background: linear-gradient(145deg, 
-    color-mix(in srgb, var(--elev-2) 80%, transparent),
-    color-mix(in srgb, var(--elev-1) 95%, transparent));
-  border: 1px solid color-mix(in srgb, var(--stroke) 25%, transparent);
-  border-radius: var(--radius-xl);
-  padding: var(--space-4);
-  backdrop-filter: blur(20px) saturate(180%);
-  box-shadow: var(--shadow-subtle);
-  transition: all var(--dur-2) var(--ease);
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-3);
-  position: relative;
-  overflow: hidden;
+.imp-container {
+    max-width: 1100px; margin: 0 auto; padding: 0 2rem;
+    position: relative; z-index: 2;
 }
 
-.impact-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, 
-    transparent, 
-    color-mix(in srgb, var(--brand) 40%, transparent), 
-    transparent);
-  opacity: 0;
-  transition: opacity var(--dur-2) var(--ease);
+/* --- HEADER --- */
+.imp-header { text-align: center; max-width: 600px; margin: 0 auto 5rem; }
+
+.imp-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 14px; background: color-mix(in srgb, var(--brand) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--brand) 20%, transparent);
+    border-radius: 100px; color: var(--brand);
+    font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+}
+.badge-icon svg { width: 14px; height: 14px; }
+
+.imp-title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 1rem;
+}
+.imp-gradient {
+    background: linear-gradient(135deg, var(--text) 30%, var(--brand));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.imp-desc { font-size: 1.1rem; color: var(--text-muted); line-height: 1.6; }
+
+/* --- GRID --- */
+.imp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    grid-auto-rows: minmax(220px, auto);
 }
 
-.impact-card:hover {
-  transform: translateY(-2px);
-  border-color: color-mix(in srgb, var(--brand) 35%, var(--stroke));
-  box-shadow: var(--shadow-soft);
+/* Card Sizes */
+.card-wide { grid-column: span 2; }
+.card-tall { grid-row: span 2; }
+
+/* --- CARD DESIGN --- */
+.imp-card {
+    position: relative;
+    border-radius: 24px;
+    background: transparent;
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    cursor: default;
 }
 
-.impact-card:hover::before {
-  opacity: 1;
+.imp-card:hover { transform: translateY(-6px); }
+
+.card-glass-imp {
+    position: absolute; inset: 0;
+    background: color-mix(in srgb, var(--elev-1) 70%, transparent);
+    border: 1px solid var(--stroke);
+    border-radius: 24px;
+    backdrop-filter: blur(12px);
+    box-shadow: inset 0 1px 0 var(--glass-highlight);
+    transition: all 0.3s;
+}
+.imp-card:hover .card-glass-imp {
+    border-color: color-mix(in srgb, var(--brand) 40%, transparent);
+    box-shadow: 0 15px 40px -10px rgba(0,0,0,0.1), inset 0 1px 0 var(--glass-highlight);
 }
 
-.impact-icon {
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: color-mix(in srgb, var(--brand) 8%, transparent);
-  border-radius: var(--radius-m);
-  color: var(--brand);
-  flex-shrink: 0;
-  transition: all var(--dur-2) var(--ease);
+.card-inner-imp {
+    position: relative; z-index: 1; padding: 2rem;
+    height: 100%; display: flex; flex-direction: column; justify-content: space-between;
+}
+.row-layout { flex-direction: row; align-items: center; gap: 2rem; }
+
+/* Typography */
+.text-content h3 { font-size: 1.25rem; font-weight: 700; margin: 0 0 0.5rem; color: var(--text); }
+.text-content p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.5; margin: 0; }
+.highlight { color: var(--alert); font-weight: 700; }
+
+/* --- VISUALIZATIONS --- */
+.visual-container {
+    height: 100px; display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.5rem; position: relative;
+}
+.eco-viz { width: 80px; height: 80px; margin-bottom: 0; flex-shrink: 0; }
+
+/* 1. Day/Night Cycle */
+.day-night-cycle {
+    width: 200px; height: 100%; position: relative; overflow: hidden;
+}
+.orbit-path {
+    width: 180px; height: 180px; border: 1px dashed var(--text-muted); border-radius: 50%;
+    position: absolute; top: 40px; left: 50%; transform: translateX(-50%);
+    animation: rotateSky 12s linear infinite;
+}
+.celestial-body { width: 14px; height: 14px; border-radius: 50%; position: absolute; left: 50%; margin-left: -7px; }
+.sun { top: -7px; background: var(--warn); box-shadow: 0 0 15px var(--warn); }
+.moon { bottom: -7px; background: var(--text); box-shadow: 0 0 10px var(--text); }
+.horizon-line {
+    position: absolute; bottom: 0; left: 20px; right: 20px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--brand), transparent);
 }
 
-.impact-card:hover .impact-icon {
-  background: color-mix(in srgb, var(--brand) 12%, transparent);
-  transform: scale(1.05);
+/* 2. Alert Viz */
+.alert-viz { flex-direction: column; height: auto; flex: 1; justify-content: center; }
+.radar-pulse {
+    width: 80px; height: 80px; border-radius: 50%; border: 1px solid var(--alert);
+    opacity: 0; animation: ping 2s infinite; position: absolute;
+}
+.alert-pill {
+    display: flex; align-items: center; gap: 8px;
+    background: color-mix(in srgb, var(--alert) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--alert) 30%, transparent);
+    padding: 6px 12px; border-radius: 100px;
+    color: var(--alert); font-size: 0.75rem; font-weight: 700; z-index: 2;
+}
+.dot { width: 6px; height: 6px; background: currentColor; border-radius: 50%; animation: blink 1s infinite; }
+.data-stream-lines { display: flex; gap: 4px; margin-top: 1rem; height: 30px; align-items: flex-end; }
+.data-stream-lines span {
+    width: 20px; height: 100%; background: var(--alert); opacity: 0.2;
+    animation: barBounce 1s infinite alternate;
+}
+.data-stream-lines span:nth-child(2) { animation-delay: 0.2s; }
+
+/* 3. Wave */
+.wave-graph { width: 100%; height: 100%; overflow: visible; color: var(--brand); }
+.wave-static { opacity: 0.2; }
+.wave-anim { stroke-dasharray: 100; stroke-dashoffset: 100; animation: drawLine 3s infinite ease-in-out; }
+
+/* 4. Community Avatars */
+.avatar-group { display: flex; align-items: center; }
+.avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--elev-2); border: 2px solid var(--bg);
+    margin-left: -12px;
+}
+.avatar:first-child { margin-left: 0; background: var(--brand); }
+.plus-more {
+    width: 40px; height: 40px; border-radius: 50%; background: var(--text-muted);
+    border: 2px solid var(--bg); margin-left: -12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem; font-weight: 700; color: var(--bg);
 }
 
-.impact-content {
-  flex: 1;
+/* 5. Eco */
+.leaf-icon { color: var(--ok); position: relative; z-index: 2; width: 40px; height: 40px; }
+.sun-rays { position: absolute; inset: 0; animation: spin 20s linear infinite; }
+.sun-rays span {
+    position: absolute; top: 50%; left: 50%; width: 50px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--ok), transparent);
+    transform-origin: center; opacity: 0.4;
+}
+.sun-rays span:nth-child(1) { transform: translate(-50%, -50%) rotate(0deg); }
+.sun-rays span:nth-child(2) { transform: translate(-50%, -50%) rotate(45deg); }
+.sun-rays span:nth-child(3) { transform: translate(-50%, -50%) rotate(90deg); }
+.sun-rays span:nth-child(4) { transform: translate(-50%, -50%) rotate(135deg); }
+
+/* --- FOOTER --- */
+.imp-footer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6rem; /* Luxurious spacing */
+    padding-top: 5rem;
+    margin-top: 6rem;
+    
+    /* Subtle separation */
+    border-top: 1px solid var(--glass-border);
 }
 
-.impact-content h3 {
-  margin: 0 0 var(--space-1) 0;
-  font-size: var(--size-3);
-  font-weight: 700;
-  color: var(--text);
-  line-height: 1.3;
+/* The "Horizon" Top Glow */
+.imp-footer::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: 50%; transform: translateX(-50%);
+    width: 40%; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--brand), transparent);
+    opacity: 0.5;
+    box-shadow: 0 0 15px var(--brand);
 }
 
-.impact-content p {
-  margin: 0;
-  color: var(--text-muted);
-  font-size: var(--size-2);
-  line-height: 1.5;
-}
-
-/* Impact Statement */
-.impact-statement {
-  position: relative;
-}
-
-.statement-card {
-  background: linear-gradient(145deg, 
-    color-mix(in srgb, var(--brand) 5%, var(--elev-2)),
-    color-mix(in srgb, var(--brand) 2%, var(--elev-1)));
-  border: 1px solid color-mix(in srgb, var(--brand) 25%, transparent);
-  border-radius: var(--radius-xl);
-  padding: var(--space-5);
-  backdrop-filter: blur(20px) saturate(180%);
-  box-shadow: var(--shadow-soft);
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.statement-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, 
-    transparent, 
-    color-mix(in srgb, var(--brand) 50%, transparent), 
-    transparent);
-}
-
-.statement-card h3 {
-  margin: 0 0 var(--space-3) 0;
-  font-size: var(--size-4);
-  font-weight: 700;
-  color: var(--text);
-  line-height: 1.2;
-}
-
-.statement-card p {
-  margin: 0;
-  color: var(--text-muted);
-  font-size: var(--size-2);
-  line-height: 1.6;
-}
-
-.accent {
-  color: var(--brand);
-  font-weight: 600;
-}
-
-/* Impact Metrics */
-.impact-metrics {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-4);
-  margin-top: var(--space-6);
-}
-
-.metric-card {
-  background: linear-gradient(145deg, 
-    color-mix(in srgb, var(--elev-2) 80%, transparent),
-    color-mix(in srgb, var(--elev-1) 95%, transparent));
-  border: 1px solid color-mix(in srgb, var(--stroke) 25%, transparent);
-  border-radius: var(--radius-xl);
-  padding: var(--space-5);
-  backdrop-filter: blur(20px) saturate(180%);
-  box-shadow: var(--shadow-subtle);
-  text-align: center;
-  transition: all var(--dur-2) var(--ease);
-  position: relative;
-  overflow: hidden;
-}
-
-.metric-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, 
-    transparent, 
-    color-mix(in srgb, var(--brand) 40%, transparent), 
-    transparent);
-  opacity: 0;
-  transition: opacity var(--dur-2) var(--ease);
-}
-
-.metric-card:hover {
-  transform: translateY(-4px);
-  border-color: color-mix(in srgb, var(--brand) 35%, var(--stroke));
-  box-shadow: var(--shadow-soft);
-}
-
-.metric-card:hover::before {
-  opacity: 1;
-}
-
-.metric-value {
-  font-size: var(--size-5);
-  font-weight: 800;
-  color: var(--brand);
-  line-height: 1;
-  margin-bottom: var(--space-2);
-  display: block;
-}
-
-.metric-label {
-  font-size: var(--size-2);
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: var(--space-1);
-  display: block;
-}
-
-.metric-desc {
-  font-size: var(--size-1);
-  color: var(--text-muted);
-  line-height: 1.4;
-}
-
-/* Mobile Optimizations */
-@media (max-width: 768px) {
-  .impact-grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-4);
-    margin-top: var(--space-4);
-  }
-  
-  .impact-features {
-    gap: var(--space-2);
-  }
-  
-  .impact-card {
-    padding: var(--space-3);
-    gap: var(--space-2);
-  }
-  
-  .impact-icon {
-    width: 40px;
-    height: 40px;
-  }
-  
-  .impact-content h3 {
-    font-size: var(--size-2);
-    margin-bottom: 6px;
-  }
-  
-  .impact-content p {
-    font-size: var(--size-1);
-  }
-  
-  .statement-card {
-    padding: var(--space-4);
-  }
-  
-  .statement-card h3 {
-    font-size: var(--size-3);
-    margin-bottom: var(--space-2);
-  }
-  
-  .statement-card p {
-    font-size: var(--size-1);
-  }
-  
-  .impact-metrics {
-    grid-template-columns: 1fr;
-    gap: var(--space-3);
-    margin-top: var(--space-5);
-  }
-  
-  .metric-card {
-    padding: var(--space-4);
-  }
-  
-  .metric-value {
-    font-size: var(--size-4);
-  }
-  
-  .metric-label {
-    font-size: var(--size-1);
-  }
-}
-
-@media (max-width: 480px) {
-  .impact-card {
+/* Individual Stat Container */
+.imp-stat {
+    display: flex;
     flex-direction: column;
+    align-items: center;
     text-align: center;
-    gap: var(--space-2);
-  }
-  
-  .impact-icon {
-    align-self: center;
-  }
-  
-  .metric-card {
-    padding: var(--space-3);
-  }
+    cursor: default;
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* Reduced motion support */
-@media (prefers-reduced-motion: reduce) {
-  .impact-card,
-  .metric-card,
-  .impact-icon {
-    transition: none;
-  }
-  
-  .impact-card:hover,
-  .metric-card:hover {
-    transform: none;
-  }
+.imp-stat:hover {
+    transform: translateY(-5px);
 }
 
-/* Touch device optimizations */
-@media (hover: none) {
-  .impact-card:hover,
-  .metric-card:hover {
-    transform: none;
-    border-color: color-mix(in srgb, var(--stroke) 25%, transparent);
-  }
-  
-  .impact-card:active,
-  .metric-card:active {
-    transform: scale(0.98);
-    transition: transform var(--dur-1) var(--ease);
-  }
+/* The Value Group (Number + Unit) */
+.stat-group {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    line-height: 1;
+}
+
+/* The Big Number */
+.stat-val {
+    font-size: clamp(3rem, 4vw, 4.5rem); /* Massive, responsive */
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+    
+    /* Vertical Gradient Mask for depth */
+    background: linear-gradient(180deg, var(--text) 10%, var(--text-muted) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
+    transition: all 0.3s ease;
+}
+
+.imp-stat:hover .stat-val {
+    background: linear-gradient(180deg, var(--text) 0%, var(--brand) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 20px var(--brand-glow));
+}
+
+/* The Unit (%, kg, etc.) */
+.stat-unit {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--text-muted);
+    transform: translateY(-4px); /* Optical alignment */
+    transition: color 0.3s ease;
+}
+
+.imp-stat:hover .stat-unit {
+    color: var(--text);
+}
+
+/* The Label */
+.stat-lbl {
+    margin-top: 1rem;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.75rem;
+    color: var(--brand);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    opacity: 0.7;
+    position: relative;
+    padding-left: 12px;
+}
+
+/* Decorative Indicator Dot */
+.stat-lbl::before {
+    content: '';
+    position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+    width: 4px; height: 4px;
+    background: currentColor;
+    border-radius: 50%;
+    box-shadow: 0 0 5px currentColor;
+}
+
+/* The Divider */
+.imp-divider {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, var(--glass-border), transparent);
+}
+
+/* Ensures proper alignment for number + unit */
+.stat-group {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 4px;
+    line-height: 1;
+}
+
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+    .imp-footer {
+        flex-direction: column;
+        gap: 3rem;
+    }
+    .imp-divider {
+        width: 100px;
+        height: 1px;
+        background: linear-gradient(to right, transparent, var(--glass-border), transparent);
+    }
+    .stat-val { font-size: 3.5rem; }
+}
+/* --- ANIMATIONS --- */
+@keyframes rotateSky { 100% { transform: translateX(-50%) rotate(360deg); } }
+@keyframes ping { 0% { transform: scale(0.8); opacity: 0.8; } 100% { transform: scale(2); opacity: 0; } }
+@keyframes blink { 50% { opacity: 0.5; } }
+@keyframes barBounce { from { height: 20%; } to { height: 100%; } }
+@keyframes drawLine { 0% { stroke-dashoffset: 100; } 50% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -100; } }
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+    .imp-grid { grid-template-columns: 1fr; }
+    .card-wide, .card-tall { grid-column: span 1; grid-row: auto; }
+    .card-inner-imp.row-layout { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .imp-footer { flex-direction: column; gap: 2rem; }
+    .imp-divider { width: 40px; height: 1px; }
 }

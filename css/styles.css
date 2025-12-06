@@ -1,225 +1,163 @@
 :root {
-  /* Color system
-  --bg: #0b0c0e;
-  --elev-1: #0f1114;
-  --elev-2: #13161a;
-  --elev-3: #171b20;
 
-  --text: #e9edf1;
-  --text-dim: #e3e8ee;
-  --text-muted: #a7b2bf;
+    /* -----------------------------------------
+     * PALETTE PRINCIPALE (ABYSSAL NEON THEME)
+     * ----------------------------------------- */
 
-  --brand: #4fe3b7;
-  --brand-2: #89f0d2;
-  --focus: #9ef8d9;
+    /* Fondi e Superfici */
+    --bg: #04090b;           /* Nero con una punta di Ciano */
+    --elev-1: #081014;       /* Appena più chiaro */
+    --elev-2: #0c1a21;       /* Verde petrolio scurissimo (Card) */
+    --elev-3: #142833;       /* Visibilmente petrolio (Hover) */
 
-  --stroke: #232a33;
-  --stroke-2: #1b2129; */
+    /* Testi */
+    --text: #ecfeff;         /* Ciano quasi bianco */
+    --text-dim: #a5f3fc;     /* Ciano pallido */
+    --text-muted: #5eead4;   /* Teal muto (usato come grigio) */
+    --text-inverse: #04090b; /* Nero profondo per testi su brand */
 
-  /* Color system — Neo Forest Blue 
-  --bg: #0a1017;         
-  --elev-1: #0f1620;     
-  --elev-2: #16212c;      
-  --elev-3: #1c2b38;      
+    /* Colori Brand */
+    --brand: #00e5ff;        /* Ciano Fluorescente */
+    --brand-2: #22d3ee;      /* Ciano classico */
+    --focus: #ccfbf1;        /* Teal chiarissimo */
 
-  --text: #e0ebf5;        
-  --text-dim: #c9d8e6;    
-  --text-muted: #90a6b8; 
+    /* Bordi e Separatori */
+    --stroke: #164e63;       /* Cyan 900 - Molto colorato */
+    --stroke-2: #155e75;     /* Cyan 800 */
 
-  --brand: #5aa0f2;       
-  --brand-2: #84c0ff;     
-  --focus: #b0e0ff;       
+    /* Colori Semantici di Stato */
+    --ok: #00ff9d;           /* Verde neon */
+    --warn: #ffea00;         /* Giallo neon */
+    --alert: #ff0055;        /* Rosa neon */
+    --info: #22d3ee;         /* Ciano */
 
-  --stroke: #1c2a38;      
-  --stroke-2: #15202b;    */
+    /* Colori Aggiuntivi e Speciali (Adattati al Neon) */
+    --gold: #ffd700;         /* Oro Puro */
+    --silver: #94a3b8;       /* Argento Slate */
+    --bronze: #d97706;       /* Bronzo scuro */
+    --purple: #d946ef;       /* Fuchsia Neon */
+    --orange: #f97316;       /* Arancio Neon */
 
+    /* -----------------------------------------
+     * VARIABILI DI TRASPARENZA E GLOW
+     * ----------------------------------------- */
+     
+    /* Glow (Intensificati per il look Neon) */
+    --brand-glow: rgba(0, 229, 255, 0.4);
+    --gold-glow: rgba(255, 215, 0, 0.4);
+    --silver-glow: rgba(148, 163, 184, 0.3);
+    --bronze-glow: rgba(217, 119, 6, 0.3);
+    --alert-glow: rgba(255, 0, 85, 0.4);
 
-  /* Color system
-    --bg: #07100c;
-    --elev-1: #0b1612;
-    --elev-2: #10201b;
-    --elev-3: #162822;
+    /* Sfumature per Glassmorphism */
+    --glass-bg: rgba(12, 26, 33, 0.7);
+    --glass-border: rgba(22, 78, 99, 0.5);
+    --glass-highlight: rgba(0, 229, 255, 0.05);
+    --glass-bg-light: rgba(236, 254, 255, 0.05);
+    --glass-border-strong: rgba(0, 229, 255, 0.3);
 
-    --text: #e9f5ee;
-    --text-dim: #d7ebe0;
-    --text-muted: #9eb6a7;
-
-    --brand: #5af2a0;
-    --brand-2: #8cf8bf;
-    --focus: #b1ffda;
-
-    --stroke: #1c2a24;
-    --stroke-2: #15201b; */
-
-    --bg: #050a10;           /* Nero bluastro profondo (Abisso) */
-    --elev-1: #0a111a;       /* Elevazione minima */
-    --elev-2: #111b26;       /* Card background */
-    --elev-3: #1a2633;       /* Hover state */
-
-    --text: #f0f9ff;         /* Bianco ghiaccio */
-    --text-dim: #bae6fd;     /* Azzurro chiarissimo */
-    --text-muted: #64748b;   /* Grigio ardesia per testi secondari */
-
-    --brand: #06b6d4;        /* Ciano Elettrico (Cyan 500) */
-    --brand-2: #67e8f9;      /* Ciano chiaro (Cyan 300) */
-    --focus: #cffafe;        /* Highlight quasi bianco */
-
-    --stroke: #1e293b;       /* Bordi blu scuro */
-    --stroke-2: #334155;     /* Bordi più visibili */
-
-
-      --ok: #89f0d2;
-      --warn: #ffd56a;
-      --alert: #ff7a7a;
-
+    /* Sfumature per Card e Background */
+    --surface-cyan-bg: rgba(0, 229, 255, 0.05);
+    --surface-cyan-border: rgba(0, 229, 255, 0.4);
+    --surface-dark-bg: rgba(4, 9, 11, 0.8);
+    --surface-dark-border: rgba(22, 78, 99, 0.6);
   
-  /* Typography & rhythm */
-  --font-sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", system-ui, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    /* Typography & rhythm */
+    --font-sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", system-ui, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
-  --size-1: clamp(0.8rem, 0.75rem + 0.25vw, 0.95rem);
-  --size-2: clamp(0.98rem, 0.9rem + 0.35vw, 1.12rem);
-  --size-3: clamp(1.16rem, 1.02rem + 0.6vw, 1.38rem);
-  --size-4: clamp(1.44rem, 1.24rem + 0.9vw, 1.78rem);
-  --size-5: clamp(1.82rem, 1.5rem + 1.4vw, 2.4rem);
-  --size-6: clamp(2.3rem, 1.9rem + 2vw, 3.2rem);
-  --size-7: clamp(3.1rem, 2.5rem + 3vw, 4.6rem);
+    --size-1: clamp(0.8rem, 0.75rem + 0.25vw, 0.95rem);
+    --size-2: clamp(0.98rem, 0.9rem + 0.35vw, 1.12rem);
+    --size-3: clamp(1.16rem, 1.02rem + 0.6vw, 1.38rem);
+    --size-4: clamp(1.44rem, 1.24rem + 0.9vw, 1.78rem);
+    --size-5: clamp(1.82rem, 1.5rem + 1.4vw, 2.4rem);
+    --size-6: clamp(2.3rem, 1.9rem + 2vw, 3.2rem);
+    --size-7: clamp(3.1rem, 2.5rem + 3vw, 4.6rem);
 
-  --radius-s: 10px;
-  --radius-m: 16px;
-  --radius-l: 24px;
-  --radius-xl: 36px;
+    --radius-s: 10px;
+    --radius-m: 16px;
+    --radius-l: 24px;
+    --radius-xl: 36px;
 
-  --space-1: 6px;
-  --space-2: 10px;
-  --space-3: 16px;
-  --space-4: 24px;
-  --space-5: 36px;
-  --space-6: 56px;
-  --space-7: 88px;
-  --space-8: 128px;
+    --space-1: 6px;
+    --space-2: 10px;
+    --space-3: 16px;
+    --space-4: 24px;
+    --space-5: 36px;
+    --space-6: 56px;
+    --space-7: 88px;
+    --space-8: 128px;
 
-  /* Layered premium shadows (GPU-friendly perception) */
-  --shadow-soft: 0 18px 60px rgba(0,0,0,0.28), 0 6px 18px rgba(0,0,0,0.2), 0 1px 0 rgba(255,255,255,0.02) inset;
-  --shadow-subtle: 0 10px 24px rgba(0,0,0,0.18), 0 2px 6px rgba(0,0,0,0.16), inset 0 1px 0 rgba(255,255,255,0.04);
-
-  /* Motion */
-  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in: cubic-bezier(0.5, 0, 1, 0.5);
-  --dur-1: 180ms;
-  --dur-2: 320ms;
-  --dur-3: 600ms;
-  --dur-4: 1200ms;
-
-  --ring: 0 0 0 2px color-mix(in srgb, var(--brand) 30%, transparent), 0 0 0 6px color-mix(in srgb, var(--brand) 12%, transparent);
-}
-
-/* @media (prefers-color-scheme: light) {
-  :root {
-    --bg: #f7f8f9;
-      --brand: #1d936f;
-
-    --elev-1: #ffffff;
-    --elev-2: #f2f4f6;
-    --elev-3: #e9edf1;
-
-    --text: #0b0c0e;
-    --text-dim: #0f141a;
-    --text-muted: #5b6572;
-
-    --stroke: #e5e9ee;
-    --stroke-2: #dbe2ea;
-
-    --shadow-soft: 0 18px 60px rgba(0,0,0,0.10), 0 6px 18px rgba(0,0,0,0.06), 0 1px 0 rgba(255,255,255,0.7) inset;
-    --shadow-subtle: 0 10px 24px rgba(0,0,0,0.06), 0 2px 6px rgba(0,0,0,0.05), inset 0 1px 0 rgba(0,0,0,0.03);
-  }
-} */
- /* @media (prefers-color-scheme: light) {
-  :root {
-    /* Backgrounds 
-    --bg: #f6f9f7;
-    --elev-1: #ffffff;
-    --elev-2: #eef3f0;
-    --elev-3: #e3ece7;
-
-    /* Text 
-    --text: #0c110f;
-    --text-dim: #111a16;
-    --text-muted: #65756e;
-
-    /* Brand (smeraldo freddo, versione chiara) 
-    --brand: #1ea87a;
-    --brand-2: #44c89a;
-    --focus: #6be7ba;
-
-    /* Borders 
-    --stroke: #dbe4df;
-    --stroke-2: #cfdad5;
-
-    /* Shadows 
+    /* Layered premium shadows (Neon tint) */
     --shadow-soft: 
-      0 18px 60px rgba(0,0,0,0.08),
-      0 6px 18px rgba(0,0,0,0.05),
-      0 1px 0 rgba(255,255,255,0.7) inset;
+      0 18px 60px rgba(0, 229, 255, 0.08), 
+      0 6px 18px rgba(0, 0, 0, 0.3), 
+      0 1px 0 rgba(236, 254, 255, 0.05) inset;
+    --shadow-subtle: 
+      0 10px 24px rgba(0, 0, 0, 0.4), 
+      0 2px 6px rgba(0, 229, 255, 0.05), 
+      inset 0 1px 0 rgba(236, 254, 255, 0.05);
 
-    --shadow-subtle:
-      0 10px 24px rgba(0,0,0,0.04),
-      0 2px 6px rgba(0,0,0,0.04),
-      inset 0 1px 0 rgba(0,0,0,0.02);
-  }
-} */
+    /* Motion */
+    --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in: cubic-bezier(0.5, 0, 1, 0.5);
+    --dur-1: 180ms;
+    --dur-2: 320ms;
+    --dur-3: 600ms;
+    --dur-4: 1200ms;
+
+    --ring: 0 0 0 2px rgba(0, 229, 255, 0.3), 0 0 0 6px rgba(0, 229, 255, 0.1);
+}
 
 @media (prefers-color-scheme: light) {
   :root {
-    /* Backgrounds: Surface & Lab Cleanliness */
-    --bg: #f0f4f8;           /* Bianco "ghiaccio" con una punta di azzurro */
-    --elev-1: #ffffff;       /* Bianco puro per le card */
-    --elev-2: #e1e7ef;       /* Grigio-blu chiarissimo per sezioni secondarie */
-    --elev-3: #cbd5e1;       /* Per input o elementi disabilitati */
+    /* Backgrounds: Ice/Laboratory Aesthetic */
+    --bg: #f0fdfa;           /* Cyan ghiaccio chiarissimo */
+    --elev-1: #ffffff;       /* Bianco Puro */
+    --elev-2: #ccfbf1;       /* Teal molto pallido */
+    --elev-3: #99f6e4;       /* Teal chiaro per hover */
 
-    /* Text: Deep Navy/Slate (invece del nero puro, più armonioso col blu) */
-    --text: #0f172a;         /* Slate 900 - Blu notte profondissimo */
-    --text-dim: #334155;     /* Slate 700 - Grigio-blu scuro */
-    --text-muted: #64748b;   /* Slate 500 - Grigio tecnico */
+    /* Testi */
+    --text: #042f2e;         /* Teal scurissimo (quasi nero) */
+    --text-dim: #115e59;     /* Teal profondo */
+    --text-muted: #64748b;   /* Slate */
+    --text-inverse: #ffffff; /* Bianco */
 
-    /* Brand: Deep Cyan (più scuro della dark mode per contrasto su bianco) */
-    --brand: #0891b2;        /* Cyan 600 - Leggibile su bianco, ma vibrante */
-    --brand-2: #06b6d4;      /* Cyan 500 - Più acceso (per gradienti/icone) */
-    --focus: #cffafe;        /* Cyan 100 - Background evidenziatori */
+    /* Brand: Adattato per sfondo chiaro (più scuro per contrasto) */
+    --brand: #0891b2;        /* Cyan 600 - Leggibile su bianco */
+    --brand-2: #06b6d4;      /* Cyan 500 - Vibrante */
+    --focus: #ecfeff;        /* Highlight */
 
-    /* Borders */
-    --stroke: #e2e8f0;       /* Slate 200 - Delicato */
-    --stroke-2: #cbd5e1;     /* Slate 300 - Più definito */
+    /* Bordi */
+    --stroke: #bdae93;       /* Slate 200 - Delicato */
+    --stroke-2: #94a3b8;     /* Slate 400 - Più definito */
 
-    /* Shadows: Cool tinted shadows instead of pure black */
+    /* Colori Semantici (Leggermente scuriti per visibilità) */
+    --ok: #059669;           /* Emerald 600 */
+    --warn: #d97706;         /* Amber 600 */
+    --alert: #dc2626;        /* Red 600 */
+
+    /* Shadows: Cool tinted shadows */
     --shadow-soft: 
-      0 18px 60px rgba(15, 23, 42, 0.06),
-      0 6px 18px rgba(15, 23, 42, 0.04),
+      0 18px 60px rgba(8, 145, 178, 0.1),
+      0 6px 18px rgba(8, 145, 178, 0.05),
       0 0 0 1px rgba(255,255,255,0.8) inset;
 
     --shadow-subtle:
-      0 4px 6px -1px rgba(15, 23, 42, 0.05),
-      0 2px 4px -1px rgba(15, 23, 42, 0.03),
+      0 4px 6px -1px rgba(8, 145, 178, 0.05),
+      0 2px 4px -1px rgba(8, 145, 178, 0.03),
       inset 0 1px 0 rgba(255,255,255,1);
       
+    /* Updates for Glass vars in Light mode */
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(8, 145, 178, 0.2);
   }
-  
 }
-
-
-
-
-
-
-
-
-
 
 * { box-sizing: border-box; }
 html, body {
   scroll-behavior: smooth;
-
   margin: 0;
   background:
     radial-gradient(1200px 800px at 70% -10%, color-mix(in srgb, var(--brand) 6%, transparent), transparent 60%),
@@ -233,6 +171,7 @@ html, body {
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
+
 
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
@@ -262,25 +201,8 @@ img { max-width: 100%; display: block; }
   max-width: 60ch;
 }
 
-/* Reveal animation base (stable, no flicker) */
-/* Optimized reveal animation (performance-focused) */
 
 
-/* Remove will-change from other elements to prevent performance issues */
-.hero .orbital,
-.orbital::before, 
-.orbital::after,
-.btn,
-.magnetic {
-  will-change: auto;
-}
-
-/* Optimize the orbital animation */
-.hero .orbital {
-  will-change: transform;
-}
-
-/* Magnetic hover micro-interaction */
 .magnetic {
   position: relative;
   display: inline-flex;
@@ -292,7 +214,6 @@ img { max-width: 100%; display: block; }
 .magnetic:hover {
   transform: translateY(-1px);
 }
-/* Hero (site header) */
 header.hero {
   transform: translateZ(0);
   backface-visibility: hidden;
@@ -306,11 +227,9 @@ header.hero {
     var(--bg);
   backdrop-filter: saturate(120%) blur(10px);
   border-bottom: 1px solid color-mix(in srgb, var(--stroke) 70%, transparent);
-  /* Prevent layout shift */
   contain: layout paint;
 }
 header.hero::before {
-  /* subtle glass edge */
   content: "";
   position: absolute;
   inset: 0 0 auto 0;
@@ -319,41 +238,109 @@ header.hero::before {
   pointer-events: none;
 }
 
-.hero .orbital {
+/* --- PREMIUM ORBITAL SYSTEM --- */
+
+
+/* --- PREMIUM ORBITAL SYSTEM (Refactored) --- */
+
+/* .orbital-system {
   position: absolute;
-  inset: -20vh -10vw auto -10vw;
-  height: 80vh;
-  pointer-events: none;
-  opacity: 0.7;
-  filter: drop-shadow(0 30px 80px rgba(0,0,0,0.35));
-  will-change: transform, filter;
-}
-.orbital::before, .orbital::after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-  left: 50%;
-  top: 50%;
+  top: 50%; left: 50%;
+  width: 800px; height: 800px;
   transform: translate(-50%, -50%);
-  will-change: transform, filter;
-}
-.orbital::before {
-  width: 560px; height: 560px;
-  background:
-    radial-gradient(closest-side, color-mix(in srgb, var(--brand) 14%, transparent), transparent 70%),
-    radial-gradient(closest-side, rgba(255,255,255,0.06), transparent 70%);
-  border: 1px solid var(--stroke);
-  animation: float 16s var(--ease) infinite;
-  filter: blur(0.2px);
-}
-.orbital::after {
-  width: 760px; height: 760px;
-  border: 1px dashed color-mix(in srgb, var(--brand) 35%, var(--stroke));
-  opacity: 0.22;
-  animation: orbit 26s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+  
+  animation: orbitalFadeIn 2.5s var(--ease-out) forwards;
 }
 
-/* Stabilized keyframes (no opacity jumps) */
+.orbital-atmosphere {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 50% 50%, 
+    color-mix(in srgb, var(--brand) 15%, transparent) 0%, 
+    color-mix(in srgb, var(--brand-2) 5%, transparent) 40%, 
+    transparent 70%
+  );
+  filter: blur(60px);
+  opacity: 0.6;
+  will-change: transform, opacity;
+}
+
+.orbital-ring {
+  position: absolute;
+  inset: 15%;
+  border-radius: 50%;
+  
+  background: conic-gradient(
+    from 0deg, 
+    transparent 0%, 
+    transparent 40%, 
+    color-mix(in srgb, var(--brand) 20%, transparent) 80%, 
+    var(--brand) 100%
+  );
+  
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 1.5px), black calc(100% - 1px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 1.5px), black calc(100% - 1px));
+  
+  animation: orbitSpin 30s linear infinite;
+  opacity: 0.7;
+  will-change: transform;
+}
+
+.orbital-core {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 300px; height: 300px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  
+  background: radial-gradient(
+    circle at 30% 30%, 
+    rgba(255, 255, 255, 0.1) 0%, 
+    color-mix(in srgb, var(--brand) 20%, transparent) 20%, 
+    transparent 70%
+  );
+  
+  border: 1px solid color-mix(in srgb, var(--brand) 10%, transparent);
+  box-shadow: inset 0 0 40px color-mix(in srgb, var(--brand) 5%, transparent);
+  
+  animation: planetFloat 12s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+
+@keyframes orbitalFadeIn {
+  from { opacity: 0; transform: translate(-50%, -45%) scale(0.9); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes orbitSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes planetFloat {
+  0% { transform: translate(-50%, -50%) scale(0.95); opacity: 0.8; }
+  100% { transform: translate(-50%, -52%) scale(1.05); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .orbital-system {
+    width: 100vw; height: 100vw;
+    top: 30%; 
+  }
+  .orbital-ring {
+    animation-duration: 45s; 
+  }
+} */
+
+
+
+
+
 @keyframes float {
   0%,100% { transform: translate(-50%, -52%); }
   50% { transform: translate(-50%, -48%); }
@@ -387,7 +374,6 @@ header.hero::before {
   align-items: center;
 }
 
-/* Premium buttons with underline reveal and micro-press */
 .btn {
   position: relative;
   display: inline-flex;
@@ -437,7 +423,6 @@ header.hero::before {
   border-color: color-mix(in srgb, var(--brand) 40%, var(--stroke));
 }
 
-/* Button ripple (water-inspired, subtle) */
 .btn[data-ripple="true"] {
   overflow: hidden;
   isolation: isolate;
@@ -453,7 +438,6 @@ header.hero::before {
   mix-blend-mode: screen;
 }
 
-/* Sections */
 section {
   padding: var(--space-7) 0;
   position: relative;
@@ -467,7 +451,6 @@ section {
   backdrop-filter: blur(6px) saturate(110%);
 }
 
-/* Section 1 — Core Mission */
 .pillars {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -496,7 +479,6 @@ section {
   font-size: var(--size-2);
 }
 
-/* Section 2 — Functional Requirements */
 .grid-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -530,31 +512,20 @@ section {
   line-height: 1.6;
 }
 
-
-
-
-/* Section 6 — Maintenance & Operations */
 .list {
   display: grid; gap: 10px;
   color: var(--text-muted);
   font-size: var(--size-2);
 }
 
-
-/* Section 9 — Future, Section 10 — Specs, Section 11 — Impact, Section 12 — Recognition, Section 13 — Team */
 .chips {
   display: flex; flex-wrap: wrap; gap: 10px;
 }
-
-
 
 .impact {
   display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-3);
 }
 
-
-
-/* Footer */
 footer {
   padding: var(--space-6) 0 var(--space-7);
   color: var(--text-muted);
@@ -563,7 +534,6 @@ footer {
   margin-top: var(--space-7);
 }
 
-/* Cursor glow layer (stable, soft, no flicker) */
 .cursor-glow {
   position: fixed;
   pointer-events: none;
@@ -576,7 +546,6 @@ footer {
   mix-blend-mode: screen;
 }
 
-/* Responsive */
 @media (max-width: 1024px) {
   .hero-grid,
   .hardware,
@@ -609,14 +578,12 @@ footer {
   .chip { padding: 7px 12px; }
 }
 
-/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
   html, body { scroll-behavior: auto; }
   .cursor-glow { display: none; }
 }
 
-/* Focus */
 :focus-visible {
   outline: none;
   box-shadow: var(--ring);

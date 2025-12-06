@@ -16,7 +16,7 @@
   bottom: -50px;
   background: 
     radial-gradient(800px circle at 20% 30%, color-mix(in srgb, var(--brand) 6%, transparent) 0%, transparent 50%),
-    radial-gradient(600px circle at 80% 70%, color-mix(in srgb, var(--accent) 4%, transparent) 0%, transparent 50%);
+    radial-gradient(600px circle at 80% 70%, color-mix(in srgb, var(--brand) 4%, transparent) 0%, transparent 50%);
   pointer-events: none;
   opacity: 0;
   transition: opacity var(--dur-3) var(--ease-out);
@@ -42,7 +42,7 @@
   border-radius: var(--radius-xl);
   box-shadow: 
     var(--shadow-subtle),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 var(--glass-highlight),
     inset 0 -1px 0 rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(20px) saturate(180%);
   transition: all var(--dur-3) cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -86,9 +86,9 @@
   border-color: color-mix(in srgb, var(--brand) 50%, var(--stroke));
   box-shadow: 
     0 24px 60px rgba(0, 0, 0, 0.18),
-    0 12px 32px color-mix(in srgb, var(--brand) 12%, transparent),
+    0 12px 32px var(--brand-glow),
     0 4px 12px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 1px 0 var(--glass-highlight),
     inset 0 -1px 0 rgba(0, 0, 0, 0.05);
 }
 
@@ -178,15 +178,15 @@
 }
 
 .stat:nth-child(2) {
-  --stat-color: #4FE3B7;
+  --stat-color: var(--info);
 }
 
 .stat:nth-child(3) {
-  --stat-color: #4F8DFE;
+  --stat-color: var(--purple);
 }
 
 .stat:nth-child(4) {
-  --stat-color: #9D4EFF;
+  --stat-color: var(--orange);
 }
 
 .stat .k {
@@ -246,7 +246,7 @@
 .stat:hover .stat-icon {
   opacity: 1;
   transform: scale(1.1) translateY(-2px);
-  filter: drop-shadow(0 4px 8px color-mix(in srgb, var(--brand) 20%, transparent));
+  filter: drop-shadow(0 4px 8px var(--brand-glow));
 }
 
 /* Progress bar animation */
@@ -326,21 +326,4 @@
 
 .stat {
   position: relative;
-}
-
-/* 9. RESPONSIVE FIXES */
-@media (max-width: 1024px) {
-  .stat-row {
-  display: flex;       /* Assicurati di avere flex attivo */
-  flex-wrap: wrap;     /* Permette agli elementi di andare a capo */
-  gap: 2rem;           /* Spazio tra elementi */
-  justify-content: center; /* Opzionale: centra gli elementi orizzontalmente */
-}
-
-.stat-row > * {
-  flex: 1 1 calc(50% - 2rem); /* Ogni elemento occupa metà della riga meno il gap */
-  box-sizing: border-box;      /* Per includere padding e border nel calcolo */
-}
-
-
 }

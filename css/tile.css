@@ -59,7 +59,7 @@
   border-color: color-mix(in srgb, var(--brand) 60%, var(--stroke));
   box-shadow: 
     var(--shadow-soft),
-    0 12px 40px color-mix(in srgb, var(--brand) 12%, transparent);
+    0 12px 40px var(--brand-glow);
 }
 
 .achievement-badge {

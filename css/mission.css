@@ -1,339 +1,658 @@
-/* --- MISSION SECTION: DEEP HYDRO THEME (REFACTORED) --- */
+/* --- MISSION SECTION: SCOPED VARIABLES --- */
+.msn-section {
+    /* Using color-mix to derive from your global --bg, --text, --brand */
+    --msn-bg: var(--bg, #000);
+    --msn-surface: color-mix(in srgb, var(--elev-1, #111) 60%, transparent);
+    --msn-border: color-mix(in srgb, var(--text, #fff) 8%, transparent);
+    --msn-border-highlight: color-mix(in srgb, var(--text, #fff) 15%, transparent);
+    --msn-txt-main: var(--text, #fff);
+    --msn-txt-mute: color-mix(in srgb, var(--text, #fff) 50%, transparent);
+    --msn-accent: var(--brand, #3b82f6);
+    --msn-accent-glow: color-mix(in srgb, var(--brand, #3b82f6) 40%, transparent);
+    
+    --easing: cubic-bezier(0.16, 1, 0.3, 1); /* Apple-style ease */
+    
+    position: relative;
+    padding: clamp(6rem, 12vh, 10rem) 1.5rem;
+    background: var(--msn-bg);
+    overflow: hidden;
+    color: var(--msn-txt-main);
+}
 
-#mission.mission-section {
-  /* Scoped Variables */
-  --m-bg: var(--bg, #050a10);
-  --m-glass-bg: color-mix(in srgb, var(--elev-2, #111b26) 30%, transparent);
-  --m-glass-border: rgba(255, 255, 255, 0.08);
-  --m-glass-border-hover: var(--brand, #06b6d4);
-  --m-text: var(--text, #f0f9ff);
-  --m-text-sec: var(--text-muted, #64748b);
-  --m-brand: var(--brand, #06b6d4);
-  --m-brand-glow: color-mix(in srgb, var(--brand) 40%, transparent);
+/* --- AMBIENT ATMOSPHERE --- */
+.msn-ambient-light {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%; height: 600px;
+    background: radial-gradient(ellipse at center, var(--msn-accent-glow) 0%, transparent 60%);
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(80px);
+}
+
+/* .msn-noise-overlay {
+    position: absolute;
+    inset: 0;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    z-index: 0;
+    pointer-events: none;
+} */
+
+.msn-container {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* --- TYPOGRAPHY --- */
+.msn-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 5rem;
+}
+
+.msn-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    color: var(--msn-accent);
+    margin-bottom: 1.5rem;
+}
+
+.msn-pulse-dot {
+    width: 6px; height: 6px;
+    background: currentColor;
+    border-radius: 50%;
+    box-shadow: 0 0 10px currentColor;
+    animation: msnPulse 2s infinite;
+}
+
+.msn-title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    line-height: 1.05;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+}
+
+.msn-gradient-text {
+    background: linear-gradient(135deg, var(--msn-txt-main) 30%, var(--msn-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.msn-subtitle {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--msn-txt-mute);
+}
+
+/* --- THE GRID --- */
+.msn-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 900px) {
+    .msn-grid {
+        grid-template-columns: 1fr 340px 1fr;
+        grid-template-rows: repeat(2, 1fr);
+        /* Layout Logic:
+           [Card 1] [Center] [Card 3]
+           [Card 2] [Center] [Card 4]
+        */
+    }
+    .msn-center-node {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+    }
+}
+
+/* --- CARDS (Apple Style) --- */
+.msn-card {
+    position: relative;
+    background: var(--msn-surface);
+    border-radius: 24px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: transform 0.4s var(--easing);
+    
+    /* The subtle border */
+    box-shadow: inset 0 0 0 1px var(--msn-border);
+}
+
+.msn-card:hover {
+    transform: translateY(-4px);
+    box-shadow: inset 0 0 0 1px var(--msn-border-highlight), 
+                0 20px 40px -10px rgba(0,0,0,0.3);
+}
+
+/* Hover Spotlight Effect (via CSS radial gradient or JS) */
+.msn-card-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(600px circle at var(--x, 50%) var(--y, 50%), rgba(255,255,255,0.03), transparent 40%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+.msn-card:hover .msn-card-bg { opacity: 1; }
+
+.msn-icon-box {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--msn-txt-main) 5%, transparent);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--msn-txt-main);
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.msn-card:hover .msn-icon-box {
+    background: var(--msn-accent);
+    color: #fff; /* Force white on accent */
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px var(--msn-accent-glow);
+}
+
+.msn-card-txt h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+}
+
+.msn-card-txt p {
+    font-size: 0.95rem;
+    color: var(--msn-txt-mute);
+    line-height: 1.5;
+}
+
+
+
+
+
+/* --- CENTER NODE VISUAL CENTRAL--- */
+/* --- CENTER NODE: NEURAL CORE --- */
+.msn-center-node {
+    /* Local Variables */
+    --node-size: 160px;
+    --core-size: 70px;
+    --node-color: var(--brand, #06b6d4);
+    --node-glow: rgba(6, 182, 212, 0.4);
+    
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2rem;
+    
+    /* Card Glass Base */
+    background: radial-gradient(circle at center, rgba(6,182,212,0.08) 0%, rgba(255,255,255,0.02) 60%);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 32px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 20px 50px -10px rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+
+/* Background Ambient Flare */
+.node-flare {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200%; height: 200%;
+    background: radial-gradient(circle, var(--node-glow) 0%, transparent 60%);
+    opacity: 0.1;
+    pointer-events: none;
+    animation: breathe 6s ease-in-out infinite;
+}
+
+/* --- THE NUCLEUS (Visual Container) --- */
+.nucleus-wrapper {
+    position: relative;
+    width: var(--node-size);
+    height: var(--node-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+/* 1. Orbit Rings */
+.orbit-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid var(--node-color);
+    opacity: 0.3;
+}
+
+.outer-dashed {
+    width: 100%; height: 100%;
+    border-style: dashed;
+    border-width: 1px;
+    animation: spin 20s linear infinite;
+}
+
+.inner-solid {
+    width: 75%; height: 75%;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-top-color: var(--node-color);
+    border-bottom-color: var(--node-color);
+    animation: spinRev 12s linear infinite;
+}
+
+/* 2. Radar Sweep */
+.radar-sweep {
+    position: absolute;
+    width: 90%; height: 90%;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, transparent 70%, var(--node-glow));
+    mask-image: radial-gradient(circle, transparent 55%, black 60%);
+    -webkit-mask-image: radial-gradient(circle, transparent 55%, black 60%);
+    animation: spin 4s linear infinite;
+    opacity: 0.5;
+}
+
+/* 3. The 3D Core */
+.core-module {
+    position: relative;
+    width: var(--core-size);
+    height: var(--core-size);
+    border-radius: 50%;
+    
+    /* 3D Sphere Gradient */
+    background: radial-gradient(circle at 30% 30%, 
+        var(--node-color) 0%, 
+        #0e3c4a 100%);
+    
+    /* Glows */
+    box-shadow: 
+        0 0 30px var(--node-glow),
+        inset 0 2px 5px rgba(255,255,255,0.4); /* Top rim light */
+        
+    display: flex; align-items: center; justify-content: center;
+    z-index: 10;
+    color: #fff;
+}
+
+/* Glossy Lens Reflection */
+.core-glass-reflection {
+    position: absolute;
+    top: 5px; left: 10px;
+    width: 40%; height: 20%;
+    border-radius: 50%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.4), transparent);
+    filter: blur(2px);
+    pointer-events: none;
+}
+
+.core-icon svg {
+    width: 32px; height: 32px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+    animation: iconPulse 4s ease-in-out infinite;
+}
+
+/* 4. Satellites (Orbiting Dots) */
+.satellite {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 10px #fff;
+}
+
+.sat-1 {
+    margin-left: -3px; margin-top: -3px;
+    animation: orbit1 8s linear infinite;
+}
+.sat-2 {
+    margin-left: -2px; margin-top: -2px;
+    width: 4px; height: 4px;
+    background: var(--node-color);
+    animation: orbit2 12s linear infinite reverse;
+}
+
+/* --- STATUS HUD --- */
+/* --- Apple-Style Status Pill --- */
+
+.apple-status-pill {
+  /* Variables for easy theming */
+  --pill-bg: rgba(20, 30, 40, 0.4); /* Dark transparency */
+  --pill-border: rgba(255, 255, 255, 0.1);
+  --pill-border-top: rgba(255, 255, 255, 0.15); /* Top light source */
+  --pill-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.2);
   
-  position: relative;
-  padding: clamp(6rem, 10vh, 10rem) 0;
-  background-color: var(--m-bg);
-  font-family: inherit;
-  overflow: hidden;
-}
+  --success-color: #32d74b; /* Apple Human Interface Green */
+  --text-primary: #ffffff;
+  --text-secondary: rgba(235, 235, 245, 0.6); /* SF Grey */
 
-/* --- BACKGROUND FX --- */
-.mission-bg-layer {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.ambient-glow {
-  position: absolute;
-  width: 60vw; height: 60vw;
-  max-width: 800px; max-height: 800px;
-  background: radial-gradient(circle, var(--m-brand-glow) 0%, transparent 70%);
-  opacity: 0.12;
-  filter: blur(100px);
-  animation: pulseAmbient 10s ease-in-out infinite alternate;
-}
-.top-glow { top: -20%; left: 20%; }
-.bottom-glow { bottom: -20%; right: 20%; animation-delay: -5s; }
-
-.grid-overlay {
-  position: absolute;
-  inset: 0;
-  background-image: 
-    linear-gradient(var(--m-glass-border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--m-glass-border) 1px, transparent 1px);
-  background-size: 60px 60px;
-  opacity: 0.05;
-  mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 90%);
-}
-
-/* --- HEADER --- */
-.mission-header {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  max-width: 760px;
-  margin: 0 auto 5rem;
-}
-
-.badge-pill {
+  /* Layout & Box Model */
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 16px 8px 10px;
-  background: rgba(6, 182, 212, 0.1);
-  border: 1px solid rgba(6, 182, 212, 0.25);
-  border-radius: 100px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--m-brand);
+  gap: 14px;
+  padding: 10px 20px 10px 14px; /* Slight asymmetry for optical balance */
+  border-radius: 999px; /* Full capsule shape */
+  
+  /* Material / Glassmorphism */
+  background: var(--pill-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  
+  /* Delicate Borders (Inner light logic) */
+  border: 1px solid var(--pill-border);
+  border-top-color: var(--pill-border-top);
+  box-shadow: var(--pill-shadow);
+  
+  /* Interaction Props */
+  cursor: default;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  user-select: none;
+}
+
+/* Micro-interaction: Hover State */
+.apple-status-pill:hover {
+  background: rgba(40, 50, 60, 0.5);
+  transform: translateY(-1px) scale(1.01);
+  box-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* --- Typography --- */
+.status-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.2;
+}
+
+.status-label {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
-  margin-bottom: 2rem;
-  box-shadow: 0 0 20px rgba(6, 182, 212, 0.1);
+  letter-spacing: 0.06em; /* Elegant spacing */
+  color: var(--text-secondary);
 }
 
-.badge-icon {
-  width: 16px; height: 16px;
-  color: currentColor;
-  animation: spinSlow 10s linear infinite;
-}
-
-.mission-title {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
-  color: var(--m-text);
-  margin-bottom: 1.5rem;
-}
-
-.text-gradient {
-  background: linear-gradient(120deg, var(--m-brand) 0%, var(--m-text) 60%);
+.status-value {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 600; /* Semibold */
+  color: var(--text-primary);
+  letter-spacing: -0.01em; /* Tight tracking for modern feel */
+  background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.9) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.mission-subtitle {
-  font-size: 1.25rem;
-  line-height: 1.6;
-  color: var(--m-text-sec);
-  font-weight: 400;
-}
-.highlight { color: var(--m-text); font-weight: 500; border-bottom: 1px solid var(--m-brand); }
-
-/* --- BENTO GRID LAYOUT --- */
-.bento-grid {
-  display: grid;
-  grid-template-columns: 1fr 340px 1fr;
-  gap: 1.5rem;
+/* --- The Living Signal (Animation) --- */
+.signal-badge {
   position: relative;
-  z-index: 2;
-  margin-bottom: 5rem;
-}
-
-.bento-col {
+  width: 12px;
+  height: 12px;
   display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-/* --- TECH CARDS (Glassmorphism) --- */
-.tech-card {
-  position: relative;
-  background: var(--m-glass-bg);
-  border: 1px solid var(--m-glass-border);
-  border-radius: 24px;
-  overflow: hidden;
-  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  display: flex;
-  flex-direction: column;
-}
-
-.large-card { flex: 1.5; padding: 2rem; }
-.small-card { flex: 1; padding: 1.5rem 2rem; justify-content: center; }
-
-/* Card Hover Interactions */
-.tech-card:hover {
-  transform: translateY(-6px) scale(1.01);
-  border-color: rgba(6, 182, 212, 0.4);
-  box-shadow: 
-    0 20px 50px -10px rgba(0,0,0,0.5),
-    0 0 0 1px rgba(6, 182, 212, 0.1) inset; /* Inner glow */
-}
-
-.card-glow-effect {
-  position: absolute;
-  top: 0; left: 0; right: 0; height: 100%;
-  background: radial-gradient(800px circle at 50% 0%, rgba(255,255,255,0.03), transparent 40%);
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-.card-content { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; }
-
-.card-top { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
-
-.icon-square {
-  width: 48px; height: 48px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.01));
-  border: 1px solid rgba(255,255,255,0.1);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--m-brand);
-  transition: 0.3s;
-}
-
-.tech-card:hover .icon-square {
-  background: var(--m-brand);
-  color: var(--m-bg);
-  box-shadow: 0 0 20px var(--m-brand-glow);
-}
-
-.icon-square svg { width: 24px; height: 24px; }
-
-.tech-card h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--m-text);
-  margin: 0;
-}
-
-.tech-card p {
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: var(--m-text-sec);
-  margin-bottom: auto;
-}
-
-/* Visualization: Mini Bars */
-.mini-chart-container {
-  display: flex;
-  align-items: flex-end;
-  gap: 6px;
-  height: 40px;
-  margin-top: 1.5rem;
-  opacity: 0.6;
-}
-.bar {
-  flex: 1;
-  background: var(--m-text-sec);
-  border-radius: 2px;
-  height: var(--h);
-  transition: 0.3s;
-}
-.bar.active, .tech-card:hover .bar { background: var(--m-brand); opacity: 1; }
-
-/* Visualization: Live Indicator */
-.live-indicator {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-size: 0.75rem; font-weight: 700; color: var(--m-brand);
-  margin-top: 1rem; text-transform: uppercase; letter-spacing: 1px;
-}
-.dot { width: 6px; height: 6px; background: currentColor; border-radius: 50%; }
-.dot.pulse { animation: blinkFast 2s infinite; }
-
-/* Visualization: Stats Row */
-.stat-row {
-  gap: 2rem; margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;
-}
-.stat-unit { display: flex; flex-direction: column; }
-.stat-unit .label { font-size: 0.75rem; color: var(--m-text-sec); text-transform: uppercase; letter-spacing: 1px; }
-.stat-unit .val { font-size: 1rem; color: var(--m-text); font-weight: 600; margin-top: 4px; }
-
-/* --- CENTER PIECE: RADAR SONAR --- */
-.bento-col.center-col {
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
-.sonar-container {
-  position: relative;
-  width: 320px; height: 320px;
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 2rem;
-}
-
-/* The Radar Sweep Effect */
-.radar-sweep {
+/* The expanding wave */
+.signal-wave {
   position: absolute;
-  inset: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
-  background: conic-gradient(from 0deg, transparent 0%, rgba(6, 182, 212, 0.15) 100%);
-  mask-image: radial-gradient(circle, transparent 30%, black 70%);
-  animation: radarSpin 4s linear infinite;
-  pointer-events: none;
-}
-
-.static-rings .s-ring {
-  position: absolute;
-  top: 50%; left: 50%; transform: translate(-50%, -50%);
-  border-radius: 50%;
-  border: 1px solid var(--m-brand);
-  opacity: 0.2;
-}
-.s-ring.r1 { width: 40%; height: 40%; border-style: dashed; }
-.s-ring.r2 { width: 70%; height: 70%; opacity: 0.1; }
-.s-ring.r3 { width: 100%; height: 100%; border: 1px solid rgba(255,255,255,0.05); }
-
-.sonar-core-orb {
-  width: 90px; height: 90px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, var(--m-brand), #083344);
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 
-    0 0 60px var(--m-brand-glow),
-    inset 0 2px 10px rgba(255,255,255,0.5);
-  position: relative;
-  z-index: 10;
-}
-
-.inner-pulse {
-  position: absolute; inset: -4px;
-  border: 2px solid var(--m-brand);
-  border-radius: 50%;
+  border: 1.5px solid var(--success-color);
   opacity: 0;
-  animation: ripple 3s ease-out infinite;
+  z-index: 1;
+  animation: radarPing 3s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
-.orb-icon { width: 36px; height: 36px; color: #fff; filter: drop-shadow(0 0 5px rgba(255,255,255,0.8)); }
+/* --- Keyframes --- */
 
-.system-status {
-  position: absolute; bottom: 30px;
-  font-family: monospace; font-size: 0.7rem; color: var(--m-brand);
-  background: rgba(0,0,0,0.4); padding: 4px 8px; border-radius: 12px;
-  border: 1px solid rgba(6,182,212,0.3);
-  display: flex; align-items: center; gap: 6px;
-}
-.status-dot { width: 6px; height: 6px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 6px #22c55e; }
-.status-dot-offline { width: 6px; height: 6px; background: #c52222; border-radius: 50%; box-shadow: 0 0 6px #c52222; }
-
-.vision-caption { text-align: center; }
-.vision-caption h4 { text-transform: uppercase; font-size: 0.8rem; letter-spacing: 3px; color: var(--m-brand); margin-bottom: 0.5rem; }
-.vision-caption p { font-size: 1.1rem; color: var(--m-text); font-style: italic; font-weight: 300; opacity: 0.8; }
-
-/* --- FOOTER PILLARS --- */
-.mission-footer {
-  display: flex; justify-content: center; align-items: center; gap: 4rem;
-  margin-top: 4rem; padding-top: 4rem;
-  border-top: 1px solid var(--m-glass-border);
+/* Core breathing (Subtle glow intensity change) */
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 1; box-shadow: 0 0 8px rgba(50, 215, 75, 0.4); }
+  50% { transform: scale(0.95); opacity: 0.8; box-shadow: 0 0 4px rgba(50, 215, 75, 0.2); }
 }
 
-.pillar-unit { display: flex; align-items: center; gap: 1rem; opacity: 0.8; transition: 0.3s; }
-.pillar-unit:hover { opacity: 1; transform: translateY(-2px); }
-
-.pillar-num {
-  font-size: 2rem; font-weight: 200; color: var(--m-brand); opacity: 0.4;
-  font-variant-numeric: tabular-nums;
+/* Radar Wave (Physics-based expansion) */
+@keyframes radarPing {
+  0% {
+    width: 8px;
+    height: 8px;
+    opacity: 0.8;
+    border-width: 2px;
+  }
+  60% {
+    opacity: 0;
+  }
+  100% {
+    width: 32px;
+    height: 32px;
+    opacity: 0;
+    border-width: 0px;
+  }
 }
 
-.pillar-text { display: flex; flex-direction: column; }
-.pillar-text strong { color: var(--m-text); font-size: 1.1rem; }
-.pillar-text span { color: var(--m-text-sec); font-size: 0.9rem; }
 
-.pillar-divider { width: 1px; height: 50px; background: linear-gradient(to bottom, transparent, var(--m-glass-border), transparent); }
+
+
+/* --- KEYFRAMES --- */
+@keyframes spin { 100% { transform: rotate(360deg); } }
+@keyframes spinRev { 100% { transform: rotate(-360deg); } }
+@keyframes breathe { 0%, 100% { opacity: 0.1; transform: translate(-50%, -50%) scale(1); } 50% { opacity: 0.2; transform: translate(-50%, -50%) scale(1.1); } }
+@keyframes blink { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
+@keyframes iconPulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(0.9); opacity: 0.8; } }
+
+/* Orbit Math (Approximate for circular path) */
+@keyframes orbit1 {
+    from { transform: rotate(0deg) translateX(60px) rotate(0deg); }
+    to { transform: rotate(360deg) translateX(60px) rotate(-360deg); }
+}
+@keyframes orbit2 {
+    from { transform: rotate(0deg) translateX(45px) rotate(0deg); }
+    to { transform: rotate(360deg) translateX(45px) rotate(-360deg); }
+}
+
+
+/* --- FOOTER METRICS --- */
+/* --- MISSION FOOTER (Telemetry Console) --- */
+.msn-footer {
+    /* Scoped Variables */
+    --msn-border: rgba(255, 255, 255, 0.08);
+    --msn-txt-main: var(--text, #f0f9ff);
+    --msn-txt-mute: var(--text-muted, #64748b);
+    --msn-brand: var(--brand, #06b6d4);
+    
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    margin-top: 5rem;
+    padding-top: 3rem;
+    
+    /* Replaces standard border with a layout container for the gradient line */
+    isolation: isolate;
+}
+
+/* "Laser Horizon" Top Border */
+.msn-footer::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%; transform: translateX(-50%);
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--msn-border) 20%, 
+        var(--msn-brand) 50%, 
+        var(--msn-border) 80%, 
+        transparent 100%
+    );
+    opacity: 0.5;
+    box-shadow: 0 -1px 10px var(--msn-brand);
+}
+
+/* Metric Container */
+.msn-metric {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: default;
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.msn-metric:hover {
+    transform: translateY(-3px);
+}
+
+/* The Number (Big Data) */
+.msn-metric .num {
+    font-size: 2.25rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--msn-txt-main);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+    
+    /* Metallic Text Gradient */
+    background: linear-gradient(180deg, #fff 10%, var(--msn-txt-mute) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2));
+    transition: all 0.3s ease;
+}
+
+.msn-metric:hover .num {
+    background: linear-gradient(180deg, #fff 0%, var(--msn-brand) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 15px var(--msn-brand));
+}
+
+.msn-metric .num small {
+    font-size: 0.5em;
+    font-weight: 500;
+    color: var(--msn-txt-mute);
+    vertical-align: super;
+}
+
+/* Label Wrapper (Aligns dot and text) */
+.lbl-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 10px;
+    border-radius: 100px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: all 0.3s ease;
+}
+
+.msn-metric:hover .lbl-wrapper {
+    background: rgba(6,182,212,0.1);
+    border-color: rgba(6,182,212,0.2);
+}
+
+/* The Label Text */
+.msn-metric .lbl {
+    font-size: 0.75rem;
+    font-family: var(--font-mono, monospace);
+    color: var(--msn-txt-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.msn-metric:hover .lbl {
+    color: var(--msn-brand);
+}
+
+/* Status Dots */
+.status-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #22c55e; /* Green for Uptime */
+    box-shadow: 0 0 5px #22c55e;
+    animation: pulse 2s infinite;
+}
+
+.status-dot.static {
+    background: var(--msn-brand); /* Blue for ISO */
+    box-shadow: none;
+    animation: none;
+}
+
+.status-dot.eco {
+    background: #10b981; /* Teal for Eco */
+    box-shadow: none;
+}
+
+/* Vertical Separator */
+.msn-sep {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, 
+        transparent, 
+        var(--msn-border), 
+        transparent
+    );
+}
 
 /* --- ANIMATIONS --- */
-@keyframes pulseAmbient { 0% { opacity: 0.1; transform: scale(1); } 100% { opacity: 0.2; transform: scale(1.1); } }
-@keyframes spinSlow { 100% { transform: rotate(360deg); } }
-@keyframes radarSpin { 100% { transform: rotate(360deg); } }
-@keyframes ripple { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.6); opacity: 0; } }
-@keyframes blinkFast { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-
-/* --- RESPONSIVE --- */
-@media (max-width: 1100px) {
-  .bento-grid { grid-template-columns: 1fr; gap: 4rem; }
-  .bento-col.center-col { order: -1; margin-bottom: -2rem; }
-  .bento-col.left-col, .bento-col.right-col { flex-direction: row; flex-wrap: wrap; }
-  .tech-card { flex: 1; min-width: 280px; }
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
 }
 
+/* --- RESPONSIVE --- */
 @media (max-width: 768px) {
-  .mission-footer { flex-direction: column; gap: 2rem; align-items: flex-start; width: fit-content; margin-inline: auto; }
-  .pillar-divider { width: 100px; height: 1px; background: linear-gradient(to right, transparent, var(--m-glass-border), transparent); }
-  .mission-title { font-size: 2.5rem; }
+    .msn-sep {
+        height: 1px;
+        background: linear-gradient(to right, transparent, var(--msn-border), transparent);
+    }
+    
+    .msn-footer::before { width: 100%; }
+}
+
+
+
+
+/* --- ANIMATION KEYFRAMES --- */
+@keyframes msnPulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
+@keyframes msnSpin { 100% { transform: rotate(360deg); } }
+@keyframes msnBreathe { 0%, 100% { transform: scale(1); box-shadow: 0 0 30px var(--msn-accent-glow); } 50% { transform: scale(1.1); box-shadow: 0 0 50px var(--msn-accent-glow); } }
+
+/* --- MOBILE TWEAKS --- */
+@media (max-width: 768px) {
+    .msn-grid { gap: 1rem; }
+    .msn-footer { gap: 1.5rem; }
+    .msn-sep { height: 20px; }
+    .msn-metric .num { font-size: 1.25rem; }
 }

@@ -40,11 +40,11 @@
 .solar-highlight {
   position: relative;
   display: inline-block;
-  background: linear-gradient(135deg, #FFD700, #FF8C00, #FF6B00);
+  background: linear-gradient(135deg, var(--gold), var(--orange), var(--orange));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  filter: drop-shadow(0 2px 8px rgba(255, 107, 0, 0.3));
+  filter: drop-shadow(0 2px 8px var(--gold-glow));
 }
 
 .solar-dot {
@@ -53,7 +53,7 @@
   right: -0.3em;
   width: 0.4em;
   height: 0.4em;
-  background: radial-gradient(circle, #FFD700, #FF6B00);
+  background: radial-gradient(circle, var(--gold), var(--orange));
   border-radius: 50%;
   opacity: 0;
   animation: solarPulse 2s ease-in-out infinite 1s;
@@ -208,3 +208,11 @@
     filter: none;
   }
 }
+
+
+
+
+
+
+
+

@@ -1,258 +1,250 @@
-/* Deployment Modes Section */
-.deployment-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--space-4);
-  margin-top: var(--space-5);
+/* --- DEPLOYMENT SECTION: Premium Bento --- */
+
+.dpl-section {
+    position: relative;
+    padding: clamp(6rem, 10vh, 10rem) 0;
+    background-color: var(--bg);
+    overflow: hidden;
+    color: var(--text);
 }
 
-.deployment-card {
-  background: linear-gradient(145deg, 
-    color-mix(in srgb, var(--elev-2) 80%, transparent),
-    color-mix(in srgb, var(--elev-1) 95%, transparent));
-  border: 1px solid color-mix(in srgb, var(--stroke) 25%, transparent);
-  border-radius: var(--radius-xl);
-  padding: var(--space-5);
-  backdrop-filter: blur(20px) saturate(180%);
-  box-shadow: var(--shadow-subtle);
-  transition: all var(--dur-2) var(--ease);
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-  min-height: 200px;
+/* --- AMBIENT FX --- */
+.dpl-ambient {
+    position: absolute; inset: 0; pointer-events: none; z-index: 0;
+}
+.dpl-glow-orb {
+    position: absolute; top: 20%; right: -10%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, color-mix(in srgb, var(--brand) 8%, transparent), transparent 70%);
+    filter: blur(80px);
 }
 
-.deployment-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, 
-    transparent, 
-    color-mix(in srgb, var(--brand) 40%, transparent), 
-    transparent);
-  opacity: 0;
-  transition: opacity var(--dur-2) var(--ease);
+.dpl-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    z-index: 2;
 }
 
-.deployment-card:hover {
-  transform: translateY(-6px);
-  border-color: color-mix(in srgb, var(--brand) 40%, var(--stroke));
-  box-shadow: var(--shadow-soft);
+/* --- HEADER --- */
+.dpl-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.deployment-card:hover::before {
-  opacity: 1;
+/* Status Pill (Interactive) */
+.dpl-status-pill {
+    appearance: none; border: none; outline: none;
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 8px 20px 8px 12px;
+    background: color-mix(in srgb, var(--elev-2) 80%, transparent);
+    border: 1px solid var(--stroke);
+    border-radius: 100px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px -5px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
 }
 
-.deployment-icon {
-  width: 64px;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: color-mix(in srgb, var(--brand) 10%, transparent);
-  border-radius: var(--radius-l);
-  color: var(--brand);
-  transition: all var(--dur-2) var(--ease);
-  position: relative;
-  overflow: hidden;
+.dpl-status-pill:hover {
+    transform: translateY(-2px);
+    border-color: var(--brand);
+    background: color-mix(in srgb, var(--elev-2) 90%, transparent);
 }
 
-.deployment-icon::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, 
-    color-mix(in srgb, white 8%, transparent) 0%, 
-    transparent 50%,
-    color-mix(in srgb, black 3%, transparent) 100%);
-  pointer-events: none;
+.pill-indicator {
+    position: relative; width: 12px; height: 12px;
+    display: flex; align-items: center; justify-content: center;
+}
+.indicator-dot {
+    width: 8px; height: 8px; background: var(--text-muted);
+    border-radius: 50%; z-index: 2; transition: 0.3s;
+}
+.indicator-ping {
+    position: absolute; width: 100%; height: 100%;
+    background: var(--brand); border-radius: 50%;
+    opacity: 0; z-index: 1;
 }
 
-.deployment-card:hover .deployment-icon {
-  background: color-mix(in srgb, var(--brand) 15%, transparent);
-  transform: scale(1.05);
-  box-shadow: 0 4px 16px color-mix(in srgb, var(--brand) 20%, transparent);
+/* Active State for Button */
+.dpl-status-pill.active {
+    border-color: var(--brand);
+    background: color-mix(in srgb, var(--brand) 10%, transparent);
+}
+.dpl-status-pill.active .indicator-dot { background: var(--brand); box-shadow: 0 0 10px var(--brand); }
+.dpl-status-pill.active .indicator-ping { animation: ping 2s infinite; opacity: 1; }
+.dpl-status-pill.active .state-text { color: var(--brand); }
+
+.pill-label {
+    font-size: 0.85rem; font-weight: 500; color: var(--text-muted);
+}
+.state-text { font-weight: 700; color: var(--text); transition: color 0.3s; }
+
+/* Titles */
+.dpl-title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+}
+.dpl-gradient {
+    background: linear-gradient(135deg, var(--text) 30%, var(--brand) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.dpl-desc {
+    font-size: 1.1rem; color: var(--text-muted); line-height: 1.6;
 }
 
-.deployment-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
+/* --- GRID LAYOUT --- */
+.dpl-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto; /* 2 rows */
+    gap: 1.5rem;
 }
 
-.deployment-content h3 {
-  margin: 0;
-  font-size: var(--size-3);
-  font-weight: 700;
-  color: var(--text);
-  line-height: 1.3;
-  letter-spacing: -0.01em;
+/* --- CARD DESIGN --- */
+.dpl-card {
+    position: relative;
+    border-radius: 24px;
+    /* Uses global elevation */
+    background: transparent;
+    transition: transform 0.4s var(--ease, ease);
+    cursor: default;
 }
 
-.deployment-content p {
-  margin: 0;
-  color: var(--text-muted);
-  font-size: var(--size-2);
-  line-height: 1.5;
-  flex: 1;
+.dpl-card:hover { transform: translateY(-6px); }
+
+/* Wide card spans full width */
+.card-wide { grid-column: 1 / -1; }
+
+.card-glass {
+    position: absolute; inset: 0;
+    background: color-mix(in srgb, var(--elev-1) 60%, transparent);
+    border: 1px solid var(--stroke);
+    border-radius: 24px;
+    backdrop-filter: blur(12px);
+    box-shadow: inset 0 1px 0 var(--glass-highlight);
+    transition: all 0.3s;
+}
+.dpl-card:hover .card-glass {
+    border-color: color-mix(in srgb, var(--brand) 30%, transparent);
+    box-shadow: 0 15px 40px -10px rgba(0,0,0,0.15), inset 0 1px 0 var(--glass-highlight);
 }
 
-.deployment-badge {
-  align-self: flex-start;
-  padding: 6px 12px;
-  background: color-mix(in srgb, var(--elev-3) 80%, transparent);
-  border: 1px solid color-mix(in srgb, var(--stroke) 30%, transparent);
-  border-radius: 20px;
-  font-size: var(--size-1);
-  font-weight: 600;
-  color: var(--text-muted);
-  transition: all var(--dur-2) var(--ease);
+.card-content {
+    position: relative; z-index: 2; padding: 2rem;
+    display: flex; flex-direction: column; height: 100%;
 }
 
-.deployment-card:hover .deployment-badge {
-  background: color-mix(in srgb, var(--brand) 15%, transparent);
-  border-color: color-mix(in srgb, var(--brand) 30%, transparent);
-  color: var(--brand-2);
+/* --- VISUALS --- */
+.visual-area {
+    height: 140px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.5rem;
+    background: color-mix(in srgb, var(--bg) 50%, transparent);
+    border-radius: 16px;
+    border: 1px solid color-mix(in srgb, var(--stroke) 50%, transparent);
+    color: var(--text-muted); /* Default SVG Color */
+    transition: 0.3s;
+}
+.dpl-card:hover .visual-area {
+    background: color-mix(in srgb, var(--bg) 80%, transparent);
+    border-color: var(--brand);
+    color: var(--brand);
 }
 
-/* Deployment Info Panel */
-.deployment-info {
-  margin-top: var(--space-6);
-  background: linear-gradient(145deg, 
-    color-mix(in srgb, var(--elev-2) 70%, transparent),
-    color-mix(in srgb, var(--elev-1) 90%, transparent));
-  border: 1px solid color-mix(in srgb, var(--brand) 20%, transparent);
-  border-radius: var(--radius-xl);
-  padding: var(--space-5);
-  backdrop-filter: blur(20px) saturate(180%);
-  box-shadow: var(--shadow-subtle);
-  text-align: center;
-  position: relative;
-  overflow: hidden;
+.viz-svg { width: 100%; height: 100%; max-width: 120px; stroke: currentColor; fill: none; }
+.wide-viz .viz-svg { max-width: 100%; }
+
+/* --- SVG ELEMENTS (Static State) --- */
+.radar-ring { opacity: 0.2; stroke-width: 1.5; }
+.radar-core { fill: currentColor; stroke: none; }
+.radar-scan { fill: currentColor; opacity: 0; transform-origin: center; }
+
+.wave-path { stroke-width: 2; stroke-linecap: round; opacity: 0.5; }
+.wave-path-ghost { stroke-width: 1; opacity: 0.2; }
+.drone-node { fill: currentColor; opacity: 0; }
+
+.timer-bg { opacity: 0.1; stroke-width: 4; }
+.timer-progress { 
+    stroke-width: 4; stroke-dasharray: 220; stroke-dashoffset: 220; 
+    transform: rotate(-90deg); transform-origin: center; 
+    stroke-linecap: round;
+}
+.drop-icon { stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transform: translateY(-5px); transition: 0.3s; }
+
+.fleet-link { stroke-width: 1; opacity: 0.2; }
+.fleet-node { fill: var(--bg); stroke-width: 2; r: 4; }
+
+/* --- TEXT CONTENT --- */
+.text-area { margin-top: auto; }
+
+.mode-tag {
+    font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--brand); display: block; margin-bottom: 0.5rem; opacity: 0.8;
 }
 
-.deployment-info::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, 
-    transparent, 
-    color-mix(in srgb, var(--brand) 40%, transparent), 
-    transparent);
+.dpl-card h3 {
+    font-size: 1.25rem; font-weight: 700; margin: 0 0 0.5rem; color: var(--text);
 }
 
-.info-content h4 {
-  margin: 0 0 var(--space-2) 0;
-  font-size: var(--size-3);
-  font-weight: 700;
-  color: var(--text);
+.dpl-card p {
+    font-size: 0.95rem; line-height: 1.5; color: var(--text-muted); margin: 0;
 }
 
-.info-content p {
-  margin: 0;
-  color: var(--text-muted);
-  font-size: var(--size-2);
-  line-height: 1.6;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+/* --- ANIMATION STATES (Triggered via JS) --- */
+.sim-active .radar-scan {
+    opacity: 0.2;
+    animation: radarSpin 3s linear infinite;
+}
+.sim-active .radar-ring { animation: pulseRing 2s infinite; }
+
+.sim-active .drone-node {
+    opacity: 1;
+    offset-path: path("M10 50 Q 30 20, 50 50 T 90 50");
+    animation: moveDrone 4s linear infinite alternate;
 }
 
-/* Mobile Optimizations */
-@media (max-width: 768px) {
-  .deployment-grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-3);
-    margin-top: var(--space-4);
-  }
-  
-  .deployment-card {
-    padding: var(--space-4);
-    gap: var(--space-2);
-    min-height: 180px;
-  }
-  
-  .deployment-icon {
-    width: 56px;
-    height: 56px;
-  }
-  
-  .deployment-content h3 {
-    font-size: var(--size-2);
-  }
-  
-  .deployment-content p {
-    font-size: var(--size-1);
-  }
-  
-  .deployment-info {
-    margin-top: var(--space-5);
-    padding: var(--space-4);
-  }
-  
-  .info-content h4 {
-    font-size: var(--size-2);
-  }
-  
-  .info-content p {
-    font-size: var(--size-1);
-  }
+.sim-active .timer-progress {
+    animation: fillTimer 2s ease-in-out infinite alternate;
+}
+.sim-active .drop-icon {
+    animation: dropBounce 2s infinite;
 }
 
-@media (max-width: 480px) {
-  .deployment-card {
-    padding: var(--space-3);
-    min-height: 160px;
-  }
-  
-  .deployment-icon {
-    width: 48px;
-    height: 48px;
-  }
-  
-  .deployment-info {
-    padding: var(--space-3);
-  }
+.sim-active .fleet-node {
+    fill: var(--brand);
+    stroke: none;
+    animation: fleetPulse 1.5s infinite alternate;
 }
+.sim-active .fleet-node:nth-child(odd) { animation-delay: 0.2s; }
+.sim-active .fleet-link { stroke: var(--brand); opacity: 0.4; }
 
-/* Reduced motion support */
-@media (prefers-reduced-motion: reduce) {
-  .deployment-card,
-  .deployment-icon,
-  .deployment-badge {
-    transition: none;
-  }
-  
-  .deployment-card:hover {
-    transform: none;
-  }
+/* --- KEYFRAMES --- */
+@keyframes ping {
+    0% { transform: scale(0.8); opacity: 0.8; }
+    100% { transform: scale(2.5); opacity: 0; }
 }
-
-/* Touch device optimizations */
-@media (hover: none) {
-  .deployment-card:hover {
-    transform: none;
-    border-color: color-mix(in srgb, var(--stroke) 25%, transparent);
-  }
-  
-  .deployment-card:active {
-    transform: scale(0.98);
-    transition: transform var(--dur-1) var(--ease);
-  }
+@keyframes radarSpin { 100% { transform: rotate(360deg); } }
+@keyframes pulseRing { 0%, 100% { opacity: 0.2; } 50% { opacity: 0.5; } }
+@keyframes moveDrone { 
+    0% { offset-distance: 0%; } 
+    100% { offset-distance: 100%; } 
 }
+@keyframes fillTimer { 0% { stroke-dashoffset: 220; } 100% { stroke-dashoffset: 0; } }
+@keyframes dropBounce { 0%, 100% { transform: translateY(-5px); } 50% { transform: translateY(5px); } }
+@keyframes fleetPulse { 0% { r: 4; opacity: 0.6; } 100% { r: 6; opacity: 1; box-shadow: 0 0 10px currentColor; } }
 
-/* Staggered animation delays */
-.deployment-card.reveal:nth-child(1) { transition-delay: 100ms; }
-.deployment-card.reveal:nth-child(2) { transition-delay: 200ms; }
-.deployment-card.reveal:nth-child(3) { transition-delay: 300ms; }
-.deployment-card.reveal:nth-child(4) { transition-delay: 400ms; }
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+    .dpl-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+    .card-wide { grid-column: span 1; }
+    .visual-area { height: 180px; } /* Taller on mobile for visibility */
+}

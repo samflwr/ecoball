@@ -1,377 +1,485 @@
-/* Mobile-Optimized Technical Specifications */
-.technical-specs-mobile {
-  position: relative;
-  padding: clamp(3rem, 6vw, 6rem) 0;
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--bg) 0%, transparent) 0%,
-    color-mix(in srgb, var(--elev-1) 2%, transparent) 50%,
-    color-mix(in srgb, var(--bg) 0%, transparent) 100%
-  );
-}
 
-.technical-specs-mobile .headline {
-  text-align: center;
-  margin-bottom: clamp(2rem, 4vw, 4rem);
-}
 
-.technical-specs-mobile .headline h2 {
-  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  margin: 0 0 1rem 0;
-  background: linear-gradient(135deg, var(--text), color-mix(in srgb, var(--text) 80%, transparent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
 
-.technical-specs-mobile .headline p {
-  font-size: var(--size-2);
-  color: var(--text-muted);
-  margin: 0;
-  max-width: 400px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.5;
-}
-
-/* Simplified Mobile-First Grid */
-.technical-specs-mobile .specs-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-/* Consolidated Category Design */
-.technical-specs-mobile .spec-category {
-  position: relative;
-  background: linear-gradient(135deg, 
-    color-mix(in srgb, var(--elev-2) 70%, transparent),
-    color-mix(in srgb, var(--elev-1) 90%, transparent));
-  border: 1px solid color-mix(in srgb, var(--stroke) 20%, transparent);
-  border-radius: 1.25rem;
-  padding: 2rem;
-  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-  backdrop-filter: blur(20px);
-  overflow: hidden;
-}
-
-.technical-specs-mobile .spec-category::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, 
-    transparent, 
-    color-mix(in srgb, var(--brand) 40%, transparent), 
-    transparent);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.technical-specs-mobile .spec-category:hover::before {
-  opacity: 1;
-}
-
-.technical-specs-mobile .spec-category:hover {
-  transform: translateY(-4px);
-  border-color: color-mix(in srgb, var(--brand) 30%, transparent);
-  box-shadow: 
-    0 16px 32px rgba(0, 0, 0, 0.12),
-    0 8px 16px rgba(0, 0, 0, 0.08);
-}
-
-/* Streamlined Header */
-.technical-specs-mobile .spec-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--stroke) 15%, transparent);
-}
-
-.technical-specs-mobile .spec-icon {
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 0.75rem;
-  background: color-mix(in srgb, var(--brand) 12%, transparent);
-  border: 1px solid color-mix(in srgb, var(--brand) 25%, transparent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: all 0.3s ease;
-}
-
-.technical-specs-mobile .spec-category:hover .spec-icon {
-  background: color-mix(in srgb, var(--brand) 18%, transparent);
-  transform: scale(1.05);
-}
-
-.technical-specs-mobile .spec-icon svg {
-  width: 1.125rem;
-  height: 1.125rem;
-  color: var(--brand);
-}
-
-.technical-specs-mobile .spec-header h3 {
-  margin: 0;
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--text);
-  letter-spacing: -0.01em;
-  line-height: 1.2;
-}
-
-/* Unified Content Area - No Inner Cards on Mobile */
-.technical-specs-mobile .spec-content {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-/* Simplified Feature Groups */
-.technical-specs-mobile .feature-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.technical-specs-mobile .feature-group-title {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--brand);
-  margin: 0 0 0.5rem 0;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--brand) 20%, transparent);
-  letter-spacing: 0.02em;
-}
-
-/* Minimal Feature List */
-.technical-specs-mobile .feature-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.technical-specs-mobile .feature-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  line-height: 1.4;
-  padding: 0.5rem 0;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.technical-specs-mobile .feature-item::before {
-  content: '';
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: color-mix(in srgb, var(--brand) 60%, transparent);
-  flex-shrink: 0;
-  margin-top: 0.4rem;
-  transition: all 0.3s ease;
-}
-
-.technical-specs-mobile .feature-item:hover {
-  color: var(--text);
-  transform: translateX(2px);
-}
-
-.technical-specs-mobile .feature-item:hover::before {
-  background: var(--brand);
-  transform: scale(1.2);
-}
-
-/* Highlighted Features */
-.technical-specs-mobile .feature-item.highlight {
-  color: var(--brand);
-  font-weight: 600;
-  background: linear-gradient(135deg, 
-    color-mix(in srgb, var(--brand) 10%, transparent), 
-    color-mix(in srgb, var(--brand) 5%, transparent));
-  padding: 0.75rem;
-  border-radius: 0.5rem;
-  margin: 0.25rem 0;
-  border: 1px solid color-mix(in srgb, var(--brand) 20%, transparent);
-}
-
-.technical-specs-mobile .feature-item.highlight::before {
-  content: '★';
-  color: var(--brand);
-  background: transparent;
-  font-size: 0.7em;
-  width: auto;
-  height: auto;
-  margin-top: 0.1rem;
-}
-
-/* Key Features Category */
-.technical-specs-mobile .spec-category.key-features {
-  border-color: color-mix(in srgb, var(--brand) 35%, transparent);
-  background: linear-gradient(135deg, 
-    color-mix(in srgb, var(--brand) 8%, var(--elev-2)),
-    color-mix(in srgb, var(--brand) 4%, var(--elev-1)));
-}
-
-.technical-specs-mobile .spec-category.key-features:hover {
-  border-color: color-mix(in srgb, var(--brand) 50%, transparent);
-}
-
-/* Desktop Enhancement - Progressive Enhancement */
-@media (min-width: 768px) {
-  .technical-specs-mobile .specs-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    margin-top: 3rem;
-  }
-  
-  .technical-specs-mobile .spec-category {
-    padding: 2.5rem;
-  }
-  
-  .technical-specs-mobile .spec-header {
-    margin-bottom: 2rem;
-  }
-  
-  .technical-specs-mobile .spec-content {
-    gap: 2rem;
-  }
-  
-  .technical-specs-mobile .feature-group {
-    gap: 1rem;
-  }
-  
-  .technical-specs-mobile .feature-list {
-    gap: 0.75rem;
-  }
-  
-  .technical-specs-mobile .feature-item {
-    font-size: 0.95rem;
-    padding: 0.75rem 0;
-  }
-}
-
-/* Large Desktop Enhancement */
-@media (min-width: 1024px) {
-  .technical-specs-mobile .headline h2 {
-    font-size: clamp(2rem, 4vw, 3rem);
-  }
-  
-  .technical-specs-mobile .headline p {
-    font-size: var(--size-3);
-    max-width: 500px;
-  }
-}
-
-/* Mobile-First Optimizations */
-@media (max-width: 767px) {
-  .technical-specs-mobile {
-    padding: 2.5rem 0;
-  }
-  
-  .technical-specs-mobile .spec-category {
-    padding: 1.5rem;
-    border-radius: 1rem;
-  }
-  
-  .technical-specs-mobile .spec-header {
-    gap: 0.75rem;
-    margin-bottom: 1.25rem;
-    padding-bottom: 0.75rem;
-  }
-  
-  .technical-specs-mobile .spec-icon {
-    width: 2.25rem;
-    height: 2.25rem;
-  }
-  
-  .technical-specs-mobile .spec-header h3 {
-    font-size: 1.125rem;
-  }
-  
-  .technical-specs-mobile .feature-group-title {
-    font-size: 0.9rem;
-  }
-  
-  .technical-specs-mobile .feature-item {
-    font-size: 0.85rem;
-    line-height: 1.3;
-  }
-  
-  /* Reduce hover effects on touch devices */
-  @media (hover: none) {
-    .technical-specs-mobile .spec-category:hover {
-      transform: none;
-    }
+/* --- Variables & Configuration --- */
+.tech-specs-bento {
+    --bento-gap: 1.5rem;
+    --card-bg: color-mix(in srgb, var(--bg) 60%, transparent); 
+    --card-border: color-mix(in srgb, var(--text) 8%, transparent);
+    --card-border-hover: color-mix(in srgb, var(--brand) 30%, transparent);
+    --card-radius: 1.5rem;
+    --text-secondary: color-mix(in srgb, var(--text) 60%, transparent);
+    --glow-color: var(--brand);
     
-    .technical-specs-mobile .feature-item:hover {
-      transform: none;
+    position: relative;
+    padding: 6rem 1rem;
+    overflow: hidden;
+    /* Subtle noise texture overlay if desired */
+    /* background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E"); */
+}
+
+.bento-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    z-index: 2;
+    position: relative;
+}
+
+/* --- Typography --- */
+.bento-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    animation: fadeUp 0.8s ease-out forwards;
+}
+
+.bento-header .eyebrow {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--brand);
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+    background: color-mix(in srgb, var(--brand) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--brand) 20%, transparent);
+}
+
+.bento-header h2 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin: 0 0 1rem 0;
+    background: linear-gradient(180deg, var(--text) 0%, color-mix(in srgb, var(--text) 70%, transparent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.bento-header p {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* --- The Grid Layout --- */
+.bento-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--bento-gap);
+}
+
+/* Desktop Grid Configuration */
+@media (min-width: 900px) {
+    .bento-grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, auto);
     }
-  }
+
+    /* Span Logic */
+    .card-sensing { grid-column: span 1; grid-row: span 2; }
+    .card-power { grid-column: span 2; }
+    .card-connect { grid-column: span 1; }
+    .card-hardware { grid-column: span 1; }
+    .card-compliance { grid-column: span 3; }
 }
 
-/* Ultra-Mobile Optimization */
-@media (max-width: 480px) {
-  .technical-specs-mobile .spec-category {
-    padding: 1.25rem;
-  }
-  
-  .technical-specs-mobile .spec-header {
+/* --- Card Base Styling --- */
+.bento-card {
+    position: relative;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--card-radius);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                border-color 0.4s ease,
+                box-shadow 0.4s ease;
+}
+
+/* Hover Effects */
+.bento-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--card-border-hover);
+    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
+}
+
+/* Inner Glow Effect */
+.card-bg-glow {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(
+        800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+        color-mix(in srgb, var(--brand) 5%, transparent), 
+        transparent 40%
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.bento-card:hover .card-bg-glow {
+    opacity: 1;
+}
+
+/* --- Card Content Styling --- */
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    z-index: 1;
+}
+
+.icon-box {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1rem;
+    background: color-mix(in srgb, var(--text) 5%, transparent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text);
+    transition: all 0.3s ease;
+}
+
+.bento-card:hover .icon-box {
+    background: var(--brand);
+    color: #fff; /* Assuming brand is dark, otherwise adjust */
+    transform: scale(1.1) rotate(-5deg);
+}
+
+.card-header h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.card-body {
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 100%;
+}
+
+/* --- Specific Components --- */
+
+/* Spec Rows (Sensing Card) */
+.spec-row {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--card-border);
+    font-size: 0.95rem;
+}
+.spec-row .label { color: var(--text-secondary); }
+.spec-row .value { font-weight: 600; font-feature-settings: "tnum"; }
+
+/* Pills */
+.pill-group {
+    display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
-  }
-  
-  .technical-specs-mobile .spec-icon {
-    width: 2rem;
-    height: 2rem;
-  }
-  
-  .technical-specs-mobile .spec-icon svg {
-    width: 1rem;
-    height: 1rem;
-  }
-  
-  .technical-specs-mobile .spec-header h3 {
+    margin-top: auto;
+}
+.pill {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 100px;
+    background: color-mix(in srgb, var(--text) 5%, transparent);
+    color: var(--text-secondary);
+}
+.pill.active {
+    background: color-mix(in srgb, var(--brand) 15%, transparent);
+    color: var(--brand);
+    border: 1px solid color-mix(in srgb, var(--brand) 20%, transparent);
+}
+
+/* Power Card Big Stat */
+.big-stat-layout {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.big-stat {
+    display: flex;
+    flex-direction: column;
+}
+.big-stat .number {
+    font-size: 5rem;
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+    background: linear-gradient(135deg, var(--brand), var(--text));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.big-stat .unit {
     font-size: 1rem;
-  }
-  
-  .technical-specs-mobile .feature-item {
+    color: var(--brand);
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+.sub-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.stat-item {
+    display: flex;
+    flex-direction: column;
+}
+.stat-item .label {
     font-size: 0.8rem;
-    gap: 0.5rem;
-  }
-  
-  .technical-specs-mobile .feature-item.highlight {
-    padding: 0.5rem;
-  }
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
+}
+.stat-item .value {
+    font-size: 1.25rem;
+    font-weight: 600;
 }
 
-/* Reduced Motion Support */
-@media (prefers-reduced-motion: reduce) {
-  .technical-specs-mobile .spec-category,
-  .technical-specs-mobile .feature-item,
-  .technical-specs-mobile .spec-icon {
-    transition: none;
-  }
-  
-  .technical-specs-mobile .spec-category:hover,
-  .technical-specs-mobile .feature-item:hover {
-    transform: none;
-  }
+/* Check List */
+.check-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.check-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+.check-list li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0.5rem;
+    width: 6px; height: 6px;
+    background: var(--brand);
+    border-radius: 50%;
+}
+.check-list li.highlight {
+    color: var(--text);
+    font-weight: 500;
+}
+.check-list li.highlight::before {
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--brand) 20%, transparent);
 }
 
-/* Focus States */
-.technical-specs-mobile .spec-category:focus-within {
-  outline: 2px solid color-mix(in srgb, var(--brand) 40%, transparent);
-  outline-offset: 2px;
+/* Hardware Grid */
+.compact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+.grid-item {
+    background: color-mix(in srgb, var(--text) 3%, transparent);
+    padding: 1rem;
+    border-radius: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+/* Compliance Banner */
+/* --- CERTIFICATION CARD (Premium Component) --- */
+.cert-card {
+    /* Local Variables for easy tuning */
+    --c-bg: rgba(255, 255, 255, 0.03);
+    --c-border: rgba(255, 255, 255, 0.08);
+    --c-highlight: var(--brand, #06b6d4);
+    --c-text: var(--text, #f0f9ff);
+    --c-sub: var(--text-muted, #64748b);
+    
+    position: relative;
+    padding: 1.5rem;
+    border-radius: 24px;
+    background: var(--c-bg);
+    border: 1px solid var(--c-border);
+    overflow: hidden;
+    cursor: default;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    
+    /* Flex layout for content */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Hover State: Lift & Glow */
+.cert-card:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(6, 182, 212, 0.3);
+    box-shadow: 
+        0 15px 40px -10px rgba(0,0,0,0.3),
+        inset 0 0 0 1px rgba(255,255,255,0.05);
+}
+
+/* Background Ambient Glow */
+.cert-glow {
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, var(--c-highlight) 0%, transparent 70%);
+    opacity: 0.15;
+    filter: blur(40px);
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+.cert-card:hover .cert-glow { opacity: 0.25; }
+
+/* --- HEADER SECTION --- */
+.cert-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+/* The ISO Badge (Holographic Chip) */
+.iso-badge {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 12px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.iso-text {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.05em;
+    z-index: 2;
+}
+
+/* Animated Ring around Badge */
+.iso-ring {
+    position: absolute;
+    inset: -1px;
+    border-radius: 8px;
+    border: 1px solid var(--c-highlight);
+    opacity: 0;
+    transition: 0.3s ease;
+}
+.cert-card:hover .iso-ring { opacity: 0.5; }
+
+/* Status Indicator (Top Right) */
+.cert-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #22c55e; /* Success Green */
+    background: rgba(34, 197, 94, 0.1);
+    padding: 4px 8px;
+    border-radius: 100px;
+}
+
+.status-pulse {
+    width: 6px;
+    height: 6px;
+    background: currentColor;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+/* --- BODY SECTION --- */
+.cert-body h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--c-text);
+}
+
+.cert-body p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--c-sub);
+    line-height: 1.5;
+}
+
+.highlight-val {
+    color: var(--c-highlight);
+    font-weight: 700;
+}
+
+.sub-text {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* --- FOOTER DECORATION --- */
+.cert-footer-line {
+    margin-top: auto;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--c-highlight) 50%, 
+        transparent 100%
+    );
+    opacity: 0.3;
+    transform: scaleX(0.8);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.cert-card:hover .cert-footer-line {
+    opacity: 0.8;
+    transform: scaleX(1);
+}
+
+/* Keyframes */
+@keyframes pulse {
+    0% { opacity: 1; box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
+    70% { opacity: 0.7; box-shadow: 0 0 0 4px rgba(34,197,94,0); }
+    100% { opacity: 1; box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    .bento-grid {
+        gap: 1rem;
+    }
+    .big-stat-layout {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+    }
+    .flex-center {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}
+
+/* --- Animation Keyframes --- */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }

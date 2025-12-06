@@ -1,17 +1,9 @@
 /* --- WORKFLOW SECTION: DEEP HYDRO --- */
 
 .workflow-section {
-  /* Scoped Variables */
-  --w-bg: var(--bg, #050a10);
-  --w-card: color-mix(in srgb, var(--elev-2, #111b26) 40%, transparent);
-  --w-border: rgba(255, 255, 255, 0.08);
-  --w-accent: var(--brand, #06b6d4);
-  --w-text: var(--text, #f0f9ff);
-  --w-text-dim: var(--text-muted, #64748b);
-  
   position: relative;
   padding: 8rem 0;
-  background-color: var(--w-bg);
+  background-color: var(--bg);
   overflow: hidden;
   font-family: inherit;
 }
@@ -19,7 +11,7 @@
 /* Background Effect */
 .wf-overlay {
   position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(circle at 0% 50%, rgba(6,182,212,0.05) 0%, transparent 60%);
+  background: radial-gradient(circle at 0% 50%, color-mix(in srgb, var(--brand) 5%, transparent) 0%, transparent 60%);
 }
 
 /* --- HEADER --- */
@@ -29,21 +21,21 @@
 .wf-badge {
   display: inline-flex; align-items: center; gap: 8px;
   font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px;
-  color: var(--w-accent); margin-bottom: 1rem;
-  background: rgba(6,182,212,0.08); padding: 6px 14px; border-radius: 100px;
-  border: 1px solid rgba(6,182,212,0.2);
+  color: var(--brand); margin-bottom: 1rem;
+  background: color-mix(in srgb, var(--brand) 8%, transparent); padding: 6px 14px; border-radius: 100px;
+  border: 1px solid color-mix(in srgb, var(--brand) 20%, transparent);
 }
 .pulse-dot {
   width: 6px; height: 6px; background: currentColor; border-radius: 50%;
   box-shadow: 0 0 8px currentColor; animation: pulse 2s infinite;
 }
 .wf-title {
-  font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--w-text); margin-bottom: 1rem;
+  font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--text); margin-bottom: 1rem;
 }
 .text-gradient-timeline {
-  background: linear-gradient(135deg, var(--t-accent), var(--brand));
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
 }
-.wf-subtitle { color: var(--w-text-dim); font-size: 1.1rem; }
+.wf-subtitle { color: var(--text-muted); font-size: 1.1rem; }
 
 /* --- WORKFLOW INTERFACE GRID --- */
 .workflow-interface {
@@ -57,13 +49,13 @@
 }
 .track-line {
   position: absolute; top: 20px; bottom: 20px; left: 50%; transform: translateX(-50%);
-  width: 2px; background: rgba(255,255,255,0.1);
+  width: 2px; background: var(--glass-border);
   border-radius: 2px; overflow: hidden;
 }
 /* Data Packets (Animation) */
 .data-packet {
   position: absolute; width: 4px; height: 30px; left: 50%; margin-left: -2px;
-  background: linear-gradient(to bottom, transparent, var(--w-accent), transparent);
+  background: linear-gradient(to bottom, transparent, var(--brand), transparent);
   animation: dropData 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   opacity: 0;
 }
@@ -89,51 +81,51 @@
 /* Marker (Number) */
 .step-marker {
   width: 40px; height: 40px; border-radius: 50%;
-  background: var(--w-bg); border: 2px solid var(--w-border);
-  color: var(--w-text-dim); font-family: monospace; font-size: 0.9rem;
+  background: var(--bg); border: 2px solid var(--glass-border);
+  color: var(--text-muted); font-family: monospace; font-size: 0.9rem;
   display: flex; align-items: center; justify-content: center;
   position: relative; z-index: 2; transition: 0.3s;
 }
 .wf-step.active .step-marker {
-  border-color: var(--w-accent); color: var(--w-accent); background: rgba(6,182,212,0.1);
-  box-shadow: 0 0 20px rgba(6,182,212,0.2);
+  border-color: var(--brand); color: var(--brand); background: color-mix(in srgb, var(--brand) 10%, transparent);
+  box-shadow: 0 0 20px var(--brand-glow);
 }
 
 /* Card Styling */
 .step-card {
-  flex: 1; background: var(--w-card); border: 1px solid var(--w-border);
+  flex: 1; background: color-mix(in srgb, var(--elev-2) 40%, transparent); border: 1px solid var(--glass-border);
   border-radius: 16px; padding: 1.5rem; transition: 0.3s;
   backdrop-filter: blur(10px);
 }
 .wf-step.active .step-card {
-  border-color: rgba(6,182,212,0.3); box-shadow: 0 10px 40px -10px rgba(0,0,0,0.4);
+  border-color: color-mix(in srgb, var(--brand) 30%, transparent); box-shadow: 0 10px 40px -10px rgba(0,0,0,0.4);
 }
 
 /* Card Header */
 .card-head { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
 .step-icon {
-  width: 32px; height: 32px; color: var(--w-text-dim); transition: 0.3s;
+  width: 32px; height: 32px; color: var(--text-muted); transition: 0.3s;
 }
-.wf-step.active .step-icon { color: var(--w-accent); transform: scale(1.1); }
+.wf-step.active .step-icon { color: var(--brand); transform: scale(1.1); }
 .step-icon svg { width: 100%; height: 100%; stroke-width: 2; }
 
 .card-head h3 {
-  flex: 1; font-size: 1.25rem; margin: 0; color: var(--w-text);
+  flex: 1; font-size: 1.25rem; margin: 0; color: var(--text);
 }
 
 .status-tag {
   font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px;
   padding: 4px 10px; border-radius: 100px;
-  background: rgba(34, 197, 94, 0.1); color: #22c55e; border: 1px solid rgba(34, 197, 94, 0.2);
+  background: color-mix(in srgb, var(--ok) 10%, transparent); color: var(--ok); border: 1px solid color-mix(in srgb, var(--ok) 20%, transparent);
   opacity: 0; transform: translateY(-5px); transition: 0.3s;
 }
-.status-tag.pending { background: rgba(245, 158, 11, 0.1); color: #f59e0b; border-color: rgba(245, 158, 11, 0.2); }
+.status-tag.pending { background: color-mix(in srgb, var(--warn) 10%, transparent); color: var(--warn); border-color: color-mix(in srgb, var(--warn) 20%, transparent); }
 
 .wf-step.active .status-tag { opacity: 1; transform: translateY(0); }
 
 /* Card Body */
 .card-body p {
-  color: var(--w-text-dim); margin: 0; line-height: 1.6; font-size: 0.95rem;
+  color: var(--text-muted); margin: 0; line-height: 1.6; font-size: 0.95rem;
 }
 .card-body {
   max-height: 0; overflow: hidden; opacity: 0; transition: all 0.5s ease;
@@ -143,11 +135,11 @@
 }
 
 .metric-row {
-  margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05);
-  display: flex; gap: 1.5rem; font-size: 0.85rem; color: var(--w-text-dim);
+  margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--glass-highlight);
+  display: flex; gap: 1.5rem; font-size: 0.85rem; color: var(--text-muted);
 }
-.metric-row strong { color: var(--w-text); }
-.metric-row strong.ok { color: #22c55e; }
+.metric-row strong { color: var(--text); }
+.metric-row strong.ok { color: var(--ok); }
 
 /* --- CONTROLS --- */
 .wf-controls {
@@ -155,20 +147,20 @@
 }
 .wf-btn {
   width: 40px; height: 40px; border-radius: 50%;
-  background: var(--w-card); border: 1px solid var(--w-border);
-  color: var(--w-text); display: flex; align-items: center; justify-content: center;
+  background: color-mix(in srgb, var(--elev-2) 40%, transparent); border: 1px solid var(--glass-border);
+  color: var(--text); display: flex; align-items: center; justify-content: center;
   cursor: pointer; transition: 0.3s;
 }
 .wf-btn:hover:not(:disabled) {
-  border-color: var(--w-accent); background: rgba(6,182,212,0.1);
+  border-color: var(--brand); background: color-mix(in srgb, var(--brand) 10%, transparent);
 }
 .wf-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 .wf-btn svg { width: 20px; height: 20px; stroke-width: 2; }
 
 .wf-progress { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; }
-.prog-bar { width: 100%; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; }
-.prog-fill { height: 100%; background: var(--w-accent); transition: width 0.4s ease; }
-.prog-label { font-size: 0.8rem; color: var(--w-text-dim); font-family: monospace; }
+.prog-bar { width: 100%; height: 4px; background: var(--glass-border); border-radius: 2px; overflow: hidden; }
+.prog-fill { height: 100%; background: var(--brand); transition: width 0.4s ease; }
+.prog-label { font-size: 0.8rem; color: var(--text-muted); font-family: monospace; }
 
 /* Animations */
 @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }

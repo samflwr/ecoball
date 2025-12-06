@@ -1,333 +1,454 @@
-:root {
-  /* --- SETUP VARIABLES (Derived from your palette) --- */
-  
-  /* Create a specific glow color based on your brand cyan */
-  --brand-glow: var(--brand); 
-  
-  /* Glass Background: Uses your 'Card Background' variable mixed with transparency */
-  --glass-bg: color-mix(in srgb, var(--elev-2) 90%, transparent);
-  
-  /* Glass Border: Uses your 'Stroke' variable mixed with transparency */
-  --glass-border: 1px solid color-mix(in srgb, var(--stroke) 80%, transparent);
-  
-  /* Shadows */
-  --card-shadow: 
-    0 4px 24px -1px rgba(0, 0, 0, 0.4),
-    0 0 0 1px rgba(255, 255, 255, 0.02) inset;
-    
-  /* Animation Curve */
-  --ease-elastic: cubic-bezier(0.34, 1.56, 0.64, 1);
-  
-  /* Radius config */
-  --radius-lg: 24px;
-  --radius-md: 16px;
+/* --- SOFTWARE SECTION: Clean Architecture --- */
+
+.sw-section {
+    position: relative;
+    /* Use global background for seamless transition */
+    background-color: var(--bg);
+    padding: clamp(6rem, 10vh, 10rem) 0;
+    overflow: hidden;
+    color: var(--text);
+    z-index: 1;
 }
 
-/* Ambient Background Light */
-.ambient-glow {
-  position: absolute;
-  top: -20%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80vw;
-  height: 600px;
-  /* Uses your brand color for the glow */
-  background: radial-gradient(circle, var(--brand) 0%, transparent 70%);
-  opacity: 0.15; /* Slightly reduced opacity for the deep dark theme */
-  pointer-events: none;
-  z-index: 0;
+/* --- AMBIENT --- */
+.sw-ambient {
+    position: absolute; inset: 0; pointer-events: none; z-index: 0;
 }
 
-.wrap {
-  position: relative;
-  z-index: 1;
-  max-width: 1200px;
-  margin: 0 auto;
+.sw-glow-spot {
+    position: absolute; top: 50%; left: 100%; transform: translate(-50%, -50%);
+    width: 100%; height: 600px;
+    background: radial-gradient(ellipse at center, color-mix(in srgb, var(--brand) 10%, transparent), transparent 70%);
+    filter: blur(100px); opacity: 0.5;
+}
+
+.sw-grid-pattern {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(color-mix(in srgb, var(--text) 10%, transparent) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+    opacity: 0.2;
+}
+
+.sw-container {
+    position: relative; z-index: 2;
+    max-width: 1200px; margin: 0 auto;
+}
+
+/* --- HEADER --- */
+.sw-header {
+    text-align: center; max-width: 680px; margin: 0 auto 5rem;
+}
+
+/* Status Pill (Apple Style) */
+.sw-status-pill {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 6px 14px 6px 8px;
+    background: color-mix(in srgb, var(--elev-2) 80%, transparent);
+    border: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
+    border-radius: 100px;
+    backdrop-filter: blur(10px);
+    margin-bottom: 2rem; cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px -5px rgba(0,0,0,0.1);
+}
+.sw-status-pill:hover {
+    background: color-mix(in srgb, var(--elev-2) 90%, transparent);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 25px -5px rgba(0,0,0,0.15);
+}
+
+.status-indicator {
+    position: relative; width: 12px; height: 12px; display: flex; align-items: center; justify-content: center;
+}
+.status-indicator .dot {
+    width: 6px; height: 6px; background: var(--ok); border-radius: 50%; z-index: 2;
+}
+.status-indicator .ping {
+    position: absolute; width: 100%; height: 100%; background: var(--ok); border-radius: 50%;
+    opacity: 0; animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite; z-index: 1;
+}
+
+.status-label {
+    font-size: 0.75rem; font-weight: 600; color: var(--text-dim); letter-spacing: 0.02em;
 }
 
 /* Typography */
-.headline {
-  text-align: center;
-  margin-bottom: 5rem;
+.sw-title {
+    font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+.sw-gradient {
+    background: linear-gradient(135deg, var(--text) 30%, var(--brand) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.sw-desc {
+    font-size: 1.1rem; color: var(--text-muted); line-height: 1.6;
 }
 
-.headline h2 {
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 700;
-  margin: 0 0 1rem;
-  /* Gradient from White to Slate */
-  background: linear-gradient(135deg, var(--text) 0%, var(--text-muted) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  letter-spacing: -0.02em;
+/* --- PIPELINE LAYOUT --- */
+.sw-pipeline {
+    display: grid;
+    /* Card - Node - Card - Node - Card */
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    align-items: center;
+    gap: 2rem;
+    position: relative;
+    margin-bottom: 5rem;
 }
 
-.headline p {
-  color: var(--text-muted); /* Slate */
-  font-size: 1.125rem;
-  max-width: 600px;
-  margin: 0 auto;
+/* Connecting Line Background */
+.sw-connector-track {
+    position: absolute; top: 50%; left: 0; right: 0; height: 2px;
+    transform: translateY(-50%); z-index: 0;
+}
+.track-line {
+    position: absolute; inset: 0; background: var(--stroke); opacity: 0.5;
+}
+.data-stream {
+    position: absolute; top: 0; left: 0; width: 20%; height: 100%;
+    background: linear-gradient(90deg, transparent, var(--brand), transparent);
+    filter: drop-shadow(0 0 4px var(--brand));
+    animation: stream 3s linear infinite;
+    opacity: 0.8;
 }
 
-/* Visual Container */
-.architecture-visual {
-  position: relative;
-  margin-bottom: 4rem;
+/* --- CARDS --- */
+.sw-card {
+    position: relative;
+    height: 320px;
+    z-index: 1;
+    cursor: default;
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.sw-card:hover { transform: translateY(-10px); }
+
+.card-glass-sw {
+    position: absolute; inset: 0;
+    background: color-mix(in srgb, var(--elev-1) 70%, transparent);
+    border: 1px solid var(--stroke);
+    border-radius: 24px;
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    box-shadow: 
+        0 4px 6px -1px rgba(0, 0, 0, 0.05), 
+        0 2px 4px -1px rgba(0, 0, 0, 0.03),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+    transition: all 0.4s ease;
+}
+.sw-card:hover .card-glass {
+    border-color: color-mix(in srgb, var(--brand) 30%, transparent);
+    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.15), 0 0 20px color-mix(in srgb, var(--brand) 10%, transparent);
 }
 
-/* Connecting Pipeline (The "Data Flow") */
-.pipeline-connector {
-  position: absolute;
-  top: 60px; 
-  left: 10%;
-  right: 10%;
-  height: 2px;
-  z-index: 0;
+.card-inner-sw {
+    position: relative; height: 100%; padding: 2rem;
+    display: flex; flex-direction: column; justify-content: space-between;
 }
 
-.pipeline-line {
-  width: 100%;
-  height: 100%;
-  /* Gradient using your brand color mixed for subtlety */
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    color-mix(in srgb, var(--brand) 20%, transparent) 20%, 
-    color-mix(in srgb, var(--brand) 20%, transparent) 80%, 
-    transparent 100%
-  );
+/* Icon Layer */
+.icon-layer {
+    display: flex; justify-content: space-between; align-items: flex-start;
+}
+.icon-box {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: var(--elev-2); border: 1px solid var(--stroke);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-dim); transition: 0.3s;
+}
+.icon-box svg { width: 24px; height: 24px; }
+.sw-card:hover .icon-box {
+    background: var(--brand); border-color: var(--brand); color: var(--bg); /* Contrast */
+    box-shadow: 0 4px 15px color-mix(in srgb, var(--brand) 40%, transparent);
+    transform: scale(1.05) rotate(-5deg);
 }
 
-.pipeline-pulse {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 40px;
-  height: 3px;
-  background: var(--brand); /* Electric Cyan */
-  border-radius: 4px;
-  transform: translateY(-50%);
-  filter: drop-shadow(0 0 8px var(--brand));
-  animation: flow 3s infinite linear;
-  opacity: 0;
+.stage-tag {
+    font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--brand); padding: 4px 10px; border-radius: 100px;
+    background: color-mix(in srgb, var(--brand) 8%, transparent);
 }
 
-.pipeline-pulse.delay-1 {
-  animation-delay: 1.5s;
+/* Content Layer */
+.content-layer h3 {
+    font-size: 1.25rem; font-weight: 700; margin: 0 0 1rem; color: var(--text);
 }
 
-/* Modules Grid */
-.module-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  position: relative;
+/* Micro Visuals (Abstract UI representations) */
+.micro-visual {
+    height: 80px; background: color-mix(in srgb, var(--bg) 50%, transparent);
+    border-radius: 12px; border: 1px solid color-mix(in srgb, var(--stroke) 50%, transparent);
+    display: flex; align-items: center; justify-content: center; overflow: hidden;
+    position: relative;
 }
 
-/* Glass Card Component */
-.glass-card {
-  position: relative;
-  background: var(--elev-2); /* Derived from --elev-2 */
-  border: var(--glass-border); /* Derived from --stroke */
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: var(--radius-lg);
-  padding: 2rem;
-  transition: transform 0.4s var(--ease-elastic), box-shadow 0.4s ease, border-color 0.4s ease;
-  box-shadow: var(--card-shadow);
-  overflow: hidden;
+/* Card 1 Visual: Code */
+.code-lines { display: flex; flex-direction: column; gap: 6px; width: 60%; }
+.line { height: 4px; background: var(--stroke); border-radius: 2px; }
+.w-80 { width: 80%; } .w-60 { width: 60%; } .w-40 { width: 40%; }
+.processing-badge {
+    position: absolute; bottom: 10px; right: 10px;
+    font-size: 0.6rem; font-family: monospace; color: var(--text-muted);
+    display: flex; align-items: center; gap: 4px;
+}
+.proc-dot { width: 4px; height: 4px; background: var(--ok); border-radius: 50%; animation: blink 2s infinite; }
+
+/* Card 2 Visual: Stack */
+.stack-visual { flex-direction: column; gap: 4px; align-items: center; }
+.server-layer { width: 40px; height: 6px; background: var(--stroke); border-radius: 2px; transition: 0.3s; }
+.sw-card:hover .l1 { background: var(--brand); width: 50px; }
+.sw-card:hover .l2 { background: var(--brand); width: 40px; opacity: 0.7; transition-delay: 0.1s; }
+.sw-card:hover .l3 { background: var(--brand); width: 45px; opacity: 0.4; transition-delay: 0.2s; }
+
+/* Card 3 Visual: Chart */
+.chart-visual { align-items: flex-end; gap: 6px; padding-bottom: 15px; }
+.chart-bar { width: 6px; background: var(--stroke); border-radius: 2px; transition: 0.3s; }
+.sw-card:hover .chart-bar { background: var(--brand); }
+.chart-bar.active { background: var(--brand); opacity: 0.5; }
+.sw-card:hover .chart-bar.active { opacity: 1; height: 60% !important; }
+
+/* --- NODES (Connectors) --- */
+/* --- NODES (Premium Connectors) --- */
+.sw-node {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    z-index: 2; /* Ensure above lines */
+    cursor: default;
 }
 
-/* Hover Effect: Highlight overlay */
-.card-highlight {
-  position: absolute;
-  top: 0; left: 0; right: 0; height: 100%;
-  background: radial-gradient(circle at top, rgba(255,255,255,0.03), transparent 70%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none;
+/* The Core Dot */
+.node-circle {
+    width: 14px; 
+    height: 14px;
+    border-radius: 50%;
+    background: var(--bg); /* Deep background to mask line */
+    border: 1.5px solid var(--stroke);
+    box-shadow: 
+        0 0 0 4px var(--bg), /* Mask behind */
+        0 0 0 1px var(--glass-highlight) inset; /* Inner rim light */
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
 }
 
-.glass-card:hover {
-  transform: translateY(-10px) scale(1.02);
-  /* Hover border becomes Cyan 300 */
-  border-color: color-mix(in srgb, var(--brand-2) 40%, transparent);
-  box-shadow: 
-    0 20px 40px -5px rgba(0, 0, 0, 0.5),
-    0 0 20px color-mix(in srgb, var(--brand) 10%, transparent);
+/* Active/Hover State (The Halo) */
+.sw-pipeline:hover .node-circle,
+.sw-node:hover .node-circle {
+    background: var(--brand);
+    border-color: var(--brand);
+    box-shadow: 
+        0 0 0 4px var(--bg), 
+        0 0 20px var(--brand); /* Neon Glow */
+    transform: scale(1.1);
 }
 
-.glass-card:hover .card-highlight {
-  opacity: 1;
+/* Optional: Pulse Animation for active nodes */
+.node-circle::after {
+    content: '';
+    position: absolute; inset: -4px;
+    border-radius: 50%;
+    border: 1px solid var(--brand);
+    opacity: 0;
+    transform: scale(0.8);
+    transition: 0.4s ease;
 }
 
-/* Module Icon */
-.module-icon {
-  width: 64px;
-  height: 64px;
-  background: var(--elev-2); /* Card Background */
-  border: 1px solid var(--stroke); /* Dark Blue Border */
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-  color: var(--text-dim); /* Light Blue Text */
-  position: relative;
-  z-index: 2;
-  transition: color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+.sw-pipeline:hover .node-circle::after {
+    animation: nodePulse 2s infinite;
 }
 
-.module-icon svg {
-  width: 32px;
-  height: 32px;
+/* The Label (Glass Tag) */
+.node-label {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    
+    /* Glassmorphism */
+    background: var(--glass-bg-light);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--glass-border);
+    
+    padding: 6px 10px;
+    border-radius: 8px;
+    opacity: 0.7;
+    transform: translateY(0);
+    transition: all 0.3s ease;
+    
+    /* Avoid text selection */
+    user-select: none;
+    white-space: nowrap;
 }
 
-.icon-glow {
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  box-shadow: 0 0 20px var(--brand);
-  opacity: 0;
-  transition: opacity 0.3s ease;
+/* Label Hover Interaction */
+.sw-node:hover .node-label {
+    opacity: 1;
+    color: var(--text);
+    background: var(--glass-border);
+    border-color: var(--glass-border-strong);
+    transform: translateY(2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-.glass-card:hover .module-icon {
-  color: var(--focus); /* Highlight White/Cyan */
-  border-color: var(--brand); /* Electric Cyan */
-  background: color-mix(in srgb, var(--brand) 10%, var(--elev-2));
+/* Keyframes */
+@keyframes nodePulse {
+    0% { transform: scale(1); opacity: 1; border-width: 1.5px; }
+    100% { transform: scale(2.2); opacity: 0; border-width: 0px; }
 }
 
-.glass-card:hover .icon-glow {
-  opacity: 0.4;
+/* --- FOOTER --- */
+/* --- FOOTER TELEMETRY (Deep Hydro System) --- */
+.sw-footer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem; /* Spacious premium feel */
+    padding-top: 4rem;
+    margin-top: 4rem;
+    
+    /* Base border */
+    border-top: 1px solid var(--glass-bg-light);
 }
 
-/* Content */
-.badge {
-  display: inline-block;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-weight: 600;
-  color: var(--brand-2); /* Cyan 300 */
-  background: color-mix(in srgb, var(--brand) 10%, transparent);
-  padding: 4px 10px;
-  border-radius: 20px;
-  margin-bottom: 0.75rem;
-  border: 1px solid color-mix(in srgb, var(--brand) 20%, transparent);
+/* Horizon Glow Line (The "Laser" Top) */
+.sw-footer::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--brand), transparent);
+    opacity: 0.3;
+    box-shadow: 0 -2px 10px var(--brand);
 }
 
-.module-content h4 {
-  font-size: 1.25rem;
-  margin: 0 0 1.5rem;
-  color: var(--text); /* Ice White */
+/* The Metric Container */
+.sw-metric {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+    cursor: default;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.feature-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  border-top: 1px solid var(--stroke); /* Dark Border */
-  padding-top: 1rem;
+.sw-metric:hover {
+    transform: translateY(-4px);
 }
 
-.feature-list li {
-  color: var(--text-muted); /* Slate */
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
+/* The Value (Big Number) */
+.sw-metric .val {
+    display: block;
+    font-size: clamp(2rem, 2.5vw, 3rem); /* Responsive scaling */
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums; /* Engineering alignment */
+    
+    /* Gradient Text Mask */
+    background: linear-gradient(180deg, #fff 20%, var(--text-muted) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
+    transition: all 0.4s ease;
 }
 
-.feature-list li::before {
-  content: "•";
-  color: var(--brand); /* Electric Cyan */
-  margin-right: 8px;
-  font-size: 1.2em;
+/* Interaction: Value Glows on Hover */
+.sw-metric:hover .val {
+    background: linear-gradient(180deg, #fff 0%, var(--brand) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 15px var(--brand));
 }
 
-/* Stats Grid */
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-  margin-top: 2rem;
+/* The Label (Technical Detail) */
+.sw-metric .lbl {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 600;
+    opacity: 0.6;
+    transition: all 0.3s ease;
 }
 
-.stat-card {
-  text-align: center;
-  padding: 1.5rem;
-  background: color-mix(in srgb, var(--elev-2) 40%, transparent);
-  border: 1px solid var(--stroke);
-  border-radius: var(--radius-md);
-  backdrop-filter: blur(10px);
-  transition: transform 0.3s ease;
+.sw-metric:hover .lbl {
+    color: var(--brand);
+    opacity: 1;
+    letter-spacing: 0.2em; /* Subtle expansion */
 }
 
-.stat-card:hover {
-  transform: translateY(-5px);
-  background: color-mix(in srgb, var(--elev-2) 80%, transparent);
-  border-color: var(--stroke-2); /* Visible Border */
+/* The Separator (Vertical Fade) */
+.sw-sep {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, 
+        transparent, 
+        var(--glass-highlight), 
+        transparent
+    );
 }
 
-.stat-value {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 0.25rem;
-  /* Gradient Text: White to Light Blue */
-  background: linear-gradient(180deg, var(--text) 0%, var(--text-dim) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .sw-footer {
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+    .sw-sep {
+        width: 60px;
+        height: 1px;
+        background: linear-gradient(to right, transparent, var(--glass-highlight), transparent);
+    }
 }
 
-.stat-label {
-  color: var(--brand-2); /* Cyan 300 */
-  font-size: 0.875rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
+
+
+/* --- ANIMATIONS --- */
+@keyframes ping {
+    0% { transform: scale(0.8); opacity: 0.8; }
+    100% { transform: scale(2); opacity: 0; }
+}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+@keyframes stream { 
+    0% { left: -20%; opacity: 0; } 
+    50% { opacity: 1; } 
+    100% { left: 120%; opacity: 0; } 
 }
 
-/* Animations */
-@keyframes flow {
-  0% { left: 0; opacity: 0; width: 10px; }
-  20% { opacity: 1; width: 60px; }
-  80% { opacity: 1; width: 60px; }
-  100% { left: 100%; opacity: 0; width: 10px; }
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+    .sw-pipeline {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 3rem;
+    }
+    .sw-connector-track {
+        width: 2px; height: 100%; top: 0; left: 50%; transform: translateX(-50%);
+    }
+    .data-stream { width: 100%; height: 20%; top: 0; left: 0; animation: streamVert 3s linear infinite; }
+    
+    .sw-node { flex-direction: row; }
+    .sw-card { height: auto; min-height: 280px; }
+    
+    @keyframes streamVert {
+        0% { top: -20%; opacity: 0; }
+        50% { opacity: 1; }
+        100% { top: 120%; opacity: 0; }
+    }
 }
 
-.fade-in-up {
-  opacity: 0;
-  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-  .module-grid {
-    grid-template-columns: 1fr;
-    max-width: 500px;
-    margin: 0 auto;
-  }
-
-  .pipeline-connector {
-    display: none;
-  }
-
-  .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .stats-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .headline h2 {
-    font-size: 2rem;
-  }
+@media (max-width: 600px) {
+    .sw-header { margin-bottom: 3rem; }
+    .sw-title { font-size: 2.2rem; }
+    .sw-footer { gap: 1.5rem; }
+    .sw-metric .val { font-size: 1.25rem; }
 }

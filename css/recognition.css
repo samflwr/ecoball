@@ -1,167 +1,206 @@
-/* --- RECOGNITION SECTION: DEEP HYDRO --- */
+/* --- AWARDS & RECOGNITION (Global Theme Integrated) --- */
 
-.recognition-section {
-  /* Scoped Variables */
-  --r-bg: var(--bg, #050a10);
-  --r-card: color-mix(in srgb, var(--elev-2, #111b26) 40%, transparent);
-  --r-border: rgba(255, 255, 255, 0.08);
-  --r-accent: var(--brand, #06b6d4);
-  --r-gold: #fbbf24; /* Amber Gold */
-  --r-text: var(--text, #f0f9ff);
-  --r-muted: var(--text-muted, #64748b);
-  
-  position: relative;
-  padding: 8rem 0;
-  background-color: var(--r-bg);
-  overflow: hidden;
-  font-family: inherit;
+.awd-section {
+    position: relative;
+    padding: var(--space-7) var(--space-4);
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    overflow: hidden;
 }
 
-/* Spotlight Effect */
-.rec-spotlight {
-  position: absolute; top: -20%; left: 50%; transform: translateX(-50%);
-  width: 80vw; height: 600px;
-  background: radial-gradient(ellipse at top, rgba(6,182,212,0.1) 0%, transparent 70%);
-  filter: blur(80px); pointer-events: none;
+/* --- BACKGROUNDS --- */
+
+.awd-ambient-glow {
+    position: absolute; 
+    top: 10%; right: -10%; 
+    width: 600px; height: 600px;
+    /* Mixing Brand color for the glow */
+    background: radial-gradient(circle, color-mix(in srgb, var(--brand) 15%, transparent), transparent 70%);
+    filter: blur(100px); 
+    pointer-events: none; 
+    z-index: 0;
+}
+
+.awd-container {
+    max-width: 1000px; 
+    margin: 0 auto; 
+    position: relative; 
+    z-index: 2;
 }
 
 /* --- HEADER --- */
-.rec-header {
-  text-align: center; max-width: 600px; margin: 0 auto 5rem; position: relative; z-index: 2;
+.awd-header { 
+    margin-bottom: 4rem; 
+    text-align: center; 
 }
 
-.rec-badge {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px;
-  color: var(--r-gold); margin-bottom: 1rem;
-  background: rgba(251, 191, 36, 0.1); padding: 6px 14px; border-radius: 100px;
-  border: 1px solid rgba(251, 191, 36, 0.2);
-}
-.star-icon { font-size: 0.8rem; }
-
-.rec-title {
-  font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--r-text); margin-bottom: 1rem;
-}
-.text-gradient {
-  background: linear-gradient(135deg, var(--t-accent), var(--t-text));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-}
-.rec-subtitle { color: var(--r-muted); font-size: 1.1rem; }
-
-/* --- GRID --- */
-.achievements-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  max-width: 1200px; margin: 0 auto;
-  position: relative; z-index: 2;
+.awd-capsule {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 12px; border-radius: 50px;
+    background: color-mix(in srgb, var(--gold) 8%, transparent);
+    border: 1px solid color-mix(in srgb, var(--gold) 30%, transparent);
+    font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--gold); 
+    margin-bottom: 1.5rem;
 }
 
-/* --- CARD STYLING --- */
-.award-card {
-  background: var(--r-card);
-  border: 1px solid var(--r-border);
-  border-radius: 20px;
-  padding: 2rem;
-  position: relative;
-  overflow: hidden;
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-  display: flex; flex-direction: column;
+.awd-capsule-dot {
+    width: 6px; height: 6px; 
+    background: var(--gold); 
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--gold);
+    animation: awd-pulse 2s infinite;
 }
 
-/* Hover Interaction */
-.award-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(6,182,212,0.3);
-  box-shadow: 
-    0 20px 40px -10px rgba(0,0,0,0.4),
-    0 0 0 1px rgba(6,182,212,0.1) inset;
+.awd-heading {
+    font-size: var(--size-5); 
+    font-weight: 700; 
+    line-height: 1.1; 
+    margin-bottom: 1rem; 
+    letter-spacing: -0.02em;
+    color: var(--text);
 }
 
-.card-shine {
-  position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
-  transform: skewX(-20deg); pointer-events: none; transition: 0.6s;
-}
-.award-card:hover .card-shine { left: 150%; transition: 0.8s; }
-
-/* --- FEATURED GOLD CARD --- */
-.award-card.featured-gold {
-  background: linear-gradient(145deg, rgba(251, 191, 36, 0.05), rgba(5,10,16,0.9));
-  border-color: rgba(251, 191, 36, 0.3);
-}
-.award-card.featured-gold:hover {
-  border-color: var(--r-gold);
-  box-shadow: 0 20px 50px -10px rgba(251, 191, 36, 0.15);
+.awd-text-gold {
+    background: linear-gradient(135deg, var(--text) 20%, var(--gold));
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;
 }
 
-.card-glow {
-  position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-  background: radial-gradient(circle, rgba(251, 191, 36, 0.1) 0%, transparent 60%);
-  opacity: 0; transition: 0.4s; pointer-events: none;
-}
-.featured-gold:hover .card-glow { opacity: 1; }
-
-/* CARD CONTENT */
-.card-top {
-  display: flex; justify-content: space-between; align-items: flex-start;
-  margin-bottom: 2rem;
+.awd-subheading { 
+    color: var(--text-muted); 
+    font-size: var(--size-2); 
+    max-width: 500px; 
+    margin: 0 auto; 
+    line-height: 1.5;
 }
 
-.icon-circle {
-  width: 48px; height: 48px; border-radius: 12px;
-  background: rgba(255,255,255,0.03); border: 1px solid var(--r-border);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--r-text); transition: 0.3s;
-}
-.icon-circle svg { width: 24px; height: 24px; stroke-width: 1.5; }
-
-.award-card:hover .icon-circle {
-  background: var(--r-accent); color: var(--r-bg); border-color: var(--r-accent);
-  box-shadow: 0 0 20px rgba(6,182,212,0.4);
+/* --- GRID LAYOUT --- */
+.awd-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 24px;
 }
 
-/* Gold Icon Override */
-.icon-circle.gold {
-  background: rgba(251, 191, 36, 0.1); color: var(--r-gold); border-color: rgba(251, 191, 36, 0.3);
-}
-.featured-gold:hover .icon-circle.gold {
-  background: var(--r-gold); color: var(--r-bg); box-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
-}
-
-.award-tag {
-  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px;
-  color: var(--r-text-dim); border: 1px solid var(--r-border);
-  padding: 4px 10px; border-radius: 50px; height: fit-content;
-}
-.award-tag.gold {
-  color: var(--r-gold); border-color: rgba(251, 191, 36, 0.3); background: rgba(251, 191, 36, 0.05);
-  font-weight: 700;
+/* --- HERO CARD (LEFT) --- */
+.awd-hero-card {
+    background: linear-gradient(160deg, color-mix(in srgb, var(--gold) 8%, transparent), transparent 60%), var(--elev-2);
+    border: 1px solid color-mix(in srgb, var(--gold) 20%, transparent);
+    border-radius: var(--radius-l);
+    padding: 40px;
+    position: relative; overflow: hidden;
+    display: flex; flex-direction: column; justify-content: space-between;
+    transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s;
+    min-height: 420px;
 }
 
-.card-body h3 {
-  font-size: 1.25rem; margin: 0 0 0.5rem; color: var(--r-text);
-}
-.org-name {
-  display: block; font-size: 0.85rem; color: var(--r-accent);
-  margin-bottom: 1rem; font-weight: 500;
-}
-.featured-gold .org-name { color: var(--r-gold); }
-
-.card-body p {
-  font-size: 0.95rem; line-height: 1.6; color: var(--r-muted); margin: 0;
+.awd-hero-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-soft), 0 0 0 1px color-mix(in srgb, var(--gold) 20%, transparent) inset;
+    border-color: color-mix(in srgb, var(--gold) 40%, transparent);
 }
 
-/* Confetti Decor (Subtle dots for gold card) */
-.confetti-deco {
-  position: absolute; inset: 0; background-image: radial-gradient(var(--r-gold) 1px, transparent 1px);
-  background-size: 20px 20px; opacity: 0.05; pointer-events: none;
+/* Shine Animation */
+.awd-shine-effect {
+    position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+    background: linear-gradient(90deg, transparent, var(--glass-highlight), transparent);
+    transform: skewX(-20deg); pointer-events: none; transition: 0.6s; z-index: 1;
 }
+.awd-hero-card:hover .awd-shine-effect { left: 150%; transition: 0.8s; }
+
+.awd-hero-header { display: flex; justify-content: space-between; align-items: flex-start; }
+
+.awd-hero-badge {
+    background: color-mix(in srgb, var(--gold) 10%, transparent);
+    color: var(--gold);
+    padding: 6px 12px; border-radius: 8px; 
+    font-size: 0.8rem; font-weight: 700;
+    display: flex; align-items: center; gap: 6px; 
+    border: 1px solid color-mix(in srgb, var(--gold) 20%, transparent);
+}
+
+.awd-year { font-family: var(--font-mono); opacity: 0.6; font-size: 0.85rem; color: var(--text-dim); }
+
+/* Trophy Visual */
+.awd-hero-visual {
+    flex-grow: 1; display: flex; align-items: center; justify-content: center; position: relative;
+    padding: 2rem 0;
+}
+.awd-trophy-svg { 
+    width: 120px; height: 120px; 
+    color: var(--gold); 
+    position: relative; z-index: 2; 
+    filter: drop-shadow(0 4px 10px var(--gold-glow));
+}
+.awd-hero-glow {
+    position: absolute; width: 100px; height: 100px; 
+    background: var(--gold);
+    filter: blur(70px); opacity: 0.2; border-radius: 50%;
+}
+
+.awd-hero-content h3 { font-size: 1.8rem; margin: 0 0 0.5rem; font-weight: 700; color: var(--text); }
+.awd-org { color: var(--gold); font-size: 0.9rem; font-weight: 600; margin-bottom: 0.75rem; }
+.awd-desc { font-size: 0.95rem; color: var(--text-muted); line-height: 1.5; margin: 0; }
+
+/* --- LIST STACK (RIGHT) --- */
+.awd-list-stack { display: flex; flex-direction: column; gap: 16px; height: 100%; }
+
+.awd-list-item {
+    flex: 1;
+    background: var(--elev-2);
+    border: 1px solid var(--stroke);
+    border-radius: var(--radius-m);
+    padding: 0 24px;
+    display: flex; align-items: center; gap: 20px;
+    transition: all 0.3s var(--ease);
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+}
+
+.awd-list-item:hover {
+    background: var(--elev-3);
+    border-color: var(--stroke-2);
+    transform: translateX(-4px);
+    box-shadow: var(--shadow-subtle);
+}
+
+.awd-icon-box {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: var(--elev-1); 
+    border: 1px solid var(--stroke);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-muted); transition: 0.3s;
+}
+
+.awd-list-item:hover .awd-icon-box {
+    background: color-mix(in srgb, var(--brand) 10%, transparent); 
+    color: var(--brand); 
+    border-color: color-mix(in srgb, var(--brand) 30%, transparent); 
+}
+.awd-icon-box svg { width: 24px; height: 24px; stroke-width: 1.5; }
+
+.awd-list-content { flex-grow: 1; }
+.awd-list-content h4 { margin: 0; font-size: 1.1rem; color: var(--text); font-weight: 600; }
+.awd-meta { display: block; font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; }
+
+.awd-arrow { color: var(--stroke); transition: 0.3s; }
+.awd-list-item:hover .awd-arrow { color: var(--brand); transform: translateX(4px); }
+
+/* --- ANIMATIONS --- */
+@keyframes awd-pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.awd-reveal { opacity: 0; transform: translateY(30px); transition: 0.8s var(--awd-ease); }
+.awd-reveal.active { opacity: 1; transform: translateY(0); }
 
 /* --- RESPONSIVE --- */
-@media (max-width: 768px) {
-  .achievements-grid { grid-template-columns: 1fr; gap: 1rem; }
-  .rec-header { padding: 0 1rem; }
-  .award-card { min-height: auto; }
+@media (max-width: 900px) {
+    .awd-grid { grid-template-columns: 1fr; }
+    .awd-hero-card { min-height: 350px; padding: 30px; }
+    .awd-list-item { padding: 20px; }
 }
