@@ -1,301 +1,304 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <!-- ===================================================
+    HEAD - Metadata, CSS, and Preloads
+    ==================================================== -->
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Contact — Ecoball</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+
+    <!-- Primary Meta Tags -->
+    <title>Contact — EcoBall</title>
+    <meta name="description" content="Get in touch with the EcoBall team. Collaborate, ask questions, or reach out to a specific team member." />
+    <meta name="author" content="EcoBall Team - Istituto Rapisardi-Da Vinci" />
+
     <!-- CSS Files -->
-    <link rel="stylesheet" href="css/topbar.css" />
-    <link rel="stylesheet" href="css/stat.css" />
     <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="css/spec.css" />
-    <link rel="stylesheet" href="css/tile.css" />
-    <link rel="stylesheet" href="css/impact.css" />
-    <link rel="stylesheet" href="css/timeline.css" />
-    <link rel="stylesheet" href="css/architecture.css" />
+    <link rel="stylesheet" href="css/topbar.css" />
     <link rel="stylesheet" href="css/footer.css" />
-    <link rel="stylesheet" href="css/chip.css" />
-    <link rel="stylesheet" href="css/scroll-line.css" />
-    <link rel="stylesheet" href="css/teams.css" />
-    <link rel="stylesheet" href="css/sphere.css" />
-    <link rel="stylesheet" href="css/hardware.css" />
-    <link rel="stylesheet" href="css/functional.css" />
-    <link rel="stylesheet" href="css/maintenance.css" />
-    <link rel="stylesheet" href="css/challenges.css" />
-    <link rel="stylesheet" href="css/deployment.css" />
     <link rel="stylesheet" href="css/contact.css" />
+    <link rel="stylesheet" href="css/chip.css" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
+
 <body>
-  <!-- Top Bar Navigation -->
-<nav class="top-bar" id="topBar">
-  <div class="top-bar__container">
-    
-    <!-- Brand -->
-    <a href="/" class="brand-link" aria-label="EcoBall Home">
-      <div class="logo-mark">
-        <div class="logo-core"></div>
-        <div class="logo-ring"></div>
-      </div>
-      <span class="brand-name">EcoBall</span>
-    </a>
 
-    <!-- Desktop Nav (Center) -->
-    <div class="nav-menu">
-      <a href="/" class="nav-item">
-        <span class="nav-text">Home</span>
-        <div class="nav-glow"></div>
-      </a>
-      <a href="/technical-specs.html" class="nav-item">
-        <span class="nav-text">Specs</span>
-        <div class="nav-glow"></div>
-      </a>
-      <a href="/challenges.html" class="nav-item">
-        <span class="nav-text">Future</span>
-        <div class="nav-glow"></div>
-      </a>
-      <a href="/recognition-about.html" class="nav-item">
-        <span class="nav-text">About</span>
-        <div class="nav-glow"></div>
-      </a>
-    </div>
+    <!-- ===================================================
+    TOP BAR NAVIGATION
+    ==================================================== -->
+    <nav class="top-bar" id="topBar">
+        <div class="top-bar__container">
+            <!-- Brand -->
+            <a href="/" class="brand-link" aria-label="EcoBall Home">
+                <div class="logo-mark">
+                    <div class="logo-core"></div>
+                    <div class="logo-ring"></div>
+                </div>
+                <span class="brand-name">EcoBall</span>
+            </a>
 
-    <!-- Right Actions -->
-    <div class="nav-actions">
-      <a href="/leaderboard.html" class="action-link">Leaderboard</a>
-      
-      <a href="#deployment" class="action-btn">
-        <span>Start Mission</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
-        </svg>
-      </a>
-      
-      <!-- Mobile Toggle -->
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
-        <div class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </button>
-    </div>
+            <!-- Desktop Nav (Center) -->
+            <div class="nav-menu">
+                <a href="/" class="nav-item">
+                    <span class="nav-text">Home</span>
+                    <div class="nav-glow"></div>
+                </a>
+                <a href="/technical-specs.html" class="nav-item">
+                    <span class="nav-text">Specs</span>
+                    <div class="nav-glow"></div>
+                </a>
+                <a href="/challenges.html" class="nav-item">
+                    <span class="nav-text">Future</span>
+                    <div class="nav-glow"></div>
+                </a>
+                <a href="/recognition-about.html" class="nav-item">
+                    <span class="nav-text">About</span>
+                    <div class="nav-glow"></div>
+                </a>
+            </div>
 
-  </div>
+            <!-- Right Actions -->
+            <div class="nav-actions">
+                <a href="/leaderboard.html" class="action-link">Leaderboard</a>
+                <a href="#deployment" class="action-btn">
+                    <span>Start Mission</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
 
-  <!-- Mobile Overlay -->
-  <div class="mobile-menu-overlay" id="mobileMenu">
-    <div class="mobile-nav-content">
-      <a href="/" class="m-link active">Home</a>
-      <a href="/technical-specs.html" class="m-link">Tech Specs</a>
-      <a href="/challenges.html" class="m-link">Challenges</a>
-      <a href="/recognition-about.html" class="m-link">Recognition</a>
-      <a href="/leaderboard.html" class="m-link">Leaderboard</a>
-      <a href="#deployment" class="m-cta">Start Mission</a>
-    </div>
-  </div>
-
-  <div class="scroll-progress-bar"></div>
-</nav>
-
-<main>
-        <!-- Section: Contact Team -->
-<section id="contact" class="contact-section">
-  <div class="ambient-glow"></div>
-  
-  <div class="wrap">
-    <div class="headline fade-in-up">
-      <h2>Get in Touch</h2>
-      <p>Collaborate with the EcoBall team or reach out to a specialist.</p>
-    </div>
-
-    <div class="contact-grid">
-      
-      <div class="contact-sidebar fade-in-up" style="animation-delay: 0.1s;">
-        
-        <div class="recipient-toggle">
-          <div class="toggle-bg"></div>
-          <button class="toggle-btn active" data-target="team">
-            <span>Whole Team</span>
-          </button>
-          <button class="toggle-btn" data-target="individual">
-            <span>Specific Member</span>
-          </button>
+                <!-- Mobile Toggle -->
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </button>
+            </div>
         </div>
 
-        <div class="recipient-view active" id="view-team">
-          <div class="team-card glass-panel selected">
-            <div class="team-avatars-cluster">
-              <span class="avatar-sm" style="--grad: linear-gradient(135deg, var(--brand), var(--brand-2))">SB</span>
-              <span class="avatar-sm" style="--grad: linear-gradient(135deg, #FF6B6B, #FF8E8E)">CV</span>
-              <span class="avatar-sm" style="--grad: linear-gradient(135deg, #4ECDC4, #88D9E6)">FP</span>
-              <span class="avatar-sm" style="--grad: linear-gradient(135deg, #45B7D1, #96C3EB)">AL</span>
-              <span class="avatar-sm" style="--grad: linear-gradient(135deg, #FFA07A, #FFB347)">MO</span>
+        <!-- Mobile Overlay -->
+        <div class="mobile-menu-overlay" id="mobileMenu">
+            <div class="mobile-nav-content">
+                <a href="/" class="m-link active">Home</a>
+                <a href="/technical-specs.html" class="m-link">Tech Specs</a>
+                <a href="/challenges.html" class="m-link">Challenges</a>
+                <a href="/recognition-about.html" class="m-link">Recognition</a>
+                <a href="/leaderboard.html" class="m-link">Leaderboard</a>
+                <a href="#deployment" class="m-cta">Start Mission</a>
             </div>
-            <div class="info">
-              <h4>General Inquiries</h4>
-              <p>Partnerships, press, and general questions.</p>
-            </div>
-            <div class="check-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            </div>
-          </div>
-
         </div>
 
-        <div class="recipient-view" id="view-individual">
-          <div class="members-list">
-            <div class="member-card glass-panel" data-email="samir.buzatu@ecoball.it" data-name="Samir Buzatu">
-              <div class="member-avatar" style="background: linear-gradient(135deg, var(--brand), var(--brand-2))">SB</div>
-              <div class="member-info">
-                <h5>Samir Buzatu</h5>
-                <span>UI/UX & Design Lead</span>
-              </div>
+        <div class="scroll-progress-bar"></div>
+    </nav>
+
+    <!-- ===================================================
+    MAIN CONTENT
+    ==================================================== -->
+    <main>
+        <section id="contact" class="contact-section">
+            <div class="ambient-glow"></div>
+            <div class="wrap">
+                <div class="headline fade-in-up">
+                    <h2>Get in Touch</h2>
+                    <p>Collaborate with the EcoBall team or reach out to a specialist.</p>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-sidebar fade-in-up" style="animation-delay: 0.1s;">
+                        <div class="recipient-toggle">
+                            <div class="toggle-bg"></div>
+                            <button class="toggle-btn active" data-target="team">
+                                <span>Whole Team</span>
+                            </button>
+                            <button class="toggle-btn" data-target="individual">
+                                <span>Specific Member</span>
+                            </button>
+                        </div>
+
+                        <div class="recipient-view active" id="view-team">
+                            <div class="team-card glass-panel selected">
+                                <div class="team-avatars-cluster">
+                                    <span class="avatar-sm" style="--grad: linear-gradient(135deg, var(--brand), var(--brand-2))">SB</span>
+                                    <span class="avatar-sm" style="--grad: linear-gradient(135deg, #FF6B6B, #FF8E8E)">CV</span>
+                                    <span class="avatar-sm" style="--grad: linear-gradient(135deg, #4ECDC4, #88D9E6)">FP</span>
+                                    <span class="avatar-sm" style="--grad: linear-gradient(135deg, #45B7D1, #96C3EB)">AL</span>
+                                    <span class="avatar-sm" style="--grad: linear-gradient(135deg, #FFA07A, #FFB347)">MO</span>
+                                </div>
+                                <div class="info">
+                                    <h4>General Inquiries</h4>
+                                    <p>Partnerships, press, and general questions.</p>
+                                </div>
+                                <div class="check-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="recipient-view" id="view-individual">
+                            <div class="members-list">
+                                <div class="member-card glass-panel" data-email="samir.buzatu@ecoball.it" data-name="Samir Buzatu">
+                                    <div class="member-avatar" style="background: linear-gradient(135deg, var(--brand), var(--brand-2))">SB</div>
+                                    <div class="member-info">
+                                        <h5>Samir Buzatu</h5>
+                                        <span>UI/UX & Design Lead</span>
+                                    </div>
+                                </div>
+                                <div class="member-card glass-panel" data-email="christian.violo@ecoball.it" data-name="Christian Violo">
+                                    <div class="member-avatar" style="background: linear-gradient(135deg, #FF6B6B, #FF8E8E)">CV</div>
+                                    <div class="member-info">
+                                        <h5>Christian Violo</h5>
+                                        <span>Design & CAD</span>
+                                    </div>
+                                </div>
+                                <div class="member-card glass-panel" data-email="francesco.pilato@ecoball.it" data-name="Francesco Pilato">
+                                    <div class="member-avatar" style="background: linear-gradient(135deg, #4ECDC4, #88D9E6)">FP</div>
+                                    <div class="member-info">
+                                        <h5>Francesco Pilato</h5>
+                                        <span>Hardware Engineer</span>
+                                    </div>
+                                </div>
+                                <div class="member-card glass-panel" data-email="andrea.lombardo@ecoball.it" data-name="Andrea Lombardo">
+                                    <div class="member-avatar" style="background: linear-gradient(135deg, #45B7D1, #96C3EB)">AL</div>
+                                    <div class="member-info">
+                                        <h5>Andrea Lombardo</h5>
+                                        <span>Software Architect</span>
+                                    </div>
+                                </div>
+                                <div class="member-card glass-panel" data-email="michele.ottaviano@ecoball.it" data-name="Michele Ottaviano">
+                                    <div class="member-avatar" style="background: linear-gradient(135deg, #FFA07A, #FFB347)">MO</div>
+                                    <div class="member-info">
+                                        <h5>Michele Ottaviano</h5>
+                                        <span>Backend Developer</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-main fade-in-up" style="animation-delay: 0.2s;">
+                        <div class="form-wrapper glass-panel">
+                            <div class="form-header-dynamic">
+                                <h3>Compose Message</h3>
+                                <div class="recipient-badge">
+                                    <span class="to-label">To:</span>
+                                    <span id="active-recipient" class="recipient-name">EcoBall Team</span>
+                                </div>
+                            </div>
+
+                            <form id="contactForm">
+                                <div class="form-row">
+                                    <div class="input-group">
+                                        <input type="text" id="name" required placeholder=" ">
+                                        <label for="name">Your Name</label>
+                                        <div class="focus-border"></div>
+                                    </div>
+                                    <div class="input-group">
+                                        <input type="email" id="email" required placeholder=" ">
+                                        <label for="email">Email Address</label>
+                                        <div class="focus-border"></div>
+                                    </div>
+                                </div>
+
+                                <div class="input-group">
+                                    <input type="text" id="subject" required placeholder=" ">
+                                    <label for="subject">Subject</label>
+                                    <div class="focus-border"></div>
+                                </div>
+
+                                <div class="input-group">
+                                    <textarea id="message" rows="5" required placeholder=" "></textarea>
+                                    <label for="message">Your Message</label>
+                                    <div class="focus-border"></div>
+                                </div>
+
+                                <button type="submit" class="submit-btn">
+                                    <span>Send Message</span>
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                    </svg>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="member-card glass-panel" data-email="christian.violo@ecoball.it" data-name="Christian Violo">
-              <div class="member-avatar" style="background: linear-gradient(135deg, #FF6B6B, #FF8E8E)">CV</div>
-              <div class="member-info">
-                <h5>Christian Violo</h5>
-                <span>Design & CAD</span>
-              </div>
+        </section>
+    </main>
+
+    <!-- ===================================================
+    FOOTER
+    ==================================================== -->
+    <footer>
+        <div class="wrap">
+            <div class="footer-grid">
+                <!-- Column 1: Brand & Mission -->
+                <div class="f-col-brand">
+                    <a href="/" class="f-logo" aria-label="EcoBall Homepage">
+                        <div class="f-mark">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
+                                <path d="M2 12h20" />
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                            </svg>
+                        </div>
+                        <span class="f-name">EcoBall</span>
+                    </a>
+                    <p class="f-desc">
+                        Autonomous environmental intelligence.
+                        Protecting aquatic ecosystems through solar-powered, real-time monitoring networks.
+                    </p>
+                </div>
+
+                <!-- Column 2: Navigation -->
+                <div class="f-col-nav">
+                    <nav class="f-nav-pill">
+                        <a href="/" class="f-link active">Home</a>
+                        <a href="/technical-specs.html" class="f-link">Specs</a>
+                        <a href="/challenges.html" class="f-link">Future</a>
+                        <a href="/recognition-about.html" class="f-link">About</a>
+                        <a href="/deployment.html" class="f-link">Deploy</a>
+                    </nav>
+                </div>
+
+                <!-- Column 3: System Status -->
+                <div class="f-col-status">
+                    <div class="sys-badge" title="Live System Status">
+                        <span class="pulse-dot"></span>
+                        <span>ALL SYSTEMS NOMINAL</span>
+                    </div>
+                    <span class="version-tag">Build v2.4.0 (Stable)</span>
+                    <span class="version-tag">Istituto Rapisardi–Da Vinci</span>
+                </div>
             </div>
-            <div class="member-card glass-panel" data-email="francesco.pilato@ecoball.it" data-name="Francesco Pilato">
-              <div class="member-avatar" style="background: linear-gradient(135deg, #4ECDC4, #88D9E6)">FP</div>
-              <div class="member-info">
-                <h5>Francesco Pilato</h5>
-                <span>Hardware Engineer</span>
-              </div>
+
+            <!-- Bottom Bar: Legal & Copyright -->
+            <div class="f-bottom">
+                <div class="copyright">
+                    &copy; <span id="year">2025</span> EcoBall Project. Open Hardware License.
+                </div>
+                <div class="legal-group">
+                    <a href="/privacy-policy.html" class="legal-link">Privacy Policy</a>
+                    <a href="/terms-of-service.html" class="legal-link">Terms of Service</a>
+                    <a href="https://www.rapisardidavinci.edu.it" target="_blank" rel="noopener" class="legal-link">Institute</a>
+                </div>
             </div>
-            <div class="member-card glass-panel" data-email="andrea.lombardo@ecoball.it" data-name="Andrea Lombardo">
-              <div class="member-avatar" style="background: linear-gradient(135deg, #45B7D1, #96C3EB)">AL</div>
-              <div class="member-info">
-                <h5>Andrea Lombardo</h5>
-                <span>Software Architect</span>
-              </div>
-            </div>
-             <div class="member-card glass-panel" data-email="michele.ottaviano@ecoball.it" data-name="Michele Ottaviano">
-              <div class="member-avatar" style="background: linear-gradient(135deg, #FFA07A, #FFB347)">MO</div>
-              <div class="member-info">
-                <h5>Michele Ottaviano</h5>
-                <span>Backend Developer</span>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
+    </footer>
 
-      <div class="contact-main fade-in-up" style="animation-delay: 0.2s;">
-        <div class="form-wrapper glass-panel">
-          <div class="form-header-dynamic">
-            <h3>Compose Message</h3>
-            <div class="recipient-badge">
-              <span class="to-label">To:</span>
-              <span id="active-recipient" class="recipient-name">EcoBall Team</span>
-            </div>
-          </div>
-
-          <form id="contactForm">
-            <div class="form-row">
-              <div class="input-group">
-                <input type="text" id="name" required placeholder=" ">
-                <label for="name">Your Name</label>
-                <div class="focus-border"></div>
-              </div>
-              <div class="input-group">
-                <input type="email" id="email" required placeholder=" ">
-                <label for="email">Email Address</label>
-                <div class="focus-border"></div>
-              </div>
-            </div>
-
-            <div class="input-group">
-              <input type="text" id="subject" required placeholder=" ">
-              <label for="subject">Subject</label>
-              <div class="focus-border"></div>
-            </div>
-
-            <div class="input-group">
-              <textarea id="message" rows="5" required placeholder=" "></textarea>
-              <label for="message">Your Message</label>
-              <div class="focus-border"></div>
-            </div>
-
-            <button type="submit" class="submit-btn">
-              <span>Send Message</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-            </button>
-          </form>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-</main>
-
-
-
-<footer>
-  <div class="wrap">
-    
-    <!-- Main Footer Grid -->
-    <div class="footer-grid">
-      
-      <!-- Column 1: Brand & Mission -->
-      <div class="f-col-brand">
-        <a href="/" class="f-logo" aria-label="EcoBall Homepage">
-          <div class="f-mark">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
-              <path d="M2 12h20"/>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-            </svg>
-          </div>
-          <span class="f-name">EcoBall</span>
-        </a>
-        <p class="f-desc">
-          Autonomous environmental intelligence. 
-          Protecting aquatic ecosystems through solar-powered, real-time monitoring networks.
-        </p>
-      </div>
-
-      <!-- Column 2: Navigation (Floating Pill) -->
-      <div class="f-col-nav">
-        <nav class="f-nav-pill">
-          <a href="/" class="f-link active">Home</a>
-          <a href="/technical-specs.html" class="f-link">Specs</a>
-          <a href="/challenges.html" class="f-link">Future</a>
-          <a href="/recognition-about.html" class="f-link">About</a>
-          <a href="/deployment.html" class="f-link">Deploy</a>
-        </nav>
-      </div>
-
-      <!-- Column 3: System Status -->
-      <div class="f-col-status">
-        <div class="sys-badge" title="Live System Status">
-          <span class="pulse-dot"></span>
-          <span>ALL SYSTEMS NOMINAL</span>
-        </div>
-        <span class="version-tag">Build v2.4.0 (Stable)</span>
-        <span class="version-tag">Istituto Rapisardi–Da Vinci</span>
-      </div>
-
-    </div>
-
-    <!-- Bottom Bar: Legal & Copyright -->
-    <div class="f-bottom">
-      <div class="copyright">
-        &copy; <span id="year">2025</span> EcoBall Project. Open Hardware License.
-      </div>
-      <div class="legal-group">
-        <a href="#" class="legal-link">Privacy Policy</a>
-        <a href="#" class="legal-link">Terms of Service</a>
-        <a href="https://www.rapisardidavinci.edu.it" target="_blank" rel="noopener" class="legal-link">Institute</a>
-      </div>
-    </div>
-
-  </div>
-</footer>
-      <script src="js/script.js"></script>
+    <!-- ===================================================
+    SCRIPTS
+    ==================================================== -->
+    <script src="js/script.js"></script>
 
 </body>
+
 </html>

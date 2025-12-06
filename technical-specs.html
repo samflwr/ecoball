@@ -51,6 +51,8 @@
   <link rel="stylesheet" href="css/contact.css" />
   <link rel="stylesheet" href="css/mission.css" />
   <link rel="stylesheet" href="css/title.css" />
+  <link rel="stylesheet" href="css/scheme.css" />
+  <link rel="stylesheet" href="css/minimum.css" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -75,7 +77,7 @@
         <span class="nav-text">Home</span>
         <div class="nav-glow"></div>
       </a>
-      <a href="/technical-specs.html" class="nav-item">
+      <a href="/technical-specs.html" class="nav-item active">
         <span class="nav-text">Specs</span>
         <div class="nav-glow"></div>
       </a>
@@ -159,303 +161,367 @@
           <a href="#workflow" class="btn magnetic" data-ripple="true">Operating Workflow</a>
         </div>
       </div>
-      <div class="panel exploded " aria-label="EcoBall technical visualization">
-        <div class="exploded">
-          <div class="canvas">
-            <div class="sphere-container">
-              <div class="sphere-shadow"></div>
-              <div class="sphere-glow"></div>
-              <img src="ecoball-def.png" alt="Ecoball technical component visualization" class="sphere">
-              <div class="sphere-reflection"></div>
-            </div>
-          </div>
-        </div>
-      </div>
+
+
+
+
     </div>
   </header>
 
   <main>
-    <!-- Technical Specifications Section -->
-    <section id="specs" class="technical-specs-mobile">
-      <div class="wrap">
-        <div class="headline">
-          <h2>Technical Specifications</h2>
-          <p>Precision-engineered capabilities for reliable environmental monitoring at scale.</p>
+
+    <!-- Scheme -->
+     <section id="tech-scheme" class="tech-scheme-section">
+        <div class="ts-ambient">
+            <div class="ts-glow-orb"></div>
+            <div class="ts-grid-mesh"></div>
         </div>
-        
-        <div class="specs-grid">
-          <!-- Sensing & Measurement -->
-          <div class="spec-category">
-            <div class="spec-header">
-              <div class="spec-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="1.5"/>
-                  <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="1.5"/>
-                  <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="1.5"/>
-                </svg>
-              </div>
-              <h3>Sensing & Measurement</h3>
-            </div>
-            <div class="spec-content">
-              <div class="feature-group">
-                <h4 class="feature-group-title">Core Parameters</h4>
-                <div class="feature-list">
-                  <span class="feature-item">Temperature: ±0.1°C accuracy</span>
-                  <span class="feature-item">pH: 0-14 range, ±0.1 resolution</span>
-                  <span class="feature-item">Electrical Conductivity: 0-200 mS/cm</span>
-                  <span class="feature-item">Dissolved Oxygen: 0-20 mg/L</span>
-                  <span class="feature-item">Turbidity: 0-1000 NTU</span>
-                </div>
-              </div>
-              <div class="feature-group">
-                <h4 class="feature-group-title">Extended Capabilities</h4>
-                <div class="feature-list">
-                  <span class="feature-item">Nitrates: 0-100 mg/L (optional)</span>
-                  <span class="feature-item">Phosphates: 0-50 mg/L (optional)</span>
-                  <span class="feature-item highlight">Hydrocarbon detection module</span>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <!-- Data & Connectivity -->
-          <div class="spec-category">
-            <div class="spec-header">
-              <div class="spec-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M12 6V12L15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                  <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
-                </svg>
-              </div>
-              <h3>Data & Connectivity</h3>
-            </div>
-            <div class="spec-content">
-              <div class="feature-group">
-                <h4 class="feature-group-title">Sampling & Processing</h4>
-                <div class="feature-list">
-                  <span class="feature-item">Configurable intervals: 10-60 minutes</span>
-                  <span class="feature-item">On-board data preprocessing</span>
-                  <span class="feature-item">Real-time quality validation</span>
-                  <span class="feature-item">Local storage: 4MB flash</span>
-                </div>
-              </div>
-              <div class="feature-group">
-                <h4 class="feature-group-title">Communication Systems</h4>
-                <div class="feature-list">
-                  <span class="feature-item">Primary: NB-IoT/LTE-M</span>
-                  <span class="feature-item">Fallback: GSM/GPRS</span>
-                  <span class="feature-item">Long-range: LoRaWAN support</span>
-                  <span class="feature-item highlight">Multi-operator SIM</span>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="ts-container">
+            
+            <div class="ts-grid">
+                
+                <div class="ts-interface">
+                    <div class="ts-header">
+                        <div class="ts-badge">
+                            <span class="ts-pulse-dot"></span>
+                            <span class="mono-font">SYS_READY</span>
+                        </div>
+                        <h2>Neural <br><span class="ts-gradient-text">Architecture.</span></h2>
+                        <p>A custom-designed logic board integrating edge AI, tri-band connectivity, and precision sensing in a 100mm footprint.</p>
+                    </div>
 
-          <!-- Power & Hardware -->
-          <div class="spec-category">
-            <div class="spec-header">
-              <div class="spec-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/>
-                  <path d="M19 12C19 15.866 15.866 19 12 19C8.13401 19 5 15.866 5 12C5 8.13401 8.13401 5 12 5" stroke="currentColor" stroke-width="1.5"/>
-                </svg>
-              </div>
-              <h3>Power & Hardware</h3>
-            </div>
-            <div class="spec-content">
-              <div class="feature-group">
-                <h4 class="feature-group-title">Energy System</h4>
-                <div class="feature-list">
-                  <span class="feature-item">Battery: 20Wh Li-ion polymer</span>
-                  <span class="feature-item">Solar: 10W monocrystalline panel</span>
-                  <span class="feature-item">MPPT charge controller</span>
-                  <span class="feature-item highlight">30-day autonomous operation</span>
-                </div>
-              </div>
-              <div class="feature-group">
-                <h4 class="feature-group-title">Physical Specifications</h4>
-                <div class="feature-list">
-                  <span class="feature-item">Diameter: 300mm sphere</span>
-                  <span class="feature-item">Weight: 1.2kg in air</span>
-                  <span class="feature-item">Enclosure: IP68 rated</span>
-                  <span class="feature-item">Operating temp: -10°C to 50°C</span>
-                </div>
-              </div>
-            </div>
-          </div>
+                    <div class="ts-selector">
+                        <button class="ts-item active" data-target="core">
+                            <div class="ts-progress">
+                                <div class="ts-bar"></div>
+                            </div>
+                            <div class="ts-content">
+                                <div class="ts-top">
+                                    <h4>Neural Engine</h4>
+                                    <span class="mono-font">STM32H7</span>
+                                </div>
+                                <p>Real-time inferencing with 480MHz clock speed and hardware-accelerated DSP.</p>
+                            </div>
+                        </button>
 
-          <!-- Performance & Compliance -->
-          <div class="spec-category key-features">
-            <div class="spec-header">
-              <div class="spec-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M12 3V4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                  <path d="M12 20V21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                  <path d="M21 12H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                  <path d="M4 12H3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                  <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
-                </svg>
-              </div>
-              <h3>Performance & Compliance</h3>
-            </div>
-            <div class="spec-content">
-              <div class="feature-group">
-                <h4 class="feature-group-title">Operational Standards</h4>
-                <div class="feature-list">
-                  <span class="feature-item">Data accuracy: >99% validated</span>
-                  <span class="feature-item">Uptime: 99.8% field proven</span>
-                  <span class="feature-item">Calibration cycle: 90 days</span>
-                  <span class="feature-item highlight">ISO 17025 compliant methods</span>
+                        <button class="ts-item" data-target="comms">
+                            <div class="ts-progress">
+                                <div class="ts-bar"></div>
+                            </div>
+                            <div class="ts-content">
+                                <div class="ts-top">
+                                    <h4>Tri-Band Link</h4>
+                                    <span class="mono-font">NB-IoT / LoRa</span>
+                                </div>
+                                <p>Autonomous signal pathing with satellite fallback for remote coverage.</p>
+                            </div>
+                        </button>
+
+                        <button class="ts-item" data-target="power">
+                            <div class="ts-progress">
+                                <div class="ts-bar"></div>
+                            </div>
+                            <div class="ts-content">
+                                <div class="ts-top">
+                                    <h4>Energy Grid</h4>
+                                    <span class="mono-font">20Wh Solid</span>
+                                </div>
+                                <p>High-density solid-state array with MPPT solar management.</p>
+                            </div>
+                        </button>
+                    </div>
                 </div>
-              </div>
-              <div class="feature-group">
-                <h4 class="feature-group-title">Environmental Compliance</h4>
-                <div class="feature-list">
-                  <span class="feature-item">RoHS compliant components</span>
-                  <span class="feature-item">REACH substance compliance</span>
-                  <span class="feature-item">100% recyclable HDPE</span>
-                  <span class="feature-item highlight">Zero liquid discharge</span>
+
+                <div class="ts-visualizer">
+                    <div class="ts-card">
+                        <div class="ts-glass-layer"></div>
+                        
+                        <div class="ts-board">
+                            <svg class="ts-svg" viewBox="0 0 400 400" fill="none">
+                                <defs>
+                                    <filter id="ts-glow" x="-20%" y="-20%" width="140%" height="140%">
+                                        <feGaussianBlur stdDeviation="2" result="blur" />
+                                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                                    </filter>
+                                </defs>
+
+                                <rect x="50" y="50" width="300" height="300" rx="20" class="ts-base" />
+                                <path class="ts-grid-lines" d="M50 100 H350 M50 150 H350 M50 200 H350 M50 250 H350 M50 300 H350 M100 50 V350 M150 50 V350 M200 50 V350 M250 50 V350 M300 50 V350" />
+
+                                <g class="ts-layer" id="viz-core">
+                                    <rect x="160" y="160" width="80" height="80" class="cpu-socket" />
+                                    <rect x="175" y="175" width="50" height="50" class="cpu-die" />
+                                    <path class="cpu-traces" d="M160 200 H100 M240 200 H300 M200 160 V100 M200 240 V300" />
+                                    <circle cx="200" cy="200" r="10" class="cpu-light" />
+                                    <circle class="ts-dot d1" r="2" fill="currentColor">
+                                        <animateMotion dur="2s" repeatCount="indefinite" path="M175 200 H100" />
+                                    </circle>
+                                    <circle class="ts-dot d2" r="2" fill="currentColor">
+                                        <animateMotion dur="2s" repeatCount="indefinite" path="M225 200 H300" />
+                                    </circle>
+                                </g>
+
+                                <g class="ts-layer" id="viz-comms">
+                                    <path class="ant-trace" d="M100 100 L80 80 M300 100 L320 80 M100 300 L80 320 M300 300 L320 320" />
+                                    <circle cx="80" cy="80" r="5" class="ant-node" />
+                                    <circle cx="320" cy="80" r="5" class="ant-node" />
+                                    <circle cx="80" cy="320" r="5" class="ant-node" />
+                                    <circle cx="320" cy="320" r="5" class="ant-node" />
+                                    <circle cx="80" cy="80" r="15" class="ts-wave w1" />
+                                    <circle cx="320" cy="80" r="15" class="ts-wave w2" />
+                                </g>
+
+                                <g class="ts-layer" id="viz-power">
+                                    <rect x="130" y="320" width="40" height="20" rx="2" class="pwr-cell" />
+                                    <rect x="180" y="320" width="40" height="20" rx="2" class="pwr-cell" />
+                                    <rect x="230" y="320" width="40" height="20" rx="2" class="pwr-cell" />
+                                    <path class="pwr-line" d="M200 320 V240" />
+                                    <circle class="ts-pulse" r="2" fill="currentColor">
+                                        <animateMotion dur="1.5s" repeatCount="indefinite" path="M200 320 V240" />
+                                    </circle>
+                                </g>
+
+                            </svg>
+                            
+                            <div class="ts-labels">
+                                <div class="ts-tag t-core">
+                                    <span class="ts-line"></span>
+                                    <span class="ts-tag-txt">NUCLEO H7</span>
+                                </div>
+                                <div class="ts-tag t-comms">
+                                    <span class="ts-line"></span>
+                                    <span class="ts-tag-txt">RF ARRAY</span>
+                                </div>
+                                <div class="ts-tag t-power">
+                                    <span class="ts-line"></span>
+                                    <span class="ts-tag-txt">LIPO MATRIX</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
+
             </div>
-          </div>
         </div>
-      </div>
     </section>
+
 
     <!-- Minimum Technical Specs -->
-    <section id="min-specs">
-      <div class="wrap">
-        <div class="headline ">
-          <h2 style="font-size: var(--size-6);">Minimum Technical Specs</h2>
-          <p>Baseline configuration for robust real‑time monitoring.</p>
+<section id="tech-specs" class="mts-section">
+  <div class="mts-container">
+    
+    <div class="mts-header">
+      <div class="mts-badge">
+        <span class="mts-pulse-dot"></span>
+        <span>Hardware Baseline v2.0</span>
+      </div>
+      <h2>Minimum <span class="mts-text-gradient">Specifications</span></h2>
+      <p>Engineered for low-power edge computing in harsh environments.</p>
+    </div>
+
+    <div class="mts-grid">
+      
+      <div class="mts-card hero-card">
+        <div class="mts-card-header">
+          <div class="mts-icon-squircle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg>
+          </div>
+          <div class="mts-status-pill">Active</div>
         </div>
-        <div class="specs">
-          <div class="spec ">STM32 Nucleo MCU</div>
-          <div class="spec ">NB‑IoT / LTE‑M modem</div>
-          <div class="spec ">±0.1 accuracy sensors</div>
-          <div class="spec ">3–10 W solar panel</div>
-          <div class="spec ">10–20 Wh battery</div>
-          <div class="spec ">IP68 casing</div>
+        <div class="mts-content">
+          <span class="mts-label">Core Processor</span>
+          <h3 class="mts-value">STM32 Nucleo</h3>
+          <p class="mts-sub">ARM Cortex-M4 Architecture</p>
+        </div>
+        <div class="mts-bg-glow"></div>
+      </div>
+
+      <div class="mts-card">
+        <div class="mts-icon-squircle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+        </div>
+        <div class="mts-content">
+          <span class="mts-label">Connectivity</span>
+          <h3 class="mts-value">NB-IoT / LTE-M</h3>
+          <span class="mts-tag">Global Band</span>
         </div>
       </div>
-    </section>
 
-    <!-- Maintenance & Operations -->
-    <section id="maintenance">
-      <div class="wrap">
-        <div class="headline ">
-          <h2 style="font-size: var(--size-6);">Maintenance & Operations</h2>
-          <p>Reliable lifecycle with remote diagnostics and OTA updates.</p>
+      <div class="mts-card">
+        <div class="mts-icon-squircle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2v20"/><path d="M2 12h20"/></svg>
         </div>
-        
-        <div class="maintenance-grid">
-          <div class="maintenance-card ">
-            <div class="maintenance-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                <path d="M14 10L12 12M12 12L10 14M12 12L14 14M12 12L10 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="1.5"/>
-              </svg>
-            </div>
-            <div class="maintenance-content">
-              <h3>Sensor Maintenance</h3>
-              <p>Regular cleaning and calibration to ensure 99% data accuracy</p>
-            </div>
-            <div class="maintenance-badge">Monthly</div>
+        <div class="mts-content">
+          <span class="mts-label">Calibration</span>
+          <div class="mts-flex-row">
+            <h3 class="mts-value">±0.1</h3>
+            <span class="mts-unit">Accuracy</span>
           </div>
-
-          <div class="maintenance-card ">
-            <div class="maintenance-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                <path d="M12 8V12L15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <rect x="3" y="10" width="18" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/>
-                <path d="M7 6H17V10H7V6Z" stroke="currentColor" stroke-width="1.5"/>
-              </svg>
-            </div>
-            <div class="maintenance-content">
-              <h3>Power Management</h3>
-              <p>Battery health checks and replacement when needed</p>
-            </div>
-            <div class="maintenance-badge">Quarterly</div>
-          </div>
-
-          <div class="maintenance-card ">
-            <div class="maintenance-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                <path d="M15 12L12 12M12 12L9 12M12 12L12 9M12 12L12 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M12 19C15.866 19 19 15.866 19 12C19 8.13401 15.866 5 12 5C8.13401 5 5 8.13401 5 12C5 15.866 8.13401 19 12 19Z" stroke="currentColor" stroke-width="1.5"/>
-              </svg>
-            </div>
-            <div class="maintenance-content">
-              <h3>Remote Diagnostics</h3>
-              <p>Continuous system monitoring and proactive issue detection</p>
-            </div>
-            <div class="maintenance-badge">24/7</div>
-          </div>
-
-          <div class="maintenance-card ">
-            <div class="maintenance-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                <path d="M12 16L12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M12 8L12 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M7 12H5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M19 12H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M16 8L17 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M8 8L7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M16 16L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M8 16L7 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
-              </svg>
-            </div>
-            <div class="maintenance-content">
-              <h3>Solar Monitoring</h3>
-              <p>Panel integrity and efficiency tracking</p>
-            </div>
-            <div class="maintenance-badge">Continuous</div>
-          </div>
-
-          <div class="maintenance-card highlight ">
-            <div class="maintenance-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M12 16L12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M12 8L12 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M21 3V7H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div class="maintenance-content">
-              <h3>OTA Updates</h3>
-              <p>Wireless firmware updates for continuous improvement</p>
-            </div>
-            <div class="maintenance-badge highlight">As Needed</div>
+          <div class="mts-progress-track">
+            <div class="mts-progress-fill" style="width: 98%"></div>
           </div>
         </div>
-        
-        <!-- Additional Info Panel -->
-        <div class="maintenance-info ">
-          <div class="info-content">
-            <h4>Proactive Maintenance Cycle</h4>
-            <p>Our automated monitoring system ensures optimal performance with minimal manual intervention. Remote diagnostics alert our team before issues impact data quality.</p>
+      </div>
+
+      <div class="mts-card wide-card">
+        <div class="mts-split-layout">
+          <div class="mts-power-unit">
+            <div class="mts-icon-squircle small">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+            </div>
+            <div>
+              <span class="mts-label">Solar Input</span>
+              <div class="mts-value">3–10 <span class="mts-unit">W</span></div>
+            </div>
           </div>
-          <div class="info-stats">
-            <div class="info-stat">
-              <span class="stat-value">99.8%</span>
-              <span class="stat-label">Uptime</span>
+          
+          <div class="mts-vertical-divider"></div>
+          
+          <div class="mts-power-unit">
+            <div class="mts-icon-squircle small">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="10" rx="2" ry="2"/><line x1="22" y1="11" x2="22" y2="13"/></svg>
             </div>
-            <div class="info-stat">
-              <span class="stat-value">24/7</span>
-              <span class="stat-label">Monitoring</span>
-            </div>
-            <div class="info-stat">
-              <span class="stat-value">&lt;1h</span>
-              <span class="stat-label">Response Time</span>
+            <div>
+              <span class="mts-label">Storage</span>
+              <div class="mts-value">10–20 <span class="mts-unit">Wh</span></div>
             </div>
           </div>
         </div>
       </div>
-    </section>
 
+      <div class="mts-card">
+        <div class="mts-icon-squircle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="mts-content">
+          <span class="mts-label">Enclosure</span>
+          <h3 class="mts-value">IP68 Rated</h3>
+          <span class="mts-sub-highlight">Submersible</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>    <!-- Maintenance & Operations -->
+<section id="maintenance" class="mnt-section">
+  <div class="mnt-container">
+    
+    <div class="mnt-header reveal-item">
+      <div class="mnt-pill">
+        <span class="mnt-icon-spin">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </span>
+        <span>Lifecycle OS</span>
+      </div>
+      <h2>Autonomous <br><span class="mnt-gradient-text">Operations.</span></h2>
+      <p>Self-healing infrastructure with zero-touch maintenance.</p>
+    </div>
+
+    <div class="mnt-grid">
+      
+      <div class="mnt-card span-2 row-2 reveal-item" style="transition-delay: 100ms">
+        <div class="mnt-card-bg"></div>
+        <div class="mnt-content">
+          <div class="mnt-top">
+            <div class="mnt-chip active">
+              <span class="mnt-dot"></span> Live
+            </div>
+            <span class="mnt-label">System Pulse</span>
+          </div>
+          
+          <div class="mnt-visual-radar">
+            <div class="radar-circle"></div>
+            <div class="radar-circle"></div>
+            <div class="radar-circle"></div>
+            <div class="radar-sweep"></div>
+            <div class="radar-ping"></div>
+          </div>
+
+          <div class="mnt-bottom">
+            <h3>Remote Diagnostics</h3>
+            <p>Scanning 140+ telemetry points every second.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mnt-card span-1 row-2 reveal-item" style="transition-delay: 200ms">
+        <div class="mnt-card-bg"></div>
+        <div class="mnt-content col-center">
+          <div class="mnt-chip">
+             v4.2.0
+          </div>
+          
+          <div class="mnt-visual-ota">
+            <svg class="ota-ring" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="45" class="ring-bg"/>
+              <circle cx="50" cy="50" r="45" class="ring-progress"/>
+            </svg>
+            <div class="ota-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </div>
+          </div>
+
+          <div class="mnt-bottom center-text">
+            <h3>OTA Updates</h3>
+            <p>Seamless firmware patches.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mnt-card span-1 reveal-item" style="transition-delay: 300ms">
+        <div class="mnt-card-bg"></div>
+        <div class="mnt-content">
+          <div class="mnt-top">
+            <div class="mnt-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="5"/><path d="M12 1v2"/><path d="M12 21v2"/><path d="M4.22 4.22l1.42 1.42"/><path d="M18.36 18.36l1.42 1.42"/><path d="M1 12h2"/><path d="M21 12h2"/><path d="M4.22 19.78l1.42-1.42"/><path d="M18.36 5.64l1.42-1.42"/></svg>
+            </div>
+          </div>
+          <div class="mnt-bottom">
+            <span class="mnt-stat-small">99.8%</span>
+            <span class="mnt-label">Solar Efficiency</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mnt-card span-1 reveal-item" style="transition-delay: 400ms">
+        <div class="mnt-card-bg"></div>
+        <div class="mnt-content">
+          <div class="mnt-top">
+            <div class="mnt-icon-box success">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="7" width="20" height="10" rx="2" ry="2"/><line x1="22" y1="11" x2="22" y2="13"/></svg>
+            </div>
+          </div>
+          <div class="mnt-bottom">
+            <span class="mnt-stat-small">5 Yrs</span>
+            <span class="mnt-label">Battery Lifecycle</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mnt-card span-2 reveal-item" style="transition-delay: 500ms">
+        <div class="mnt-card-bg"></div>
+        <div class="mnt-content">
+          <div class="mnt-flex-row">
+            <div>
+              <h3>Self-Cleaning Cycle</h3>
+              <p>Automated sensor calibration.</p>
+            </div>
+            <div class="mnt-status-badge">
+              <span class="mnt-label">Next: 24h</span>
+            </div>
+          </div>
+          <div class="mnt-timeline">
+            <div class="timeline-track">
+              <div class="timeline-fill"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
     <!-- Operating Workflow -->
 <section id="workflow" class="workflow-section">
   <div class="wf-overlay"></div>

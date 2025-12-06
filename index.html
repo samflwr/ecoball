@@ -1,1244 +1,1561 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="color-scheme" content="light dark" />
-  
-  <!-- Primary Meta Tags -->
-  <title>EcoBall — Autonomous Water Quality Monitoring | Real-time Pollution Detection</title>
-  <meta name="description" content="EcoBall: Solar-powered autonomous device for real-time water quality monitoring. Detect pollutants, map water conditions, and protect aquatic ecosystems with zero emissions." />
-  <meta name="keywords" content="water quality monitoring, environmental sensors, pollution detection, autonomous water sampling, solar-powered devices, real-time water data, aquatic ecosystem protection, IoT water monitoring" />
-  <meta name="author" content="EcoBall Team - Istituto Rapisardi-Da Vinci" />
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-  
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://ecoball.it/" />
-  <meta property="og:title" content="EcoBall — Autonomous Water Quality Monitoring | Real-time Pollution Detection" />
-  <meta property="og:description" content="Solar-powered autonomous device for real-time water quality monitoring. Detect pollutants and protect aquatic ecosystems with zero emissions." />
-  <meta property="og:image" content="https://ecoball.it/images/ecoball-og-image.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="EcoBall autonomous water monitoring device" />
-  <meta property="og:site_name" content="EcoBall" />
-  <meta property="og:locale" content="en_US" />
-  <meta property="og:locale:alternate" content="it_IT" />
-  
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://ecoball.it/" />
-  <meta property="twitter:title" content="EcoBall — Autonomous Water Quality Monitoring" />
-  <meta property="twitter:description" content="Solar-powered device for real-time water pollution detection and ecosystem protection." />
-  <meta property="twitter:image" content="https://ecoball.it/images/ecoball-og-image.png" />
-  <meta property="twitter:image:alt" content="EcoBall water monitoring technology" />
-  
-  <!-- Additional Meta Tags -->
-  <meta name="theme-color" content="#4fe3b7" />
-  <meta name="msapplication-TileColor" content="#4fe3b7" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="format-detection" content="telephone=no" />
-  
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://ecoball.it/" />
-  
-  <!-- Alternate Languages -->
-  <link rel="alternate" hreflang="en" href="https://ecoball.it/" />
-  <link rel="alternate" hreflang="it" href="https://ecoball.it/it/" />
-  <link rel="alternate" hreflang="x-default" href="https://ecoball.it/" />
-  
-  <!-- Preload Critical Resources -->
-  <link rel="preload" href="css/styles.css" as="style" />
-  <link rel="preload" href="js/script.js" as="script" />
-  <link rel="preload" href="images/ecoball-og-image.png" as="image" />
-  
-  <!-- CSS Files -->
-  <link rel="stylesheet" href="css/topbar.css" />
-  <link rel="stylesheet" href="css/stat.css" />
-  <link rel="stylesheet" href="css/styles.css" />
-  <link rel="stylesheet" href="css/spec.css" />
-  <link rel="stylesheet" href="css/tile.css" />
-  <link rel="stylesheet" href="css/impact.css" />
-  <link rel="stylesheet" href="css/architecture.css" />
-  <link rel="stylesheet" href="css/footer.css" />
-  <link rel="stylesheet" href="css/chip.css" />
-  <link rel="stylesheet" href="css/scroll-line.css" />
-  <link rel="stylesheet" href="css/teams.css" />
-  <link rel="stylesheet" href="css/sphere.css" />
-  <link rel="stylesheet" href="css/hardware.css" />
-  <link rel="stylesheet" href="css/technical.css" />
-  <link rel="stylesheet" href="css/maintenance.css" />
-  <link rel="stylesheet" href="css/challenges.css" />
-  <link rel="stylesheet" href="css/deployment.css" />
-  <link rel="stylesheet" href="css/contact.css" />
-  <link rel="stylesheet" href="css/mission.css" />
-  <link rel="stylesheet" href="css/title.css" />
+    <!-- ===================================================
+    HEAD - Metadata, CSS, and Preloads
+    ==================================================== -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
 
-  <!-- Preconnect to external domains -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  
-  <!-- Favicon and App Icons -->
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
-  
-  <!-- Structured Data / JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "EcoBall",
-    "description": "Autonomous solar-powered water quality monitoring device for real-time pollution detection and environmental protection",
-    "brand": {
-      "@type": "Brand",
-      "name": "EcoBall"
-    },
-    "manufacturer": {
-      "@type": "Organization",
-      "name": "Istituto Rapisardi-Da Vinci"
-    },
-    "award": [
-      "1st Place Winner - STM32 Contest 6th Edition",
-      "Maker Faire 2022 Exhibition"
-    ],
-    "feature": [
-      "24/7 autonomous water monitoring",
-      "Solar-powered zero emissions operation",
-      "Real-time pollution detection",
-      "Multi-parameter water quality sensors",
-      "NB-IoT/LTE-M data transmission",
-      "Dynamic risk mapping"
-    ],
-    "url": "https://ecoball.it",
-    "image": "https://ecoball.it/images/ecoball-og-image.png"
-  }
-  </script>
-  
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "EcoBall",
-    "url": "https://ecoball.it",
-    "logo": "https://ecoball.it/images/ecoball-og-image.png",
-    "description": "Autonomous water quality monitoring technology for environmental protection",
-    "foundingDate": "2021",
-    "founder": [
-      {
-        "@type": "Person",
-        "name": "Samir Buzatu"
-      }
-    ],
-    "award": [
-      "STM32 Contest Winner 2021/2022",
-      "Maker Faire 2022 Participant"
-    ]
-  }
-  </script>
-  
-  <!-- Additional Italian SEO -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "EcoBall - Monitoraggio Qualità Acqua Autonomo",
-    "description": "EcoBall: dispositivo autonomo a energia solare per il monitoraggio in tempo reale della qualità dell'acqua. Rilevamento inquinanti e protezione ecosistemi acquatici.",
-    "inLanguage": "it-IT",
-    "url": "https://ecoball.it/",
-    "mainEntity": {
-      "@type": "Product",
-      "name": "EcoBall",
-      "description": "Dispositivo autonomo per il monitoraggio della qualità dell'acqua con alimentazione solare"
-    }
-  }
-  </script>
+    <!-- Primary Meta Tags -->
+    <title>EcoBall — Autonomous Water Quality Monitoring | Real-time Pollution Detection</title>
+    <meta name="description" content="EcoBall: Solar-powered autonomous device for real-time water quality monitoring. Detect pollutants, map water conditions, and protect aquatic ecosystems with zero emissions." />
+    <meta name="keywords" content="water quality monitoring, environmental sensors, pollution detection, autonomous water sampling, solar-powered devices, real-time water data, aquatic ecosystem protection, IoT water monitoring" />
+    <meta name="author" content="EcoBall Team - Istituto Rapisardi-Da Vinci" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="theme-color" content="#4fe3b7" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ecoball.it/" />
+    <meta property="og:title" content="EcoBall — Autonomous Water Quality Monitoring | Real-time Pollution Detection" />
+    <meta property="og:description" content="Solar-powered autonomous device for real-time water quality monitoring. Detect pollutants and protect aquatic ecosystems with zero emissions." />
+    <meta property="og:image" content="https://ecoball.it/images/ecoball-og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="EcoBall autonomous water monitoring device" />
+    <meta property="og:site_name" content="EcoBall" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="it_IT" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://ecoball.it/" />
+    <meta property="twitter:title" content="EcoBall — Autonomous Water Quality Monitoring" />
+    <meta property="twitter:description" content="Solar-powered device for real-time water pollution detection and ecosystem protection." />
+    <meta property="twitter:image" content="https://ecoball.it/images/ecoball-og-image.png" />
+    <meta property="twitter:image:alt" content="EcoBall water monitoring technology" />
+
+    <!-- App & PWA Meta Tags -->
+    <meta name="msapplication-TileColor" content="#4fe3b7" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Canonical & Language Links -->
+    <link rel="canonical" href="https://ecoball.it/" />
+    <link rel="alternate" hreflang="en" href="https://ecoball.it/" />
+    <link rel="alternate" hreflang="it" href="https://ecoball.it/it/" />
+    <link rel="alternate" hreflang="x-default" href="https://ecoball.it/" />
+
+    <!-- Favicon and App Icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <!-- Preconnect & Preload -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="css/styles.css" as="style" />
+    <link rel="preload" href="js/script.js" as="script" />
+    <link rel="preload" href="images/ecoball-og-image.png" as="image" />
+
+    <!-- CSS Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/topbar.css" />
+    <link rel="stylesheet" href="css/stat.css" />
+    <link rel="stylesheet" href="css/spec.css" />
+    <link rel="stylesheet" href="css/tile.css" />
+    <link rel="stylesheet" href="css/impact.css" />
+    <link rel="stylesheet" href="css/architecture.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/chip.css" />
+    <link rel="stylesheet" href="css/scroll-line.css" />
+    <link rel="stylesheet" href="css/teams.css" />
+    <link rel="stylesheet" href="css/sphere.css" />
+    <link rel="stylesheet" href="css/hardware.css" />
+    <link rel="stylesheet" href="css/technical.css" />
+    <link rel="stylesheet" href="css/maintenance.css" />
+    <link rel="stylesheet" href="css/challenges.css" />
+    <link rel="stylesheet" href="css/deployment.css" />
+    <link rel="stylesheet" href="css/contact.css" />
+    <link rel="stylesheet" href="css/mission.css" />
+    <link rel="stylesheet" href="css/title.css" />
+    <!-- <link rel="stylesheet" href="css/background.css" /> -->
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Product",
+            "name": "EcoBall",
+            "description": "Autonomous solar-powered water quality monitoring device for real-time pollution detection and environmental protection",
+            "brand": {
+                "@type": "Brand",
+                "name": "EcoBall"
+            },
+            "manufacturer": {
+                "@type": "Organization",
+                "name": "Istituto Rapisardi-Da Vinci"
+            },
+            "award": [
+                "1st Place Winner - STM32 Contest 6th Edition",
+                "Maker Faire 2022 Exhibition"
+            ],
+            "feature": [
+                "24/7 autonomous water monitoring",
+                "Solar-powered zero emissions operation",
+                "Real-time pollution detection",
+                "Multi-parameter water quality sensors",
+                "NB-IoT/LTE-M data transmission",
+                "Dynamic risk mapping"
+            ],
+            "url": "https://ecoball.it",
+            "image": "https://ecoball.it/images/ecoball-og-image.png"
+        }
+    </script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "EcoBall",
+            "url": "https://ecoball.it",
+            "logo": "https://ecoball.it/images/ecoball-og-image.png",
+            "description": "Autonomous water quality monitoring technology for environmental protection",
+            "foundingDate": "2021",
+            "founder": [{
+                "@type": "Person",
+                "name": "Samir Buzatu"
+            }],
+            "award": [
+                "STM32 Contest Winner 2021/2022",
+                "Maker Faire 2022 Participant"
+            ]
+        }
+    </script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "EcoBall - Monitoraggio Qualità Acqua Autonomo",
+            "description": "EcoBall: dispositivo autonomo a energia solare per il monitoraggio in tempo reale della qualità dell'acqua. Rilevamento inquinanti e protezione ecosistemi acquatici.",
+            "inLanguage": "it-IT",
+            "url": "https://ecoball.it/",
+            "mainEntity": {
+                "@type": "Product",
+                "name": "EcoBall",
+                "description": "Dispositivo autonomo per il monitoraggio della qualità dell'acqua con alimentazione solare"
+            }
+        }
+    </script>
 </head>
+
 <body>
-  <!-- Top Bar Navigation -->
-<nav class="top-bar" id="topBar">
-  <div class="top-bar__container">
-    
-    <!-- Brand -->
-    <a href="/" class="brand-link" aria-label="EcoBall Home">
-      <div class="logo-mark">
-        <div class="logo-core"></div>
-        <div class="logo-ring"></div>
-      </div>
-      <span class="brand-name">EcoBall</span>
-    </a>
 
-    <!-- Desktop Nav (Center) -->
-    <div class="nav-menu">
-      <a href="/" class="nav-item active">
-        <span class="nav-text">Home</span>
-        <div class="nav-glow"></div>
-      </a>
-      <a href="/technical-specs.html" class="nav-item">
-        <span class="nav-text">Specs</span>
-        <div class="nav-glow"></div>
-      </a>
-      <a href="/challenges.html" class="nav-item">
-        <span class="nav-text">Future</span>
-        <div class="nav-glow"></div>
-      </a>
-      <a href="/recognition-about.html" class="nav-item">
-        <span class="nav-text">About</span>
-        <div class="nav-glow"></div>
-      </a>
-    </div>
+    <!-- ===================================================
+    TOP BAR NAVIGATION
+    ==================================================== -->
+    <nav class="top-bar" id="topBar">
+        <div class="top-bar__container">
 
-    <!-- Right Actions -->
-    <div class="nav-actions">
-      <a href="/leaderboard.html" class="action-link">Leaderboard</a>
-      
-      <a href="#deployment" class="action-btn">
-        <span>Start Mission</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
-        </svg>
-      </a>
-      
-      <!-- Mobile Toggle -->
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
-        <div class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
+            <a href="/" class="brand-link" aria-label="EcoBall Home">
+                <div class="logo-mark">
+                    <div class="logo-core"></div>
+                    <div class="logo-ring"></div>
+                </div>
+                <span class="brand-name">EcoBall</span>
+            </a>
+
+            <div class="nav-menu">
+                <a href="/" class="nav-item active">
+                    <span class="nav-text">Home</span>
+                    <div class="nav-glow"></div>
+                </a>
+                <a href="/technical-specs.html" class="nav-item">
+                    <span class="nav-text">Specs</span>
+                    <div class="nav-glow"></div>
+                </a>
+                <a href="/challenges.html" class="nav-item">
+                    <span class="nav-text">Future</span>
+                    <div class="nav-glow"></div>
+                </a>
+                <a href="/recognition-about.html" class="nav-item">
+                    <span class="nav-text">About</span>
+                    <div class="nav-glow"></div>
+                </a>
+            </div>
+
+            <div class="nav-actions">
+                <a href="/leaderboard.html" class="action-link">Leaderboard</a>
+                <a href="#deployment" class="action-btn">
+                    <span>Start Mission</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </button>
+            </div>
         </div>
-      </button>
-    </div>
 
-  </div>
+        <div class="mobile-menu-overlay" id="mobileMenu">
+            <div class="mobile-nav-content">
+                <a href="/" class="m-link active">Home</a>
+                <a href="/technical-specs.html" class="m-link">Tech Specs</a>
+                <a href="/challenges.html" class="m-link">Challenges</a>
+                <a href="/recognition-about.html" class="m-link">Recognition</a>
+                <a href="/leaderboard.html" class="m-link">Leaderboard</a>
+                <a href="#deployment" class="m-cta">Start Mission</a>
+            </div>
+        </div>
 
-  <!-- Mobile Overlay -->
-  <div class="mobile-menu-overlay" id="mobileMenu">
-    <div class="mobile-nav-content">
-      <a href="/" class="m-link active">Home</a>
-      <a href="/technical-specs.html" class="m-link">Tech Specs</a>
-      <a href="/challenges.html" class="m-link">Challenges</a>
-      <a href="/recognition-about.html" class="m-link">Recognition</a>
-      <a href="/leaderboard.html" class="m-link">Leaderboard</a>
-      <a href="#deployment" class="m-cta">Start Mission</a>
-    </div>
-  </div>
-
-  <div class="scroll-progress-bar"></div>
-</nav>
-  <header class="hero">
-    <div class="orbital" aria-hidden="true"></div>
-    <div class="wrap hero-grid">
-      <div class="">
-        <span class="chip magnetic"><span class="dot"></span> EcoBall — Autonomous Water Intelligence</span>
+        <div class="scroll-progress-bar" id="progressBar"></div>
+    </nav>
+    <!-- ===================================================
+    HERO HEADER
+    ==================================================== -->
+    <header class="hero">
+        <div class="tech-matrix"></div>
+        <div class="orbital-system" aria-hidden="true">
+        <div class="orbital-atmosphere"></div>
         
-        <div class="enhanced-title-group">
-          <h1 class="title enhanced-title">
-            <span class="title-line">
-              <span class="title-word" data-word="Real‑time">Real‑time</span>
-            </span>
-            <span class="title-line">
-              <span class="title-word" data-word="water">water</span>
-              <span class="title-word" data-word="quality,">quality,</span>
-            </span>
-            <span class="title-line">
-              <span class="title-word" data-word="powered">powered</span>
-              <span class="title-word" data-word="by">by</span>
-              <span class="title-word" data-word="the">the</span>
-              <span class="title-word solar-highlight" data-word="sun.">
-                sun<span class="solar-dot"></span>
-              </span>
-            </span>
-          </h1>
-          
-          <p class="subtitle enhanced-subtitle">
-            <span class="subtitle-content">
-              EcoBall is an intelligent, green‑powered spherical device that autonomously samples 
-              <span class="text-highlight">rivers</span>, 
-              <span class="text-highlight">lakes</span>, 
-              <span class="text-highlight">coasts</span>, and 
-              <span class="text-highlight">oceans</span> — generating 
-              <span class="text-accent">dynamic risk maps</span> and 
-              <span class="text-accent">live pollutant insights</span> 
-              for preventive action.
-            </span>
-            <span class="subtitle-line"></span>
-          </p>
+        <div class="orbital-ring"></div>
+        
+        <div class="orbital-core"></div>
         </div>
+        <div class="wrap hero-grid">
+            <!-- Hero Content -->
+            <div>
+                <span class="chip magnetic"><span class="dot"></span> EcoBall — Autonomous Water Intelligence</span>
 
-        <div class="actions">
-          <a href="#mission" class="btn primary magnetic" data-ripple="true">Explore the Mission</a>
-          <a href="#software" class="btn magnetic" data-ripple="true">See the Architecture</a>
+                <div class="enhanced-title-group">
+                    <h1 class="title enhanced-title">
+                        <span class="title-line">
+                            <span class="title-word" data-word="Real‑time">Real‑time</span>
+                        </span>
+                        <span class="title-line">
+                            <span class="title-word" data-word="water">water</span>
+                            <span class="title-word" data-word="quality,">quality,</span>
+                        </span>
+                        <span class="title-line">
+                            <span class="title-word" data-word="powered">powered</span>
+                            <span class="title-word" data-word="by">by</span>
+                            <span class="title-word" data-word="the">the</span>
+                            <span class="title-word solar-highlight" data-word="sun.">
+                                sun<span class="solar-dot"></span>
+                            </span>
+                        </span>
+                    </h1>
+
+                    <p class="subtitle enhanced-subtitle">
+                        <span class="subtitle-content">
+                            EcoBall is an intelligent, green‑powered spherical device that autonomously samples
+                            <span class="text-highlight">rivers</span>,
+                            <span class="text-highlight">lakes</span>,
+                            <span class="text-highlight">coasts</span>, and
+                            <span class="text-highlight">oceans</span> — generating
+                            <span class="text-accent">dynamic risk maps</span> and
+                            <span class="text-accent">live pollutant insights</span>
+                            for preventive action.
+                        </span>
+                        <span class="subtitle-line"></span>
+                    </p>
+                </div>
+
+                <div class="actions">
+                    <a href="#mission" class="btn primary magnetic" data-ripple="true">Explore the Mission</a>
+                    <a href="#software" class="btn magnetic" data-ripple="true">See the Architecture</a>
+                </div>
+                <!-- Enhanced Stats Row -->
+                <div class="stat-row">
+                    <div class="stat">
+                        <div class="stat-content">
+                        <div class="k" data-count="24">24/7</div>
+                        <div class="label">Autonomous operation</div>
+                        </div>
+                        <div class="stat-particle"></div>
+                    </div>
+                    
+                    <div class="stat">
+                        <div class="stat-content">
+                        <div class="k">Zero</div>
+                        <div class="label">Carbon emissions</div>
+                        </div>
+                        <div class="stat-particle"></div>
+                    </div>
+                    
+                    <div class="stat">
+                        <div class="stat-content">
+                        <div class="k">±0.1</div>
+                        <div class="label">Sensor accuracy</div>
+                        </div>
+                        <div class="stat-particle"></div>
+                    </div>
+                    
+                    <div class="stat">
+                        <div class="stat-content">
+                        <div class="k">NB‑IoT</div>
+                        <div class="label">Live transmission</div>
+                        </div>
+                        <div class="stat-particle"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Visual -->
+            <div class="panel hero-visual-panel" aria-label="EcoBall System Analysis">
+                <div class="visual-glass-bg"></div>
+                
+                <div class="visual-ambient">
+                    <div class="v-grid"></div>
+                    <div class="v-glow"></div>
+                </div>
+
+                <div class="visual-content">
+                    
+                    <div class="sphere-stage">
+                        <div class="sphere-shadow-base"></div>
+                        
+                        <div class="sphere-wrapper">
+                            <img src="ecoball-def.png" alt="EcoBall Unit" class="hero-sphere">
+                            <div class="sphere-scan-overlay"></div>
+                        </div>
+
+                        <div class="laser-scan-plane">
+                            <div class="laser-line"></div>
+                        </div>
+
+                        <div class="v-tag tag-solar">
+                            <div class="tag-anchor">
+                                <div class="anchor-dot"></div>
+                                <div class="anchor-pulse"></div>
+                            </div>
+                            <div class="tag-line"></div>
+                            <div class="tag-card">
+                                <span class="tag-lbl">PV ARRAY</span>
+                                <span class="tag-val">10W High-Efficiency</span>
+                            </div>
+                        </div>
+
+                        <div class="v-tag tag-sensor">
+                            <div class="tag-anchor">
+                                <div class="anchor-dot"></div>
+                                <div class="anchor-pulse"></div>
+                            </div>
+                            <div class="tag-line"></div>
+                            <div class="tag-card">
+                                <span class="tag-lbl">SENSOR BAY</span>
+                                <span class="tag-val">Multiparametric</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="visual-hud">
+                        <div class="hud-glass"></div>
+                        <div class="hud-grid">
+                            
+                            <div class="hud-item">
+                                <div class="hud-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v20M2 12h20"/></svg>
+                                </div>
+                                <div class="hud-data">
+                                    <span class="label">Autonomy</span>
+                                    <span class="value">Active</span>
+                                </div>
+                            </div>
+                            <div class="hud-sep"></div>
+                            <div class="hud-item">
+                                <div class="hud-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                                </div>
+                                <div class="hud-data">
+                                    <span class="label">Signal</span>
+                                    <span class="value">−65dBm</span>
+                                </div>
+                            </div>
+                            <div class="hud-sep"></div>
+                            <div class="hud-item">
+                                <div class="hud-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                                </div>
+                                <div class="hud-data">
+                                    <span class="label">Uptime</span>
+                                    <span class="value">99.9%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div>
+                <div class="scroll-indicator-wrapper">
+                    <div class="scroll-trigger" role="button" aria-label="Scroll down">
+                        <div class="sonar-emitter">
+                            <div class="emitter-core"></div>
+                            <div class="sonar-wave wave-1"></div>
+                            <div class="sonar-wave wave-2"></div>
+                            <div class="sonar-wave wave-3"></div>
+                        </div>
+
+                        <div class="data-beam">
+                            <div class="beam-line"></div>
+                            <div class="scan-head"></div>
+                        </div>
+
+                        <div class="scroll-text">
+                            <span class="text-char">S</span>
+                            <span class="text-char">C</span>
+                            <span class="text-char">R</span>
+                            <span class="text-char">O</span>
+                            <span class="text-char">L</span>
+                            <span class="text-char">L</span>
+                        </div>
+
+                        <div class="scroll-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M7 10L12 15L17 10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="stat-row " >
-          <div class="stat">
-            <div class="k" data-count="24">24/7</div>
-            <div class="label">Autonomous operation</div>
-          </div>
-          <div class="stat">
-            <div class="k">Zero</div>
-            <div class="label">Carbon emissions</div>
-          </div>
-          <div class="stat">
-            <div class="k">±0.1</div>
-            <div class="label">Sensor accuracy</div>
-          </div>
-          <div class="stat">
-            <div class="k">NB‑IoT</div>
-            <div class="label">Live transmission</div>
-          </div>
-          <div>
-            <div class="scroll-indicator-wrapper">
-  <div class="scroll-trigger" role="button" aria-label="Scroll down">
-    
-    <div class="sonar-emitter">
-      <div class="emitter-core"></div>
-      <div class="sonar-wave wave-1"></div>
-      <div class="sonar-wave wave-2"></div>
-      <div class="sonar-wave wave-3"></div>
-    </div>
+    </header>
 
-    <div class="data-beam">
-      <div class="beam-line"></div>
-      <div class="scan-head"></div>
-    </div>
+    <main>
 
-    <div class="scroll-text">
-      <span class="text-char">S</span>
-      <span class="text-char">C</span>
-      <span class="text-char">R</span>
-      <span class="text-char">O</span>
-      <span class="text-char">L</span>
-      <span class="text-char">L</span>
-    </div>
+        <!-- ===================================================
+        SECTION 1: CORE MISSION
+        ==================================================== -->
+        <section id="mission" class="msn-section">
+            <div class="msn-ambient-light"></div>
+            <div class="msn-noise-overlay"></div>
 
-    <div class="scroll-arrow">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-        <path d="M7 10L12 15L17 10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </div>
+            <div class="msn-container">
+                <div class="msn-header">
+                    <div class="msn-eyebrow">
+                        <span class="msn-pulse-dot"></span>
+                        Core Mandate
+                    </div>
+                    <h2 class="msn-title">
+                        Sentience for the <br>
+                        <span class="msn-gradient-text">Silent Depths.</span>
+                    </h2>
+                    <p class="msn-subtitle">
+                        Turning ocean noise into signal. A zero-emission neural network delivering decision-grade environmental intelligence.
+                    </p>
+                </div>
 
+                <div class="msn-grid">
+                    
+                    <div class="msn-card msn-center-node">
+                        <div class="node-flare"></div>
+                        <div class="nucleus-wrapper">
+                            <div class="orbit-ring outer-dashed"></div>
+                            <div class="orbit-ring inner-solid"></div>
+                            <div class="radar-sweep"></div>
+                            <div class="core-module">
+                                <div class="core-glass-reflection"></div>
+                                <div class="core-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M12 3v18M3 12h18" stroke-opacity="0.5"/>
+                                        <circle cx="12" cy="12" r="7"/>
+                                        <path d="M12 8a4 4 0 0 1 4 4m-4 4a4 4 0 0 1-4-4"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="satellite sat-1"></div>
+                            <div class="satellite sat-2"></div>
+                        </div>
+                        <div class="apple-status-pill">
+  <div class="signal-badge">
+    <div class="signal-core"></div>
+    <div class="signal-wave"></div>
+  </div>
+  <div class="status-content">
+    <span class="status-label">System State</span>
+    <span class="status-value">Autonomous</span>
   </div>
 </div>
-          </div>
-        </div>
-      </div>
-      <div class="panel exploded " aria-label="EcoBall visual">
-        <div class="exploded">
-          <div class="canvas">
-            <div class="sphere-container">
-              <div class="sphere-shadow"></div>
-              <div class="sphere-glow"></div>
-              <img src="ecoball-def.png" alt="Ecoball hardware component visualization" class="sphere">
-              <div class="sphere-reflection"></div>
+                    </div>
+
+                    <div class="msn-card msn-card-regular">
+                        <div class="msn-card-bg"></div>
+                        <div class="msn-icon-box">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="msn-card-txt">
+                            <h3>Predictive Modeling</h3>
+                            <p>Anticipating pollution events before they spread via hydrodynamic simulation.</p>
+                        </div>
+                    </div>
+
+                    <div class="msn-card msn-card-regular">
+                        <div class="msn-card-bg"></div>
+                        <div class="msn-icon-box">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10"/>
+                                <circle cx="12" cy="12" r="3"/>
+                                <line x1="12" y1="2" x2="12" y2="4"/>
+                                <line x1="12" y1="20" x2="12" y2="22"/>
+                                <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/>
+                                <line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/>
+                            </svg>
+                        </div>
+                        <div class="msn-card-txt">
+                            <h3>Real-Time Tracking</h3>
+                            <p>Live contaminant visualization for immediate, targeted intervention.</p>
+                        </div>
+                    </div>
+
+                    <div class="msn-card msn-card-regular">
+                        <div class="msn-card-bg"></div>
+                        <div class="msn-icon-box">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
+                        <div class="msn-card-txt">
+                            <h3>Swarm Mobility</h3>
+                            <p>Multi-agent pathfinding covering vast marine territories autonomously.</p>
+                        </div>
+                    </div>
+
+                    <div class="msn-card msn-card-regular">
+                        <div class="msn-card-bg"></div>
+                        <div class="msn-icon-box">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.48-.56.9-1.23 1.25-1.98"/>
+                                <path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"/>
+                                <path d="M20 21.5c1.5-1.26 2-5 2-5s-3.74.5-5 2c-.48.56-.9 1.23-1.25 1.98"/>
+                            </svg>
+                        </div>
+                        <div class="msn-card-txt">
+                            <h3>Nature Positive</h3>
+                            <p>100% solar-driven, circular materials, neutral ecological footprint.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="msn-footer">
+                    <div class="msn-metric">
+                        <span class="num">99.8<small>%</small></span>
+                        <div class="lbl-wrapper">
+                            <span class="status-dot"></span>
+                            <span class="lbl">Uptime</span>
+                        </div>
+                    </div>
+
+                    <div class="msn-sep"></div>
+
+                    <div class="msn-metric">
+                        <span class="num">ISO</span>
+                        <div class="lbl-wrapper">
+                            <span class="status-dot static"></span>
+                            <span class="lbl">Certified</span>
+                        </div>
+                    </div>
+
+                    <div class="msn-sep"></div>
+
+                    <div class="msn-metric">
+                        <span class="num">Zero</span>
+                        <div class="lbl-wrapper">
+                            <span class="status-dot eco"></span>
+                            <span class="lbl">Emissions</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="legend">
-              <div class="legend-item">
-                <div class="legend-marker"></div>
-                <div>Green energy autonomy</div>
-              </div>
-              <div class="legend-item">
-                <div class="legend-marker"></div>
-                <div>Mobile sampling</div>
-              </div>
-              <div class="legend-item">
-                <div class="legend-marker"></div>
-                <div>Real‑time intelligence</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-</header>
-  
-  <main>
+        </section>
 
-    <!-- Section 1 — Core Mission -->
-<section id="mission" class="mission-section">
-  <div class="mission-bg-layer">
-    <div class="ambient-glow top-glow"></div>
-    <div class="ambient-glow bottom-glow"></div>
-    <div class="grid-overlay"></div>
-  </div>
+        <!-- ===================================================
+        SECTION 2: TECHNICAL SPECIFICATIONS
+        ==================================================== -->
+        <section id="functional" class="tech-specs-bento">
+            <div class="bento-wrap">
+                <div class="bento-header">
+                    <span class="eyebrow">Hardware Architecture</span>
+                    <h2>Technical Specifications</h2>
+                    <p>Precision-engineered capabilities for reliable environmental monitoring at scale.</p>
+                </div>
 
-  <div class="wrap">
-    
-    <div class="mission-header">
-      <div class="chip">
-        <span class="badge-icon">
-          <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg>
-        </span>
-        <span >Core Mission</span>
-      </div>
-      <h1 class="mission-title">
-        Environmental Intelligence.<br>
-        <span class="text-gradient">Autonomously Delivered.</span>
-      </h1>
-      <p class="mission-subtitle">
-        EcoBall transforms raw hydro-data into <span class="highlight">decision-grade insights</span>. 
-        A zero-emission network giving a digital voice to our oceans.
-      </p>
-    </div>
+                <div class="bento-grid">
+                    <div class="bento-card card-sensing">
+                        <div class="card-bg-glow"></div>
+                        <div class="card-header">
+                            <div class="icon-box">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M12 2L2 7L12 12L22 7L12 2Z" />
+                                    <path d="M2 17L12 22L22 17" />
+                                    <path d="M2 12L12 17L22 12" />
+                                </svg>
+                            </div>
+                            <h3>Sensing Array</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="spec-row">
+                                <span class="label">Temp Accuracy</span>
+                                <span class="value">±0.1°C</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="label">pH Resolution</span>
+                                <span class="value">±0.1</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="label">Turbidity</span>
+                                <span class="value">0-1000 NTU</span>
+                            </div>
+                            <div class="pill-group">
+                                <span class="pill">Nitrates</span>
+                                <span class="pill">Phosphates</span>
+                                <span class="pill active">Hydrocarbon Module</span>
+                            </div>
+                        </div>
+                    </div>
 
-    <div class="bento-grid">
-      
-      <div class="bento-col left-col">
-        <div class="tech-card large-card" data-card="risk">
-          <div class="card-glow-effect"></div>
-          <div class="card-content">
-            <div class="card-top">
-              <div class="icon-square">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M22 2L2 22"/></svg>
-              </div>
-              <h3>Dynamic Risk</h3>
-            </div>
-            <p>Predictive modeling anticipates critical pollution events before they spread.</p>
-            <div class="live-indicator">
-              <span class="dot pulse"></span> Live Model
-            </div>
-            <div class="mini-chart-container">
-               <div class="bar" style="--h: 40%"></div>
-               <div class="bar" style="--h: 70%"></div>
-               <div class="bar active" style="--h: 55%"></div>
-               <div class="bar" style="--h: 85%"></div>
-               <div class="bar" style="--h: 60%"></div>
-            </div>
-          </div>
-        </div>
+                    <div class="bento-card card-power">
+                        <div class="card-bg-glow"></div>
+                        <div class="card-header">
+                            <div class="icon-box">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="3" />
+                                    <path d="M19 12C19 15.866 15.866 19 12 19C8.13401 19 5 15.866 5 12C5 8.13401 8.13401 5 12 5" />
+                                </svg>
+                            </div>
+                            <h3>Power & Autonomy</h3>
+                        </div>
+                        <div class="card-body big-stat-layout">
+                            <div class="big-stat">
+                                <span class="number">30</span>
+                                <span class="unit">Days Autonomous</span>
+                            </div>
+                            <div class="sub-stats">
+                                <div class="stat-item">
+                                    <span class="label">Battery</span>
+                                    <span class="value">20Wh Li-ion</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="label">Solar Input</span>
+                                    <span class="value">10W MPPT</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-        <div class="tech-card small-card" data-card="track">
-          <div class="card-glow-effect"></div>
-          <div class="card-content">
-            <div class="card-top">
-              <div class="icon-square">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-              </div>
-              <h3>Real-time Tracking</h3>
-            </div>
-            <p>Immediate contaminant visualization for targeted intervention.</p>
-          </div>
-        </div>
-      </div>
+                    <div class="bento-card card-connect">
+                        <div class="card-bg-glow"></div>
+                        <div class="card-header">
+                            <div class="icon-box">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M12 6V12L15 15" stroke-linecap="round" />
+                                    <circle cx="12" cy="12" r="9" />
+                                </svg>
+                            </div>
+                            <h3>Connectivity</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="check-list">
+                                <li>NB-IoT / LTE-M Primary</li>
+                                <li>GSM/GPRS Fallback</li>
+                                <li>LoRaWAN Long-range</li>
+                                <li class="highlight">Multi-operator SIM</li>
+                            </ul>
+                        </div>
+                    </div>
 
-      <div class="bento-col center-col">
-        <div class="sonar-container">
-          <div class="radar-sweep"></div> <div class="static-rings">
-            <div class="s-ring r1"></div>
-            <div class="s-ring r2"></div>
-            <div class="s-ring r3"></div>
-          </div>
-          <div class="sonar-core-orb">
-            <div class="inner-pulse"></div>
-            <svg class="orb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-            </svg>
-          </div>
-          <div class="system-status">
-            <span class="status-dot-offline"></span>
-            SYSTEM OFFLINE
-          </div>
-        </div>
-        <div class="vision-caption">
-          <h4>The Vision</h4>
-          <p>Symbiosis of Tech & Nature</p>
-        </div>
-      </div>
+                    <div class="bento-card card-hardware">
+                        <div class="card-bg-glow"></div>
+                        <div class="card-header">
+                            <h3>Hardware</h3>
+                        </div>
+                        <div class="card-body compact-grid">
+                            <div class="grid-item">
+                                <span class="label">Rating</span>
+                                <span class="value">IP68</span>
+                            </div>
+                            <div class="grid-item">
+                                <span class="label">Weight</span>
+                                <span class="value">1.2kg</span>
+                            </div>
+                            <div class="grid-item">
+                                <span class="label">Material</span>
+                                <span class="value">HDPE</span>
+                            </div>
+                            <div class="grid-item">
+                                <span class="label">Temp</span>
+                                <span class="value">-10/50°C</span>
+                            </div>
+                        </div>
+                    </div>
 
-      <div class="bento-col right-col">
-        <div class="tech-card large-card" data-card="mobile">
-          <div class="card-glow-effect"></div>
-          <div class="card-content">
-            <div class="card-top">
-              <div class="icon-square">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5"/></svg>
-              </div>
-              <h3>Wide Mobility</h3>
-            </div>
-            <p>Autonomous pathfinding for multi-point sampling across vast territories.</p>
-            <div class="stat-row">
-              <div class="stat-unit">
-                <span class="label">Range</span>
-                <span class="val">Unbound</span>
-              </div>
-              <div class="stat-unit">
-                <span class="label">Mode</span>
-                <span class="val">Roaming</span>
-              </div>
-            </div>
-          </div>
-        </div>
+                    <div class="cert-card">
+                        <div class="cert-glow"></div>
+                        <div class="cert-content">
+                            
+                            <div class="cert-header">
+                                <div class="iso-badge">
+                                    <div class="iso-ring"></div>
+                                    <span class="iso-text">ISO 17025</span>
+                                </div>
+                                <div class="cert-status">
+                                    <span class="status-pulse"></span>
+                                    <span>Verified</span>
+                                </div>
+                            </div>
 
-        <div class="tech-card small-card" data-card="eco">
-          <div class="card-glow-effect"></div>
-          <div class="card-content">
-            <div class="card-top">
-              <div class="icon-square">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.77 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
-              </div>
-              <h3>Zero Emission</h3>
-            </div>
-            <p>100% solar-powered, circular design with neutral ecological footprint.</p>
-          </div>
-        </div>
-      </div>
+                            <div class="cert-body">
+                                <h4>Validated Accuracy</h4>
+                                <p>
+                                    <span class="highlight-val">&gt;99%</span> Data accuracy.
+                                    <br>
+                                    <span class="sub-text">RoHS & REACH Compliant.</span>
+                                </p>
+                            </div>
 
-    </div>
+                            <div class="cert-footer-line"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ===================================================
+        SECTION 3: HARDWARE ARCHITECTURE
+        ==================================================== -->
+        <section id="hardware-advanced" class="hw-a-section">
+            <div class="hw-a-bg-ambient"></div>
+            <div class="hw-a-floor-caustics"></div>
+            <div class="hw-a-grid-floor"></div>
+            <div class="hw-a-floating-particles"></div>
 
-    <div class="mission-footer">
-      <div class="pillar-unit">
-        <span class="pillar-num">01</span>
-        <div class="pillar-text">
-          <strong>Clarity</strong>
-          <span>Precise Analytics</span>
-        </div>
-      </div>
-      <div class="pillar-divider"></div>
-      <div class="pillar-unit">
-        <span class="pillar-num">02</span>
-        <div class="pillar-text">
-          <strong>Coverage</strong>
-          <span>Global Scale</span>
-        </div>
-      </div>
-      <div class="pillar-divider"></div>
-      <div class="pillar-unit">
-        <span class="pillar-num">03</span>
-        <div class="pillar-text">
-          <strong>Conscience</strong>
-          <span>Eco-First</span>
-        </div>
-      </div>
-    </div>
+            <div class="hw-a-container">
+                <div class="hw-a-header">
+                    <div class="hw-a-tech-readout">
+                        <div class="status-beacon">
+                            <span class="beacon-ping"></span>
+                            <span class="beacon-core"></span>
+                        </div>
+                        
+                        <span class="readout-text">System Nominal</span>
+                        
+                        <span class="readout-divider"></span>
+                        
+                        <div class="readout-metric">
+                            <span class="metric-label">TEMP</span>
+                            <span class="metric-val mono-font">21°C</span>
+                        </div>
+                    </div>
+                    <h2>Engineering <br> <span class="hw-a-text-gradient">The Invisible.</span></h2>
+                    <p>A masterclass in miniaturization. Industrial sensors stacked for autonomous operation in extreme environments.</p>
+                </div>
 
-  </div>
-</section>
-<!-- Section 2 — Technical Specifications -->
-<section id="functional" class="technical-specs-mobile">
-  <div class="wrap">
-    <div class="headline">
-      <h2>Technical Specifications</h2>
-      <p>Precision-engineered capabilities for reliable environmental monitoring at scale.</p>
-    </div>
-    
-    <div class="specs-grid">
-      <!-- Sensing & Measurement -->
-      <div class="spec-category">
-        <div class="spec-header">
-          <div class="spec-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="1.5"/>
-            </svg>
-          </div>
-          <h3>Sensing & Measurement</h3>
-        </div>
-        <div class="spec-content">
-          <div class="feature-group">
-            <h4 class="feature-group-title">Core Parameters</h4>
-            <div class="feature-list">
-              <span class="feature-item">Temperature: ±0.1°C accuracy</span>
-              <span class="feature-item">pH: 0-14 range, ±0.1 resolution</span>
-              <span class="feature-item">Electrical Conductivity: 0-200 mS/cm</span>
-              <span class="feature-item">Dissolved Oxygen: 0-20 mg/L</span>
-              <span class="feature-item">Turbidity: 0-1000 NTU</span>
-            </div>
-          </div>
-          <div class="feature-group">
-            <h4 class="feature-group-title">Extended Capabilities</h4>
-            <div class="feature-list">
-              <span class="feature-item">Nitrates: 0-100 mg/L (optional)</span>
-              <span class="feature-item">Phosphates: 0-50 mg/L (optional)</span>
-              <span class="feature-item highlight">Hydrocarbon detection module</span>
-            </div>
-          </div>
-        </div>
-      </div>
+                <div class="hw-a-stage-wrapper">
+                    
+                    <div class="hw-a-visualizer">
+                        <div class="hw-a-stack-container" id="hw-a-stack">
+                            
+                            <div class="hw-a-plate plate-top" data-layer="comms">
+                                <div class="plate-thickness"></div>
+                                <div class="plate-surface">
+                                    <div class="plate-content">
+                                        <svg viewBox="0 0 100 100" class="circuit-svg comms-svg">
+                                            <defs>
+                                                <filter id="glow-comms"><feGaussianBlur stdDeviation="1.5" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                                            </defs>
+                                            <path class="trace" d="M50 50 L85 15 M50 50 L15 15 M50 50 L50 95" stroke="currentColor" stroke-width="0.5" fill="none"/>
+                                            <circle class="node-point" cx="50" cy="50" r="3" fill="currentColor" filter="url(#glow-comms)"/>
+                                            <circle class="data-packet p1" r="1.5" fill="#fff"/>
+                                            <circle class="data-packet p2" r="1.5" fill="#fff"/>
+                                            <circle class="data-packet p3" r="1.5" fill="#fff"/>
+                                        </svg>
+                                        <div class="blink-led" style="top: 20%; right: 20%;"></div>
+                                    </div>
+                                </div>
+                                <div class="plate-label mono-font">LAYER 01 // RF ARRAY</div>
+                            </div>
 
-      <!-- Data & Connectivity -->
-      <div class="spec-category">
-        <div class="spec-header">
-          <div class="spec-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M12 6V12L15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
-            </svg>
-          </div>
-          <h3>Data & Connectivity</h3>
-        </div>
-        <div class="spec-content">
-          <div class="feature-group">
-            <h4 class="feature-group-title">Sampling & Processing</h4>
-            <div class="feature-list">
-              <span class="feature-item">Configurable intervals: 10-60 minutes</span>
-              <span class="feature-item">On-board data preprocessing</span>
-              <span class="feature-item">Real-time quality validation</span>
-              <span class="feature-item">Local storage: 4MB flash</span>
-            </div>
-          </div>
-          <div class="feature-group">
-            <h4 class="feature-group-title">Communication Systems</h4>
-            <div class="feature-list">
-              <span class="feature-item">Primary: NB-IoT/LTE-M</span>
-              <span class="feature-item">Fallback: GSM/GPRS</span>
-              <span class="feature-item">Long-range: LoRaWAN support</span>
-              <span class="feature-item highlight">Multi-operator SIM</span>
-            </div>
-          </div>
-        </div>
-      </div>
+                            <div class="hw-a-plate plate-mid active" data-layer="core">
+                                <div class="plate-thickness"></div>
+                                <div class="plate-surface">
+                                    <div class="plate-content">
+                                        <div class="chip-assembly">
+                                            <div class="main-processor">
+                                                <span class="chip-text mono-font">NUCLEO<br>H743ZI</span>
+                                                <div class="processor-glow"></div>
+                                            </div>
+                                            <div class="blink-led fast" style="bottom: -10px; left: 10px;"></div>
+                                            <div class="blink-led" style="bottom: -10px; right: 10px;"></div>
+                                        </div>
+                                        <svg viewBox="0 0 100 100" class="circuit-svg core-svg">
+                                            <path class="trace" d="M30 40 H5 M70 40 H95 M40 30 V5 M40 70 V95" stroke="currentColor" fill="none" opacity="0.5"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="plate-label mono-font">LAYER 02 // LOGIC CORE</div>
+                            </div>
 
-      <!-- Power & Hardware -->
-      <div class="spec-category">
-        <div class="spec-header">
-          <div class="spec-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M19 12C19 15.866 15.866 19 12 19C8.13401 19 5 15.866 5 12C5 8.13401 8.13401 5 12 5" stroke="currentColor" stroke-width="1.5"/>
-            </svg>
-          </div>
-          <h3>Power & Hardware</h3>
-        </div>
-        <div class="spec-content">
-          <div class="feature-group">
-            <h4 class="feature-group-title">Energy System</h4>
-            <div class="feature-list">
-              <span class="feature-item">Battery: 20Wh Li-ion polymer</span>
-              <span class="feature-item">Solar: 10W monocrystalline panel</span>
-              <span class="feature-item">MPPT charge controller</span>
-              <span class="feature-item highlight">30-day autonomous operation</span>
-            </div>
-          </div>
-          <div class="feature-group">
-            <h4 class="feature-group-title">Physical Specifications</h4>
-            <div class="feature-list">
-              <span class="feature-item">Diameter: 300mm sphere</span>
-              <span class="feature-item">Weight: 1.2kg in air</span>
-              <span class="feature-item">Enclosure: IP68 rated</span>
-              <span class="feature-item">Operating temp: -10°C to 50°C</span>
-            </div>
-          </div>
-        </div>
-      </div>
+                            <div class="hw-a-plate plate-btm" data-layer="sensors">
+                                <div class="plate-thickness"></div>
+                                <div class="plate-surface">
+                                    <div class="plate-content">
+                                        <div class="power-matrix">
+                                            <div class="bat-cell c1"><div class="energy-bar"></div></div>
+                                            <div class="power-connector">
+                                                <svg viewBox="0 0 24 24" width="20" fill="none" stroke="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                                            </div>
+                                            <div class="bat-cell c2"><div class="energy-bar" style="animation-delay: 0.5s;"></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="plate-label mono-font">LAYER 03 // PWR + SENS</div>
+                            </div>
 
-      <!-- Performance & Compliance -->
-      <div class="spec-category key-features">
-        <div class="spec-header">
-          <div class="spec-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M12 3V4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M12 20V21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M21 12H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M4 12H3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
-            </svg>
-          </div>
-          <h3>Performance & Compliance</h3>
-        </div>
-        <div class="spec-content">
-          <div class="feature-group">
-            <h4 class="feature-group-title">Operational Standards</h4>
-            <div class="feature-list">
-              <span class="feature-item">Data accuracy: >99% validated</span>
-              <span class="feature-item">Uptime: 99.8% field proven</span>
-              <span class="feature-item">Calibration cycle: 90 days</span>
-              <span class="feature-item highlight">ISO 17025 compliant methods</span>
-            </div>
-          </div>
-          <div class="feature-group">
-            <h4 class="feature-group-title">Environmental Compliance</h4>
-            <div class="feature-list">
-              <span class="feature-item">RoHS compliant components</span>
-              <span class="feature-item">REACH substance compliance</span>
-              <span class="feature-item">100% recyclable HDPE</span>
-              <span class="feature-item highlight">Zero liquid discharge</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-    <!-- Section 3 — Hardware Components -->
-<!-- Section 3 — Hardware Architecture -->
-<!-- Section 3 — Hardware Components -->
-<!-- Add this section after the existing sections in your HTML -->
-<section id="hardware-components" class="hardware-section">
-  <div class="hw-overlay"></div>
-  
-  <div class="wrap">
-    
-    <div class="hw-header">
-      <div class="chip">
-        <span class="blink-led"></span> SYSTEM STATUS: NOMINAL
-      </div>
-      <h2>Hardware Architecture</h2>
-      <p>Explore the anatomy of autonomous monitoring.</p>
-    </div>
+                        </div>
+                    </div>
 
-    <div class="hw-interface">
-      
-      <div class="hw-visualizer">
-        <div class="holo-stage">
-          <div class="sphere-group" id="sphere-group">
-            
-            <div class="layer layer-core active" data-layer="core">
-              <div class="core-box">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/><path d="M9 1v3m6-3v3M9 20v3m6-3v3M20 9h3m-3 6h3M1 9h3m-3 6h3"/></svg>
-              </div>
-              <div class="pulse-ring"></div>
+                    <div class="hw-a-controls">
+                        <div class="ui-screw tl"></div><div class="ui-screw tr"></div>
+                        
+                        <div class="hw-a-selector-list">
+                            
+                            <button class="hw-a-item" data-target="comms">
+                                <div class="item-timeline">
+                                    <div class="timeline-knob"></div>
+                                    <div class="timeline-line"></div>
+                                </div>
+                                <div class="item-body">
+                                    <div class="item-header">
+                                        <span class="idx mono-font">01</span>
+                                        <h4>Connectivity</h4>
+                                    </div>
+                                    <div class="item-content-wrapper">
+                                        <p class="item-desc">Tri-band architecture (NB-IoT, LoRa, SatLink) with autonomous signal path optimization.</p>
+                                    </div>
+                                </div>
+                            </button>
+
+                            <button class="hw-a-item active" data-target="core">
+                                <div class="item-timeline">
+                                    <div class="timeline-knob"></div>
+                                    <div class="timeline-line"></div>
+                                </div>
+                                <div class="item-body">
+                                    <div class="item-header">
+                                        <span class="idx mono-font">02</span>
+                                        <h4>Core Logic</h4>
+                                    </div>
+                                    <div class="item-content-wrapper">
+                                        <p class="item-desc">STM32H7 processor running real-time neural inferencing at the edge. 480MHz clock speed.</p>
+                                    </div>
+                                </div>
+                            </button>
+
+                            <button class="hw-a-item" data-target="sensors">
+                                <div class="item-timeline">
+                                    <div class="timeline-knob"></div>
+                                    <div class="timeline-line"></div>
+                                </div>
+                                <div class="item-body">
+                                    <div class="item-header">
+                                        <span class="idx mono-font">03</span>
+                                        <h4>Power & Sensing</h4>
+                                    </div>
+                                    <div class="item-content-wrapper">
+                                        <p class="item-desc">High-density 20Wh solid-state battery matrix supporting a 6-probe multiparameter array.</p>
+                                    </div>
+                                </div>
+                            </button>
+
+                        </div>
+
+                        <div class="hw-a-specs-footer">
+                            <div class="ui-screw bl"></div><div class="ui-screw br"></div>
+                            <div class="spec-block">
+                                <span class="lbl mono-font">MATERIAL_ID</span>
+                                <span class="val mono-font" id="spec-a-1">FR4-TG180</span>
+                            </div>
+                            <div class="spec-divider"></div>
+                            <div class="spec-block">
+                                <span class="lbl mono-font">IP_RATING</span>
+                                <span class="val mono-font" id="spec-a-2">IP68/10ATM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ===================================================
+        SECTION 4: SOFTWARE ARCHITECTURE
+        ==================================================== -->
+        <section id="software" class="sw-section">
+            <div class="sw-ambient">
+                <div class="sw-glow-spot"></div>
+                <div class="sw-grid-pattern"></div>
             </div>
 
-            <div class="layer layer-inner active" data-layer="power">
-              <div class="orbit-ring ring-1"></div>
-              <div class="node node-pwr" style="--angle: 45deg">
-                <div class="node-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-              </div>
-              <div class="node node-com" style="--angle: 225deg">
-                <div class="node-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2m0 4v6l4 2"/></svg></div>
-              </div>
+            <div class="wrap sw-container">
+                
+                <header class="sw-header">
+                    <div class="sw-status-pill" id="debug-toggle">
+                        <span class="status-indicator">
+                            <span class="ping"></span>
+                            <span class="dot"></span>
+                        </span>
+                        <span class="status-label">Pipeline Operational</span>
+                    </div>
+                    
+                    <h2 class="sw-title">
+                        From Abyss to <br>
+                        <span class="sw-gradient">Pixel-Perfect Insight.</span>
+                    </h2>
+                    <p class="sw-desc">
+                        An end-to-end encrypted pipeline turning raw sensor inputs into actionable environmental intelligence in real-time.
+                    </p>
+                </header>
+
+                <div class="sw-pipeline">
+                    
+                    <div class="sw-connector-track">
+                        <div class="track-line"></div>
+                        <div class="data-stream"></div>
+                    </div>
+
+                    <div class="sw-card" data-stage="edge">
+                        <div class="card-glass-sw"></div>
+                        <div class="card-inner-sw">
+                            <div class="icon-layer">
+                                <div class="icon-box">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6h2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8c0-1.1.9-2 2-2h2"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="12" y1="13" x2="12" y2="13"/></svg>
+                                </div>
+                                <span class="stage-tag">Edge</span>
+                            </div>
+                            <div class="content-layer">
+                                <h3>Embedded FW</h3>
+                                <div class="micro-visual">
+                                    <div class="code-lines">
+                                        <span class="line w-80"></span>
+                                        <span class="line w-60"></span>
+                                        <span class="line w-40"></span>
+                                    </div>
+                                    <div class="processing-badge">
+                                        <span class="proc-dot"></span> AES-256
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sw-node">
+                        <div class="node-circle"></div>
+                        <span class="node-label">MQTT / TLS</span>
+                    </div>
+
+                    <div class="sw-card" data-stage="cloud">
+                        <div class="card-glass-sw"></div>
+                        <div class="card-inner-sw">
+                            <div class="icon-layer">
+                                <div class="icon-box">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m8 17 4 4 4-4"/></svg>
+                                </div>
+                                <span class="stage-tag">Cloud</span>
+                            </div>
+                            <div class="content-layer">
+                                <h3>Infrastructure</h3>
+                                <div class="micro-visual stack-visual">
+                                    <div class="server-layer l1"></div>
+                                    <div class="server-layer l2"></div>
+                                    <div class="server-layer l3"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sw-node">
+                        <div class="node-circle"></div>
+                        <span class="node-label">WSS / JSON</span>
+                    </div>
+
+                    <div class="sw-card" data-stage="surface">
+                        <div class="card-glass-sw"></div>
+                        <div class="card-inner-sw">
+                            <div class="icon-layer">
+                                <div class="icon-box">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21v-6h6v6"/></svg>
+                                </div>
+                                <span class="stage-tag">Surface</span>
+                            </div>
+                            <div class="content-layer">
+                                <h3>Dashboard</h3>
+                                <div class="micro-visual chart-visual">
+                                    <div class="chart-bar" style="height: 40%"></div>
+                                    <div class="chart-bar" style="height: 70%"></div>
+                                    <div class="chart-bar active" style="height: 50%"></div>
+                                    <div class="chart-bar" style="height: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="sw-footer">
+                    <div class="sw-metric">
+                        <span class="val">99.9%</span>
+                        <span class="lbl">Uptime SLA</span>
+                    </div>
+                    <div class="sw-sep"></div>
+                    <div class="sw-metric">
+                        <span class="val">&lt;200ms</span>
+                        <span class="lbl">Global Latency</span>
+                    </div>
+                    <div class="sw-sep"></div>
+                    <div class="sw-metric">
+                        <span class="val">256-bit</span>
+                        <span class="lbl">AES Crypto</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- ===================================================
+        SECTION 5: DEPLOYMENT MODES
+        ==================================================== -->
+        <section id="deployment" class="dpl-section">
+            <div class="dpl-ambient">
+                <div class="dpl-glow-orb"></div>
             </div>
 
-            <div class="layer layer-outer active" data-layer="sensors">
-              <div class="orbit-ring ring-2"></div>
-              <div class="orbit-ring ring-3"></div>
-              <div class="node node-sens" style="--angle: 0deg"></div>
-              <div class="node node-sens" style="--angle: 120deg"></div>
-              <div class="node node-sens" style="--angle: 240deg"></div>
+            <div class="wrap dpl-container">
+                
+                <header class="dpl-header">
+                    <button class="dpl-status-pill" id="sim-toggle" aria-label="Toggle Simulation">
+                        <div class="pill-indicator">
+                            <div class="indicator-dot"></div>
+                            <div class="indicator-ping"></div>
+                        </div>
+                        <span class="pill-label">Simulation: <span class="state-text">Standby</span></span>
+                    </button>
+
+                    <h2 class="dpl-title">
+                        Mission <span class="dpl-gradient">Configurations.</span>
+                    </h2>
+                    <p class="dpl-desc">
+                        Adaptive deployment strategies designed for scalable environmental coverage, from single points to city-wide swarms.
+                    </p>
+                </header>
+
+                <div class="dpl-grid">
+                    
+                    <div class="dpl-card" data-mode="fixed">
+                        <div class="card-glass"></div>
+                        <div class="card-content">
+                            <div class="visual-area">
+                                <svg class="viz-svg" viewBox="0 0 100 100">
+                                    <circle class="radar-ring r1" cx="50" cy="50" r="15" />
+                                    <circle class="radar-ring r2" cx="50" cy="50" r="28" />
+                                    <circle class="radar-ring r3" cx="50" cy="50" r="40" />
+                                    <circle class="radar-core" cx="50" cy="50" r="6" />
+                                    <path class="radar-scan" d="M50 50 L50 10 A40 40 0 0 1 90 50 z" />
+                                </svg>
+                            </div>
+                            <div class="text-area">
+                                <span class="mode-tag">Fixed</span>
+                                <h3>Stationary Sentinel</h3>
+                                <p>Permanent monitoring at critical discharge points with continuous 24/7 uptime.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dpl-card" data-mode="mobile">
+                        <div class="card-glass"></div>
+                        <div class="card-content">
+                            <div class="visual-area">
+                                <svg class="viz-svg" viewBox="0 0 100 100">
+                                    <path class="wave-path" d="M10 50 Q 30 20, 50 50 T 90 50" fill="none" stroke-width="2" />
+                                    <path class="wave-path-ghost" d="M10 50 Q 30 20, 50 50 T 90 50" fill="none" stroke-width="2" />
+                                    <circle class="drone-node" cx="0" cy="0" r="5" />
+                                </svg>
+                            </div>
+                            <div class="text-area">
+                                <span class="mode-tag">Roaming</span>
+                                <h3>Mobile Unit</h3>
+                                <p>Dynamic sampling across water bodies using autonomous pathfinding algorithms.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dpl-card" data-mode="temp">
+                        <div class="card-glass"></div>
+                        <div class="card-content">
+                            <div class="visual-area">
+                                <svg class="viz-svg" viewBox="0 0 100 100">
+                                    <circle class="timer-bg" cx="50" cy="50" r="35" />
+                                    <circle class="timer-progress" cx="50" cy="50" r="35" />
+                                    <path class="drop-icon" d="M50 30 L50 70 M30 50 L50 70 L70 50" />
+                                </svg>
+                            </div>
+                            <div class="text-area">
+                                <span class="mode-tag">Rapid</span>
+                                <h3>Tactical Drop</h3>
+                                <p>Short-term deployment for emergency scouting and specific event monitoring.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dpl-card card-wide" data-mode="fleet">
+                        <div class="card-glass"></div>
+                        <div class="card-content">
+                            <div class="visual-area wide-viz">
+                                <svg class="viz-svg fleet-svg" viewBox="0 0 300 100" preserveAspectRatio="xMidYMid meet">
+                                    <line class="fleet-link l1" x1="50" y1="50" x2="110" y2="30" />
+                                    <line class="fleet-link l2" x1="110" y1="30" x2="190" y2="50" />
+                                    <line class="fleet-link l3" x1="50" y1="50" x2="150" y2="80" />
+                                    <line class="fleet-link l4" x1="150" y1="80" x2="250" y2="50" />
+                                    <line class="fleet-link l5" x1="190" y1="50" x2="250" y2="50" />
+                                    
+                                    <circle class="fleet-node n1" cx="50" cy="50" r="6" />
+                                    <circle class="fleet-node n2" cx="110" cy="30" r="6" />
+                                    <circle class="fleet-node n3" cx="190" cy="50" r="6" />
+                                    <circle class="fleet-node n4" cx="150" cy="80" r="6" />
+                                    <circle class="fleet-node n5" cx="250" cy="50" r="6" />
+                                </svg>
+                            </div>
+                            <div class="text-area">
+                                <span class="mode-tag">Swarm</span>
+                                <h3>Coordinated Fleet</h3>
+                                <p>Interconnected multi-unit swarms generating comprehensive, city-scale water quality heatmaps.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- ===================================================
+        SECTION 6: THE TEAM
+        ==================================================== -->
+        <section id="team" class="tm-section">
+            <div class="tm-ambient">
+                <div class="tm-glow-blur"></div>
             </div>
 
-          </div>
-          
-          <div class="holo-base"></div>
+            <div class="wrap tm-container">
+                
+                <header class="tm-header">
+                    <div class="tm-label-badge">
+                        <span class="badge-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </span>
+                        The Collective
+                    </div>
+                    <h2 class="tm-title">
+                        Architects of <span class="tm-gradient">Tomorrow.</span>
+                    </h2>
+                    <p class="tm-desc">
+                        Bridging the gap between hardware engineering and software intelligence to give a voice to our oceans.
+                    </p>
+                </header>
+
+                <div class="tm-grid" id="team-grid">
+                    
+                    <div class="tm-card" data-tilt>
+                        <div class="tm-card-glass"></div>
+                        <div class="tm-content">
+                            <div class="tm-profile">
+                                <div class="tm-avatar" style="--av-grad: linear-gradient(135deg, #FF9A9E 0%, #FECFEF 100%)">
+                                    <span>SB</span>
+                                </div>
+                                <div class="tm-info">
+                                    <h3>Samir Buzatu</h3>
+                                    <span class="tm-role">Lead & Frontend</span>
+                                </div>
+                            </div>
+                            <div class="tm-divider"></div>
+                            <div class="tm-details">
+                                <div class="detail-item">
+                                    <span class="lbl">Focus</span>
+                                    <span class="val">UI/UX</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="lbl">Stack</span>
+                                    <span class="val">Vue.js</span>
+                                </div>
+                            </div>
+                            <div class="tm-tags">
+                                <span>Interface</span>
+                                <span>Core</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tm-card" data-tilt>
+                        <div class="tm-card-glass"></div>
+                        <div class="tm-content">
+                            <div class="tm-profile">
+                                <div class="tm-avatar" style="--av-grad: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)">
+                                    <span>AL</span>
+                                </div>
+                                <div class="tm-info">
+                                    <h3>Andrea Lombardo</h3>
+                                    <span class="tm-role">Cloud & IoT</span>
+                                </div>
+                            </div>
+                            <div class="tm-divider"></div>
+                            <div class="tm-details">
+                                <div class="detail-item">
+                                    <span class="lbl">Focus</span>
+                                    <span class="val">Connectivity</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="lbl">Stack</span>
+                                    <span class="val">MQTT</span>
+                                </div>
+                            </div>
+                            <div class="tm-tags">
+                                <span>Network</span>
+                                <span>API</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tm-card" data-tilt>
+                        <div class="tm-card-glass"></div>
+                        <div class="tm-content">
+                            <div class="tm-profile">
+                                <div class="tm-avatar" style="--av-grad: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%)">
+                                    <span>MO</span>
+                                </div>
+                                <div class="tm-info">
+                                    <h3>Michele Ottaviano</h3>
+                                    <span class="tm-role">Backend Logic</span>
+                                </div>
+                            </div>
+                            <div class="tm-divider"></div>
+                            <div class="tm-details">
+                                <div class="detail-item">
+                                    <span class="lbl">Focus</span>
+                                    <span class="val">Infrastructure</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="lbl">Stack</span>
+                                    <span class="val">Node.js</span>
+                                </div>
+                            </div>
+                            <div class="tm-tags">
+                                <span>Data</span>
+                                <span>Security</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tm-card" data-tilt>
+                        <div class="tm-card-glass"></div>
+                        <div class="tm-content">
+                            <div class="tm-profile">
+                                <div class="tm-avatar" style="--av-grad: linear-gradient(135deg, #fccb90 0%, #d57eeb 100%)">
+                                    <span>FP</span>
+                                </div>
+                                <div class="tm-info">
+                                    <h3>Francesco Pilato</h3>
+                                    <span class="tm-role">Hardware Eng.</span>
+                                </div>
+                            </div>
+                            <div class="tm-divider"></div>
+                            <div class="tm-details">
+                                <div class="detail-item">
+                                    <span class="lbl">Focus</span>
+                                    <span class="val">PCB & Sensors</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="lbl">Stack</span>
+                                    <span class="val">Altium</span>
+                                </div>
+                            </div>
+                            <div class="tm-tags">
+                                <span>Electronics</span>
+                                <span>IoT</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tm-card" data-tilt>
+                        <div class="tm-card-glass"></div>
+                        <div class="tm-content">
+                            <div class="tm-profile">
+                                <div class="tm-avatar" style="--av-grad: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)">
+                                    <span>CV</span>
+                                </div>
+                                <div class="tm-info">
+                                    <h3>Christian Violo</h3>
+                                    <span class="tm-role">Product Design</span>
+                                </div>
+                            </div>
+                            <div class="tm-divider"></div>
+                            <div class="tm-details">
+                                <div class="detail-item">
+                                    <span class="lbl">Focus</span>
+                                    <span class="val">3D Modeling</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="lbl">Stack</span>
+                                    <span class="val">CAD</span>
+                                </div>
+                            </div>
+                            <div class="tm-tags">
+                                <span>Structure</span>
+                                <span>Render</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="tm-footer">
+                    <div class="tm-stat-group">
+                        <span class="val">5</span>
+                        <span class="lbl">Minds</span>
+                    </div>
+                    <div class="tm-stat-sep"></div>
+                    <div class="tm-stat-group">
+                        <span class="val">1</span>
+                        <span class="lbl">Vision</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- ===================================================
+        SECTION 7: POSITIVE IMPACT
+        ==================================================== -->
+        <section id="impact" class="imp-section">
+            <div class="imp-ambient">
+                <div class="imp-blur-blob"></div>
+                <div class="imp-grid-lines"></div>
+            </div>
+
+            <div class="wrap imp-container">
+                
+                <header class="imp-header">
+                    <div class="imp-badge">
+                        <span class="badge-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.48-.56.9-1.23 1.25-1.98"/><path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"/><path d="M20 21.5c1.5-1.26 2-5 2-5s-3.74.5-5 2c-.48.56-.9 1.23-1.25 1.98"/></svg>
+                        </span>
+                        <span>Positive Output</span>
+                    </div>
+                    <h2 class="imp-title">
+                        Global <span class="imp-gradient">Resonance.</span>
+                    </h2>
+                    <p class="imp-desc">
+                        From local streams to vast oceans, our intelligence layer engages communities and accelerates ecological recovery.
+                    </p>
+                </header>
+
+                <div class="imp-grid">
+                    
+                    <div class="imp-card card-wide" id="card-daynight">
+                        <div class="card-glass-imp"></div>
+                        <div class="card-inner-imp">
+                            <div class="visual-container">
+                                <div class="day-night-cycle">
+                                    <div class="orbit-path">
+                                        <div class="celestial-body sun"></div>
+                                        <div class="celestial-body moon"></div>
+                                    </div>
+                                    <div class="horizon-line"></div>
+                                </div>
+                            </div>
+                            <div class="text-content">
+                                <h3>24/7 Sentinel</h3>
+                                <p>Continuous automated data stream. No sleep, no downtime.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="imp-card" id="card-alert">
+                        <div class="card-glass-imp"></div>
+                        <div class="card-inner-imp">
+                            <div class="visual-container alert-viz">
+                                <div class="radar-pulse"></div>
+                                <div class="alert-pill">
+                                    <span class="dot"></span>
+                                    <span>Anomaly Detected</span>
+                                </div>
+                                <div class="data-stream-lines">
+                                    <span></span><span></span><span></span>
+                                </div>
+                            </div>
+                            <div class="text-content">
+                                <h3>Rapid Response</h3>
+                                <p>Instant triggers for intervention in <span class="highlight">seconds</span>.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="imp-card" id="card-predict">
+                        <div class="card-glass-imp"></div>
+                        <div class="card-inner-imp">
+                            <div class="visual-container">
+                                <svg class="wave-graph" viewBox="0 0 100 40">
+                                    <path class="wave-static" d="M0,20 Q25,5 50,20 T100,20" fill="none" stroke="currentColor" stroke-width="2"/>
+                                    <path class="wave-anim" d="M0,20 Q25,5 50,20 T100,20" fill="none" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <div class="text-content">
+                                <h3>Predictive AI</h3>
+                                <p>Proactive environmental modeling.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="imp-card" id="card-community">
+                        <div class="card-glass-imp"></div>
+                        <div class="card-inner-imp">
+                            <div class="visual-container">
+                                <div class="avatar-group">
+                                    <div class="avatar"></div>
+                                    <div class="avatar"></div>
+                                    <div class="avatar"></div>
+                                    <div class="plus-more">+</div>
+                                </div>
+                            </div>
+                            <div class="text-content">
+                                <h3>Citizen Science</h3>
+                                <p>Democratized open data access.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="imp-card card-wide" id="card-eco">
+                        <div class="card-glass-imp"></div>
+                        <div class="card-inner-imp row-layout">
+                            <div class="visual-container eco-viz">
+                                <div class="leaf-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 22h20"/><path d="M12 2v20"/><path d="M12 6l3.29-3.29a1 1 0 0 1 1.42 0l6.58 6.58a1 1 0 0 1 0 1.42L12 22"/><path d="M12 6L8.71 2.71a1 1 0 0 0-1.42 0L.71 9.29a1 1 0 0 0 0 1.42L12 22"/></svg>
+                                </div>
+                                <div class="sun-rays"><span></span><span></span><span></span><span></span></div>
+                            </div>
+                            <div class="text-content">
+                                <h3>Zero Emission Cycle</h3>
+                                <p>100% solar-powered operation with a carbon-neutral manufacturing footprint.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="imp-footer">
+                    <div class="imp-stat">
+                        <div class="stat-group">
+                            <span class="stat-val" data-target="100">0</span>
+                            <span class="stat-unit">%</span>
+                        </div>
+                        <span class="stat-lbl">Solar Energy</span>
+                    </div>
+                    <div class="imp-divider"></div>
+                    <div class="imp-stat">
+                        <div class="stat-group">
+                            <span class="stat-val" data-target="24">0</span>
+                            <span class="stat-unit">/7</span>
+                        </div>
+                        <span class="stat-lbl">Uptime</span>
+                    </div>
+                    <div class="imp-divider"></div>
+                    <div class="imp-stat">
+                        <div class="stat-group">
+                            <span class="stat-val" data-target="0">0</span>
+                            <span class="stat-unit">g</span>
+                        </div>
+                        <span class="stat-lbl">Net Carbon</span>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+    </main>
+
+    <!-- ===================================================
+    FOOTER
+    ==================================================== -->
+    <footer>
+        <div class="wrap">
+            <div class="footer-grid">
+                <!-- Brand & Mission -->
+                <div class="f-col-brand">
+                    <a href="/" class="f-logo" aria-label="EcoBall Homepage">
+                        <div class="f-mark">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
+                                <path d="M2 12h20" />
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                            </svg>
+                        </div>
+                        <span class="f-name">EcoBall</span>
+                    </a>
+                    <p class="f-desc">
+                        Autonomous environmental intelligence.
+                        Protecting aquatic ecosystems through solar-powered, real-time monitoring networks.
+                    </p>
+                </div>
+
+                <!-- Navigation -->
+                <div class="f-col-nav">
+                    <nav class="f-nav-pill">
+                        <a href="/" class="f-link active">Home</a>
+                        <a href="/technical-specs.html" class="f-link">Specs</a>
+                        <a href="/challenges.html" class="f-link">Future</a>
+                        <a href="/recognition-about.html" class="f-link">About</a>
+                        <a href="/deployment.html" class="f-link">Deploy</a>
+                    </nav>
+                </div>
+
+                <!-- System Status -->
+                <div class="f-col-status">
+                    <div class="sys-badge" title="Live System Status">
+                        <span class="pulse-dot"></span>
+                        <span>ALL SYSTEMS NOMINAL</span>
+                    </div>
+                    <span class="version-tag">Build v2.4.0 (Stable)</span>
+                    <span class="version-tag">Istituto Rapisardi–Da Vinci</span>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="f-bottom">
+                <div class="copyright">
+                    &copy; <span id="year">2025</span> EcoBall Project. Open Hardware License.
+                </div>
+                <div class="legal-group">
+                    <a href="/privacy-policy.html" class="legal-link">Privacy Policy</a>
+                    <a href="/terms-of-service.html" class="legal-link">Terms of Service</a>
+                    <a href="https://www.rapisardidavinci.edu.it" target="_blank" rel="noopener" class="legal-link">Institute</a>
+                </div>
+            </div>
         </div>
-      </div>
+    </footer>
 
-      <div class="hw-controls">
-        
-        <div class="hw-tabs">
-          <button class="hw-tab active" data-target="sensors">
-            <span class="tab-idx">01</span>
-            <span class="tab-label">Sensors & Shell</span>
-            <span class="tab-arr">→</span>
-          </button>
-          <button class="hw-tab" data-target="core">
-            <span class="tab-idx">02</span>
-            <span class="tab-label">Core Intelligence</span>
-            <span class="tab-arr">→</span>
-          </button>
-          <button class="hw-tab" data-target="power">
-            <span class="tab-idx">03</span>
-            <span class="tab-label">Power & Comms</span>
-            <span class="tab-arr">→</span>
-          </button>
-        </div>
-
-        <div class="hw-detail-panel">
-          <div class="panel-decor">
-            <div class="corner tl"></div><div class="corner tr"></div>
-            <div class="corner bl"></div><div class="corner br"></div>
-          </div>
-          
-          <div id="hw-content-area">
-            <h3 class="panel-title">Multiparametric Array</h3>
-            <p class="panel-desc">Industrial-grade probe array housed in an anti-fouling IP68 enclosure.</p>
-            <div class="panel-specs">
-              <div class="spec-row">
-                <span>Accuracy</span>
-                <span class="mono">±0.01 pH</span>
-              </div>
-              <div class="spec-row">
-                <span>Material</span>
-                <span class="mono">HDPE (Recycled)</span>
-              </div>
-              <div class="spec-row">
-                <span>Rating</span>
-                <span class="mono">IP68 / 10ATM</span>
-              </div>
-            </div>
-          </div>
-          
-          <div class="panel-footer">
-            <div class="scan-line"></div>
-            <span class="mono-xs">ID: SENS-MOD-V4 // ONLINE</span>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </div>
-</section>
-<!-- Section 4 — Software Architecture -->
-<section id="software" class="software-architecture">
-  <div class="ambient-glow"></div>
-
-  <div class="wrap">
-    <div class="headline fade-in-up">
-      <h2>Software Architecture</h2>
-      <p>End-to-end data pipeline: from deep abyss to surface insights.</p>
-    </div>
-    
-    <div class="architecture-visual fade-in-up" style="animation-delay: 0.2s;">
-      
-      <div class="pipeline-connector">
-        <div class="pipeline-line"></div>
-        <div class="pipeline-pulse"></div>
-        <div class="pipeline-pulse delay-1"></div>
-      </div>
-
-      <div class="module-grid">
-        
-        <article class="glass-card module--firmware">
-          <div class="card-highlight"></div>
-          <div class="module-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M8 3H6a2 2 0 0 0-2 2v2m12 0V5a2 2 0 0 0-2-2h-2m0 12h.01M12 12h.01M16 12h.01M8 12h.01"/>
-              <rect x="4" y="7" width="16" height="10" rx="2"/>
-              <path d="M16 19a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2"/>
-            </svg>
-            <div class="icon-glow"></div>
-          </div>
-          <div class="module-content">
-            <header>
-              <span class="badge">Edge</span>
-              <h4>Embedded FW</h4>
-            </header>
-            <ul class="feature-list">
-              <li>Sensor calibration</li>
-              <li>Power management</li>
-              <li>Encrypted Logging</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="glass-card module--backend">
-          <div class="card-highlight"></div>
-          <div class="module-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M3 6h18M3 12h18m-9 6h9"/>
-              <rect x="2" y="2" width="20" height="20" rx="2"/>
-            </svg>
-            <div class="icon-glow"></div>
-          </div>
-          <div class="module-content">
-            <header>
-              <span class="badge">Cloud</span>
-              <h4>Infrastructure</h4>
-            </header>
-            <ul class="feature-list">
-              <li>Time-series DB</li>
-              <li>Stream Analytics</li>
-              <li>Auto-scaling</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="glass-card module--frontend">
-          <div class="card-highlight"></div>
-          <div class="module-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <rect x="2" y="2" width="20" height="16" rx="2"/>
-              <path d="M2 8h20M8 21v-5m8 5v-5"/>
-            </svg>
-            <div class="icon-glow"></div>
-          </div>
-          <div class="module-content">
-            <header>
-              <span class="badge">UI/UX</span>
-              <h4>Dashboard</h4>
-            </header>
-            <ul class="feature-list">
-              <li>Real-time Maps</li>
-              <li>Impact Analytics</li>
-              <li>Device Manager</li>
-            </ul>
-          </div>
-        </article>
-
-      </div>
-    </div>
-    
-    <div class="stats-grid fade-in-up" style="animation-delay: 0.4s;">
-      <div class="stat-card">
-        <div class="stat-value">99.9%</div>
-        <div class="stat-label">Uptime</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value">&lt;2s</div>
-        <div class="stat-label">Latency</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value">256-bit</div>
-        <div class="stat-label">AES Crypto</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value">24/7</div>
-        <div class="stat-label">Sync</div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- Section 5 — Field Deployment Modes -->
-   <section id="deployment">
-      <div class="wrap">
-        <div class="headline ">
-          <h2 style="font-size: var(--size-6);">Field Deployment Modes</h2>
-          <p>Flexible strategies for any mission profile.</p>
-        </div>
-        
-        <div class="deployment-grid">
-          <div class="deployment-card ">
-            <div class="deployment-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/>
-                <path d="M12 2V4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M12 20V22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M4 12H2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M22 12H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M19.071 19.071L17.657 17.657" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M6.343 6.343L4.929 4.929" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M19.071 4.929L17.657 6.343" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M6.343 17.657L4.929 19.071" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div class="deployment-content">
-              <h3>Fixed Units</h3>
-              <p>Constant monitoring at critical points with uninterrupted data collection</p>
-            </div>
-            <div class="deployment-badge">Stable</div>
-          </div>
-          
-          <div class="deployment-card ">
-            <div class="deployment-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                <path d="M3 12H5M5 12C5 15.866 8.13401 19 12 19C15.866 19 19 15.866 19 12C19 8.13401 15.866 5 12 5C8.13401 5 5 8.13401 5 12Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M21 12H19M19 12C19 8.13401 15.866 5 12 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M12 3V5M12 19V21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div class="deployment-content">
-              <h3>Mobile Units</h3>
-              <p>Large‑area dynamic sampling while moving across water bodies</p>
-            </div>
-            <div class="deployment-badge">Dynamic</div>
-          </div>
-          
-          <div class="deployment-card ">
-            <div class="deployment-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="1.5"/>
-              </svg>
-            </div>
-            <div class="deployment-content">
-              <h3>Temporary Missions</h3>
-              <p>Surveying, events, and scouting operations with rapid deployment</p>
-            </div>
-            <div class="deployment-badge">Flexible</div>
-          </div>
-          
-          <div class="deployment-card ">
-            <div class="deployment-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                <circle cx="8" cy="8" r="2" stroke="currentColor" stroke-width="1.5"/>
-                <circle cx="16" cy="8" r="2" stroke="currentColor" stroke-width="1.5"/>
-                <circle cx="8" cy="16" r="2" stroke="currentColor" stroke-width="1.5"/>
-                <circle cx="16" cy="16" r="2" stroke="currentColor" stroke-width="1.5"/>
-                <path d="M8 8V16M16 8V16M8 8H16M8 16H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div class="deployment-content">
-              <h3>Multi‑Unit Fleets</h3>
-              <p>Generate city‑ or region‑scale water maps with coordinated deployment</p>
-            </div>
-            <div class="deployment-badge">Scalable</div>
-          </div>
-        </div>
-        
-        <!-- Deployment Info -->
-        <div class="deployment-info ">
-          <div class="info-content">
-            <h4>Adaptive Deployment Strategy</h4>
-            <p>EcoBall supports multiple deployment scenarios, from single-point monitoring to large-scale fleet operations, ensuring optimal coverage for any environmental monitoring need.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section 6 — Maintenance & Operations -->
-    <!--technical-specs.hmtl-->
-
-
-    <!-- Section 7 — Challenges & Risks -->
-    <!--challenges-risks.html-->
-
-    <!-- Section 8 — Operating Workflow -->
-    <!--technical-specs.hmtl-->
-
-
-
-    <!-- Section 9 — Future Extensions -->
-    <!--challenges-risks.html-->
-    <!-- Section 10 — Minimum Technical Specs -->
-    <!--technical-specs.hmtl-->
-
-    <!-- Section 11 — Positive Impact -->
-  <section id="impact">
-    <div class="wrap">
-      <div class="headline ">
-        <h2 style="font-size: var(--size-6);">Positive Impact</h2>
-        <p>Environmental intelligence that accelerates response and engages communities</p>
-      </div>
-      
-      <div class="impact-grid">
-        <!-- Impact Features -->
-        <div class="impact-features">
-          <div class="impact-card ">
-            <div class="impact-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M12 6V12L15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
-              </svg>
-            </div>
-            <div class="impact-content">
-              <h3>24/7 Continuous Monitoring</h3>
-              <p>Round-the-clock automated data collection without interruption</p>
-            </div>
-          </div>
-          
-          <div class="impact-card ">
-            <div class="impact-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M12 8V12L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
-              </svg>
-            </div>
-            <div class="impact-content">
-              <h3>Rapid Response Capability</h3>
-              <p>Immediate alerts enable swift intervention in pollution events</p>
-            </div>
-          </div>
-          
-          <div class="impact-card ">
-            <div class="impact-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M19 9L20.25 6.25L23 5L20.25 3.75L19 1L17.75 3.75L15 5L17.75 6.25L19 9Z" stroke="currentColor" stroke-width="1.5"/>
-                <path d="M19 15L17.75 17.75L15 19L17.75 20.25L19 23L20.25 20.25L23 19L20.25 17.75L19 15Z" stroke="currentColor" stroke-width="1.5"/>
-                <path d="M11 12C11 9.23858 13.2386 7 16 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div class="impact-content">
-              <h3>Predictive Analytics</h3>
-              <p>Advanced modeling for proactive environmental protection</p>
-            </div>
-          </div>
-          
-          <div class="impact-card ">
-            <div class="impact-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M16 21V19C16 17.9391 15.5786 16.9217 14.8284 16.1716C14.0783 15.4214 13.0609 15 12 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21" stroke="currentColor" stroke-width="1.5"/>
-                <path d="M9 11C11.2091 11 13 9.20914 13 7C13 4.79086 11.2091 3 9 3C6.79086 3 5 4.79086 5 7C5 9.20914 6.79086 11 9 11Z" stroke="currentColor" stroke-width="1.5"/>
-                <path d="M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M17 3.13C17.8604 3.35031 18.623 3.85071 19.1676 4.55232C19.7122 5.25392 20.0078 6.11683 20.0078 7.005C20.0078 7.89318 19.7122 8.75608 19.1676 9.45769C18.623 10.1593 17.8604 10.6597 17 10.88" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div class="impact-content">
-              <h3>Community Engagement</h3>
-              <p>Educational outreach and citizen science programs</p>
-            </div>
-          </div>
-          
-          <div class="impact-card ">
-            <div class="impact-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M12 3V4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M12 20V21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M21 12H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M4 12H3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M18.364 18.364L17.657 17.657" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M6.343 6.343L5.636 5.636" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M18.364 5.636L17.657 6.343" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M6.343 17.657L5.636 18.364" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
-              </svg>
-            </div>
-            <div class="impact-content">
-              <h3>Zero Emission Operation</h3>
-              <p>Fully solar-powered with carbon-neutral lifecycle</p>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Impact Statement -->
-        <div class="impact-statement ">
-          <div class="statement-card">
-            <h3>Environmental Stewardship</h3>
-            <p>
-              By <span class="accent">democratizing access</span> to water quality data and 
-              <span class="accent">reducing operational barriers</span>, EcoBall enables 
-              continuous, scalable protection of aquatic ecosystems worldwide.
-            </p>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Impact Metrics -->
-      <div class="impact-metrics">
-        <div class="metric-card ">
-          <div class="metric-value">100%</div>
-          <div class="metric-label">Solar Powered</div>
-          <div class="metric-desc">Renewable energy operation</div>
-        </div>
-        <div class="metric-card ">
-          <div class="metric-value">24/7</div>
-          <div class="metric-label">Continuous</div>
-          <div class="metric-desc">Uninterrupted monitoring</div>
-        </div>
-        <div class="metric-card ">
-          <div class="metric-value">0</div>
-          <div class="metric-label">Carbon Free</div>
-          <div class="metric-desc">Zero emissions footprint</div>
-        </div>
-      </div>
-    </div>
-  </section>
-<!-- Section 12 — Recognition & Achievements -->
-<!--recognition-about.html-->
-
-<!-- Section 13 — Official Team -->
-<!--recognition-about.html-->
-
-
-
-<!--     
-    <div class="team-stats">
-      <div class="stat magnetic">
-        <div class="stat-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M6 18C6 15.7909 7.79086 14 10 14H14C16.2091 14 18 15.7909 18 18V20H6V18Z" stroke="currentColor" stroke-width="1.5"/>
-          </svg>
-        </div>
-        <div class="stat-content">
-          <div class="stat-value">5</div>
-          <div class="stat-label">Exceptional Minds</div>
-        </div>
-      </div>
-      
-      <div class="stat magnetic">
-        <div class="stat-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="1.5"/>
-          </svg>
-        </div>
-        <div class="stat-content">
-          <div class="stat-value">3</div>
-          <div class="stat-label">Engineering Disciplines</div>
-        </div>
-      </div>
-      
-      <div class="stat magnetic">
-        <div class="stat-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M15 12L12 12M12 12L9 12M12 12L12 9M12 12L12 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div class="stat-content">
-          <div class="stat-value">2</div>
-          <div class="stat-label">Design Specializations</div>
-        </div>
-      </div>
-      
-      <div class="stat magnetic">
-        <div class="stat-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M8 12H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div class="stat-content">
-          <div class="stat-value">1</div>
-          <div class="stat-label">Unified Vision</div>
-        </div>
-      </div>
-    </div>
-  </div> -->
-</section>
-
-  
-  </main>
-
-<footer>
-  <div class="wrap">
-    
-    <!-- Main Footer Grid -->
-    <div class="footer-grid">
-      
-      <!-- Column 1: Brand & Mission -->
-      <div class="f-col-brand">
-        <a href="/" class="f-logo" aria-label="EcoBall Homepage">
-          <div class="f-mark">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
-              <path d="M2 12h20"/>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-            </svg>
-          </div>
-          <span class="f-name">EcoBall</span>
-        </a>
-        <p class="f-desc">
-          Autonomous environmental intelligence. 
-          Protecting aquatic ecosystems through solar-powered, real-time monitoring networks.
-        </p>
-      </div>
-
-      <!-- Column 2: Navigation (Floating Pill) -->
-      <div class="f-col-nav">
-        <nav class="f-nav-pill">
-          <a href="/" class="f-link active">Home</a>
-          <a href="/technical-specs.html" class="f-link">Specs</a>
-          <a href="/challenges.html" class="f-link">Future</a>
-          <a href="/recognition-about.html" class="f-link">About</a>
-          <a href="/deployment.html" class="f-link">Deploy</a>
-        </nav>
-      </div>
-
-      <!-- Column 3: System Status -->
-      <div class="f-col-status">
-        <div class="sys-badge" title="Live System Status">
-          <span class="pulse-dot"></span>
-          <span>ALL SYSTEMS NOMINAL</span>
-        </div>
-        <span class="version-tag">Build v2.4.0 (Stable)</span>
-        <span class="version-tag">Istituto Rapisardi–Da Vinci</span>
-      </div>
-
-    </div>
-
-    <!-- Bottom Bar: Legal & Copyright -->
-    <div class="f-bottom">
-      <div class="copyright">
-        &copy; <span id="year">2025</span> EcoBall Project. Open Hardware License.
-      </div>
-      <div class="legal-group">
-        <a href="#" class="legal-link">Privacy Policy</a>
-        <a href="#" class="legal-link">Terms of Service</a>
-        <a href="https://www.rapisardidavinci.edu.it" target="_blank" rel="noopener" class="legal-link">Institute</a>
-      </div>
-    </div>
-
-  </div>
-</footer>
-<!--include script.js-->
-  <script src="js/script.js"></script>
+    <!-- ===================================================
+    SCRIPTS
+    ==================================================== -->
+    <script src="js/script.js"></script>
 
 </body>
+
 </html>
