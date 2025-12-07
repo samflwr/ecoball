@@ -478,168 +478,195 @@
 
 /* --- FOOTER METRICS --- */
 /* --- MISSION FOOTER (Telemetry Console) --- */
+/* --- MISSION FOOTER (Redesigned) --- */
+
 .msn-footer {
-    /* Scoped Variables */
-    --msn-border: rgba(255, 255, 255, 0.08);
-    --msn-txt-main: var(--text, #f0f9ff);
-    --msn-txt-mute: var(--text-muted, #64748b);
-    --msn-brand: var(--brand, #06b6d4);
-    
     position: relative;
+    margin-top: 6rem;
+    padding-top: 4rem;
+    width: 100%;
+    /* Ensure it stacks properly */
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    gap: 4rem;
-    margin-top: 5rem;
-    padding-top: 3rem;
-    
-    /* Replaces standard border with a layout container for the gradient line */
-    isolation: isolate;
 }
 
-/* "Laser Horizon" Top Border */
-.msn-footer::before {
-    content: '';
+/* 1. The "Laser Horizon" Top Border */
+.msn-horizon {
     position: absolute;
-    top: 0; left: 50%; transform: translateX(-50%);
-    width: 60%;
+    top: 0; left: 50%; 
+    transform: translateX(-50%);
+    width: 80%;
     height: 1px;
     background: linear-gradient(90deg, 
         transparent 0%, 
-        var(--msn-border) 20%, 
-        var(--msn-brand) 50%, 
-        var(--msn-border) 80%, 
+        color-mix(in srgb, var(--brand) 20%, transparent) 20%, 
+        var(--brand) 50%, 
+        color-mix(in srgb, var(--brand) 20%, transparent) 80%, 
         transparent 100%
     );
-    opacity: 0.5;
-    box-shadow: 0 -1px 10px var(--msn-brand);
+    opacity: 0.6;
+    box-shadow: 0 -1px 15px var(--brand);
 }
 
-/* Metric Container */
+/* Group Container */
+.msn-metric-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    width: 100%;
+}
+
+/* 2. Metric Item */
 .msn-metric {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
+    gap: 12px;
     cursor: default;
-    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition: transform 0.4s var(--ease);
+    position: relative;
 }
 
 .msn-metric:hover {
-    transform: translateY(-3px);
+    transform: translateY(-4px);
 }
 
-/* The Number (Big Data) */
-.msn-metric .num {
-    font-size: 2.25rem;
+/* The Value (Big Number) */
+.msn-value {
+    font-size: 2.5rem;
     font-weight: 800;
     line-height: 1;
-    color: var(--msn-txt-main);
+    letter-spacing: -0.03em;
+    color: var(--text);
     font-variant-numeric: tabular-nums;
-    letter-spacing: -0.02em;
     
-    /* Metallic Text Gradient */
-    background: linear-gradient(180deg, #fff 10%, var(--msn-txt-mute) 100%);
+    /* Premium Gradient Text */
+    background: linear-gradient(180deg, #fff 20%, var(--text-muted) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     
-    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2));
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
     transition: all 0.3s ease;
 }
 
-.msn-metric:hover .num {
-    background: linear-gradient(180deg, #fff 0%, var(--msn-brand) 100%);
+/* Value Hover Effect */
+.msn-metric:hover .msn-value {
+    background: linear-gradient(180deg, #fff 0%, var(--brand) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 15px var(--msn-brand));
+    filter: drop-shadow(0 0 20px color-mix(in srgb, var(--brand) 40%, transparent));
 }
 
-.msn-metric .num small {
+.msn-value small {
     font-size: 0.5em;
-    font-weight: 500;
-    color: var(--msn-txt-mute);
+    font-weight: 600;
+    color: var(--text-dim);
     vertical-align: super;
 }
 
-/* Label Wrapper (Aligns dot and text) */
-.lbl-wrapper {
-    display: flex;
+/* 3. The Badge (Capsule) */
+.msn-badge {
+    display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 4px 10px;
-    border-radius: 100px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.05);
+    gap: 10px;
+    padding: 6px 14px 6px 10px; /* Asymmetric padding for optical balance */
+    border-radius: 50px;
+    
+    /* Glassmorphism */
+    background: color-mix(in srgb, var(--elev-2) 40%, transparent);
+    border: 1px solid var(--stroke);
+    backdrop-filter: blur(10px);
+    
     transition: all 0.3s ease;
 }
 
-.msn-metric:hover .lbl-wrapper {
-    background: rgba(6,182,212,0.1);
-    border-color: rgba(6,182,212,0.2);
+.msn-metric:hover .msn-badge {
+    background: color-mix(in srgb, var(--brand) 10%, transparent);
+    border-color: color-mix(in srgb, var(--brand) 30%, transparent);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--brand) 15%, transparent);
 }
 
-/* The Label Text */
-.msn-metric .lbl {
+/* Dots */
+.msn-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    position: relative;
+}
+
+.msn-dot.pulse { background: var(--ok); box-shadow: 0 0 8px var(--ok); animation: pulse 2s infinite; }
+.msn-dot.static { background: var(--info); box-shadow: 0 0 8px var(--info); }
+.msn-dot.eco { background: var(--brand); box-shadow: 0 0 8px var(--brand); }
+
+/* Label Text */
+.msn-label {
     font-size: 0.75rem;
-    font-family: var(--font-mono, monospace);
-    color: var(--msn-txt-mute);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
     font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
     transition: color 0.3s ease;
 }
 
-.msn-metric:hover .lbl {
-    color: var(--msn-brand);
+.msn-metric:hover .msn-label {
+    color: var(--text);
 }
 
-/* Status Dots */
-.status-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: #22c55e; /* Green for Uptime */
-    box-shadow: 0 0 5px #22c55e;
-    animation: pulse 2s infinite;
-}
-
-.status-dot.static {
-    background: var(--msn-brand); /* Blue for ISO */
-    box-shadow: none;
-    animation: none;
-}
-
-.status-dot.eco {
-    background: #10b981; /* Teal for Eco */
-    box-shadow: none;
-}
-
-/* Vertical Separator */
-.msn-sep {
+/* 4. Divider */
+.msn-divider {
     width: 1px;
-    height: 40px;
-    background: linear-gradient(to bottom, 
-        transparent, 
-        var(--msn-border), 
-        transparent
-    );
+    height: 50px;
+    background: linear-gradient(to bottom, transparent, var(--stroke), transparent);
 }
 
 /* --- ANIMATIONS --- */
 @keyframes pulse {
     0% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.2); opacity: 0.7; }
+    50% { transform: scale(1.5); opacity: 0.5; }
     100% { transform: scale(1); opacity: 1; }
 }
 
-/* --- RESPONSIVE --- */
+/* --- MOBILE RESPONSIVE --- */
 @media (max-width: 768px) {
-    .msn-sep {
-        height: 1px;
-        background: linear-gradient(to right, transparent, var(--msn-border), transparent);
+    .msn-footer {
+        margin-top: 4rem;
+        padding-top: 3rem;
     }
-    
-    .msn-footer::before { width: 100%; }
+
+    .msn-horizon {
+        width: 100%; /* Full width line on mobile */
+    }
+
+    .msn-metric-group {
+        flex-direction: column; /* Stack vertically */
+        gap: 3rem;
+    }
+
+    /* Hide vertical dividers on mobile */
+    .msn-divider {
+        display: none; 
+    }
+
+    .msn-metric {
+        width: 100%;
+        /* Add a subtle bottom separator for each item except last */
+        padding-bottom: 2rem;
+        border-bottom: 1px solid color-mix(in srgb, var(--stroke) 30%, transparent);
+    }
+
+    .msn-metric:last-child {
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+
+    .msn-value {
+        font-size: 2.2rem; /* Slightly smaller for mobile screens */
+    }
 }
+
+
+
 
 
 

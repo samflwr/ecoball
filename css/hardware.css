@@ -507,11 +507,43 @@
 /* --- MOBILE --- */
 @media (max-width: 1024px) {
     .hw-a-stage-wrapper { grid-template-columns: 1fr; gap: 3rem; }
-    .hw-a-visualizer { height: 450px; order: -1; }
+    .hw-a-visualizer { height: 150px; order: -1; }
     .hw-a-floor-caustics {
         position: absolute; bottom: 20%; left: 0%; width: 100%; height: 60%;
         background: repeating-linear-gradient(45deg, transparent, transparent 10px, var(--brand-glow) 10px, var(--brand-glow) 20px);
 }
+.hw-a-stack-container {
+    position: relative; width: 240px; height: 240px;
+    transform-style: preserve-3d;
+    /* Initial isometric view */
+    transform: rotateX(55deg) rotateZ(-45deg);
+    transition: transform 0.1s ease-out; /* Fast for parallax */
+}
+.hw-a-bg-ambient {
+    position: absolute;  width: 100%; height: 100%;
+    background: radial-gradient(circle at center, var(--brand-glow) 0%, transparent 50%);
+    opacity: 0.5; pointer-events: none;
+}
+
+/* Caustics: Fake refracted light on the floor */
+.hw-a-floor-caustics {
+    position: absolute; bottom: 25%; left: 0%; width: 100%; height: 60%;
+    background: repeating-linear-gradient(45deg, transparent, transparent 10px, var(--brand-glow) 10px, var(--brand-glow) 20px);
+    filter: blur(30px); opacity: 0.3; transform: rotateX(70deg);
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+}
+
+.hw-a-grid-floor {
+    position: absolute; bottom: -5%; left: -50%; width: 200%; height: 100%;
+    /* Uses text color for grid lines so it works in light mode too */
+    background-image: linear-gradient(color-mix(in srgb, var(--text) 10%, transparent) 1px, transparent 1px),
+                      linear-gradient(90deg, color-mix(in srgb, var(--text) 10%, transparent) 1px, transparent 1px);
+    background-size: 80px 80px; transform: rotateX(70deg);
+    mask-image: linear-gradient(to bottom, transparent 10%, black 50%, transparent 10%);
+    
+    opacity: 0.9;
+}
+
 }
 
 
